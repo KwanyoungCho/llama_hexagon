@@ -541,6 +541,143 @@ if (_rpcmem_usage > (_rpcmem_capacity - (8 * SIZE_IN_MB))) {
 }
 ```
 
+## 🎯 NPU 구현 핵심 Data Type 및 메모리 관리
+
+### **1. Quantization Scale Data Types**
+
+#### **Q4_0 및 Q8_0 Scale 타입: FP16**
+```cpp
+// 위치: ggml-common.h:165-175
+typedef struct {
+    ggml_half d;           // scale factor → FP16 ✅
+    uint8_t qs[QK4_0 / 2]; // quantized values
+} block_q4_0;
+
+typedef struct {
+    ggml_half d;           // scale factor → FP16 ✅  
+    int8_t  qs[QK8_0];    // quantized values
+} block_q8_0;
+```
+
+**💡 핵심 인사이트**: Q4_0과 Q8_0 모두 **FP16 scale** 사용
+
+### **2. NPU Int8 MatMul Data Flow**
+
+#### **Vector 연산 후 Data Type: int32**
+```cpp
+// ARM CPU 구현에서 확인한 패턴
+int32_t int_sum = 0;  // ← Accumulation은 int32
+for (int i = 0; i < 32; ++i) {
+    int_sum += (int32_t)weight_int8[i] * (int32_t)activation_int8[i];
+}
+// NPU에서도 동일: int8 × int8 → int32 accumulation
+```
+
+#### **Scale 적용을 위한 Data Type 변환**
+```cpp
+// NPU 구현에서 따라야 할 패턴
+// Step 1: NPU int32 result → FP32 변환
+float float_result = (float)int32_accumulation;
+
+// Step 2: FP16 scales → FP32 변환  
+float weight_scale_fp32 = (float)weight_scale_fp16;
+float activation_scale_fp32 = (float)activation_scale_fp16;
+
+// Step 3: FP32 scale 적용
+float final_result = float_result * weight_scale_fp32 * activation_scale_fp32;
+```
+
+### **3. ION 메모리 할당 핵심 제약사항**
+
+#### **필수 요구사항**
+```cpp
+// 1. Memory Alignment 필수
+auto aligned_buf = reinterpret_cast<void *>(
+    ggmlqnn_align_to(alignment, reinterpret_cast<intptr_t>(buf)));
+
+// 2. File Descriptor 변환 필수
+int32_t mem_fd = rpcmem_to_fd(p_data);
+if (-1 == mem_fd) {
+    // 실패 처리 필수
+    return nullptr;
+}
+
+// 3. ION 타입 지정 필수
+Qnn_MemDescriptor_t descriptor = {
+    {rank, dimensions, nullptr},
+    data_type, 
+    QNN_MEM_TYPE_ION,      // ← 필수!
+    {{mem_fd}}
+};
+```
+
+#### **메모리 풀 관리 제약**
+```cpp
+// 8MB 여유 공간 확보 필수
+if (_rpcmem_usage > (_rpcmem_capacity - (8 * SIZE_IN_MB))) {
+    GGMLHEXAGON_LOG_WARN("메모리 풀 부족");
+    return nullptr;
+}
+```
+
+#### **올바른 할당 순서**
+```cpp
+// 1. RPC/ION 메모리 할당
+void * buf = _pfn_rpc_mem_alloc(RPCMEM_HEAP_ID_SYSTEM, 
+                               RPCMEM_DEFAULT_FLAGS, bytes);
+
+// 2. QNN Context에 메모리 등록
+Qnn_MemHandle_t handle = register_rpcmem(buf, rank, dims, data_type);
+
+// 3. QNN Tensor 생성 시 handle 사용
+qnn_tensor.v1.memType = QNN_TENSORMEMTYPE_MEMHANDLE;
+qnn_tensor.v1.memHandle = handle;
+
+// 4. 데이터 복사 (ION 메모리 사용 시)
+uint8_t * qnn_buffer = instance->get_rpcmem_from_memhandle(handle);
+memcpy(qnn_buffer, src_data, data_size);
+```
+
+### **4. Q4_0 Int8 MatMul 구현 시 적용 방법**
+
+#### **Group별 Data Type 처리**
+```cpp
+// Phase 2: NPU Int8 MatMul
+// Input: int8_weight[group], int8_activation[group]  
+// Output: int32_result[group] ← NPU에서 직접 int32로 출력
+
+// Phase 3: CPU Scale Matrix 생성
+// Input: FP16 scales from Q4_0 blocks
+// Output: FP32 combined_scales_matrix
+
+// Phase 4: NPU Element-wise 연산
+// Step 1: int32 → FP32 변환 (NPU에서 수행)
+// Step 2: FP32 × FP32 scale 적용 (NPU element-wise mul)
+// Step 3: Group별 accumulation (NPU element-wise add)
+```
+
+#### **ION 메모리 전략**
+```cpp
+// 각 group tile마다 별도 ION 메모리 할당
+for (int group = 0; group < num_groups; ++group) {
+    // 1. Group별 weight/activation ION 메모리 할당
+    void * weight_ion = instance->alloc_rpcmem(group_size, alignment);
+    void * activation_ion = instance->alloc_rpcmem(group_size, alignment);
+    
+    // 2. QNN Memory Handle 등록
+    Qnn_MemHandle_t weight_handle = instance->register_rpcmem(
+        weight_ion, rank, dims, QNN_DATATYPE_SFIXED_POINT_8);
+    
+    // 3. QNN Tensor 생성 시 handle 사용
+    p_weight_tensor = ggmlqnn_create_general_tensor(
+        instance, graph_handle, nullptr, "weight_group", 
+        QNN_TENSOR_TYPE_APP_WRITE, QNN_DATATYPE_SFIXED_POINT_8,
+        rank, dims, nullptr, 0);
+    QNN_VER_PTR(*p_weight_tensor)->memType = QNN_TENSORMEMTYPE_MEMHANDLE;
+    QNN_VER_PTR(*p_weight_tensor)->memHandle = weight_handle;
+}
+```
+
 ---
 
 ## 🎯 **다음 단계: Q4_0 Int8 MatMul 구현 시작**
@@ -548,8 +685,8 @@ if (_rpcmem_usage > (_rpcmem_capacity - (8 * SIZE_IN_MB))) {
 위 분석을 바탕으로 다음 순서로 구현을 진행합니다:
 
 1. **기존 QNN infrastructure 활용**
-2. **Group 단위 tiling 로직 구현**  
-3. **NPU int8 matmul Graph 생성**
-4. **CPU scale matrix 연산과 NPU element-wise 연산 통합**
+2. **Group 단위 tiling 로직 구현** (FP16 scale 고려)
+3. **NPU int8 matmul Graph 생성** (int32 output)
+4. **CPU scale matrix 연산과 NPU element-wise 연산 통합** (FP32 변환)
 
 모든 구현은 기존 `ggmlqnn_compute_elementwise` 및 `ggmlqnn_compute_mul_mat` 패턴을 따라 일관성 있는 코드 스타일을 유지할 예정입니다.
