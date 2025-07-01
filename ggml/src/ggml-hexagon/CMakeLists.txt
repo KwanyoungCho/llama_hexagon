@@ -58,12 +58,7 @@ endif()
 set(OPT_FLAG " ")
 if (${HTP_ARCH_VERSION} STREQUAL "v75" OR ${HTP_ARCH_VERSION} STREQUAL "v79")
     #works fine on Snapdragon 8Gen3&8Elite with 1.5x - 3x performance gains with the default ggml backend
-    if(CMAKE_SYSTEM_NAME STREQUAL "Android")
-        set(OPT_FLAG " -O3 -march=armv8.7-a -mcpu=cortex-x1 -mtune=cortex-x1 -flto -D_GNU_SOURCE -fvectorize -ffp-model=fast -fno-finite-math-only")
-    else()
-        # For development on Linux x86, use basic optimizations
-        set(OPT_FLAG " -O3 -flto -D_GNU_SOURCE")
-    endif()
+    set(OPT_FLAG " -O3 -march=armv8.7-a -mcpu=cortex-x1 -mtune=cortex-x1 -flto -D_GNU_SOURCE -fvectorize -ffp-model=fast -fno-finite-math-only")
 endif()
 message("OPT_FLAG:${OPT_FLAG}")
 
@@ -95,10 +90,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Android")
 elseif(CMAKE_SYSTEM_NAME STREQUAL "Windows")
     set(QNN_DEFAULT_LIB_SEARCH_PATH "C:\\" CACHE STRING "customized library search path for QNN backend")
 else()
-    # Temporarily allow Linux for development and testing
-    # message(FATAL_ERROR "ggml-hexagon now only available on Android and Windows(Windows on ARM)")
-    message(WARNING "ggml-hexagon on Linux for development/testing only")
-    set(QNN_DEFAULT_LIB_SEARCH_PATH "/tmp/" CACHE STRING "customized library search path for QNN backend")
+    message(FATAL_ERROR "ggml-hexagon now only available on Android and Windows(Windows on ARM)")
 endif()
 
 set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -DGGML_USE_HEXAGON ${DEBUG_FLAG} ${OPT_FLAG}")
