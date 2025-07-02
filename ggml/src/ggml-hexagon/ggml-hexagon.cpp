@@ -833,9 +833,8 @@ static void ggmlhexagon_log_internal(ggml_log_level level, const char * file, co
         if (len < (GGMLHEXAGON_LOGBUF_LEN - len_prefix)) {
 #if (defined __ANDROID__) || (defined ANDROID)
             __android_log_print(ANDROID_LOG_INFO, PROJECT_NAME, "%s\n", s_ggmlhexagon_log_internal_buf);
-            if (GGML_LOG_LEVEL_INFO == level) {
-                printf("%s\n", s_ggmlhexagon_log_internal_buf);
-            }
+            // Always print to console for debugging
+            printf("%s\n", s_ggmlhexagon_log_internal_buf);
 #else
             //for Snapdragon based WoA(Windows on ARM) device or Linux
             printf("%s\n", s_ggmlhexagon_log_internal_buf);
@@ -848,6 +847,9 @@ static void ggmlhexagon_log_internal(ggml_log_level level, const char * file, co
 static void ggmlhexagon_get_processname(char * p_name) {
     if (nullptr == p_name)
         return;
+
+    // Test DEBUG log output
+    GGMLHEXAGON_LOG_DEBUG("=== GGMLHEXAGON_DEBUG TEST LOG === This should appear if DEBUG logging is working!");
 
     char tmpbuf[GGMLHEXAGON_TMPBUF_LEN];
     memset(tmpbuf, 0, GGMLHEXAGON_TMPBUF_LEN);

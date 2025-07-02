@@ -18,10 +18,10 @@ message("HEXAGON_SDK_PATH: ${HEXAGON_SDK_PATH}")
 message("HTP_ARCH_VERSION: ${HTP_ARCH_VERSION}")
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-    set(DEBUG_FLAG "-DDEBUG -Wall")
+    set(DEBUG_FLAG "-DDEBUG -Wall -DGGMLHEXAGON_DEBUG=1")
     message("Debug mode:${DEBUG_FLAG}")
 else()
-    set(DEBUG_FLAG "-DNDEBUG -Wall")
+    set(DEBUG_FLAG "-DNDEBUG -Wall -DGGMLHEXAGON_DEBUG=1")
 #manually disable all verbose logs in ggml-hexagon/CMakeLists.txt to
 #make compare NPU performance through llama-bench more clear
 #set(DEBUG_FLAG "-DNDEBUG -Wall -DDISABLE_ALL_LOG")

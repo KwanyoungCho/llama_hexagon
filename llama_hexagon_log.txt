@@ -1,0 +1,308 @@
+current working path:/home/chokwans99/llama_hexagon
+
+/usr/bin/wget
+
+/usr/bin/xzcat
+
+Android NDK already exist:         /home/chokwans99/llama_hexagon/prebuilts/android-ndk-r28 
+
+Qualcomm QNN SDK already exist:    /home/chokwans99/llama_hexagon/prebuilts/QNN_SDK/qairt/2.35.0.250530/ 
+
+Qualcomm Hexagon SDK already exist:/home/chokwans99/llama_hexagon/prebuilts/Hexagon_SDK/6.2.0.1 
+
+/sdcard/t5-very-small-random-F32.gguf
+the prebuild LLM model t5-very-small-random-F32.gguf already exist on Android phone
+/sdcard/qwen1_5-1_8b-chat-q4_0.gguf
+the prebuild LLM model qwen1_5-1_8b-chat-q4_0.gguf already exist on Android phone
+/data/local/tmp/llama_QNN/libQnnCpu.so
+/data/local/tmp/llama_QNN/libQnnGpu.so
+/data/local/tmp/llama_QNN/libQnnHtp.so
+QNN runtime libs already exist on Android phone
+./scripts/ggml-hexagon.cfg: 1 file pushed. 0.1 MB/s (3270 bytes in 0.030s)
+/sdcard/t5-very-small-random-F32.gguf
+the prebuild LLM model t5-very-small-random-F32.gguf already exist on Android phone
+/sdcard/qwen1_5-1_8b-chat-q4_0.gguf
+the prebuild LLM model qwen1_5-1_8b-chat-q4_0.gguf already exist on Android phone
+./out/android/bin/libggml-base.so: 1 file pushed. 33.2 MB/s (6622976 bytes in 0.190s)
+./out/android/bin/libggml-cpu.so: 1 file pushed. 29.2 MB/s (3689160 bytes in 0.120s)
+./out/android/bin/libggmldsp-skel.so: 1 file pushed. 1.2 MB/s (44384 bytes in 0.037s)
+./out/android/bin/libggmldsp-skelv75.so: 1 file pushed. 1.4 MB/s (44384 bytes in 0.031s)
+./out/android/bin/libggml-hexagon.so: 1 file pushed. 29.1 MB/s (5939816 bytes in 0.195s)
+./out/android/bin/libggml.so: 1 file pushed. 23.1 MB/s (1818624 bytes in 0.075s)
+./out/android/bin/libllama.so: 1 file pushed. 35.2 MB/s (22291816 bytes in 0.604s)
+./out/android/bin/libmtmd.so: 1 file pushed. 30.5 MB/s (5156248 bytes in 0.161s)
+8 files pushed. 26.9 MB/s (45607408 bytes in 1.619s)
+./out/android/bin/ggmlhexagon-benchmark: 1 file pushed. 14.4 MB/s (323208 bytes in 0.021s)
+-rwxrwxrwx 1 shell shell 6622976 2025-07-02 17:19 /data/local/tmp/llama_QNN/libggml-base.so
+-rwxrwxrwx 1 shell shell 3689160 2025-07-02 17:19 /data/local/tmp/llama_QNN/libggml-cpu.so
+-rwxrwxrwx 1 shell shell 5939816 2025-07-02 17:19 /data/local/tmp/llama_QNN/libggml-hexagon.so
+./scripts/ggml-hexagon-for-binary-lib.cfg: 1 file pushed. 0.1 MB/s (3379 bytes in 0.045s)
+adb push /home/chokwans99/llama_hexagon/prebuilts/ggml-dsp/20250625/libggmldsp-skelv75.so /data/local/tmp/llama_QNN/libggmldsp-skel.so
+/home/chokwans99/llama_hexagon/prebuilts/ggml-dsp/20250625/libggmldsp-skelv75.so: 1 file pushed. 23.8 MB/s (1112272 bytes in 0.045s)
+mulmat_algotype 0 
+/data/local/tmp/llama_QNN/ggmlhexagon-benchmark -t MUL_MAT -b 2 -m 4096 -n 4096 -a 0
+backend_type 2
+init backend 2
+[ggml_backend_hexagon_set_cfg, 2045]: load hexagon appcfg from /data/local/tmp/ggml-hexagon.cfg
+[ggml_backend_hexagon_set_cfg, 2047]: set_hexagon_cfg with new_hexagon_backend 2, new_hwaccel_approach 0
+[modify_hexagon_config, 1471]: key hexagon_backend value 2
+
+[modify_hexagon_config, 1472]: key hexagon_backend new value 2
+
+[modify_hexagon_config, 1471]: key hwaccel_approach value 0
+
+[modify_hexagon_config, 1472]: key hwaccel_approach new value 0
+
+[operator(), 2053]: section[cdsp      ],[thread_counts            ] = [8]
+[operator(), 2053]: section[cdsp      ],[enable_all_q_mulmat      ] = [1]
+[operator(), 2053]: section[cdsp      ],[mulmat_algotype          ] = [0]
+[operator(), 2053]: section[cdsp      ],[enable_rpc_ion_mempool   ] = [1]
+[operator(), 2053]: section[qnn       ],[precision_mode           ] = [fp16]
+[operator(), 2053]: section[qnn       ],[enable_dlbc              ] = [1]
+[operator(), 2053]: section[qnn       ],[vtcm_size_in_mb          ] = [8]
+[operator(), 2053]: section[qnn       ],[hvx_threads              ] = [8]
+[operator(), 2053]: section[qnn       ],[print_qnn_internal_log   ] = [0]
+[operator(), 2053]: section[general   ],[profiler_counts          ] = [200]
+[operator(), 2053]: section[general   ],[profiler_duration        ] = [5]
+[operator(), 2053]: section[general   ],[enable_profiler          ] = [0]
+[operator(), 2053]: section[general   ],[enable_perf              ] = [1]
+[operator(), 2053]: section[general   ],[version                  ] = [1.13]
+[operator(), 2053]: section[general   ],[dump_op_info             ] = [0]
+[operator(), 2053]: section[general   ],[hwaccel_approach         ] = [0]
+[operator(), 2053]: section[general   ],[hexagon_backend          ] = [2]
+[operator(), 2053]: section[general   ],[ggmldsp_version          ] = [0.98]
+[operator(), 2053]: section[general   ],[enable_pinned_memory     ] = [0]
+[operator(), 2053]: section[general   ],[print_tensors_info       ] = [0]
+[operator(), 2053]: section[general   ],[enable_q_mulmat          ] = [1]
+[ggml_backend_hexagon_set_mulmat_algotype, 2075]: load hexagon appcfg from /data/local/tmp/ggml-hexagon.cfg
+[ggml_backend_hexagon_set_mulmat_algotype, 2077]: set_hexagon_cfg with new_mulmat_algotype 0
+[modify_hexagon_config, 1471]: key mulmat_algotype value 0
+
+[modify_hexagon_config, 1472]: key mulmat_algotype new value 0
+
+[operator(), 2083]: section[cdsp      ],[thread_counts            ] = [8]
+[operator(), 2083]: section[cdsp      ],[enable_all_q_mulmat      ] = [1]
+[operator(), 2083]: section[cdsp      ],[mulmat_algotype          ] = [0]
+[operator(), 2083]: section[cdsp      ],[enable_rpc_ion_mempool   ] = [1]
+[operator(), 2083]: section[qnn       ],[precision_mode           ] = [fp16]
+[operator(), 2083]: section[qnn       ],[enable_dlbc              ] = [1]
+[operator(), 2083]: section[qnn       ],[vtcm_size_in_mb          ] = [8]
+[operator(), 2083]: section[qnn       ],[hvx_threads              ] = [8]
+[operator(), 2083]: section[qnn       ],[print_qnn_internal_log   ] = [0]
+[operator(), 2083]: section[general   ],[profiler_counts          ] = [200]
+[operator(), 2083]: section[general   ],[profiler_duration        ] = [5]
+[operator(), 2083]: section[general   ],[enable_profiler          ] = [0]
+[operator(), 2083]: section[general   ],[enable_perf              ] = [1]
+[operator(), 2083]: section[general   ],[version                  ] = [1.13]
+[operator(), 2083]: section[general   ],[dump_op_info             ] = [0]
+[operator(), 2083]: section[general   ],[hwaccel_approach         ] = [0]
+[operator(), 2083]: section[general   ],[hexagon_backend          ] = [2]
+[operator(), 2083]: section[general   ],[ggmldsp_version          ] = [0.98]
+[operator(), 2083]: section[general   ],[enable_pinned_memory     ] = [0]
+[operator(), 2083]: section[general   ],[print_tensors_info       ] = [0]
+[operator(), 2083]: section[general   ],[enable_q_mulmat          ] = [1]
+Allocating Memory of size 2147483648 bytes, 2048 MB
+creating new tensors
+ggml_blck_size(f32) 1
+ggml_type_size(f32) 4
+ggml op:27(MUL_MAT)init backend 2
+[ggml_backend_hexagon_init, 6915]: enter ggml_backend_hexagon_init
+[ggmlhexagon_load_cfg, 1967]: program running start time:2025-07-02,17:28:48
+[operator(), 1975]: section[cdsp      ],[thread_counts            ] = [8]
+[operator(), 1975]: section[cdsp      ],[enable_all_q_mulmat      ] = [1]
+[operator(), 1975]: section[cdsp      ],[mulmat_algotype          ] = [0]
+[operator(), 1975]: section[cdsp      ],[enable_rpc_ion_mempool   ] = [1]
+[operator(), 1975]: section[qnn       ],[precision_mode           ] = [fp16]
+[operator(), 1975]: section[qnn       ],[enable_dlbc              ] = [1]
+[operator(), 1975]: section[qnn       ],[vtcm_size_in_mb          ] = [8]
+[operator(), 1975]: section[qnn       ],[hvx_threads              ] = [8]
+[operator(), 1975]: section[qnn       ],[print_qnn_internal_log   ] = [0]
+[operator(), 1975]: section[general   ],[profiler_counts          ] = [200]
+[operator(), 1975]: section[general   ],[profiler_duration        ] = [5]
+[operator(), 1975]: section[general   ],[enable_profiler          ] = [0]
+[operator(), 1975]: section[general   ],[enable_perf              ] = [1]
+[operator(), 1975]: section[general   ],[version                  ] = [1.13]
+[operator(), 1975]: section[general   ],[dump_op_info             ] = [0]
+[operator(), 1975]: section[general   ],[hwaccel_approach         ] = [0]
+[operator(), 1975]: section[general   ],[hexagon_backend          ] = [2]
+[operator(), 1975]: section[general   ],[ggmldsp_version          ] = [0.98]
+[operator(), 1975]: section[general   ],[enable_pinned_memory     ] = [0]
+[operator(), 1975]: section[general   ],[print_tensors_info       ] = [0]
+[operator(), 1975]: section[general   ],[enable_q_mulmat          ] = [1]
+[ggmlhexagon_load_cfg, 2006]: load hexagon appcfg from /data/local/tmp/ggml-hexagon.cfg
+[ggmlhexagon_load_cfg, 2007]: internal ggml_hexagon_version=1.13
+[ggmlhexagon_load_cfg, 2008]: internal ggml_dsp_version=0.98
+[ggmlhexagon_load_cfg, 2009]: external ggml_hexagon_version=1.13
+[ggmlhexagon_load_cfg, 2010]: external ggml_dsp_version=0.98
+[ggmlhexagon_load_cfg, 2012]: hwaccel_approach=0(HWACCEL_QNN)
+[ggmlhexagon_load_cfg, 2014]: hexagon_backend=2(HEXAGON_BACKEND_QNN_NPU)
+[ggmlhexagon_load_cfg, 2015]: runtime libpath=/data/local/tmp/
+[ggmlhexagon_load_cfg, 2016]: enable_perf=1
+[ggmlhexagon_load_cfg, 2017]: enable_profiler=0
+[ggmlhexagon_set_runtime_path, 1948]: HEXAGON_BACKEND_CDSP backend setenv successfully
+
+[ggmlhexagon_check_valid_appcfg, 2091]: user's specified hwaccel approach=0(HWACCEL_QNN)
+[ggmlhexagon_check_valid_appcfg, 2092]: user's specified hexagon_backend=2
+[ggml_backend_hexagon_init, 6925]: device 2
+[ggml_backend_hexagon_init, 6926]: runtime libpath /data/local/tmp/
+[ggmlqnn_init_qnn_instance, 6881]: device=2, hwaccel approach=0(HWACCEL_QNN)
+[qnn_init, 3391]: enter qni_init
+
+[load_system, 3241]: system_lib_path:/data/local/tmp/libQnnSystem.so
+
+[load_system, 3301]: find a valid qnn system interface
+
+[load_system, 3311]: initialize qnn system successfully
+
+[qnn_init, 3412]: load QNN system lib successfully
+
+[load_backend, 3151]: lib_path:/data/local/tmp/libQnnHtp.so
+
+[load_backend, 3174]: num_providers=1
+
+[load_backend, 3199]: find a valid qnn interface
+
+[load_backend, 3217]: saver_initialize is null
+
+[qnn_init, 3433]: initialize qnn log successfully
+
+[qnn_init, 3444]: initialize qnn backend successfully
+
+[qnn_init, 3463]: device counts 1
+
+[qnn_init, 3468]: deviceID:0, deviceType:0, numCores 1
+
+[qnn_init, 3473]: htp_type:0(ON_CHIP)
+
+[qnn_init, 3506]: create device successfully
+
+[qnn_init, 3536]: failed to load /data/local/tmp/libcdsprpc.so
+
+[qnn_init, 3546]: load rpcmem lib successfully
+
+[qnn_init, 3571]: initialize qnn context successfully
+
+[htp_print_info, 3850]: HTP device counts 1
+[htp_print_info, 3854]: HTP deviceID:0, deviceType:0, numCores 1
+[htp_print_info, 3859]: HTP_TYPE:0(QNN_HTP_DEVICE_TYPE_ON_CHIP)
+[htp_print_info, 3864]: qualcomm soc_model:57(SM8650), htp_arch:75(QCOM_HTP_V75), vtcm_size:8 MiB，dlbc_support:1, signedpd_support:1
+[htp_print_info, 3869]: soc info:Qualcomm SnapDragon 8 Gen 3 
+[free_rpcmem, 2974]: free rpc mem 0x73f0775000
+[free_rpcmem, 2974]: free rpc mem 0x73d0775000
+[free_rpcmem, 2974]: free rpc mem 0x73b3775000
+[alloc_rpcmem_internal, 2938]: failed to allocate rpc memory
+
+[htp_probe_rpc_meminfo, 3831]: alloc rpcmem 2048 (MiB) failure during probe rpc memory info, reason: No such file or directory
+
+[free_rpcmem, 2991]: no rpcmem allocated
+
+[htp_probe_rpc_meminfo, 3844]: capacity of rpc ion memory 2000 MiB
+
+[htp_enter_performance_mode, 4008]: succeed to set HTP power config
+[htp_set_memory_grow_size, 3921]: succeed to set HTP memory config
+[qnn_init, 3588]: NPU RPC feature disabled with QNN-NPU backend
+[print_backend_info, 3892]: QNN backend properties:
+[operator(), 3889]: Create context from binary list: Yes
+[operator(), 3889]: Dynamic batch: Yes
+[operator(), 3889]: Early termination: No
+[operator(), 3889]: Dynamic dimensions: Yes
+[operator(), 3889]: Blockwise quantization: Unknown
+[operator(), 3889]: Blockwise quantization with expansion: Unknown
+[operator(), 3889]: Vector quantization: Unknown
+[operator(), 3889]: Tensor sparsity: Yes
+[operator(), 3889]: Updateable application tensor: No
+[operator(), 3889]: Updateable native tensor: No
+[operator(), 3889]: Updateable static tensor: No
+[operator(), 3889]: Qnn group device: Yes
+[qnn_init, 3594]: leave qni_init
+
+[ggmlqnn_init_qnn_instance, 6900]: qnn device name HEXAGON_BACKEND_QNN_NPU
+[ggml_backend_hexagon_reg, 6792]: enter ggml_backend_hexagon_reg
+[ggmlhexagon_load_cfg, 1961]: hexagon appcfg file already loaded
+
+[ggmlhexagon_check_valid_appcfg, 2091]: user's specified hwaccel approach=0(HWACCEL_QNN)
+[ggmlhexagon_check_valid_appcfg, 2092]: user's specified hexagon_backend=2
+[ggml_backend_hexagon_reg, 6820]: create backend device for device 0
+[ggml_backend_hexagon_reg, 6820]: create backend device for device 1
+[ggml_backend_hexagon_reg, 6820]: create backend device for device 2
+[ggml_backend_hexagon_reg, 6856]: leave ggml_backend_hexagon_reg
+[ggml_backend_hexagon_reg_get_device, 6751]: index 2
+[ggml_backend_hexagon_device_get_description, 6359]: enter ggml_backend_hexagon_device_get_description
+[ggml_backend_hexagon_init, 6968]: device name Qualcomm NPU(Hexagon Tensor Processor)SM8650_QCOM_HTP_V75,Qualcomm SnapDragon 8 Gen 3 
+[ggml_backend_hexagon_init, 6970]: leave ggml_backend_hexagon_init
+create  backend 2(HEXAGON_BACKEND_QNN_NPU) succeed
+[ggml_backend_hexagon_buffer_type, 6495]: enter ggml_backend_hexagon_buffer_type, device_index 2
+[ggml_backend_hexagon_reg, 6792]: enter ggml_backend_hexagon_reg
+[ggmlhexagon_load_cfg, 1961]: hexagon appcfg file already loaded
+
+[ggmlhexagon_check_valid_appcfg, 2091]: user's specified hwaccel approach=0(HWACCEL_QNN)
+[ggmlhexagon_check_valid_appcfg, 2092]: user's specified hexagon_backend=2
+[ggml_backend_hexagon_reg, 6856]: leave ggml_backend_hexagon_reg
+[ggml_backend_hexagon_reg_get_device, 6751]: index 0
+[ggml_backend_hexagon_reg, 6792]: enter ggml_backend_hexagon_reg
+[ggmlhexagon_load_cfg, 1961]: hexagon appcfg file already loaded
+
+[ggmlhexagon_check_valid_appcfg, 2091]: user's specified hwaccel approach=0(HWACCEL_QNN)
+[ggmlhexagon_check_valid_appcfg, 2092]: user's specified hexagon_backend=2
+[ggml_backend_hexagon_reg, 6856]: leave ggml_backend_hexagon_reg
+[ggml_backend_hexagon_reg_get_device, 6751]: index 1
+[ggml_backend_hexagon_reg, 6792]: enter ggml_backend_hexagon_reg
+[ggmlhexagon_load_cfg, 1961]: hexagon appcfg file already loaded
+
+[ggmlhexagon_check_valid_appcfg, 2091]: user's specified hwaccel approach=0(HWACCEL_QNN)
+[ggmlhexagon_check_valid_appcfg, 2092]: user's specified hexagon_backend=2
+[ggml_backend_hexagon_reg, 6856]: leave ggml_backend_hexagon_reg
+[ggml_backend_hexagon_reg_get_device, 6751]: index 2
+[ggml_backend_hexagon_reg, 6792]: enter ggml_backend_hexagon_reg
+[ggmlhexagon_load_cfg, 1961]: hexagon appcfg file already loaded
+
+[ggmlhexagon_check_valid_appcfg, 2091]: user's specified hwaccel approach=0(HWACCEL_QNN)
+[ggmlhexagon_check_valid_appcfg, 2092]: user's specified hexagon_backend=2
+[ggml_backend_hexagon_reg, 6856]: leave ggml_backend_hexagon_reg
+[ggml_backend_hexagon_reg_get_device, 6751]: index 3
+[ggml_backend_hexagon_buffer_type, 6546]: leave ggml_backend_hexagon_buffer_type
+[ggml_backend_hexagon_buffer_type_alloc_buffer, 6207]: enter ggml_backend_hexagon_buffer_type_alloc_buffer
+[ggml_backend_hexagon_buffer_type_alloc_buffer, 6246]: leave ggml_backend_hexagon_buffer_type_alloc_buffer
+creating compute graph
+[ggmlqnn_compute_mul_mat, 4613]: graph name MUL_MATf32_4096x4096f32_4096x4096f32
+[init_qnn_graph, 3742]: [HEXAGON_BACKEND_QNN_NPU]create graph MUL_MATf32_4096x4096f32_4096x4096f32 succeed
+[ggmlqnn_create_general_tensor, 4073]: init_tensor tensor_0       
+[ggmlqnn_create_general_tensor, 4073]: init_tensor tensor_1       
+[ggmlqnn_create_general_tensor, 4073]: init_tensor tensor_2       
+[ggmlqnn_create_general_tensor, 4073]: init_tensor tensor_param3       
+[ggmlqnn_create_general_tensor, 4073]: init_tensor tensor_transpose4       
+[info, 1309]: inference duration of MUL_MATf32_4096x4096f32_4096x4096f32 through QNN_NPU: 1383984 microseconds
+         leaf_0: type = 0 (  f32) ne =  4096 x  4096 x     1, nb = (    4, 16384, 67108864)
+         leaf_1: type = 0 (  f32) ne =  4096 x  4096 x     1, nb = (    4, 16384, 67108864)
+         node_0: type = 0 (  f32) ne =  4096 x  4096 x     1, nb = (    4, 16384, 67108864)
+[ggml_backend_hexagon_free, 6292]: enter ggml_backend_hexagon_free
+[ggmlqnn_free_qnntensor, 2441]: free tensor 0xb400007539dfaed0
+[ggmlqnn_free_qnntensor, 2441]: free tensor 0xb400007539dfae20
+[ggmlqnn_free_qnntensor, 2441]: free tensor 0xb400007539dfb9d0
+[ggmlqnn_free_qnntensor, 2441]: free tensor 0xb400007539dfb500
+[ggmlqnn_free_qnntensor, 2441]: free tensor 0xb400007539dfb030
+[ggml_backend_hexagon_free, 6304]: graph handle 0x1
+[ggml_backend_hexagon_free, 6305]: clean up graph:MUL_MATf32_4096x4096f32_4096x4096f32
+[qnn_finalize, 3603]: enter qnn_finalize
+
+[free_rpcmem, 2991]: no rpcmem allocated
+
+[unregister_rpcmem, 3115]: no rpcmem registered
+
+[qnn_finalize, 3615]: succeed to close rpcmem lib
+
+[qnn_finalize, 3670]: leave qnn_finalize
+
+[ggmlhexagon_get_processname, 852]: === GGMLHEXAGON_DEBUG TEST LOG === This should appear if DEBUG logging is working!
+[ggmlhexagon_get_processname, 862]: process name /data/local/tmp/llama_QNN/ggmlhexagon-benchmark
+[ggmlhexagon_get_processname, 864]: process name ggmlhexagon-benchmark
+[ggmlhexagon_print_running_timestamp, 2140]: ggml_hexagon_version:             1.13
+[ggmlhexagon_print_running_timestamp, 2141]: ggml_dsp_version:                 0.98
+[ggmlhexagon_print_running_timestamp, 2143]: hwaccel approach:                 0(HWACCEL_QNN)
+[ggmlhexagon_print_running_timestamp, 2145]: hexagon_backend:                  2(HEXAGON_BACKEND_QNN_NPU)
+[ggmlhexagon_print_running_timestamp, 2146]: enable pinned_memory:             NO
+[ggmlhexagon_print_running_timestamp, 2155]: thread_counts with HWACCEL_QNN: 8
+[ggmlhexagon_print_running_timestamp, 2156]: offload quantize GGML_OP_MUL_MAT: YES
+[ggmlhexagon_print_running_timestamp, 2158]: running timestamp:2025-07-02,17:28:51
+[ggml_backend_hexagon_free, 6325]: leave ggml_backend_hexagon_free
+[2025-07-02,17:28:51] duration of ut GGML_OP_MUL_MAT with backend HEXAGON_BACKEND_QNN_NPU: 1384 milliseconds
