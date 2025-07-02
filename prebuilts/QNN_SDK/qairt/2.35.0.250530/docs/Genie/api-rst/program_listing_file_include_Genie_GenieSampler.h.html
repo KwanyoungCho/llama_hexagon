@@ -1,0 +1,408 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Program Listing for File GenieSampler.h &mdash; Qualcomm® Gen AI Inference Extensions</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Gen AI Inference Extensions
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.35.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/support/support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/library/library.html">Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools/tools.html">Tools</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Gen AI Inference Extensions</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Program Listing for File GenieSampler.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-geniesampler-h">
+<span id="program-listing-file-include-genie-geniesampler-h"></span><h1>Program Listing for File GenieSampler.h<a class="headerlink" href="#program-listing-for-file-geniesampler-h" title="Permalink to this heading">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_include_Genie_GenieSampler.h.html#file-include-genie-geniesampler-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/Genie/GenieSampler.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//=============================================================================</span>
+<span class="c1">//</span>
+<span class="c1">//  Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.</span>
+<span class="c1">//  All Rights Reserved.</span>
+<span class="c1">//  Confidential and Proprietary - Qualcomm Technologies, Inc.</span>
+<span class="c1">//</span>
+<span class="c1">//=============================================================================</span>
+
+<span class="cm">/**</span>
+<span class="cm"> *  @file</span>
+<span class="cm"> *  @brief  API providing logit sampling functionality.</span>
+<span class="cm"> */</span>
+
+<span class="cp">#ifndef GENIE_SAMPLER_H</span>
+<span class="cp">#define GENIE_SAMPLER_H</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;GenieCommon.h&quot;</span>
+<span class="cp">#ifdef __cplusplus</span>
+<span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="cp">#endif</span>
+
+<span class="c1">//=============================================================================</span>
+<span class="c1">// Data Types</span>
+<span class="c1">//=============================================================================</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A handle for sampler configuration instances.</span>
+<span class="cm"> */</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_GenieSamplerConfig_Handle_t</span><span class="o">*</span><span class="w"> </span><span class="n">GenieSamplerConfig_Handle_t</span><span class="p">;</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A handle for sampler instances.</span>
+<span class="cm"> */</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_GenieSampler_Handle_t</span><span class="o">*</span><span class="w"> </span><span class="n">GenieSampler_Handle_t</span><span class="p">;</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A client-defined callback function to set sampler process implementation.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @note This typedef will soon be deprecated in favor of GenieSampler_ProcessCallback_t.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] logitsSize Size of output logits in logits array</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] logits Output logits from engine execution</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] numTokens Number of tokens to be returned.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[out] tokens pointer to array of tokens based on numTokens argument passed in input</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">GenieSampler_ProcessCallback_t</span><span class="p">)(</span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">logitsSize</span><span class="p">,</span>
+<span class="w">                                               </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">logits</span><span class="p">,</span>
+<span class="w">                                               </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">numTokens</span><span class="p">,</span>
+<span class="w">                                               </span><span class="kt">int32_t</span><span class="o">*</span><span class="w"> </span><span class="n">tokens</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A client-defined callback function to set sampler process implementation.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] logitsSize Size of output logits in logits array</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] logits Output logits from engine execution</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] numTokens Number of tokens to be returned.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] userData Void pointer to add user data pertaining to callback function.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[out] tokens pointer to array of tokens based on numTokens argument passed in input</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">GenieSampler_UserDataCallback_t</span><span class="p">)(</span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">logitsSize</span><span class="p">,</span>
+<span class="w">                                                </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">logits</span><span class="p">,</span>
+<span class="w">                                                </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">numTokens</span><span class="p">,</span>
+<span class="w">                                                </span><span class="kt">int32_t</span><span class="o">*</span><span class="w"> </span><span class="n">tokens</span><span class="p">,</span>
+<span class="w">                                                </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">userData</span><span class="p">);</span>
+
+<span class="c1">//=============================================================================</span>
+<span class="c1">// Functions</span>
+<span class="c1">//=============================================================================</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A function to create a sampler configuration from a JSON string.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] str A configuration string. Must not be NULL.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[out] configHandle A handle to the created sampler config. Must not be NULL.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Status code:</span>
+<span class="cm"> *         - GENIE_STATUS_SUCCESS: API call was successful.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_ARGUMENT: At least one argument is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_MEM_ALLOC: Memory allocation failure.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_CONFIG: At least one configuration option is invalid.</span>
+<span class="cm"> */</span>
+<span class="n">GENIE_API</span>
+<span class="n">Genie_Status_t</span><span class="w"> </span><span class="n">GenieSamplerConfig_createFromJson</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">str</span><span class="p">,</span>
+<span class="w">                                                 </span><span class="n">GenieSamplerConfig_Handle_t</span><span class="o">*</span><span class="w"> </span><span class="n">configHandle</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A function to set sampler params(s) associated with configHandle.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] configHandle A sampler config handle.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] keyStr A string indicating the sampler parameter to update. If NULL, valueStr must</span>
+<span class="cm"> * have the entire sampler configuration string. See SDK documentation for valid keys.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] valueStr A string that holds the corresponding value of keyStr parameter</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Status code:</span>
+<span class="cm"> *         - GENIE_STATUS_SUCCESS: API call was successful.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_HANDLE: Sampler config handle is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_ARGUMENT: At least one argument is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_SET_PARAM_FAILED: Set Param failure.</span>
+<span class="cm"> */</span>
+<span class="n">GENIE_API</span>
+<span class="n">Genie_Status_t</span><span class="w"> </span><span class="n">GenieSamplerConfig_setParam</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GenieSamplerConfig_Handle_t</span><span class="w"> </span><span class="n">configHandle</span><span class="p">,</span>
+<span class="w">                                           </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">keyStr</span><span class="p">,</span>
+<span class="w">                                           </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">valueStr</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A function to free a sampler config.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] configHandle A sampler config handle.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Status code:</span>
+<span class="cm"> *         - GENIE_STATUS_SUCCESS: API call was successful.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_HANDLE: Sampler config handle is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_MEM_ALLOC: Memory (de)allocation failure.</span>
+<span class="cm"> */</span>
+<span class="n">GENIE_API</span>
+<span class="n">Genie_Status_t</span><span class="w"> </span><span class="n">GenieSamplerConfig_free</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GenieSamplerConfig_Handle_t</span><span class="w"> </span><span class="n">configHandle</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A function to apply the sampler config parameters to a sampler.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] samplerHandle A sampler handle.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] configHandle A sampler config handle.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Status code:</span>
+<span class="cm"> *         - GENIE_STATUS_SUCCESS: API call was successful.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_HANDLE: Sampler handle is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_ARGUMENT: At least one argument is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_APPLY_CONFIG_FAILED: Apply Config failure.</span>
+<span class="cm"> */</span>
+<span class="n">GENIE_API</span>
+<span class="n">Genie_Status_t</span><span class="w"> </span><span class="n">GenieSampler_applyConfig</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GenieSampler_Handle_t</span><span class="w"> </span><span class="n">samplerHandle</span><span class="p">,</span>
+<span class="w">                                        </span><span class="k">const</span><span class="w"> </span><span class="n">GenieSamplerConfig_Handle_t</span><span class="w"> </span><span class="n">configHandle</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A function to register Sampler Process callback.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @note This API will soon be deprecated in favor of GenieSampler_registerUserDataCallback.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] name Name associated to the callback. Needs to be specified in Sampler config,</span>
+<span class="cm"> *                 to indicate which process callback to use during sampling.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] samplerCallback Callback with the sampler process implementation.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Status code:</span>
+<span class="cm"> *         - GENIE_STATUS_SUCCESS: API call was successful.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_ARGUMENT: At least one argument is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_GENERAL: Register Callback failed.</span>
+<span class="cm"> */</span>
+<span class="n">GENIE_API</span>
+<span class="n">Genie_Status_t</span><span class="w"> </span><span class="n">GenieSampler_registerCallback</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
+<span class="w">                                             </span><span class="n">GenieSampler_ProcessCallback_t</span><span class="w"> </span><span class="n">samplerCallback</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A function to register Sampler Process callback.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] name Name associated to the callback. Needs to be specified in Sampler config,</span>
+<span class="cm"> *                 to indicate which process callback to use during sampling.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] samplerCallback Callback with the sampler process implementation.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] userData Void pointer to add user data pertaining to callback function.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Status code:</span>
+<span class="cm"> *         - GENIE_STATUS_SUCCESS: API call was successful.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_ARGUMENT: At least one argument is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_GENERAL: Register Callback failed.</span>
+<span class="cm"> */</span>
+<span class="n">GENIE_API</span>
+<span class="n">Genie_Status_t</span><span class="w"> </span><span class="n">GenieSampler_registerUserDataCallback</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">GenieSampler_UserDataCallback_t</span><span class="w"> </span><span class="n">samplerCallback</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">userData</span><span class="p">);</span>
+
+<span class="cp">#ifdef __cplusplus</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// extern &quot;C&quot;</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#endif  </span><span class="c1">// GENIE_SAMPLER_H</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

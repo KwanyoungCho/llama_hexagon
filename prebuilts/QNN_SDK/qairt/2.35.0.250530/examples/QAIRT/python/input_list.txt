@@ -1,0 +1,4 @@
+images/quant_calibration_data/baseball.raw
+images/quant_calibration_data/cat.raw
+images/quant_calibration_data/dog.raw
+images/quant_calibration_data/donuts.raw

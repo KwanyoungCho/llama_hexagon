@@ -1,0 +1,307 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Genie Log &mdash; Qualcomm® Gen AI Inference Extensions</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../../../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Genie Profile" href="../profile/profile.html" />
+    <link rel="prev" title="Genie Engine" href="../engine/engine.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Qualcomm® Gen AI Inference Extensions
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.35.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../setup.html">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dialog/dialog.html">Genie Dialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../embedding/embedding.html">Genie Embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../engine/engine.html">Genie Engine</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Genie Log</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-on-how-to-use-log-apis">Example on how to use Log APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../profile/profile.html">Genie Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pipeline/pipeline.html">Genie Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source_code_examples/source_code_examples.html">Source Code Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../library/library.html">Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/tools.html">Tools</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Qualcomm® Gen AI Inference Extensions</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../tutorials.html">Tutorials</a> &raquo;</li>
+        
+      <li>Genie Log</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="genie-log">
+<h1>Genie Log<a class="headerlink" href="#genie-log" title="Permalink to this heading">¶</a></h1>
+<p>Genie Log APIs provide a mechanism to capture logs during the execution of GenAI models.</p>
+<p>Logging can be enabled on genie-t2t-run and genie-t2e-run by passing the “–log LEVEL” argument.
+This argument collects the logs according to the specified LEVEL and directs them to platform-specific areas:
+logcat for Android, ETW and stdout for Windows, and stdout for other platforms.</p>
+<p>The accepted logging levels are error, warn, info, and verbose.
+The APIs capture both Genie-level logs and backend QNN-level logs.</p>
+<p>Additionally, the API allows users to provide a callback for logs, enabling them to choose how they collect logs.
+If no callback is provided, the platform-specific methods mentioned above are used.</p>
+<p>If the logging APIs are not used, no logs are outputted.</p>
+<p>The Log APIs used for this exercise are:</p>
+<p><a class="reference internal" href="../../../api-rst/function_GenieLog_8h_1afcf4417c1026fd4657092cbac9d1cd01.html#exhale-function-genielog-8h-1afcf4417c1026fd4657092cbac9d1cd01"><span class="std std-ref">GenieLog_create</span></a></p>
+<p><a class="reference internal" href="../../../api-rst/function_GenieDialog_8h_1a5e98a421e7f997eba72fdd5610398587.html#exhale-function-geniedialog-8h-1a5e98a421e7f997eba72fdd5610398587"><span class="std std-ref">GenieDialogConfig_bindLogger</span></a></p>
+<p><a class="reference internal" href="../../../api-rst/function_GenieLog_8h_1a6539606b0ded59dccde5204d1c85d325.html#exhale-function-genielog-8h-1a6539606b0ded59dccde5204d1c85d325"><span class="std std-ref">GenieLog_free</span></a></p>
+<div class="section" id="example-on-how-to-use-log-apis">
+<h2>Example on how to use Log APIs<a class="headerlink" href="#example-on-how-to-use-log-apis" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Example callback</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">logStdoutCallback</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">fmt</span><span class="p">,</span>
+<span class="w">                   </span><span class="n">GenieLog_Level_t</span><span class="w"> </span><span class="n">level</span><span class="p">,</span>
+<span class="w">                   </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">timestamp</span><span class="p">,</span>
+<span class="w">                   </span><span class="kt">va_list</span><span class="w"> </span><span class="n">argp</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">levelStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">level</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">GENIE_LOG_LEVEL_ERROR</span><span class="p">:</span>
+<span class="w">            </span><span class="n">levelStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot; ERROR &quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">GENIE_LOG_LEVEL_WARN</span><span class="p">:</span>
+<span class="w">            </span><span class="n">levelStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;WARNING&quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">GENIE_LOG_LEVEL_INFO</span><span class="p">:</span>
+<span class="w">            </span><span class="n">levelStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;  INFO &quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">GENIE_LOG_LEVEL_VERBOSE</span><span class="p">:</span>
+<span class="w">            </span><span class="n">levelStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;VERBOSE&quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;[%-7s] &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">levelStr</span><span class="p">);</span>
+<span class="w">    </span><span class="n">vfprintf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="p">,</span><span class="w"> </span><span class="n">argp</span><span class="p">);</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Create Log Handle</span>
+<span class="n">GenieLog_Handle_t</span><span class="w"> </span><span class="n">logHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+
+<span class="c1">// Using the API with nullptr (default callback)</span>
+<span class="c1">// GenieLog_create(nullptr, GENIE_LOG_LEVEL_ERROR, &amp;logHandle);</span>
+
+<span class="c1">// Using the API with a user-defined callback</span>
+<span class="n">GenieLog_create</span><span class="p">(</span><span class="n">logStdoutCallback</span><span class="p">,</span><span class="w"> </span><span class="n">GENIE_LOG_LEVEL_ERROR</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">logHandle</span><span class="p">);</span>
+
+<span class="c1">// Create Dialog Config</span>
+<span class="n">GenieDialogConfig_Handle_t</span><span class="w"> </span><span class="n">dialogConfigHandle</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+<span class="n">GenieDialogConfig_createFromJson</span><span class="p">(</span><span class="n">dialogConfigStr</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">dialogConfigHandle</span><span class="p">);</span>
+
+<span class="c1">// Bind Log Handle to Dialog Config</span>
+<span class="n">GenieDialogConfig_bindLogger</span><span class="p">(</span><span class="n">dialogConfigHandle</span><span class="p">,</span><span class="w"> </span><span class="n">logHandle</span><span class="p">);</span>
+
+<span class="c1">// Create Dialog</span>
+<span class="n">GenieDialog_Handle_t</span><span class="w"> </span><span class="n">dialogHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+<span class="n">GenieDialog_create</span><span class="p">(</span><span class="n">dialogConfigHandle</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">dialogHandle</span><span class="p">);</span>
+
+<span class="c1">// Run Dialog Query API</span>
+<span class="n">GenieDialog_query</span><span class="p">(</span><span class="n">dialogHandle</span><span class="p">,</span><span class="w"> </span><span class="n">promptStr</span><span class="p">,</span><span class="w"> </span><span class="n">GenieDialog_SentenceCode_t</span><span class="o">::</span><span class="n">GENIE_DIALOG_SENTENCE_COMPLETE</span><span class="p">,</span><span class="w"> </span><span class="n">queryCallback</span><span class="p">);</span>
+
+<span class="c1">// Retrieve logs using the designated platform-specific mechanisms or the user-defined callback.</span>
+
+<span class="c1">// Free Log Handle</span>
+<span class="n">GenieLog_free</span><span class="p">(</span><span class="n">logHandle</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../profile/profile.html" class="btn btn-neutral float-right" title="Genie Profile" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../engine/engine.html" class="btn btn-neutral float-left" title="Genie Engine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

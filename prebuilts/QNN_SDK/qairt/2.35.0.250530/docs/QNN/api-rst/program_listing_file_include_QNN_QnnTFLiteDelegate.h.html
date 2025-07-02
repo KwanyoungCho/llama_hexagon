@@ -1,0 +1,843 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Program Listing for File QnnTFLiteDelegate.h &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.35.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tflite_delegate.html">QNN TFLite Delegate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/revision_history.html">Revision History</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Program Listing for File QnnTFLiteDelegate.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-qnntflitedelegate-h">
+<span id="program-listing-file-include-qnn-qnntflitedelegate-h"></span><h1>Program Listing for File QnnTFLiteDelegate.h<a class="headerlink" href="#program-listing-for-file-qnntflitedelegate-h" title="Permalink to this heading">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_include_QNN_QnnTFLiteDelegate.h.html#file-include-qnn-qnntflitedelegate-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/QNN/QnnTFLiteDelegate.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//==============================================================================</span>
+<span class="c1">//</span>
+<span class="c1">//  Copyright (c) Qualcomm Technologies, Inc.</span>
+<span class="c1">//  All Rights Reserved.</span>
+<span class="c1">//  Confidential and Proprietary - Qualcomm Technologies, Inc.</span>
+<span class="c1">//</span>
+<span class="c1">//==============================================================================</span>
+<span class="cp">#ifndef TENSORFLOW_LITE_DELEGATES_QNN_QNN_TFLITE_DELEGATE_H_</span>
+<span class="cp">#define TENSORFLOW_LITE_DELEGATES_QNN_QNN_TFLITE_DELEGATE_H_</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;tensorflow/lite/c/common.h&quot;</span>
+
+<span class="cp">#ifndef QNN_DELEGATE_CAPI_EXPORT</span>
+<span class="cp">#define QNN_DELEGATE_CAPI_EXPORT</span>
+<span class="cp">#endif </span><span class="cm">/* QNN_DELEGATE_CAPI_EXPORT */</span>
+
+<span class="cp">#ifdef __cplusplus</span>
+<span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="cp">#endif  </span><span class="c1">// __cplusplus</span>
+
+<span class="c1">// Provide values to use for API version</span>
+<span class="c1">// NOLINTBEGIN(cppcoreguidelines-macro-usage)</span>
+<span class="cp">#define QNN_DELEGATE_API_VERSION_MAJOR 0</span>
+<span class="cp">#define QNN_DELEGATE_API_VERSION_MINOR 24</span>
+<span class="cp">#define QNN_DELEGATE_API_VERSION_PATCH 0</span>
+<span class="c1">// NOLINTEND(cppcoreguidelines-macro-usage)</span>
+
+<span class="c1">/// A struct which is used to provide a version number using 3 values:</span>
+<span class="c1">/// major, minor, patch</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// NOLINT(modernize-use-using)</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">major</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">minor</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">patch</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">QnnDelegateApiVersion</span><span class="p">;</span>
+
+<span class="c1">/// The QNN backend used to delegate the model&#39;s nodes. Each backend has</span>
+<span class="c1">/// its own set of supported ops and tensor types.</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">TfLiteQnnDelegateBackendType</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// NOLINT(modernize-use-using)</span>
+<span class="w">  </span><span class="n">kUndefinedBackend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">/// Backend for Adreno&lt;sup&gt;TM&lt;/sup&gt; GPU hardware accelerator.</span>
+<span class="w">  </span><span class="n">kGpuBackend</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">/// Backend for Hexagon HTP hardware accelerator.</span>
+<span class="w">  </span><span class="n">kHtpBackend</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">/// Backend for Hexagon DSP hardware accelerator.</span>
+<span class="w">  </span><span class="n">kDspBackend</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">/// Backend for serializing model into dlc</span>
+<span class="w">  </span><span class="n">kIrBackend</span><span class="p">,</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TfLiteQnnDelegateBackendType</span><span class="p">;</span>
+
+<span class="c1">/// Logging level of the delegate and QNN backend.</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">TfLiteQnnDelegateLogLevel</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// NOLINT(modernize-use-using)</span>
+<span class="w">  </span><span class="c1">/// Disable delegate and QNN backend logging messages.</span>
+<span class="w">  </span><span class="n">kLogOff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kLogLevelError</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kLogLevelWarn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kLogLevelInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kLogLevelVerbose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kLogLevelDebug</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TfLiteQnnDelegateLogLevel</span><span class="p">;</span>
+
+<span class="c1">/// Options to set Graph Priority. This is directly mapped to Qnn_Priority_t.</span>
+<span class="c1">/// Please refer to QNN SDK for additional information.</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">TfLiteQnnDelegateGraphPriority</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// NOLINT(modernize-use-using)</span>
+<span class="w">  </span><span class="n">kQnnPriorityDefault</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kQnnPriorityLow</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kQnnPriorityNormal</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kQnnPriorityNormalHigh</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kQnnPriorityHigh</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kQnnPriorityUndefined</span><span class="p">,</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TfLiteQnnDelegateGraphPriority</span><span class="p">;</span>
+
+<span class="c1">/// Options to profile the QNN Delegate execution.</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">TfLiteQnnDelegateProfilingOptions</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// NOLINT(modernize-use-using)</span>
+<span class="w">  </span><span class="n">kProfilingOff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kBasicProfiling</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kPerOpProfiling</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kLintingProfiling</span><span class="p">,</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TfLiteQnnDelegateProfilingOptions</span><span class="p">;</span>
+
+<span class="c1">/// Defines the optimization levels of the graph tensors that are not input</span>
+<span class="c1">/// nor output tensors. This enum controls the trade-off between performance</span>
+<span class="c1">/// and accuracy.</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">TfLiteQnnDelegateGpuPrecision</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// NOLINT(modernize-use-using)</span>
+<span class="w">  </span><span class="n">kGpuUserProvided</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kGpuFp32</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kGpuFp16</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kGpuHybrid</span><span class="p">,</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TfLiteQnnDelegateGpuPrecision</span><span class="p">;</span>
+
+<span class="c1">/// Defines performance modes available for GPU backend.</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">TfLiteQnnDelegateGpuPerformanceMode</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// NOLINT(modernize-use-using)</span>
+<span class="w">  </span><span class="n">kGpuDefault</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kGpuHigh</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kGpuNormal</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kGpuLow</span><span class="p">,</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TfLiteQnnDelegateGpuPerformanceMode</span><span class="p">;</span>
+
+<span class="c1">/// Defines performance modes available for HTP backend.</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">TfLiteQnnDelegateHtpPerformanceMode</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// NOLINT(modernize-use-using)</span>
+<span class="w">  </span><span class="n">kHtpDefault</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kHtpSustainedHighPerformance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kHtpBurst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kHtpHighPerformance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kHtpPowerSaver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kHtpLowPowerSaver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kHtpHighPowerSaver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kHtpLowBalanced</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kHtpBalanced</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kHtpExtremePowerSaver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TfLiteQnnDelegateHtpPerformanceMode</span><span class="p">;</span>
+
+<span class="c1">/// Defines performance modes available for DSP backend.</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">TfLiteQnnDelegateDspPerformanceMode</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// NOLINT(modernize-use-using)</span>
+<span class="w">  </span><span class="n">kDspDefault</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kDspSustainedHighPerformance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kDspBurst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kDspHighPerformance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kDspPowerSaver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kDspLowPowerSaver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kDspHighPowerSaver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kDspLowBalanced</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kDspBalanced</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TfLiteQnnDelegateDspPerformanceMode</span><span class="p">;</span>
+
+<span class="c1">///   Defines performance control strategy</span>
+<span class="c1">///</span>
+<span class="c1">///   **Manual**: The performance mode is voted as the backend is initialized,</span>
+<span class="c1">///   and released at the moment of the backend is destroyed.</span>
+<span class="c1">///</span>
+<span class="c1">///   Users can control the vote/release of the performance mode by</span>
+<span class="c1">///   TfLiteQnnDelegateSetPerf().</span>
+<span class="c1">///</span>
+<span class="c1">///   Note that this is the default strategy.</span>
+<span class="c1">///</span>
+<span class="c1">///   For example, users can vote before inference starts, and release after all</span>
+<span class="c1">///   invocations are complete.</span>
+<span class="c1">///</span>
+<span class="c1">///   ~~~~~~~~~~~~~{.cpp}</span>
+<span class="c1">///      TfLiteQnnDelegateSetPerf(delegate, kPerformanceVote);</span>
+<span class="c1">///      // invoke inferences...</span>
+<span class="c1">///      TfLiteQnnDelegateSetPerf(delegate, kPerformanceRelease);</span>
+<span class="c1">///   ~~~~~~~~~~~~~</span>
+<span class="c1">///</span>
+<span class="c1">///   **AUTO**: QNN Delegate votes before starting inference, and releases after</span>
+<span class="c1">///   an idle interval.</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">TfLiteQnnDelegateHtpPerfCtrlStrategy</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// NOLINT(modernize-use-using)</span>
+<span class="w">  </span><span class="n">kHtpPerfCtrlManual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kHtpPerfCtrlAuto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TfLiteQnnDelegateHtpPerfCtrlStrategy</span><span class="p">;</span>
+
+<span class="c1">/// Defines DSP performance control strategy. Similar to HTP cases.</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">TfLiteQnnDelegateDspPerfCtrlStrategy</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// NOLINT(modernize-use-using)</span>
+<span class="w">  </span><span class="n">kDspPerfCtrlManual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kDspPerfCtrlAuto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TfLiteQnnDelegateDspPerfCtrlStrategy</span><span class="p">;</span>
+
+<span class="c1">/// Defines pd sessions available for DSP backend.</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">TfLiteQnnDelegateDspPdSession</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// NOLINT(modernize-use-using)</span>
+<span class="w">  </span><span class="n">kDspUnsignedPd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kDspSignedPd</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kDspAdaptivePd</span><span class="p">,</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TfLiteQnnDelegateDspPdSession</span><span class="p">;</span>
+
+<span class="c1">/// Defines encoding for DSP backend. Dynamic encoding is more precise but</span>
+<span class="c1">/// sacrifices a bit of performance.</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">TfLiteQnnDelegateDspEncoding</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// NOLINT(modernize-use-using)</span>
+<span class="w">  </span><span class="n">kDspStatic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kDspDynamic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kDspUnknown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x7fffffff</span><span class="p">,</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TfLiteQnnDelegateDspEncoding</span><span class="p">;</span>
+
+<span class="c1">/// Defines pd sessions available for HTP backend.</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">TfLiteQnnDelegateHtpPdSession</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// NOLINT(modernize-use-using)</span>
+<span class="w">  </span><span class="n">kHtpUnsignedPd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kHtpSignedPd</span><span class="p">,</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TfLiteQnnDelegateHtpPdSession</span><span class="p">;</span>
+
+<span class="c1">/// Defines the optimization levels of the graph tensors that are not input nor</span>
+<span class="c1">/// output tensors. This enum controls the trade-off between performance and</span>
+<span class="c1">/// accuracy.</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">TfLiteQnnDelegateHtpPrecision</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// NOLINT(modernize-use-using)</span>
+<span class="w">  </span><span class="n">kHtpQuantized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kHtpFp16</span><span class="p">,</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TfLiteQnnDelegateHtpPrecision</span><span class="p">;</span>
+
+<span class="c1">/// Defines the optimization strategy used by the HTP backend.</span>
+<span class="c1">/// \ref kHtpOptimizeForInference will have longer preparation time, but more</span>
+<span class="c1">/// optimal graph. \ref kHtpOptimizeForPrepare will have shorter preparation</span>
+<span class="c1">/// time, but less optimal graph. \ref kHtpOptimizeForInferenceO3 will take into</span>
+<span class="c1">/// account QNN_HTP_DEVICE_CONFIG_OPTION_SOC configuration when possible. When</span>
+<span class="c1">/// SOC information is taken into account, O3 configuration is expected to</span>
+<span class="c1">/// provide more optimal graph in most cases, but may result in less optimal</span>
+<span class="c1">/// graph in some cases. Please check HTP section in Qnn docs for more detail.</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">TfLiteQnnDelegateHtpOptimizationStrategy</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// NOLINT(modernize-use-using)</span>
+<span class="w">  </span><span class="n">kHtpOptimizeForInference</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kHtpOptimizeForPrepare</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kHtpOptimizeForInferenceO3</span><span class="p">,</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TfLiteQnnDelegateHtpOptimizationStrategy</span><span class="p">;</span>
+
+<span class="c1">/// Defines the performance action used by TfLiteQnnDelegateSetPerf()</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">TfLiteQnnDelegatePerformanceAction</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// NOLINT(modernize-use-using)</span>
+<span class="w">  </span><span class="n">kPerformanceVote</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kPerformanceRelease</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TfLiteQnnDelegatePerformanceAction</span><span class="p">;</span>
+
+<span class="c1">/// Specifies the backend options for the GPU backend. To be used when selecting</span>
+<span class="c1">/// \ref TfLiteQnnDelegateBackendType.kGpuBackend for the \ref</span>
+<span class="c1">/// TfLiteQnnDelegateOptions.backend_type.</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// NOLINT</span>
+<span class="w">  </span><span class="c1">/// The default precision is half float for the best performance.</span>
+<span class="w">  </span><span class="n">TfLiteQnnDelegateGpuPrecision</span><span class="w"> </span><span class="n">precision</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">/// The default performance mode sets high.</span>
+<span class="w">  </span><span class="n">TfLiteQnnDelegateGpuPerformanceMode</span><span class="w"> </span><span class="n">performance_mode</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">/// The QNN GPU backend supports on-disk kernel persistence strategies where</span>
+<span class="w">  </span><span class="c1">/// compiled GPU kernel binaries are cached to disk and can be shared across</span>
+<span class="w">  </span><span class="c1">/// models having the same kernels and improve warm init times significantly.</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">kernel_repo_dir</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TfLiteQnnDelegateGpuBackendOptions</span><span class="p">;</span>
+
+<span class="c1">// clang-format off</span>
+<span class="cp">#define QNN_DELEGATE_GPU_OPTION_INIT   \</span>
+<span class="cp">  {                                   \</span>
+<span class="cp">    kGpuFp16,    </span><span class="cm">/*precision*/</span><span class="cp">        \</span>
+<span class="cp">    kGpuDefault, </span><span class="cm">/*performance_mode*/</span><span class="cp"> \</span>
+<span class="cp">    &quot;&quot;           </span><span class="cm">/*kernel_repo_dir*/</span><span class="cp">  \</span>
+<span class="cp">  }</span>
+<span class="c1">// clang-format on</span>
+
+<span class="c1">/// Specifies the backend options for the HTP backend. To be used when selecting</span>
+<span class="c1">/// \ref TfLiteQnnDelegateBackendType.kGpuBackend for the \ref</span>
+<span class="c1">/// TfLiteQnnDelegateOptions.backend_type.</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// NOLINT</span>
+<span class="w">  </span><span class="c1">/// The default performance mode sets no configurations on the HTP.</span>
+<span class="w">  </span><span class="n">TfLiteQnnDelegateHtpPerformanceMode</span><span class="w"> </span><span class="n">performance_mode</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">/// The default performance control strategy is Manual.</span>
+<span class="w">  </span><span class="n">TfLiteQnnDelegateHtpPerfCtrlStrategy</span><span class="w"> </span><span class="n">perf_ctrl_strategy</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">/// The default precision mode supports quantized networks. Other precision</span>
+<span class="w">  </span><span class="c1">/// modes may only be supported on certain SoCs.</span>
+<span class="w">  </span><span class="n">TfLiteQnnDelegateHtpPrecision</span><span class="w"> </span><span class="n">precision</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">/// Signed or unsigned HTP PD session. The default PD session is unsigned.</span>
+<span class="w">  </span><span class="n">TfLiteQnnDelegateHtpPdSession</span><span class="w"> </span><span class="n">pd_session</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">/// The default optimization strategy will optimize the graph for inference.</span>
+<span class="w">  </span><span class="n">TfLiteQnnDelegateHtpOptimizationStrategy</span><span class="w"> </span><span class="n">optimization_strategy</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">/// When using short conv hmx, one might have better performance,</span>
+<span class="w">  </span><span class="c1">/// but convolution that have short depth and/or weights that are not</span>
+<span class="w">  </span><span class="c1">/// symmetric could exhibit inaccurate results.</span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">useConvHmx</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">/// When using fold relu, one might have better performance. This optimization</span>
+<span class="w">  </span><span class="c1">/// is correct when quantization ranges for convolution are equal to or are</span>
+<span class="w">  </span><span class="c1">/// subset of the Relu operation.</span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">useFoldRelu</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">/// Option to set VTCM size in MB. This is directly mapped to</span>
+<span class="w">  </span><span class="c1">/// QNN_HTP_GRAPH_CONFIG_OPTION_VTCM_SIZE under QnnHtpGraph_ConfigOption_t. If</span>
+<span class="w">  </span><span class="c1">/// VTCM size is set to 0, the default VTCM size will be used.</span>
+<span class="w">  </span><span class="c1">/// If VTCM size is greater than VTCM size available for this device,</span>
+<span class="w">  </span><span class="c1">/// it will be set to the maximum VTCM size for this device.</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">vtcm_size</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">/// Option to set number of HVX threads. This is directly mapped to</span>
+<span class="w">  </span><span class="c1">/// QNN_HTP_GRAPH_CONFIG_OPTION_NUM_HVX_THREADS under</span>
+<span class="w">  </span><span class="c1">/// QnnHtpGraph_ConfigOption_t. If this this option is set to 0, the default</span>
+<span class="w">  </span><span class="c1">/// number of HVX threads will be used. If input exceeds the max number of HVX</span>
+<span class="w">  </span><span class="c1">/// threads, the maximum number of threads supported will be used.</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">num_hvx_threads</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">/// Some SoCs come with more than 1 HTP device. You can set which HTP device</span>
+<span class="w">  </span><span class="c1">/// you want to run the model on by this attribute.</span>
+<span class="w">  </span><span class="c1">/// But in most cases, you can just use the default device_id.</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">device_id</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TfLiteQnnDelegateHtpBackendOptions</span><span class="p">;</span>
+
+<span class="c1">// clang-format off</span>
+<span class="cp">#define QNN_DELEGATE_HTP_OPTION_INIT                      \</span>
+<span class="cp">  {                                                       \</span>
+<span class="cp">    kHtpDefault,              </span><span class="cm">/*performance_mode*/</span><span class="cp">        \</span>
+<span class="cp">    kHtpPerfCtrlManual,       </span><span class="cm">/*perf_ctrl_strategy*/</span><span class="cp">      \</span>
+<span class="cp">    kHtpFp16,                 </span><span class="cm">/*precision*/</span><span class="cp">               \</span>
+<span class="cp">    kHtpUnsignedPd,           </span><span class="cm">/*pd_session*/</span><span class="cp">              \</span>
+<span class="cp">    kHtpOptimizeForInference, </span><span class="cm">/*optimization_strategy*/</span><span class="cp">   \</span>
+<span class="cp">    true,                     </span><span class="cm">/*useConvHmx*/</span><span class="cp">              \</span>
+<span class="cp">    false,                    </span><span class="cm">/*useFoldRelu*/</span><span class="cp">             \</span>
+<span class="cp">    0,                        </span><span class="cm">/*vtcm_size*/</span><span class="cp">               \</span>
+<span class="cp">    0,                        </span><span class="cm">/*num_hvx_threads*/</span><span class="cp">         \</span>
+<span class="cp">    0,                        </span><span class="cm">/*device_id*/</span><span class="cp">               \</span>
+<span class="cp">  }</span>
+<span class="c1">// clang-format on</span>
+
+<span class="c1">/// Specifies the backend options for the DSP backend. To be used when selecting</span>
+<span class="c1">/// kDspBackend as the &lt;backend_type&gt;.</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// NOLINT</span>
+<span class="w">  </span><span class="c1">/// The default performance mode sets no configurations on the DSP.</span>
+<span class="w">  </span><span class="n">TfLiteQnnDelegateDspPerformanceMode</span><span class="w"> </span><span class="n">performance_mode</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">/// The default performance control strategy is Manual.</span>
+<span class="w">  </span><span class="n">TfLiteQnnDelegateDspPerfCtrlStrategy</span><span class="w"> </span><span class="n">perf_ctrl_strategy</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">/// The default PD session is unsigned.</span>
+<span class="w">  </span><span class="n">TfLiteQnnDelegateDspPdSession</span><span class="w"> </span><span class="n">pd_session</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">/// The default Encoding is static</span>
+<span class="w">  </span><span class="n">TfLiteQnnDelegateDspEncoding</span><span class="w"> </span><span class="n">encoding</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TfLiteQnnDelegateDspBackendOptions</span><span class="p">;</span>
+
+<span class="c1">// clang-format off</span>
+<span class="cp">#define QNN_DELEGATE_DSP_OPTION_INIT                      \</span>
+<span class="cp">  {                                                       \</span>
+<span class="cp">    kDspDefault,              </span><span class="cm">/*performance_mode*/</span><span class="cp">        \</span>
+<span class="cp">    kDspPerfCtrlManual,       </span><span class="cm">/*perf_ctrl_strategy*/</span><span class="cp">      \</span>
+<span class="cp">    kDspUnsignedPd,           </span><span class="cm">/*pd_session*/</span><span class="cp">              \</span>
+<span class="cp">    kDspStatic,               </span><span class="cm">/*encoding*/</span><span class="cp">                \</span>
+<span class="cp">  }</span>
+<span class="c1">// clang-format on</span>
+
+<span class="c1">/// Specifies the backend options for the IR writer backend. To be used when</span>
+<span class="c1">/// selecting \ref TfLiteQnnDelegateBackendType.kIrBackend for the \ref</span>
+<span class="c1">/// TfLiteQnnDelegateOptions.backend_type.</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// NOLINT</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">output_path</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TfLiteQnnDelegateIrBackendOptions</span><span class="p">;</span>
+
+<span class="c1">// clang-format off</span>
+<span class="cp">#define QNN_DELEGATE_IR_OPTION_INIT                      \</span>
+<span class="cp">  {                                                      \</span>
+<span class="cp">    nullptr,              </span><span class="cm">/*output_path*/</span><span class="cp">                \</span>
+<span class="cp">  }</span>
+<span class="c1">// clang-format on</span>
+
+<span class="c1">/// Map of TFLite custom operator name to op type defined within an op package.</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// NOLINT</span>
+<span class="w">  </span><span class="c1">/// The TfLiteRegistration::custom_name set during registration.</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">custom_op_name</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">/// The corresponding op type name defined in the op package.</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">qnn_op_type_name</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TfLiteQnnDelegateOpPackageOpMap</span><span class="p">;</span>
+
+<span class="c1">// clang-format off</span>
+<span class="cp">#define QNN_DELEGATE_OP_PACKAGE_OPTION_INIT   \</span>
+<span class="cp">  {                                           \</span>
+<span class="cp">    0,              </span><span class="cm">/*num_op_package_infos*/</span><span class="cp">  \</span>
+<span class="cp">    nullptr,        </span><span class="cm">/*op_package_infos*/</span><span class="cp">      \</span>
+<span class="cp">  }</span>
+<span class="c1">// clang-format on</span>
+
+<span class="c1">/// Structure containing the information needed to register and use an op</span>
+<span class="c1">/// package with QNN.</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// NOLINT</span>
+<span class="w">  </span><span class="c1">/// The name of the op package.</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">op_package_name</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">/// The path on disk to the op package library.</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">op_package_path</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">/// The name of a function in the op package library which satisfies the</span>
+<span class="w">  </span><span class="c1">/// QnnOpPackage_InterfaceProvider_t interface.</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">interface_provider</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">/// The target which this op package library was compiled for.</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">target</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">/// Number of elements in the TfLiteQnnDelegateOpPackageInfo.ops_map array.</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">num_ops_map</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">/// An array of TfLiteQnnDelegateOpPackageOpMap structures.</span>
+<span class="w">  </span><span class="n">TfLiteQnnDelegateOpPackageOpMap</span><span class="o">*</span><span class="w"> </span><span class="n">ops_map</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TfLiteQnnDelegateOpPackageInfo</span><span class="p">;</span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// NOLINT</span>
+<span class="w">  </span><span class="c1">/// Number of elements in TfLiteQnnDelegateOpPackageOptions.op_package_infos</span>
+<span class="w">  </span><span class="c1">/// array.</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">num_op_package_infos</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">/// An array of TfLiteQnnDelegateOpPackageInfo structures.</span>
+<span class="w">  </span><span class="n">TfLiteQnnDelegateOpPackageInfo</span><span class="o">*</span><span class="w"> </span><span class="n">op_package_infos</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TfLiteQnnDelegateOpPackageOptions</span><span class="p">;</span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// NOLINT</span>
+<span class="w">  </span><span class="c1">/// Set ops not to be delegated manually based on the op id(s).</span>
+<span class="w">  </span><span class="c1">/// To obtain all the op ids, please refer to tensorflow/lite/builtin_ops.h.</span>
+<span class="w">  </span><span class="c1">/// Notice that we skip all of with the types specified in the</span>
+<span class="w">  </span><span class="c1">/// \ref skip_delegate_ops array. For example, if you set skip to include</span>
+<span class="w">  </span><span class="c1">/// SquaredDifference, all instances of SquaredDifference ops in the</span>
+<span class="w">  </span><span class="c1">/// model will not be delegated.</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">skip_delegate_ops</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">/// Indicates the length of \ref skip_delegate_ops array.</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">skip_delegate_ops_nr</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">/// Set node IDs not to be delegated.</span>
+<span class="w">  </span><span class="c1">/// Node id can be obtained by node&#39;s location information in .tflite.</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">skip_delegate_node_ids</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">/// Indicates the length of \ref skip_delegate_node_ids array.</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">skip_delegate_node_ids_nr</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TfLiteQnnDelegateSkipOption</span><span class="p">;</span>
+
+<span class="c1">// clang-format off</span>
+<span class="cp">#define QNN_DELEGATE_SKIP_OPTION_INIT          \</span>
+<span class="cp">  {                                            \</span>
+<span class="cp">    nullptr,     </span><span class="cm">/*skip_delegate_ops*/</span><span class="cp">         \</span>
+<span class="cp">    0,           </span><span class="cm">/*skip_delegate_ops_nr*/</span><span class="cp">      \</span>
+<span class="cp">    nullptr,     </span><span class="cm">/*skip_delegate_node_ids*/</span><span class="cp">    \</span>
+<span class="cp">    0,           </span><span class="cm">/*skip_delegate_node_ids_nr*/</span><span class="cp"> \</span>
+<span class="cp">  }</span>
+<span class="c1">// clang-format on</span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// NOLINT</span>
+<span class="w">  </span><span class="c1">/// The backend QNN library to open and execute the graph with. This is a</span>
+<span class="w">  </span><span class="c1">/// required argument and will error out if kUndefinedBackend is supplied.</span>
+<span class="w">  </span><span class="n">TfLiteQnnDelegateBackendType</span><span class="w"> </span><span class="n">backend_type</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">/// Optional parameter to override the QNN backend library.</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">library_path</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">/// Optional parameter specifying the directory of QNN Skel library. Only</span>
+<span class="w">  </span><span class="c1">/// useful for backends which have a Skel library.</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">skel_library_dir</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">/// Optional backend specific options for the GPU backend. Only used when</span>
+<span class="w">  </span><span class="c1">/// selecting \ref TfLiteQnnDelegateBackendType.kGpuBackend, otherwise will be</span>
+<span class="w">  </span><span class="c1">/// ignored.</span>
+<span class="w">  </span><span class="n">TfLiteQnnDelegateGpuBackendOptions</span><span class="w"> </span><span class="n">gpu_options</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">/// Optional backend specific options for the HTP backend. Only used when</span>
+<span class="w">  </span><span class="c1">/// selecting \ref TfLiteQnnDelegateBackendType.kHtpBackend, otherwise will be</span>
+<span class="w">  </span><span class="c1">/// ignored.</span>
+<span class="w">  </span><span class="n">TfLiteQnnDelegateHtpBackendOptions</span><span class="w"> </span><span class="n">htp_options</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">/// Optional backend specific options for the DSP backend. Only used when</span>
+<span class="w">  </span><span class="c1">/// selecting \ref TfLiteQnnDelegateBackendType.kDspBackend, otherwise will be</span>
+<span class="w">  </span><span class="c1">/// ignored.</span>
+<span class="w">  </span><span class="n">TfLiteQnnDelegateDspBackendOptions</span><span class="w"> </span><span class="n">dsp_options</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">/// Optional backend specific options for the IR backend. Only used when</span>
+<span class="w">  </span><span class="c1">/// selecting \ref TfLiteQnnDelegateBackendType.kIrBackend, otherwise will be</span>
+<span class="w">  </span><span class="c1">/// ignored.</span>
+<span class="w">  </span><span class="n">TfLiteQnnDelegateIrBackendOptions</span><span class="w"> </span><span class="n">ir_options</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">/// Logging level of the delegate and the backend. Default is off.</span>
+<span class="w">  </span><span class="n">TfLiteQnnDelegateLogLevel</span><span class="w"> </span><span class="n">log_level</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">/// Option to enable profiling with the delegate. Default is off.</span>
+<span class="w">  </span><span class="n">TfLiteQnnDelegateProfilingOptions</span><span class="w"> </span><span class="n">profiling</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">/// Optional structure to specify op packages loaded and used by the backend.</span>
+<span class="w">  </span><span class="n">TfLiteQnnDelegateOpPackageOptions</span><span class="w"> </span><span class="n">op_package_options</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">/// Tensor dump output path. If a path is given, Delegate will write</span>
+<span class="w">  </span><span class="c1">/// outputs of each OP there.</span>
+<span class="w">  </span><span class="c1">/// We don&#39;t recommend using this option. It exists only for debugging</span>
+<span class="w">  </span><span class="c1">/// accuracy issues.</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">tensor_dump_output_path</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">/// Specifies the directory of a compiled model. Signals intent to either:</span>
+<span class="w">  </span><span class="c1">///   * Save the model if the file doesn&#39;t exist, or</span>
+<span class="w">  </span><span class="c1">///   * Restore model from the file.</span>
+<span class="w">  </span><span class="c1">///</span>
+<span class="w">  </span><span class="c1">/// Model Cache specific options. Only used when setting \ref model_token,</span>
+<span class="w">  </span><span class="c1">/// otherwise will be ignored.</span>
+<span class="w">  </span><span class="c1">///</span>
+<span class="w">  </span><span class="c1">/// We don&#39;t recommend that delegate instances with/without cache be mixed in</span>
+<span class="w">  </span><span class="c1">/// same process, unless an instance &lt;b&gt;without&lt;/b&gt; cache is initialized,</span>
+<span class="w">  </span><span class="c1">/// invoked, and *terminated* before an instance with cache is used in order</span>
+<span class="w">  </span><span class="c1">/// to make sure all resources are prepared correctly.</span>
+<span class="w">  </span><span class="c1">///</span>
+<span class="w">  </span><span class="c1">///   ~~~~~~~~~~~~~{.cpp}</span>
+<span class="w">  </span><span class="c1">///</span>
+<span class="w">  </span><span class="c1">///   TfLiteDelegate* delegate_wo_cache =</span>
+<span class="w">  </span><span class="c1">///   TfLiteQnnDelegateCreate(&amp;options_wo_cache);</span>
+<span class="w">  </span><span class="c1">///   interpreter_0-&gt;ModifyGraphWithDelegate(delegate_wo_cache);</span>
+<span class="w">  </span><span class="c1">///</span>
+<span class="w">  </span><span class="c1">///   // Perform inference with interpreter_0</span>
+<span class="w">  </span><span class="c1">///</span>
+<span class="w">  </span><span class="c1">///   TfLiteQnnDelegateDelete(delegate_wo_cache);</span>
+<span class="w">  </span><span class="c1">///</span>
+<span class="w">  </span><span class="c1">///   // after this, another delegate_with_cache can be used in the same</span>
+<span class="w">  </span><span class="c1">///   // process, though not recommended at this moment.</span>
+<span class="w">  </span><span class="c1">///   TfLiteDelegate* delegate_with_cache =</span>
+<span class="w">  </span><span class="c1">///   TfLiteQnnDelegateCreate(&amp;options_with_cache);</span>
+<span class="w">  </span><span class="c1">///</span>
+<span class="w">  </span><span class="c1">///   // another interpreter</span>
+<span class="w">  </span><span class="c1">///   interpreter_1-&gt;ModifyGraphWithDelegate(delegate_with_cache);</span>
+<span class="w">  </span><span class="c1">///</span>
+<span class="w">  </span><span class="c1">///   // more delegates...etc.</span>
+<span class="w">  </span><span class="c1">///   ~~~~~~~~~~~~~</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">cache_dir</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">/// The unique null-terminated token string that acts as a ‘namespace’ for all</span>
+<span class="w">  </span><span class="c1">/// serialization entries. Should be unique to a particular model (graph &amp;</span>
+<span class="w">  </span><span class="c1">/// constants). For an example of how to generate this from a TFLite model,</span>
+<span class="w">  </span><span class="c1">/// see StrFingerprint() in lite/delegates/serialization.h.</span>
+<span class="w">  </span><span class="c1">///</span>
+<span class="w">  </span><span class="c1">/// Model Cache specific options. Only used when setting \ref cache_dir,</span>
+<span class="w">  </span><span class="c1">/// otherwise will be ignored.</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">model_token</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">/// Option to skip node by specifying node types or node ids.</span>
+<span class="w">  </span><span class="n">TfLiteQnnDelegateSkipOption</span><span class="w"> </span><span class="n">skip_options</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">/// Option to set graph priority.</span>
+<span class="w">  </span><span class="n">TfLiteQnnDelegateGraphPriority</span><span class="w"> </span><span class="n">graph_priority</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TfLiteQnnDelegateOptions</span><span class="p">;</span>
+
+<span class="c1">// clang-format off</span>
+<span class="cp">#define QNN_DELEGATE_OPTION_INIT                                        \</span>
+<span class="cp">  {                                                                     \</span>
+<span class="cp">    kUndefinedBackend,                    </span><span class="cm">/*backend_type*/</span><span class="cp">              \</span>
+<span class="cp">    &quot;&quot;,                                   </span><span class="cm">/*library_path*/</span><span class="cp">              \</span>
+<span class="cp">    &quot;&quot;,                                   </span><span class="cm">/*skel_library_dir*/</span><span class="cp">          \</span>
+<span class="cp">    QNN_DELEGATE_GPU_OPTION_INIT,         </span><span class="cm">/*gpu_options*/</span><span class="cp">               \</span>
+<span class="cp">    QNN_DELEGATE_HTP_OPTION_INIT,         </span><span class="cm">/*htp_options*/</span><span class="cp">               \</span>
+<span class="cp">    QNN_DELEGATE_DSP_OPTION_INIT,         </span><span class="cm">/*dsp_options*/</span><span class="cp">               \</span>
+<span class="cp">    QNN_DELEGATE_IR_OPTION_INIT,          </span><span class="cm">/*ir_options*/</span><span class="cp">                \</span>
+<span class="cp">    kLogOff,                              </span><span class="cm">/*log_level*/</span><span class="cp">                 \</span>
+<span class="cp">    kProfilingOff,                        </span><span class="cm">/*profiling*/</span><span class="cp">                 \</span>
+<span class="cp">    QNN_DELEGATE_OP_PACKAGE_OPTION_INIT,  </span><span class="cm">/*op_package_options*/</span><span class="cp">        \</span>
+<span class="cp">    &quot;&quot;,                                   </span><span class="cm">/*tensor_dump_output_path*/</span><span class="cp">   \</span>
+<span class="cp">    &quot;&quot;,                                   </span><span class="cm">/*cache_dir*/</span><span class="cp">                 \</span>
+<span class="cp">    &quot;&quot;,                                   </span><span class="cm">/*model_token*/</span><span class="cp">               \</span>
+<span class="cp">    QNN_DELEGATE_SKIP_OPTION_INIT,        </span><span class="cm">/*skip_options*/</span><span class="cp">              \</span>
+<span class="cp">    kQnnPriorityDefault,                  </span><span class="cm">/*graph_priority*/</span><span class="cp">            \</span>
+<span class="cp">  }</span>
+<span class="c1">// clang-format on</span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="kt">int32_t</span><span class="w">  </span><span class="c1">// NOLINT(modernize-use-using)</span>
+<span class="w">    </span><span class="n">TfLiteQnnDelegateCapabilityStatus</span><span class="p">;</span>
+
+<span class="c1">// NOLINTBEGIN(cppcoreguidelines-macro-usage)</span>
+<span class="c1">/// Return by TfLiteQnnDelegateHasCapability() if the capability is supported.</span>
+<span class="cp">#define TfLiteQnnDelegateCapabilitySupported 1</span>
+<span class="c1">/// Return by TfLiteQnnDelegateHasCapability() if the capability is not</span>
+<span class="c1">/// supported.</span>
+<span class="cp">#define TfLiteQnnDelegateCapabilityNotSupported 0</span>
+<span class="c1">// NOLINTEND(cppcoreguidelines-macro-usage)</span>
+
+<span class="c1">/// Defines possible QNN Delegate capabilities.</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">TfLiteQnnDelegateCapability</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// NOLINT(modernize-use-using)</span>
+<span class="w">  </span><span class="n">kCapHtpRuntimeQuant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kCapHtpRuntimeFp16</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kCapGpuRuntime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">  </span><span class="n">kCapDspRuntime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TfLiteQnnDelegateCapability</span><span class="p">;</span>
+
+<span class="c1">/// Create the QNN Delegate options structure and populate with default values.</span>
+<span class="n">QNN_DELEGATE_CAPI_EXPORT</span><span class="w"> </span><span class="n">TfLiteQnnDelegateOptions</span>
+<span class="n">TfLiteQnnDelegateOptionsDefault</span><span class="p">();</span>
+
+<span class="c1">/// Create the QNN Delegate with the specified options.</span>
+<span class="n">QNN_DELEGATE_CAPI_EXPORT</span><span class="w"> </span><span class="n">TfLiteDelegate</span><span class="o">*</span><span class="w"> </span><span class="n">TfLiteQnnDelegateCreate</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">TfLiteQnnDelegateOptions</span><span class="o">*</span><span class="w"> </span><span class="n">options</span><span class="p">);</span>
+
+<span class="c1">/// Delete the QNN Delegate once no longer required.</span>
+<span class="c1">///</span>
+<span class="c1">/// Note that this is not a thread-safe function, which might cause unexpected</span>
+<span class="c1">/// behaviour when using it with \ref TfLiteQnnDelegateSetPerf, \ref</span>
+<span class="c1">/// TfLiteQnnDelegateUpdateHtpPerfMode, \ref TfLiteQnnDelegateUpdateDspPerfMode,</span>
+<span class="c1">/// or \ref TfLiteQnnDelegateDelete at the same time.</span>
+<span class="n">QNN_DELEGATE_CAPI_EXPORT</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">TfLiteQnnDelegateDelete</span><span class="p">(</span><span class="n">TfLiteDelegate</span><span class="o">*</span><span class="w"> </span><span class="n">delegate</span><span class="p">);</span>
+
+<span class="c1">/// Manually vote or release performance mode. &quot;Vote&quot; to request hardware to</span>
+<span class="c1">/// obey the performance mode setting as soon as possible. &quot;Release&quot; to</span>
+<span class="c1">/// release the vote. Note that this API only work for HTP/DSP backend with \ref</span>
+<span class="c1">/// kHtpPerfCtrlManual or \ref kDspPerfCtrlManual. Return true for success,</span>
+<span class="c1">/// false for failure.</span>
+<span class="n">QNN_DELEGATE_CAPI_EXPORT</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">TfLiteQnnDelegateSetPerf</span><span class="p">(</span>
+<span class="w">    </span><span class="n">TfLiteDelegate</span><span class="o">*</span><span class="w"> </span><span class="n">delegate</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TfLiteQnnDelegatePerformanceAction</span><span class="w"> </span><span class="n">action</span><span class="p">);</span>
+
+<span class="c1">/// Detect whether the capability is supported on the platform running QNN</span>
+<span class="c1">/// Delegate.</span>
+<span class="c1">///</span>
+<span class="c1">/// Note that this is an experimental feature.</span>
+<span class="n">QNN_DELEGATE_CAPI_EXPORT</span><span class="w"> </span><span class="n">TfLiteQnnDelegateCapabilityStatus</span>
+<span class="n">TfLiteQnnDelegateHasCapability</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TfLiteQnnDelegateCapability</span><span class="w"> </span><span class="n">cap</span><span class="p">);</span>
+
+<span class="c1">/// This API changes the performance mode of a created QNN Delegate on HTP</span>
+<span class="c1">/// backend, returning `true` for the mode set correctly, `false` for any</span>
+<span class="c1">/// failure.</span>
+<span class="c1">///</span>
+<span class="c1">/// It will perform a vote after a successful update. If the strategy of</span>
+<span class="c1">/// performance controlling is **manual**, the new mode takes effect before this</span>
+<span class="c1">/// API returns.</span>
+<span class="c1">///</span>
+<span class="c1">/// Note that this API cannot be called during graph invocation, and this is an</span>
+<span class="c1">/// experimental feature.</span>
+<span class="n">QNN_DELEGATE_CAPI_EXPORT</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">TfLiteQnnDelegateUpdateHtpPerfMode</span><span class="p">(</span>
+<span class="w">    </span><span class="n">TfLiteDelegate</span><span class="o">*</span><span class="w"> </span><span class="n">delegate</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TfLiteQnnDelegateHtpPerformanceMode</span><span class="w"> </span><span class="n">mode</span><span class="p">);</span>
+
+<span class="c1">/// This API changes the performance mode of a created QNN Delegate on DSP</span>
+<span class="c1">/// backend, returning `true` for the mode set correctly, `false` for any</span>
+<span class="c1">/// failure.</span>
+<span class="n">QNN_DELEGATE_CAPI_EXPORT</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">TfLiteQnnDelegateUpdateDspPerfMode</span><span class="p">(</span>
+<span class="w">    </span><span class="n">TfLiteDelegate</span><span class="o">*</span><span class="w"> </span><span class="n">delegate</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TfLiteQnnDelegateDspPerformanceMode</span><span class="w"> </span><span class="n">mode</span><span class="p">);</span>
+
+<span class="c1">/// Get QNN Delegate API version.</span>
+<span class="n">QNN_DELEGATE_CAPI_EXPORT</span><span class="w"> </span><span class="n">QnnDelegateApiVersion</span><span class="w"> </span><span class="n">TfLiteQnnDelegateGetApiVersion</span><span class="p">();</span>
+
+<span class="c1">/// Allocate specific tensors (usually graph inputs and outputs) on shared</span>
+<span class="c1">/// memory. Users are responsible to allocate &quot;enough&quot; tensor bytes, and set</span>
+<span class="c1">/// alignment as kDefaultTensorAlignment. The function returns a valid pointer</span>
+<span class="c1">/// if allocation is successful.</span>
+<span class="c1">///</span>
+<span class="c1">/// Note that this is an experimental feature.</span>
+<span class="n">QNN_DELEGATE_CAPI_EXPORT</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">TfLiteQnnDelegateAllocCustomMem</span><span class="p">(</span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">bytes</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">alignment</span><span class="p">);</span>
+
+<span class="c1">/// Free the allocated shared memory.</span>
+<span class="c1">///</span>
+<span class="c1">/// Note that this is an experimental feature.</span>
+<span class="n">QNN_DELEGATE_CAPI_EXPORT</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">TfLiteQnnDelegateFreeCustomMem</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">buffer_ptr</span><span class="p">);</span>
+
+<span class="c1">/// Structure of profiling result.</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// NOLINT(modernize-use-using)</span>
+<span class="w">  </span><span class="c1">/// Buffer of profiling result</span>
+<span class="w">  </span><span class="c1">/// will be invalid once TfLiteQnnDelegateClearProfilingResult gets called</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="o">*</span><span class="w"> </span><span class="n">buffer</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">/// Buffer length of profiling result in bytes</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">buffer_length</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TfLiteQnnDelegateProfilingResult</span><span class="p">;</span>
+
+<span class="c1">/// Get profiling result.</span>
+<span class="n">QNN_DELEGATE_CAPI_EXPORT</span><span class="w"> </span><span class="n">TfLiteQnnDelegateProfilingResult</span>
+<span class="n">TfLiteQnnDelegateGetProfilingResult</span><span class="p">(</span><span class="n">TfLiteDelegate</span><span class="o">*</span><span class="w"> </span><span class="n">delegate</span><span class="p">);</span>
+
+<span class="c1">/// Free the recorded profiling result.</span>
+<span class="n">QNN_DELEGATE_CAPI_EXPORT</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">TfLiteQnnDelegateClearProfilingResult</span><span class="p">(</span>
+<span class="w">    </span><span class="n">TfLiteDelegate</span><span class="o">*</span><span class="w"> </span><span class="n">delegate</span><span class="p">);</span>
+
+<span class="cp">#ifdef __cplusplus</span>
+<span class="p">}</span>
+<span class="cp">#endif  </span><span class="c1">// __cplusplus</span>
+
+<span class="cp">#endif  </span><span class="c1">// TENSORFLOW_LITE_DELEGATES_QNN_QNN_TFLITE_DELEGATE_H_</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2025, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

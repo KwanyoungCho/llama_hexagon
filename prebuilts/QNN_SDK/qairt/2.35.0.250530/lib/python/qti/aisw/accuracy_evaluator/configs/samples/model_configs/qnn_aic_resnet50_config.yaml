@@ -1,0 +1,115 @@
+model:
+    info:
+        desc: MLcommons Resnet50 v1 reference model used.
+        batchsize: 1
+    globals:
+        count: 10
+        calib: 5
+
+
+    dataset:
+        name: ILSVRC2012
+        path: '/home/ml-datasets/imageNet/'
+        inputlist_file: inputlist.txt
+        annotation_file: ground_truth.txt
+        calibration:
+            type: dataset
+            file: calibration.txt
+        transformations:
+            - plugin:
+                  name: filter_dataset
+                  params:
+                      random: False
+                      max_inputs: $count
+                      max_calib: $calib
+
+    preprocessing:
+        transformations:
+            - plugin:
+                    name: resize
+                    params:
+                        dims: 256,256
+                        interp: area
+                        type: imagenet
+
+            - plugin:
+                    name: crop
+                    params:
+                        dims: 224,224
+
+            - plugin:
+                    name: normalize
+                    params:
+                        norm: 1
+                        channel_order: RGB
+                        means:
+                            R: 123.68
+                            G: 116.78
+                            B: 103.94
+
+            - plugin:
+                    name: convert_nchw
+
+            - plugin:
+                    name: create_batch
+
+    inference-engine:
+        model_path: benchmark_mlperf/onnx-custom_uc.mlperf.2104.1.0_resnet50_v1/Source_model/resnet50_v1.onnx
+        inference_schemas:
+            - inference_schema:
+                name: onnxrt
+                precision: fp32
+                target_arch: x86_64-linux-clang
+                tag: qnn_fp32_onnxrt
+
+            - inference_schema:
+                name: qnn
+                precision: fp16
+                target_arch: x86_64-linux-clang
+                backend: aic
+                tag: qnn_fp16_aic
+                backend_extensions:
+                   compiler_num_of_cores: 8
+                   compiler_perfWarnings: true
+                   compiler_convert_to_FP16: true
+
+            - inference_schema:
+                name: qnn
+                precision: quant
+                target_arch: x86_64-linux-clang
+                backend: aic
+                tag: qnn_int8_aic
+                converter_params:
+                   float_bias_bitwidth: 32
+                quantizer_params:
+                   param_quantizer_schema: symmetric
+                   act_quantizer_schema: symmetric
+                   use_per_channel_quantization: True
+                   bias_bitwidth: 32
+                   float_bias_bitwidth: 32
+                backend_extensions:
+                   compiler_num_of_cores: 8
+                   compiler_perfWarnings: true
+
+        inputs_info:
+            - input_tensor_0:
+                  type: float32
+                  shape: ["*", 3, 224, 224]
+
+        outputs_info:
+            - ArgMax_0:
+                  type: int64
+                  shape: ["*"]
+            - softmax_tensor_0:
+                  type: float32
+                  shape: ["*", 1001]
+
+    metrics:
+        transformations:
+            - plugin:
+                    name: topk
+                    params:
+                        kval: 1,5
+                        softmax_index: 1
+                        round: 7
+                        label_offset: 1

@@ -1,0 +1,218 @@
+#=============================================================================
+#
+#  Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+#  All Rights Reserved.
+#  Confidential and Proprietary - Qualcomm Technologies, Inc.
+#
+#=============================================================================
+
+# define relevant directories
+SRC_DIR := src/qualla
+#
+SRC_DIR_GENIE_TOKENIZERS := src/qualla/tokenizers
+#
+SRC_DIR_SAMPLE_DIALOGS := src/qualla/dialogs
+#
+SRC_DIR_SAMPLE_TEXT_ENCODERS := src/qualla/encoders/text-encoders
+SRC_DIR_SAMPLE_IMAGE_ENCODERS := src/qualla/encoders/image-encoders
+
+# All engines
+SRC_DIR_GENIE_ENGINES := src/qualla/engines
+SRC_DIR_GENIE_QNN_API := src/qualla/engines/qnn-api
+SRC_DIR_GENIE_ENGINES_CPU := src/qualla/engines/qnn-cpu
+SRC_DIR_GENIE_ENGINES_GPU := src/qualla/engines/qnn-gpu
+SRC_DIR_GENIE_UTILS := src/qualla/utils
+SRC_DIR_MMAPPED_UTILS := src/qualla/Mmapped/src
+
+#
+SRC_DIR_GENIE_SAMPLERS := src/qualla/samplers
+
+#
+SRC_DIR_GENIE := src
+SRC_DIR_GENIE_PIPELINE := src/pipeline
+
+# Includes
+GENIE_ENGINES_CPU_INCLUDE := src/qualla/engines/qnn-cpu
+GENIE_ENGINES_GPU_INCLUDE := src/qualla/engines/qnn-gpu
+GENIE_ENGINES_API_INCLUDE := src/qualla/engines/qnn-api
+GENIE_ENGINES_HTP_INCLUDE := src/qualla/engines/qnn-htp
+GENIE_TOKENIZER_INCLUDE   := src/qualla/tokenizers
+GENIE_MMAPPED_INCLUDE   := src/qualla/MmappedFile/include
+
+GENIE_INCLUDE  := include  -Isrc
+GENIE_C_API_HEADERS_INCLUDE := ../../../include/Genie
+QUALLA_INCLUDE := src/qualla/include
+QNN_API_INCLUDE := ../../../include/QNN/
+QNN_API_HTP_INCLUDE := $(QNN_API_INCLUDE)/HTP
+
+AR := /usr/bin/ar
+ARFLAGS := rcs
+# Checking if clang++ is present. If not switch to clang++
+ifeq ($(shell $(CXX) -v 2>&1 | grep -c "clang version"), 0)
+CXX := clang++
+endif
+
+QNN_TARGET ?= x86_64-linux-clang
+export TARGET_DIR := ./lib/$(QNN_TARGET)
+
+libGenie := $(TARGET_DIR)/libGenie.so
+libtokenizers := src/qualla/tokenizers/rust/target/release/libtokenizers_capi.a
+
+# define target architecture if not previously defined, default is x86
+ifndef TARGET_AARCH_VARS
+TARGET_AARCH_VARS:= -march=x86-64
+endif
+
+.PHONY: linux_x86_64
+.DEFAULT: linux_x86_64
+GENIE_all: $(libGenie)
+
+# Include paths
+INCLUDES += -I$(GENIE_INCLUDE) -I$(SRC_DIR_GENIE_PIPELINE) -I$(QUALLA_INCLUDE) -I$(SRC_DIR_GENIE_TOKENIZERS) -I$(QNN_API_INCLUDE) -I$(GENIE_ENGINES_CPU_INCLUDE) -I$(GENIE_ENGINES_GPU_INCLUDE) -I$(QNN_API_HTP_INCLUDE) -I$(GENIE_ENGINES_API_INCLUDE) -I$(GENIE_TOKENIZER_INCLUDE) -I$(GENIE_MMAPPED_INCLUDE) -I$(GENIE_C_API_HEADERS_INCLUDE)
+
+# set compiler flags
+COMMON_CXXFLAGS = -std=c++2a -frtti -fPIC -Wall -pg -pthread -stdlib=libc++ -idirafter /usr/lib/llvm-14/include/c++/v1 -idirafter /usr/lib/llvm-14/lib/clang/14.0.0/include/ -idirafter /usr/include $(INCLUDES)
+COMMON_LDFLAGS = -shared -s -fPIC -pthread -L/usr/lib/x86_64-linux-gnu  -L./src/qualla/tokenizers/rust/target/release
+
+COMMON_CFLAGS = -nostdinc -idirafter /usr/lib/llvm-14/lib/clang/14.0.0/include/ -idirafter /usr/include
+
+ifdef QNN_DEBUG_ENABLE
+CXXFLAGS += $(COMMON_CXXFLAGS) -march=x86-64 -O0 -g -DQNN_API="" -DSPILLFILL -DQUALLA_ENGINE_QNN_CPU=TRUE -DQUALLA_ENGINE_QNN_GPU=TRUE -DFMT_HEADER_ONLY -DGENIE_SAMPLE -DQUALLA_INTERNAL_QNN_SDK
+CFLAGS += $(COMMON_CFLAGS)
+LDFLAGS += $(COMMON_LDFLAGS)
+else
+CXXFLAGS += $(COMMON_CXXFLAGS) -march=x86-64 -O3 -Wno-write-strings -fvisibility=hidden -DGENIE_API="__attribute__((visibility(\"default\")))" -DSPILLFILL -DQUALLA_ENGINE_QNN_CPU=TRUE -DQUALLA_ENGINE_QNN_GPU=TRUE -DFMT_HEADER_ONLY -DGENIE_SAMPLE -DQUALLA_INTERNAL_QNN_SDK
+CFLAGS += $(COMMON_CFLAGS)
+LDFLAGS += $(COMMON_LDFLAGS) -fvisibility=hidden -flto
+endif
+
+# define library sources
+SOURCES_GENIE_CPP := $(wildcard $(SRC_DIR_GENIE)/*.cpp $(SRC_DIR_GENIE_PIPELINE)/*.cpp)
+SOURCES := $(wildcard $(SRC_DIR)/*.cpp)
+SOURCES_GENIE_TOKENIZERS := $(wildcard $(SRC_DIR_GENIE_TOKENIZERS)/*.cpp)
+SOURCES_GENIE_QNN_API_CPP := $(wildcard $(SRC_DIR_GENIE_QNN_API)/*.cpp)
+
+SOURCES_GENIE_ENGINES_CPP := $(filter-out $(SRC_DIR_GENIE_ENGINES)/qnn-htp.cpp, $(wildcard $(SRC_DIR_GENIE_ENGINES)/*.cpp))
+SOURCES_GENIE_DIALOGS_CPP := $(wildcard $(SRC_DIR_SAMPLE_DIALOGS)/*.cpp)
+SOURCES_GENIE_TEXT_ENCODERS_CPP := $(wildcard $(SRC_DIR_SAMPLE_TEXT_ENCODERS)/*.cpp)
+SOURCES_GENIE_IMAGE_ENCODERS_CPP := $(wildcard $(SRC_DIR_SAMPLE_IMAGE_ENCODERS)/*.cpp)
+SOURCES_GENIE_ENGINES_CPU_CPP := $(wildcard $(SRC_DIR_GENIE_ENGINES_CPU)/*.cpp)
+SOURCES_GENIE_ENGINES_GPU_CPP := $(wildcard $(SRC_DIR_GENIE_ENGINES_GPU)/*.cpp)
+SOURCES_GENIE_UTILS_CPP := $(wildcard $(SRC_DIR_GENIE_UTILS)/*.cpp)
+SOURCES_MMAPPED_UTILS_CPP := $(wildcard $(SRC_DIR_MMAPPED_UTILS)/*.cpp)
+
+
+SOURCES_GENIE_SAMPLERS_CPP := $(wildcard $(SRC_DIR_GENIE_SAMPLERS)/*.cpp)
+
+
+# define object directory
+OBJ_ROOT := obj
+OBJ_DIR_QUALLA := obj/$(QNN_TARGET)/qualla
+OBJ_DIR_GENIE := obj/$(QNN_TARGET)/genie
+OBJ_DIR_GENIE_TOKENIZERS := $(OBJ_DIR_QUALLA)/tokenizers
+OBJ_DIR_GENIE_QNN_API := $(OBJ_DIR_QUALLA)/qnn-api
+
+OBJ_DIR_GENIE_DIALOGS := $(OBJ_DIR_QUALLA)/dialogs
+OBJ_DIR_GENIE_TEXT_ENCODERS := $(OBJ_DIR_QUALLA)/encoders/text-encoders
+OBJ_DIR_GENIE_IMAGE_ENCODERS := $(OBJ_DIR_QUALLA)/encoders/image-encoders
+OBJ_DIR_GENIE_ENGINES := $(OBJ_DIR_QUALLA)/engines
+OBJ_DIR_GENIE_UTILS := $(OBJ_DIR_QUALLA)/utils
+OBJ_DIR_MMAPPED_UTILS := $(OBJ_DIR_QUALLA)/Mmapped
+OBJ_DIR_GENIE_ENGINES_CPU := $(OBJ_DIR_QUALLA)/engines/qnn-cpu
+$(shell mkdir -p $(OBJ_DIR_GENIE_ENGINES_CPU))
+OBJ_DIR_GENIE_ENGINES_GPU := $(OBJ_DIR_QUALLA)/engines/qnn-gpu
+$(shell mkdir -p $(OBJ_DIR_GENIE_ENGINES_GPU))
+
+OBJ_DIR_GENIE_SAMPLERS := obj/$(QNN_TARGET)/qualla/samplers
+
+$(shell mkdir -p $(OBJ_DIR_GENIE))
+$(shell mkdir -p $(OBJ_DIR_GENIE_SAMPLERS))
+
+# setup object files in object directory
+OBJECTS_GENIE := $(patsubst %.cpp,$(OBJ_DIR_GENIE)/%.o,$(foreach x,$(SOURCES_GENIE_CPP),$(notdir $(x))))
+OBJECTS_QUALLA := $(patsubst %.cpp,$(OBJ_DIR_QUALLA)/%.o,$(foreach x,$(SOURCES),$(notdir $(x))))
+OBJECTS_GENIE_TOKENIZERS := $(patsubst %.cpp,$(OBJ_DIR_GENIE_TOKENIZERS)/%.o,$(foreach x,$(SOURCES_GENIE_TOKENIZERS),$(notdir $(x))))
+OBJECTS_GENIE_QNN_API := $(patsubst %.cpp,$(OBJ_DIR_GENIE_QNN_API)/%.o,$(foreach x,$(SOURCES_GENIE_QNN_API_CPP),$(notdir $(x))))
+OBJECTS_GENIE_ENGINES := $(patsubst %.cpp,$(OBJ_DIR_GENIE_ENGINES)/%.o,$(foreach x,$(SOURCES_GENIE_ENGINES_CPP),$(notdir $(x))))
+OBJECTS_GENIE_DIALOGS := $(patsubst %.cpp,$(OBJ_DIR_GENIE_DIALOGS)/%.o,$(foreach x,$(SOURCES_GENIE_DIALOGS_CPP),$(notdir $(x))))
+OBJECTS_GENIE_TEXT_ENCODERS := $(patsubst %.cpp,$(OBJ_DIR_GENIE_TEXT_ENCODERS)/%.o,$(foreach x,$(SOURCES_GENIE_TEXT_ENCODERS_CPP),$(notdir $(x))))
+OBJECTS_GENIE_IMAGE_ENCODERS := $(patsubst %.cpp,$(OBJ_DIR_GENIE_IMAGE_ENCODERS)/%.o,$(foreach x,$(SOURCES_GENIE_IMAGE_ENCODERS_CPP),$(notdir $(x))))
+OBJECTS_GENIE_UTILS := $(patsubst %.cpp,$(OBJ_DIR_GENIE_UTILS)/%.o,$(foreach x,$(SOURCES_GENIE_UTILS_CPP),$(notdir $(x))))
+OBJECTS_MMAPPED_UTILS := $(patsubst %.cpp,$(OBJ_DIR_MMAPPED_UTILS)/%.o,$(foreach x,$(SOURCES_MMAPPED_UTILS_CPP),$(notdir $(x))))
+OBJECTS_GENIE_ENGINES_CPU := $(patsubst %.cpp,$(OBJ_DIR_GENIE_ENGINES_CPU)/%.o,$(foreach x,$(SOURCES_GENIE_ENGINES_CPU_CPP),$(notdir $(x))))
+OBJECTS_GENIE_ENGINES_GPU := $(patsubst %.cpp,$(OBJ_DIR_GENIE_ENGINES_GPU)/%.o,$(foreach x,$(SOURCES_GENIE_ENGINES_GPU_CPP),$(notdir $(x))))
+
+OBJECTS_GENIE_SAMPLERS := $(patsubst %.cpp,$(OBJ_DIR_GENIE_SAMPLERS)/%.o,$(foreach x,$(SOURCES_GENIE_SAMPLERS_CPP),$(notdir $(x))))
+
+LIBS=-ldl
+
+
+# Rule to make shared lib
+.PHONY: libGenie
+libGenie: $(libGenie)
+
+# Implicit rule to compile and link object files
+$(OBJ_DIR_GENIE)/%.o: $(SRC_DIR_GENIE)/%.cpp
+	$(CXX) $(CXXFLAGS) -c $^ -o $@
+$(OBJ_DIR_GENIE)/%.o: $(SRC_DIR_GENIE_PIPELINE)/%.cpp
+	$(CXX) $(CXXFLAGS) -c $^ -o $@
+
+$(OBJ_DIR_QUALLA)/%.o: $(SRC_DIR)/%.cpp
+	$(CXX) $(CXXFLAGS) -c $^ -o $@
+
+$(OBJ_DIR_GENIE_TOKENIZERS)/%.o: $(SRC_DIR_GENIE_TOKENIZERS)/%.cpp
+	$(CXX) $(CXXFLAGS) -c $^ -o $@
+
+$(OBJ_DIR_GENIE_QNN_API)/%.o: $(SRC_DIR_GENIE_QNN_API)/%.cpp
+	$(CXX) $(CXXFLAGS) -c $^ -o $@
+
+$(OBJ_DIR_GENIE_ENGINES)/%.o: $(SRC_DIR_GENIE_ENGINES)/%.cpp $(CXX) $(CXXFLAGS) -c $^ -o $@
+
+$(OBJ_DIR_GENIE_DIALOGS)/%.o: $(SRC_DIR_SAMPLE_DIALOGS)/%.cpp $(CXX) $(CXXFLAGS) -c $^ -o $@
+
+$(OBJ_DIR_GENIE_TEXT_ENCODERS)/%.o: $(SRC_DIR_SAMPLE_TEXT_ENCODERS)/%.cpp $(CXX) $(CXXFLAGS) -c $^ -o $@
+
+$(OBJ_DIR_GENIE_IMAGE_ENCODERS)/%.o: $(SRC_DIR_SAMPLE_IMAGE_ENCODERS)/%.cpp $(CXX) $(CXXFLAGS) -c $^ -o $@
+
+$(OBJ_DIR_GENIE_UTILS)/%.o: $(SRC_DIR_GENIE_UTILS)/%.cpp $(CXX) $(CXXFLAGS) -c $^ -o $@
+
+$(OBJ_DIR_MMAPPED_UTILS)/%.o: $(SRC_DIR_MMAPPED_UTILS)/%.cpp $(CXX) $(CXXFLAGS) -c $^ -o $@
+
+$(OBJ_DIR_GENIE_ENGINES_CPU)/%.o: $(SRC_DIR_GENIE_ENGINES_CPU)/%.cpp $(CXX) $(CXXFLAGS) -c $^ -o $@
+
+$(OBJ_DIR_GENIE_ENGINES_GPU)/%.o: $(SRC_DIR_GENIE_ENGINES_GPU)/%.cpp $(CXX) $(CXXFLAGS) -c $^ -o $@
+
+$(OBJ_DIR_GENIE_SAMPLERS)/%.o: $(SRC_DIR_GENIE_SAMPLERS)/%.cpp $(CXX) $(CXXFLAGS) -c $^ -o $@
+
+
+# set up resources
+directories := $(TARGET_DIR) $(OBJ_DIR_GENIE) $(OBJ_DIR_GENIE_QNN_API) $(OBJ_DIR_QUALLA) $(OBJ_DIR_GENIE_TOKENIZERS) $(OBJ_DIR_GENIE_ENGINES) $(OBJ_DIR_GENIE_DIALOGS) $(OBJ_DIR_GENIE_TEXT_ENCODERS) $(OBJ_DIR_GENIE_IMAGE_ENCODERS) $(OBJ_DIR_GENIE_UTILS) $(OBJ_DIR_MMAPPED_UTILS) $(OBJ_DIR_GENIE_ENGINES_CPU) $(OBJ_DIR_GENIE_ENGINES_GPU) $(OBJ_DIR_GENIE_SAMPLERS)
+
+# Compile
+$(libGenie): $(OBJECTS_GENIE) $(OBJECTS_QUALLA) $(OBJECTS_GENIE_QNN_API) $(OBJECTS_GENIE_TOKENIZERS) $(OBJECTS_GENIE_ENGINES) $(OBJECTS_GENIE_DIALOGS) $(OBJECTS_GENIE_TEXT_ENCODERS) $(OBJECTS_GENIE_IMAGE_ENCODERS) $(OBJECTS_GENIE_UTILS) $(OBJECTS_MMAPPED_UTILS) $(OBJECTS_GENIE_ENGINES_CPU) $(OBJECTS_GENIE_ENGINES_GPU) $(OBJECTS_GENIE_SAMPLERS) | $(directories)
+	$(CXX) $(CXXFLAGS) -shared -o $@ $^ $(LIBS) $(libtokenizers)
+
+
+# rule for object directory resource
+$(OBJECTS_GENIE): | $(OBJ_DIR_GENIE)
+$(OBJECTS_QUALLA): | $(OBJ_DIR_QUALLA)
+$(OBJECTS_GENIE_TOKENIZERS): | $(OBJ_DIR_GENIE_TOKENIZERS)
+$(OBJECTS_GENIE_QNN_API): | $(OBJ_DIR_GENIE_QNN_API)
+$(OBJECTS_GENIE_ENGINES): | $(OBJ_DIR_GENIE_ENGINES)
+$(OBJECTS_GENIE_DIALOGS): | $(OBJ_DIR_GENIE_DIALOGS)
+$(OBJECTS_GENIE_TEXT_ENCODERS): | $(OBJ_DIR_GENIE_TEXT_ENCODERS)
+$(OBJECTS_GENIE_IMAGE_ENCODERS): | $(OBJ_DIR_GENIE_IMAGE_ENCODERS)
+$(OBJECTS_GENIE_UTILS): | $(OBJ_DIR_GENIE_UTILS)
+$(OBJECTS_MMAPPED_UTILS): | $(OBJ_DIR_MMAPPED_UTILS)
+$(OBJECTS_GENIE_ENGINES_CPU): | $(OBJ_DIR_GENIE_ENGINES_CPU)
+$(OBJECTS_GENIE_ENGINES_GPU): | $(OBJ_DIR_GENIE_ENGINES_GPU)
+$(OBJECTS_GENIE_SAMPLERS): | $(OBJ_DIR_GENIE_SAMPLERS)
+
+
+# rule to create directories
+$(directories):
+	mkdir -p $@
+
+.PHONY: clean
+clean:
+	rm -rf $(OBJ_ROOT) $(TARGET_DIR)

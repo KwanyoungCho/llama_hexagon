@@ -1,0 +1,365 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>File NativeTF16UserBufferTensor.java &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.35.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>File NativeTF16UserBufferTensor.java</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="file-nativetf16userbuffertensor-java">
+<span id="file-internal-nativetf16userbuffertensor-java"></span><h1>File NativeTF16UserBufferTensor.java<a class="headerlink" href="#file-nativetf16userbuffertensor-java" title="Permalink to this heading">¶</a></h1>
+<p>↰ <a class="reference internal" href="dir_internal.html#dir-internal"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">internal</span></code>)</p>
+<div class="contents local topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definition-internal-nativetf16userbuffertensor-java" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">internal/NativeTF16UserBufferTensor.java</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#namespaces" id="id2">Namespaces</a></p></li>
+<li><p><a class="reference internal" href="#classes" id="id3">Classes</a></p></li>
+<li><p><a class="reference internal" href="#full-file-listing" id="id4">Full File Listing</a></p></li>
+</ul>
+</div>
+<div class="section" id="definition-internal-nativetf16userbuffertensor-java">
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">internal/NativeTF16UserBufferTensor.java</span></code>)<a class="headerlink" href="#definition-internal-nativetf16userbuffertensor-java" title="Permalink to this heading">¶</a></h2>
+</div>
+<div class="section" id="namespaces">
+<h2>Namespaces<a class="headerlink" href="#namespaces" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="namespace_com__qualcomm__qti__snpe__internal.html#namespace-com-qualcomm-qti-snpe-internal"><span class="std std-ref">Namespace com::qualcomm::qti::snpe::internal</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeTF16UserBufferTensor.html#exhale-class-classcom-1-1qualcomm-1-1qti-1-1snpe-1-1internal-1-1nativetf16userbuffertensor"><span class="std std-ref">Class NativeTF16UserBufferTensor</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="full-file-listing">
+<h2>Full File Listing<a class="headerlink" href="#full-file-listing" title="Permalink to this heading">¶</a></h2>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internalE">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internalE"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internalE"></span><span id="com::qualcomm::qti::snpe::internal"></span><span class="target" id="namespacecom_1_1qualcomm_1_1qti_1_1snpe_1_1internal"></span><span class="k"><span class="pre">namespace</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">internal</span></span></span><br /></dt>
+<dd><dl class="cpp class">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeTF16UserBufferTensor"></span><span class="sig-name descname"><span class="pre">NativeTF16UserBufferTensor</span> <span class="pre">:</span> <span class="pre">public</span> <span class="pre">com.qualcomm.qti.snpe.TF16UserBufferTensor</span> <span class="pre">,</span> <span class="pre">public</span> <span class="pre">com.qualcomm.qti.snpe.internal.NativeUserBufferHandle</span></span></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError15setStepExactly0Ei">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError15setStepExactly0Ei"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError15setStepExactly0Ei"></span><span id="com::qualcomm::qti::snpe::internal::PhonyNameDueToError::setStepExactly0__i"></span><span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeTF16UserBufferTensor_1a70f4bef929459a154ff7afdd8ac2e987"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setStepExactly0</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">stepExactly0</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError15setStepExactly0Ei" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError20setQuantizedStepSizeEf">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError20setQuantizedStepSizeEf"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError20setQuantizedStepSizeEf"></span><span id="com::qualcomm::qti::snpe::internal::PhonyNameDueToError::setQuantizedStepSize__float"></span><span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeTF16UserBufferTensor_1a829917ab858cccde9ea45119d2fb7cfe"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setQuantizedStepSize</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">quantizedStepSize</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError20setQuantizedStepSizeEf" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError15getStepExactly0Ev">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError15getStepExactly0Ev"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError15getStepExactly0Ev"></span><span id="com::qualcomm::qti::snpe::internal::PhonyNameDueToError::getStepExactly0"></span><span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeTF16UserBufferTensor_1a99eb6bfa23386afb89a3064080dac517"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getStepExactly0</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError15getStepExactly0Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError20getQuantizedStepSizeEv">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError20getQuantizedStepSizeEv"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError20getQuantizedStepSizeEv"></span><span id="com::qualcomm::qti::snpe::internal::PhonyNameDueToError::getQuantizedStepSize"></span><span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeTF16UserBufferTensor_1aa03f6d2731904a1ab2a443f1d0b27f6f"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getQuantizedStepSize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError20getQuantizedStepSizeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeTF16UserBufferTensor_1a6a9c55966b90911da34c95ccfe9ee62a"></span><span class="sig-name descname"><span class="pre">inline</span> <span class="pre">synchronized</span> <span class="pre">void</span> <span class="pre">release</span> <span class="pre">()</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError15getNativeHandleEv">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError15getNativeHandleEv"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError15getNativeHandleEv"></span><span id="com::qualcomm::qti::snpe::internal::PhonyNameDueToError::getNativeHandle"></span><span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeTF16UserBufferTensor_1adc3ef597bd8a4ba2bc55b9373fa9fd19"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getNativeHandle</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-protected-functions">Protected Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError8finalizeEv">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError8finalizeEv"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError8finalizeEv"></span><span id="com::qualcomm::qti::snpe::internal::PhonyNameDueToError::finalize"></span><span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeTF16UserBufferTensor_1a85d236deaf7c0164c24e6e16f2e7cc34"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">finalize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-package-functions">Package Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeTF16UserBufferTensor_1ae95081e2b31481253dcf8b19fb8b2e0d"></span><span class="sig-name descname"><span class="pre">inline</span>&#160; <span class="pre">NativeTF16UserBufferTensor</span> <span class="pre">(final</span> <span class="pre">int</span> <span class="pre">size,</span> <span class="pre">final</span> <span class="pre">int[]</span> <span class="pre">strides,</span> <span class="pre">int</span> <span class="pre">stepExactly0,</span> <span class="pre">float</span> <span class="pre">quantizedStepSize,</span> <span class="pre">ByteBuffer</span> <span class="pre">byteBuffer)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError18asDirectByteBufferEv">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError18asDirectByteBufferEv"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError18asDirectByteBufferEv"></span><span id="com::qualcomm::qti::snpe::internal::PhonyNameDueToError::asDirectByteBuffer"></span><span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeTF16UserBufferTensor_1a3b40168a7c4b7b3f19b717c063b4b15a"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">ByteBuffer</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">asDirectByteBuffer</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError18asDirectByteBufferEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-functions">Private Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeTF16UserBufferTensor_1a662e146f7a488b950f67c9104807bd83"></span><span class="sig-name descname"><span class="pre">native</span> <span class="pre">long</span> <span class="pre">nativeInit</span> <span class="pre">(ByteBuffer</span> <span class="pre">buffer,</span> <span class="pre">int</span> <span class="pre">capacity,</span> <span class="pre">ByteBuffer</span> <span class="pre">byteBuffer)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError9doReleaseEv">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError9doReleaseEv"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError9doReleaseEv"></span><span id="com::qualcomm::qti::snpe::internal::PhonyNameDueToError::doRelease"></span><span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeTF16UserBufferTensor_1a34f8029aeb7c1adaa97260ee8a94ea83"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">doRelease</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeTF16UserBufferTensor_1a6307a9073654e44cf3a370b7c1750434"></span><span class="sig-name descname"><span class="pre">native</span> <span class="pre">void</span> <span class="pre">nativeRelease</span> <span class="pre">(long</span> <span class="pre">nativeHandle)</span></span></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError13mNativeHandleE">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError13mNativeHandleE"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError13mNativeHandleE"></span><span id="com::qualcomm::qti::snpe::internal::PhonyNameDueToError::mNativeHandle__l"></span><span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeTF16UserBufferTensor_1a65f0b84a9846a3bf0f8f83df546cbb01"></span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mNativeHandle</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeTF16UserBufferTensor_1adf6d96839d093f152b4e2a3b40a5838a"></span><span class="sig-name descname"><span class="pre">final</span> <span class="pre">ByteBuffer</span> <span class="pre">mByteBuffer</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError13mStepExactly0E">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError13mStepExactly0E"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError13mStepExactly0E"></span><span id="com::qualcomm::qti::snpe::internal::PhonyNameDueToError::mStepExactly0__i"></span><span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeTF16UserBufferTensor_1a087ee76825a231e034fda38f16dd129c"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mStepExactly0</span></span></span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError13mStepExactly0E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError18mQuantizedStepSizeE">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError18mQuantizedStepSizeE"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError18mQuantizedStepSizeE"></span><span id="com::qualcomm::qti::snpe::internal::PhonyNameDueToError::mQuantizedStepSize__float"></span><span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeTF16UserBufferTensor_1a3886eef161cdd4adad75c882babf6dc2"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mQuantizedStepSize</span></span></span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError18mQuantizedStepSizeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-static-attributes">Private Static Attributes</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeTF16UserBufferTensor_1a555028e555b3ce32454376c4e566acca"></span><span class="sig-name descname"><span class="pre">static</span> <span class="pre">final</span> <span class="pre">int</span> <span class="pre">JNI_ERROR</span>&#160;&#160; <span class="pre">=</span> <span class="pre">-1</span></span></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

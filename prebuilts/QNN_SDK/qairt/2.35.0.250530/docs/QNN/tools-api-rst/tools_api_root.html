@@ -1,0 +1,460 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Tools Utility API &mdash; Qualcomm® AI Engine Direct  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.35.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tflite_delegate.html">QNN TFLite Delegate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/revision_history.html">Revision History</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Tools Utility API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tools-utility-api">
+<h1>Tools Utility API<a class="headerlink" href="#tools-utility-api" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="class-hierarchy">
+<h2>Class Hierarchy<a class="headerlink" href="#class-hierarchy" title="Permalink to this heading">¶</a></h2>
+<ul class="treeView" id="class-treeView">
+  <li>
+    <ul class="collapsibleList">
+      <li class="lastChild">Namespace <a href="namespace_qnn_wrapper_api.html#namespace-qnn-wrapper-api">qnn_wrapper_api</a><ul><li>Struct <a href="structqnn__wrapper__api_1_1GraphConfigInfo.html#exhale-struct-structqnn-wrapper-api-1-1GraphConfigInfo">GraphConfigInfo</a></li><li>Struct <a href="structqnn__wrapper__api_1_1GraphInfo.html#exhale-struct-structqnn-wrapper-api-1-1GraphInfo">GraphInfo</a></li><li>Struct <a href="structqnn__wrapper__api_1_1GraphInfoV2.html#exhale-struct-structqnn-wrapper-api-1-1GraphInfoV2">GraphInfoV2</a></li><li>Class <a href="classqnn__wrapper__api_1_1QnnModel.html#exhale-class-classqnn-wrapper-api-1-1QnnModel">QnnModel</a></li><li class="lastChild">Enum <a href="enum_namespaceqnn__wrapper__api_1a948a0fc7bf6721d057a75b1c0d5f268b.html#exhale-enum-namespaceqnn-wrapper-api-1a948a0fc7bf6721d057a75b1c0d5f268b">ModelError</a></li></ul></li>
+    </ul>
+  </li><!-- only tree view element -->
+</ul><!-- /treeView class-treeView --></div>
+<div class="section" id="file-hierarchy">
+<h2>File Hierarchy<a class="headerlink" href="#file-hierarchy" title="Permalink to this heading">¶</a></h2>
+<ul class="treeView" id="file-treeView">
+  <li>
+    <ul class="collapsibleList">
+      <li class="lastChild">Directory <a href="dir_share.html#dir-share">share</a><ul><li class="lastChild">Directory <a href="dir_share_converter.html#dir-share-converter">converter</a><ul><li class="lastChild">Directory <a href="dir_share_converter_jni.html#dir-share-converter-jni">jni</a><ul><li>File <a href="file_share_converter_jni_QnnModel.hpp.html#file-share-converter-jni-QnnModel.hpp">QnnModel.hpp</a></li><li>File <a href="file_share_converter_jni_QnnModelPal.hpp.html#file-share-converter-jni-QnnModelPal.hpp">QnnModelPal.hpp</a></li><li class="lastChild">File <a href="file_share_converter_jni_QnnWrapperUtils.hpp.html#file-share-converter-jni-QnnWrapperUtils.hpp">QnnWrapperUtils.hpp</a></li></ul></li></ul></li></ul></li>
+    </ul>
+  </li><!-- only tree view element -->
+</ul><!-- /treeView file-treeView --></div>
+<div class="section" id="full-api">
+<h2>Full API<a class="headerlink" href="#full-api" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="namespaces">
+<h3>Namespaces<a class="headerlink" href="#namespaces" title="Permalink to this heading">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="namespace_qnn_wrapper_api.html">Namespace qnn_wrapper_api</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="classes-and-structs">
+<h3>Classes and Structs<a class="headerlink" href="#classes-and-structs" title="Permalink to this heading">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="structqnn__wrapper__api_1_1GraphConfigInfo.html">Struct GraphConfigInfo</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="structqnn__wrapper__api_1_1GraphInfo.html">Struct GraphInfo</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="structqnn__wrapper__api_1_1GraphInfoV2.html">Struct GraphInfoV2</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classqnn__wrapper__api_1_1QnnModel.html">Class QnnModel</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="enums">
+<h3>Enums<a class="headerlink" href="#enums" title="Permalink to this heading">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="enum_namespaceqnn__wrapper__api_1a948a0fc7bf6721d057a75b1c0d5f268b.html">Enum ModelError</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_namespaceqnn__wrapper__api_1a9179b77c600e4bb439099003e14eac0f.html">Function qnn_wrapper_api::deepCopyQnnTensors</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_namespaceqnn__wrapper__api_1aac3a03aebb770f56338c5274f9c9f04e.html">Function qnn_wrapper_api::dlError</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_namespaceqnn__wrapper__api_1acfbcea408f9307e7af85d3a6c06afa2f.html">Function qnn_wrapper_api::dlSym</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_namespaceqnn__wrapper__api_1a39e97cb0ce0b29d3897e578466a77ade.html">Function qnn_wrapper_api::freeGraphsInfo</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_namespaceqnn__wrapper__api_1ac44f1dda8ad15cbe792f745be653d0b6.html">Function qnn_wrapper_api::freeQnnTensor</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_namespaceqnn__wrapper__api_1a39e917fbf0c6dfde43fc68a3afae5787.html">Function qnn_wrapper_api::freeQnnTensors</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_namespaceqnn__wrapper__api_1a0de4daf55fe480dc8ca6464efbb568bb.html">Function qnn_wrapper_api::getGraphInfoFromModels</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_namespaceqnn__wrapper__api_1af4481b80560ed290f341f2d6f67b13e5.html">Function qnn_wrapper_api::getModelErrorName</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_namespaceqnn__wrapper__api_1a1f1b934654d119ad2eb51e0e9b8ca850.html">Function qnn_wrapper_api::getQnnGraphConfigFromInfo</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_namespaceqnn__wrapper__api_1a566feb1463b0e37d2847a2663390bca3.html">Function qnn_wrapper_api::memscpy</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_namespaceqnn__wrapper__api_1abafe141a014383ffb18f5f51ac267a56.html">Function qnn_wrapper_api::strnDup</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_namespaceqnn__wrapper__api_1a6450dcd015635be257bbefc3ff55fa96.html">Function qnn_wrapper_api::validateOpConfigVer</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_namespaceqnn__wrapper__api_1a070fe425cbdd7613f4ef1050a39d604c.html">Function qnn_wrapper_api::ValidateTensorVer</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="defines">
+<h3>Defines<a class="headerlink" href="#defines" title="Permalink to this heading">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_QnnWrapperUtils_8hpp_1aad87a34a3f327e13037d2ead2e240a3b.html">Define BINLEN</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_QnnWrapperUtils_8hpp_1afeff93d7fbe6779a1a8eebf8060ba37c.html">Define BINVAREND</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_QnnWrapperUtils_8hpp_1a9ee473be612119f78aae4b18af3b1d65.html">Define BINVARSTART</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_QnnModelPal_8hpp_1a70391ac551b05c2ea7dced856bae3ff4.html">Define DL_DEFAULT</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_QnnWrapperUtils_8hpp_1a035cb3bcb57e0682ea2b55c645e5f9f2.html">Define PRINT_DEBUG</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_QnnWrapperUtils_8hpp_1aaf123cbdf580d93e710d780b92b36d6c.html">Define PRINT_ERROR</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_QnnWrapperUtils_8hpp_1a17aceb3747df39d04e05e769c031428a.html">Define PRINT_INFO</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_QnnWrapperUtils_8hpp_1ae2cfccefa46249261490c723daa39d69.html">Define PRINT_WARNING</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_QnnWrapperUtils_8hpp_1a11c98794bcb78ef756dddb18233c6f96.html">Define PRINTF</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_QnnWrapperUtils_8hpp_1aad11258ceb5ad0e20cd4ec99fc3d389a.html">Define STRINGFY</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_QnnWrapperUtils_8hpp_1a8235b7c7aaf31fc70eccc513db7756b9.html">Define STRINGFYVALUE</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_QnnWrapperUtils_8hpp_1a137d0a06b012f2687a498a45fb68f461.html">Define VALIDATE</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_QnnWrapperUtils_8hpp_1abb714c7d5862e6ec8776510c18a72942.html">Define VALIDATE_OP_CONFIG_VER</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_QnnWrapperUtils_8hpp_1a8cd4463615740a39378c5ee09039aae6.html">Define VALIDATE_TENSOR_VER</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="typedefs">
+<h3>Typedefs<a class="headerlink" href="#typedefs" title="Permalink to this heading">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_namespaceqnn__wrapper__api_1ae3ee73102fe79835be0f898584f7e33b.html">Typedef qnn_wrapper_api::GraphConfigInfo_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_namespaceqnn__wrapper__api_1a6ce07e09e76837b57750b79986212747.html">Typedef qnn_wrapper_api::GraphInfo_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_namespaceqnn__wrapper__api_1abb793c20fcf66a2e8a6ffb9c611e410c.html">Typedef qnn_wrapper_api::GraphInfoPtr_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_namespaceqnn__wrapper__api_1aface65fc9e355303bb80650541197f86.html">Typedef qnn_wrapper_api::GraphInfoV2_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_namespaceqnn__wrapper__api_1adbd37129d111a64a488e59e3a300c74a.html">Typedef qnn_wrapper_api::GraphInfoV2Ptr_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_namespaceqnn__wrapper__api_1a17e330dcb3287e62a52ce51000558a37.html">Typedef qnn_wrapper_api::ModelError_t</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2025, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

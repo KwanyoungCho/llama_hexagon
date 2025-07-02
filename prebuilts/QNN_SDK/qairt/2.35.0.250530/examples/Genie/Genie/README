@@ -1,0 +1,16 @@
+#=============================================================================
+#
+#  Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+#  All Rights Reserved.
+#  Confidential and Proprietary - Qualcomm Technologies, Inc.
+#
+#=============================================================================
+
+Genie library source code example
+---------------------------------
+
+The Genie library (libGenie.so / Genie.dll) source code example provides users with an ability to recreate the Genie
+library from source. Note that the Genie library source may be refactored, rewritten, or otherwise modified without
+notice. The Genie C API is the commercially controlled and versioned interface that users should expect to be stable.
+Please refer to the Genie SDK documentation tutorials at ${SDK_ROOT}/doc/Genie/ for more information on how to build the
+sample code.

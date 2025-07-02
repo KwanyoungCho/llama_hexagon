@@ -1,0 +1,48 @@
+{
+  "embedding" : {
+    "version" : 1,
+    "context": {
+      "version": 1,
+      "n-vocab": 30522,
+      "ctx-size": 512,
+      "embed-size" : 1024,
+      "pad-token" : 0
+    },
+    "prompt": {
+      "version" : 1,
+      "prompt-template": ["[CLS]","[SEP]"]
+    },
+    "tokenizer" : {
+      "version" : 1,
+      "path" : "your/path/to/tokenizer_file.json"
+    },
+    "truncate-input" : true,
+    "engine" : {
+      "version" : 1,
+      "backend" : {
+        "version" : 1,
+        "type" : "QnnHtp",
+        "QnnHtp" : {
+          "version" : 1,
+          "spill-fill-bufsize" : 0,
+          "use-mmap" : true,
+          "pooled-output" : true,
+          "allow-async-init": false,
+          "disable-kv-cache": true
+        },
+        "extensions" : "htp_backend_ext_config.json"
+      },
+      "model" : {
+        "version" : 1,
+        "type" : "binary",
+        "binary" : {
+          "version" : 1,
+          "ctx-bins" : [
+            "file_1_of_1.bin"
+          ]
+        }
+      }
+    }
+  }
+}
+

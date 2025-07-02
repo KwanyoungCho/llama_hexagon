@@ -1,0 +1,392 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Struct TfLiteQnnDelegateOptions &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Struct TfLiteQnnDelegateProfilingResult" href="structTfLiteQnnDelegateProfilingResult.html" />
+    <link rel="prev" title="Struct TfLiteQnnDelegateOpPackageOptions" href="structTfLiteQnnDelegateOpPackageOptions.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.35.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/operations.html">Operations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../general/api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../general/api_overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/api_usage_guidelines.html">Usage Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/api_version_history.html">QNN API Revision History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/api_version_history.html#backend-specific-revision-history">Backend Specific Revision History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/api_version_history.html#qnn-system-api-revision-history">QNN System API Revision History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/supported_api.html">Supported APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/supported_capabilities.html">Supported Capabilities</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../general/api.html#c">C</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="class_view_hierarchy.html">Class Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="file_view_hierarchy.html">File Hierarchy</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="unabridged_api.html">Full API</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="unabridged_api.html#classes-and-structs">Classes and Structs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="unabridged_api.html#enums">Enums</a></li>
+<li class="toctree-l4"><a class="reference internal" href="unabridged_api.html#unions">Unions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="unabridged_api.html#functions">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="unabridged_api.html#variables">Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="unabridged_api.html#defines">Defines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="unabridged_api.html#typedefs">Typedefs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../general/api_error_codes.html">Error codes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tflite_delegate.html">QNN TFLite Delegate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/revision_history.html">Revision History</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../general/api.html">API</a> &raquo;</li>
+        
+          <li><a href="unabridged_api.html">Full API</a> &raquo;</li>
+        
+      <li>Struct TfLiteQnnDelegateOptions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="struct-tfliteqnndelegateoptions">
+<span id="exhale-struct-structtfliteqnndelegateoptions"></span><h1>Struct TfLiteQnnDelegateOptions<a class="headerlink" href="#struct-tfliteqnndelegateoptions" title="Permalink to this heading">¶</a></h1>
+<ul class="simple">
+<li><p>Defined in <a class="reference internal" href="file_include_QNN_QnnTFLiteDelegate.h.html#file-include-qnn-qnntflitedelegate-h"><span class="std std-ref">File QnnTFLiteDelegate.h</span></a></p></li>
+</ul>
+<div class="section" id="struct-documentation">
+<h2>Struct Documentation<a class="headerlink" href="#struct-documentation" title="Permalink to this heading">¶</a></h2>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv424TfLiteQnnDelegateOptions">
+<span id="_CPPv324TfLiteQnnDelegateOptions"></span><span id="_CPPv224TfLiteQnnDelegateOptions"></span><span id="TfLiteQnnDelegateOptions"></span><span class="target" id="structTfLiteQnnDelegateOptions"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateOptions</span></span></span><a class="headerlink" href="#_CPPv424TfLiteQnnDelegateOptions" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24TfLiteQnnDelegateOptions12backend_typeE">
+<span id="_CPPv3N24TfLiteQnnDelegateOptions12backend_typeE"></span><span id="_CPPv2N24TfLiteQnnDelegateOptions12backend_typeE"></span><span id="TfLiteQnnDelegateOptions::backend_type__TfLiteQnnDelegateBackendType"></span><span class="target" id="structTfLiteQnnDelegateOptions_1a9c123140d4503bd3968d4add4e763eb3"></span><a class="reference internal" href="typedef_QnnTFLiteDelegate_8h_1a0cc4727c1f23917bbf0e8c811b39a14a.html#_CPPv428TfLiteQnnDelegateBackendType" title="TfLiteQnnDelegateBackendType"><span class="n"><span class="pre">TfLiteQnnDelegateBackendType</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">backend_type</span></span></span><a class="headerlink" href="#_CPPv4N24TfLiteQnnDelegateOptions12backend_typeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The backend QNN library to open and execute the graph with. This is a required argument and will error out if kUndefinedBackend is supplied. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24TfLiteQnnDelegateOptions12library_pathE">
+<span id="_CPPv3N24TfLiteQnnDelegateOptions12library_pathE"></span><span id="_CPPv2N24TfLiteQnnDelegateOptions12library_pathE"></span><span id="TfLiteQnnDelegateOptions::library_path__cCP"></span><span class="target" id="structTfLiteQnnDelegateOptions_1a4f5102c92277a3ab29a32266d625e8a8"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">library_path</span></span></span><a class="headerlink" href="#_CPPv4N24TfLiteQnnDelegateOptions12library_pathE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Optional parameter to override the QNN backend library. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24TfLiteQnnDelegateOptions16skel_library_dirE">
+<span id="_CPPv3N24TfLiteQnnDelegateOptions16skel_library_dirE"></span><span id="_CPPv2N24TfLiteQnnDelegateOptions16skel_library_dirE"></span><span id="TfLiteQnnDelegateOptions::skel_library_dir__cCP"></span><span class="target" id="structTfLiteQnnDelegateOptions_1a41391a3b31c9962eb56b4e873504320d"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">skel_library_dir</span></span></span><a class="headerlink" href="#_CPPv4N24TfLiteQnnDelegateOptions16skel_library_dirE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Optional parameter specifying the directory of QNN Skel library. Only useful for backends which have a Skel library. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24TfLiteQnnDelegateOptions11gpu_optionsE">
+<span id="_CPPv3N24TfLiteQnnDelegateOptions11gpu_optionsE"></span><span id="_CPPv2N24TfLiteQnnDelegateOptions11gpu_optionsE"></span><span id="TfLiteQnnDelegateOptions::gpu_options__TfLiteQnnDelegateGpuBackendOptions"></span><span class="target" id="structTfLiteQnnDelegateOptions_1a3d9b1ae8be4d5a110c56c35f066e87ed"></span><a class="reference internal" href="structTfLiteQnnDelegateGpuBackendOptions.html#_CPPv434TfLiteQnnDelegateGpuBackendOptions" title="TfLiteQnnDelegateGpuBackendOptions"><span class="n"><span class="pre">TfLiteQnnDelegateGpuBackendOptions</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gpu_options</span></span></span><a class="headerlink" href="#_CPPv4N24TfLiteQnnDelegateOptions11gpu_optionsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Optional backend specific options for the GPU backend. Only used when selecting <a class="reference internal" href="file_include_QNN_QnnTFLiteDelegate.h.html#QnnTFLiteDelegate_8h_1a65d87d490f916ffb8c5f3cd8284b2110a3c75ba974d54f4388f1baa0b2acbaa50"><span class="std std-ref">TfLiteQnnDelegateBackendType::kGpuBackend</span></a>, otherwise will be ignored. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24TfLiteQnnDelegateOptions11htp_optionsE">
+<span id="_CPPv3N24TfLiteQnnDelegateOptions11htp_optionsE"></span><span id="_CPPv2N24TfLiteQnnDelegateOptions11htp_optionsE"></span><span id="TfLiteQnnDelegateOptions::htp_options__TfLiteQnnDelegateHtpBackendOptions"></span><span class="target" id="structTfLiteQnnDelegateOptions_1a20b80313e8c5951bf4c1ed33b0aa390c"></span><a class="reference internal" href="structTfLiteQnnDelegateHtpBackendOptions.html#_CPPv434TfLiteQnnDelegateHtpBackendOptions" title="TfLiteQnnDelegateHtpBackendOptions"><span class="n"><span class="pre">TfLiteQnnDelegateHtpBackendOptions</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">htp_options</span></span></span><a class="headerlink" href="#_CPPv4N24TfLiteQnnDelegateOptions11htp_optionsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Optional backend specific options for the HTP backend. Only used when selecting <a class="reference internal" href="file_include_QNN_QnnTFLiteDelegate.h.html#QnnTFLiteDelegate_8h_1a65d87d490f916ffb8c5f3cd8284b2110a13319060934416099c1cd45e053f8ff4"><span class="std std-ref">TfLiteQnnDelegateBackendType::kHtpBackend</span></a>, otherwise will be ignored. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24TfLiteQnnDelegateOptions11dsp_optionsE">
+<span id="_CPPv3N24TfLiteQnnDelegateOptions11dsp_optionsE"></span><span id="_CPPv2N24TfLiteQnnDelegateOptions11dsp_optionsE"></span><span id="TfLiteQnnDelegateOptions::dsp_options__TfLiteQnnDelegateDspBackendOptions"></span><span class="target" id="structTfLiteQnnDelegateOptions_1a535553c8086baa6482ec83910370babf"></span><a class="reference internal" href="structTfLiteQnnDelegateDspBackendOptions.html#_CPPv434TfLiteQnnDelegateDspBackendOptions" title="TfLiteQnnDelegateDspBackendOptions"><span class="n"><span class="pre">TfLiteQnnDelegateDspBackendOptions</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dsp_options</span></span></span><a class="headerlink" href="#_CPPv4N24TfLiteQnnDelegateOptions11dsp_optionsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Optional backend specific options for the DSP backend. Only used when selecting <a class="reference internal" href="file_include_QNN_QnnTFLiteDelegate.h.html#QnnTFLiteDelegate_8h_1a65d87d490f916ffb8c5f3cd8284b2110a45017ddfa4c9381bc53abebd908731df"><span class="std std-ref">TfLiteQnnDelegateBackendType::kDspBackend</span></a>, otherwise will be ignored. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24TfLiteQnnDelegateOptions10ir_optionsE">
+<span id="_CPPv3N24TfLiteQnnDelegateOptions10ir_optionsE"></span><span id="_CPPv2N24TfLiteQnnDelegateOptions10ir_optionsE"></span><span id="TfLiteQnnDelegateOptions::ir_options__TfLiteQnnDelegateIrBackendOptions"></span><span class="target" id="structTfLiteQnnDelegateOptions_1afc37ad51108f51555eca0d5baeb17ea8"></span><a class="reference internal" href="structTfLiteQnnDelegateIrBackendOptions.html#_CPPv433TfLiteQnnDelegateIrBackendOptions" title="TfLiteQnnDelegateIrBackendOptions"><span class="n"><span class="pre">TfLiteQnnDelegateIrBackendOptions</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ir_options</span></span></span><a class="headerlink" href="#_CPPv4N24TfLiteQnnDelegateOptions10ir_optionsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Optional backend specific options for the IR backend. Only used when selecting <a class="reference internal" href="file_include_QNN_QnnTFLiteDelegate.h.html#QnnTFLiteDelegate_8h_1a65d87d490f916ffb8c5f3cd8284b2110a17dafc50a1948e375f554b42a0227ff1"><span class="std std-ref">TfLiteQnnDelegateBackendType::kIrBackend</span></a>, otherwise will be ignored. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24TfLiteQnnDelegateOptions9log_levelE">
+<span id="_CPPv3N24TfLiteQnnDelegateOptions9log_levelE"></span><span id="_CPPv2N24TfLiteQnnDelegateOptions9log_levelE"></span><span id="TfLiteQnnDelegateOptions::log_level__TfLiteQnnDelegateLogLevel"></span><span class="target" id="structTfLiteQnnDelegateOptions_1abbd7a0377e7690cb74009343d0e1b8a3"></span><a class="reference internal" href="typedef_QnnTFLiteDelegate_8h_1a5dffc97bd0a55a4cd63e838a2abe70b8.html#_CPPv425TfLiteQnnDelegateLogLevel" title="TfLiteQnnDelegateLogLevel"><span class="n"><span class="pre">TfLiteQnnDelegateLogLevel</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">log_level</span></span></span><a class="headerlink" href="#_CPPv4N24TfLiteQnnDelegateOptions9log_levelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Logging level of the delegate and the backend. Default is off. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24TfLiteQnnDelegateOptions9profilingE">
+<span id="_CPPv3N24TfLiteQnnDelegateOptions9profilingE"></span><span id="_CPPv2N24TfLiteQnnDelegateOptions9profilingE"></span><span id="TfLiteQnnDelegateOptions::profiling__TfLiteQnnDelegateProfilingOptions"></span><span class="target" id="structTfLiteQnnDelegateOptions_1a1041830ba44102332b8ddaae7052ab98"></span><a class="reference internal" href="typedef_QnnTFLiteDelegate_8h_1a8aaffcaf94fc085899524cc023ea1ad0.html#_CPPv433TfLiteQnnDelegateProfilingOptions" title="TfLiteQnnDelegateProfilingOptions"><span class="n"><span class="pre">TfLiteQnnDelegateProfilingOptions</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">profiling</span></span></span><a class="headerlink" href="#_CPPv4N24TfLiteQnnDelegateOptions9profilingE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Option to enable profiling with the delegate. Default is off. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24TfLiteQnnDelegateOptions18op_package_optionsE">
+<span id="_CPPv3N24TfLiteQnnDelegateOptions18op_package_optionsE"></span><span id="_CPPv2N24TfLiteQnnDelegateOptions18op_package_optionsE"></span><span id="TfLiteQnnDelegateOptions::op_package_options__TfLiteQnnDelegateOpPackageOptions"></span><span class="target" id="structTfLiteQnnDelegateOptions_1ae43a76910714172dfdb12289103b174a"></span><a class="reference internal" href="structTfLiteQnnDelegateOpPackageOptions.html#_CPPv433TfLiteQnnDelegateOpPackageOptions" title="TfLiteQnnDelegateOpPackageOptions"><span class="n"><span class="pre">TfLiteQnnDelegateOpPackageOptions</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">op_package_options</span></span></span><a class="headerlink" href="#_CPPv4N24TfLiteQnnDelegateOptions18op_package_optionsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Optional structure to specify op packages loaded and used by the backend. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24TfLiteQnnDelegateOptions23tensor_dump_output_pathE">
+<span id="_CPPv3N24TfLiteQnnDelegateOptions23tensor_dump_output_pathE"></span><span id="_CPPv2N24TfLiteQnnDelegateOptions23tensor_dump_output_pathE"></span><span id="TfLiteQnnDelegateOptions::tensor_dump_output_path__cCP"></span><span class="target" id="structTfLiteQnnDelegateOptions_1abca310db851a6c335395afa186f20a0f"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">tensor_dump_output_path</span></span></span><a class="headerlink" href="#_CPPv4N24TfLiteQnnDelegateOptions23tensor_dump_output_pathE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Tensor dump output path. If a path is given, Delegate will write outputs of each OP there. We don’t recommend using this option. It exists only for debugging accuracy issues. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24TfLiteQnnDelegateOptions9cache_dirE">
+<span id="_CPPv3N24TfLiteQnnDelegateOptions9cache_dirE"></span><span id="_CPPv2N24TfLiteQnnDelegateOptions9cache_dirE"></span><span id="TfLiteQnnDelegateOptions::cache_dir__cCP"></span><span class="target" id="structTfLiteQnnDelegateOptions_1a4bd74d5478246b2d69e36c67a01cb087"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">cache_dir</span></span></span><a class="headerlink" href="#_CPPv4N24TfLiteQnnDelegateOptions9cache_dirE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Specifies the directory of a compiled model. Signals intent to either:<ul class="simple">
+<li><p>Save the model if the file doesn’t exist, or</p></li>
+<li><p>Restore model from the file.</p></li>
+</ul>
+</p>
+<p>Model Cache specific options. Only used when setting <a class="reference internal" href="file_include_QNN_QnnTFLiteDelegate.h.html#structTfLiteQnnDelegateOptions_1a083b5dadd3699c90d0e3bf8b0f215af9"><span class="std std-ref">model_token</span></a>, otherwise will be ignored.</p>
+<p>We don’t recommend that delegate instances with/without cache be mixed in same process, unless an instance <strong>without</strong> cache is initialized, invoked, and <em>terminated</em> before an instance with cache is used in order to make sure all resources are prepared correctly.</p>
+<p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TfLiteDelegate</span><span class="o">*</span><span class="w"> </span><span class="n">delegate_wo_cache</span><span class="w"> </span><span class="o">=</span>
+<span class="n">TfLiteQnnDelegateCreate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">options_wo_cache</span><span class="p">);</span>
+<span class="n">interpreter_0</span><span class="o">-&gt;</span><span class="n">ModifyGraphWithDelegate</span><span class="p">(</span><span class="n">delegate_wo_cache</span><span class="p">);</span>
+
+<span class="c1">// Perform inference with interpreter_0</span>
+
+<span class="n">TfLiteQnnDelegateDelete</span><span class="p">(</span><span class="n">delegate_wo_cache</span><span class="p">);</span>
+
+<span class="c1">// after this, another delegate_with_cache can be used in the same</span>
+<span class="c1">// process, though not recommended at this moment.</span>
+<span class="n">TfLiteDelegate</span><span class="o">*</span><span class="w"> </span><span class="n">delegate_with_cache</span><span class="w"> </span><span class="o">=</span>
+<span class="n">TfLiteQnnDelegateCreate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">options_with_cache</span><span class="p">);</span>
+
+<span class="c1">// another interpreter</span>
+<span class="n">interpreter_1</span><span class="o">-&gt;</span><span class="n">ModifyGraphWithDelegate</span><span class="p">(</span><span class="n">delegate_with_cache</span><span class="p">);</span>
+
+<span class="c1">// more delegates...etc.</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24TfLiteQnnDelegateOptions11model_tokenE">
+<span id="_CPPv3N24TfLiteQnnDelegateOptions11model_tokenE"></span><span id="_CPPv2N24TfLiteQnnDelegateOptions11model_tokenE"></span><span id="TfLiteQnnDelegateOptions::model_token__cCP"></span><span class="target" id="structTfLiteQnnDelegateOptions_1a083b5dadd3699c90d0e3bf8b0f215af9"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">model_token</span></span></span><a class="headerlink" href="#_CPPv4N24TfLiteQnnDelegateOptions11model_tokenE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The unique null-terminated token string that acts as a ‘namespace’ for all serialization entries. Should be unique to a particular model (graph &amp; constants). For an example of how to generate this from a TFLite model, see StrFingerprint() in lite/delegates/serialization.h.</p>
+<p>Model Cache specific options. Only used when setting <a class="reference internal" href="file_include_QNN_QnnTFLiteDelegate.h.html#structTfLiteQnnDelegateOptions_1a4bd74d5478246b2d69e36c67a01cb087"><span class="std std-ref">cache_dir</span></a>, otherwise will be ignored. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24TfLiteQnnDelegateOptions12skip_optionsE">
+<span id="_CPPv3N24TfLiteQnnDelegateOptions12skip_optionsE"></span><span id="_CPPv2N24TfLiteQnnDelegateOptions12skip_optionsE"></span><span id="TfLiteQnnDelegateOptions::skip_options__TfLiteQnnDelegateSkipOption"></span><span class="target" id="structTfLiteQnnDelegateOptions_1a61d2eaba232d076d8f01d6ae777c080e"></span><a class="reference internal" href="structTfLiteQnnDelegateSkipOption.html#_CPPv427TfLiteQnnDelegateSkipOption" title="TfLiteQnnDelegateSkipOption"><span class="n"><span class="pre">TfLiteQnnDelegateSkipOption</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">skip_options</span></span></span><a class="headerlink" href="#_CPPv4N24TfLiteQnnDelegateOptions12skip_optionsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Option to skip node by specifying node types or node ids. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24TfLiteQnnDelegateOptions14graph_priorityE">
+<span id="_CPPv3N24TfLiteQnnDelegateOptions14graph_priorityE"></span><span id="_CPPv2N24TfLiteQnnDelegateOptions14graph_priorityE"></span><span id="TfLiteQnnDelegateOptions::graph_priority__TfLiteQnnDelegateGraphPriority"></span><span class="target" id="structTfLiteQnnDelegateOptions_1ac3d4ecc1a6c3033916204435c5e75069"></span><a class="reference internal" href="typedef_QnnTFLiteDelegate_8h_1a72e293463d6fabd84a60a0e210f9b496.html#_CPPv430TfLiteQnnDelegateGraphPriority" title="TfLiteQnnDelegateGraphPriority"><span class="n"><span class="pre">TfLiteQnnDelegateGraphPriority</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">graph_priority</span></span></span><a class="headerlink" href="#_CPPv4N24TfLiteQnnDelegateOptions14graph_priorityE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Option to set graph priority. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="structTfLiteQnnDelegateProfilingResult.html" class="btn btn-neutral float-right" title="Struct TfLiteQnnDelegateProfilingResult" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="structTfLiteQnnDelegateOpPackageOptions.html" class="btn btn-neutral float-left" title="Struct TfLiteQnnDelegateOpPackageOptions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2025, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

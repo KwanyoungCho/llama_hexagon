@@ -1,0 +1,159 @@
+{
+  "dialog": {
+    "version": 1,
+    "type": "eaglet",
+    "eaglet": {
+      "version": 1,
+      "eaglet-version": 1,
+      "draft-len": 6,
+      "n-branches": 8,
+      "max-tokens-target-can-evaluate": 32,
+      "draft-kv-cache": true
+    },
+    "embedding": {
+      "version": 1,
+      "type": "lut",
+      "lut-path": "uint8_lut.bin",
+      "size": 3072,
+      "datatype": "ufixed8",
+      "quant-param": {
+        "scale":  0.0022299130757649738,
+        "offset":   -107.10983274409456
+      }
+    },
+    "context": {
+      "version": 1,
+      "n-vocab": 128256,
+      "draft-n-vocab": 3200,
+      "size": 2048,
+      "bos-token": 128000,
+      "eos-token": [
+        128001,
+        128008,
+        128009
+      ],
+      "n-embd": 3072,
+      "pad-token": 128004
+    },
+    "sampler": {
+      "version": 1,
+      "seed": 42,
+      "temp": 0.8,
+      "top-k": 1,
+      "top-p": 1
+    },
+    "tokenizer": {
+      "version": 1,
+      "path": "tokenizer.json"
+    },
+    "engine": [
+      {
+        "version": 1,
+        "role": "target",
+        "n-threads": 3,
+        "backend": {
+          "version": 1,
+          "type": "QnnHtp",
+          "QnnHtp": {
+            "version": 1,
+            "spill-fill-bufsize": 0,
+            "use-mmap": true,
+            "mmap-budget": 0,
+            "poll": true,
+            "cpu-mask": "0xe0",
+            "kv-dim": 128,
+            "allow-async-init": false,
+            "enable-graph-switching": false
+          },
+          "extensions": "htp_backend_ext_config.json"
+        },
+        "model": {
+          "version": 1,
+          "type": "binary",
+          "binary": {
+            "version": 1,
+            "ctx-bins": [
+              "weight_sharing_model_ar32_ar128_cl4096_2_of_3.serialized.bin",
+              "weight_sharing_model_ar32_ar128_cl4096_3_of_3.serialized.bin"
+            ],
+            "lora": {
+              "version": 1,
+              "alpha-tensor-name": "lora_alpha",
+              "adapters": [
+                {
+                  "version": 1,
+                  "name": "elementary",
+                  "alphas": [
+                    "alpha0",
+                    "alpha1"
+                  ],
+                  "bin-sections": [
+                    "ar32_cl4096_2_of_3-ar128_cl4096_2_of_3_elementary.bin",
+                    ""
+                  ]
+                }
+              ]
+            }
+          },
+          "positional-encoding": {
+            "type": "rope",
+            "rope-dim": 64,
+            "rope-theta": 500000,
+            "rope-scaling": {
+              "factor": 32,
+              "high-freq-factor": 4,
+              "low-freq-factor": 1,
+              "original-max-position-embeddings": 8192,
+              "rope-type": "llama3"
+            }
+          }
+        }
+      },
+      {
+        "version": 1,
+        "role": "draft",
+        "n-threads": 3,
+        "backend": {
+          "version": 1,
+          "type": "QnnHtp",
+          "QnnHtp": {
+            "version": 1,
+            "spill-fill-bufsize": 0,
+            "use-mmap": true,
+            "mmap-budget": 0,
+            "poll": true,
+            "cpu-mask": "0xe0",
+            "kv-dim": 128,
+            "allow-async-init": false,
+            "enable-graph-switching": false
+          },
+          "extensions": "htp_backend_ext_config.json"
+        },
+        "model": {
+          "version": 1,
+          "type": "binary",
+          "binary": {
+            "version": 1,
+            "ctx-bins": [
+              "weight_sharing_model_2_of_3.serialized.bin",
+              "weight_sharing_model_3_of_3.serialized.bin"
+            ]
+          },
+          "positional-encoding": {
+            "type": "rope",
+            "rope-dim": 64,
+            "rope-theta": 500000,
+            "rope-scaling": {
+              "factor": 32,
+              "high-freq-factor": 4,
+              "low-freq-factor": 1,
+              "original-max-position-embeddings": 8192,
+              "rope-type": "llama3"
+            }
+          },
+          "draft-token-map" : "vocab_trim_elementary16181.json"
+        }
+      }
+    ]
+  }
+}

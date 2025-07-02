@@ -1,0 +1,288 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>KV$ Rewind &mdash; Qualcomm® Gen AI Inference Extensions</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../../../../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="GenieDialog_setStopSequence API" href="../stopseq/stopseq.html" />
+    <link rel="prev" title="GenieDialog_signal API" href="../signal/signal.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> Qualcomm® Gen AI Inference Extensions
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.35.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../setup.html">Setup</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../dialog.html">Genie Dialog</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../llama-2-7b/llama-2-7b.html">Llama 2 7B</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../llama-3-3b/llama-3-3b.html">Llama 3 3B</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signal/signal.html">Query Cancellation</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">KV$ Rewind</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#using-kv-rewind-between-queries">Using KV Rewind between queries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../stopseq/stopseq.html">Updating the Stop Sequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../token_query/token_query.html">Token Query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../update_sampler/update_sampler.html">Updating the Sampler Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../embedding/embedding.html">Genie Embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../engine/engine.html">Genie Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../logger/logger.html">Genie Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../profile/profile.html">Genie Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pipeline/pipeline.html">Genie Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source_code_examples/source_code_examples.html">Source Code Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../library/library.html">Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/tools.html">Tools</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Qualcomm® Gen AI Inference Extensions</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../tutorials.html">Tutorials</a> &raquo;</li>
+        
+          <li><a href="../dialog.html">Dialog Tutorials</a> &raquo;</li>
+        
+      <li>KV$ Rewind</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="kv-rewind">
+<h1>KV$ Rewind<a class="headerlink" href="#kv-rewind" title="Permalink to this heading">¶</a></h1>
+<p>The <strong>KV$ Rewind/KV$ Prefix Match</strong> feature allows for efficient query processing by leveraging previously cached KV values. When using KV Rewind, Genie can reuse the KV cache values from a previous query to speed up the processing of a new, similar query. This is particularly useful in scenarios where the new query shares a common prefix with the previous one.</p>
+<div class="section" id="using-kv-rewind-between-queries">
+<h2>Using KV Rewind between queries<a class="headerlink" href="#using-kv-rewind-between-queries" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">/// The string is the entire query/response.</span>
+<span class="w">  </span><span class="n">GENIE_DIALOG_SENTENCE_COMPLETE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">/// The string is the beginning of the query/response.</span>
+<span class="w">  </span><span class="n">GENIE_DIALOG_SENTENCE_BEGIN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">/// The string is a part of the query/response and not the beginning or end.</span>
+<span class="w">  </span><span class="n">GENIE_DIALOG_SENTENCE_CONTINUE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">/// The string is the end of the query/response.</span>
+<span class="w">  </span><span class="n">GENIE_DIALOG_SENTENCE_END</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">/// The query has been aborted.</span>
+<span class="w">  </span><span class="n">GENIE_DIALOG_SENTENCE_ABORT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">///Rewind the KV cache as per prefix query match before processing the query</span>
+<span class="w">  </span><span class="n">GENIE_DIALOG_SENTENCE_REWIND</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="p">}</span><span class="w"> </span><span class="n">GenieDialog_SentenceCode_t</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">GENIE_API</span>
+<span class="n">Genie_Status_t</span><span class="w"> </span><span class="n">GenieDialog_query</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GenieDialog_Handle_t</span><span class="w"> </span><span class="n">dialogHandle</span><span class="p">,</span>
+<span class="w">                                 </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">queryStr</span><span class="p">,</span>
+<span class="w">                                 </span><span class="k">const</span><span class="w"> </span><span class="n">GenieDialog_SentenceCode_t</span><span class="w"> </span><span class="n">sentenceCode</span><span class="p">,</span>
+<span class="w">                                 </span><span class="k">const</span><span class="w"> </span><span class="n">GenieDialog_QueryCallback_t</span><span class="w"> </span><span class="n">callback</span><span class="p">,</span>
+<span class="w">                                 </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">userData</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Use the sentence code <strong>GENIE_DIALOG_SENTENCE_REWIND</strong> and pass the query string as you would for a normal query. The API will handle prefix matching and KV rewind internally.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>KV$ prefix match works well with the KV update method SMART_MASK. However, with KV update method POINTER_SHIFT, we observed that in a few cases, it throws memory register-related errors for weight-shared bins. POINTER_SHIFT works fine or shows no issues with decoder-only models (AR1 / AR8 / AR128, etc.).</p>
+</div>
+<p>In genie-t2t-run, we can use ‘-w’ option for rewind queries.</p>
+<p>For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./genie-t2t-run<span class="w"> </span>-c<span class="w"> </span>llama2-7b-htp.json
+<span class="w">                </span>-p<span class="w"> </span><span class="s2">&quot;Answer in one sentence, what is the capital city of India?&quot;</span>
+<span class="w">                </span>-w<span class="w"> </span><span class="s2">&quot;Answer in one sentence, what is the capital city of Russia?&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../stopseq/stopseq.html" class="btn btn-neutral float-right" title="GenieDialog_setStopSequence API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../signal/signal.html" class="btn btn-neutral float-left" title="GenieDialog_signal API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,312 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>QNN Gen AI Transformer &mdash; Qualcomm® Gen AI Inference Extensions</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../../../../../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="Genie Engine" href="../../../engine/engine.html" />
+    <link rel="prev" title="QNN HTP" href="../htp/htp.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> Qualcomm® Gen AI Inference Extensions
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.35.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../introduction/introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../setup.html">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dialog/dialog.html">Genie Dialog</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../embedding.html">Genie Embedding</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../bge-large.html">BGE-Large</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../bge-large.html#setup">Setup</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../bge-large.html#tutorials">Tutorials</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../engine/engine.html">Genie Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../logger/logger.html">Genie Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../profile/profile.html">Genie Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pipeline/pipeline.html">Genie Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../source_code_examples/source_code_examples.html">Source Code Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../support/support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../library/library.html">Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/tools.html">Tools</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">Qualcomm® Gen AI Inference Extensions</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../tutorials.html">Tutorials</a> &raquo;</li>
+        
+          <li><a href="../../embedding.html">Embedding Tutorials</a> &raquo;</li>
+        
+          <li><a href="../bge-large.html">BGE-Large</a> &raquo;</li>
+        
+      <li>QNN Gen AI Transformer</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qnn-gen-ai-transformer">
+<span id="genie-tutorial-bge-large-genai"></span><h1>QNN Gen AI Transformer<a class="headerlink" href="#qnn-gen-ai-transformer" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="model-download">
+<h2>Model download<a class="headerlink" href="#model-download" title="Permalink to this heading">¶</a></h2>
+<p>Download bge-large-en-v1.5 from <a class="reference external" href="https://huggingface.co/BAAI/bge-large-en-v1.5">https://huggingface.co/BAAI/bge-large-en-v1.5</a></p>
+</div>
+<div class="section" id="model-conversion">
+<h2>Model conversion<a class="headerlink" href="#model-conversion" title="Permalink to this heading">¶</a></h2>
+<p>The following section demonstrates converting a model using
+<a class="reference internal" href="../../../../tools/qnn-genai-transformer-composer.html#qnn-genai-transformer-composer"><span class="std std-ref">qnn-genai-transformer-composer</span></a>.</p>
+<p><strong>Model conversion on Linux and Android</strong></p>
+<p>Open a command shell on Linux host and run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make sure environment is setup as per instructions, or can cd into bin folder on Linux host</span>
+<span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span>/bin/x86_64-linux-clang/
+./qnn-genai-transformer-composer<span class="w"> </span>--outfile<span class="w"> </span>&lt;output<span class="w"> </span>filename<span class="w"> </span>with<span class="w"> </span><span class="nb">complete</span><span class="w"> </span>path&gt;.bin
+<span class="w">                                 </span>--model<span class="w"> </span>&lt;path-to-downloaded-BGE-model-directory&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="model-configuration">
+<h2>Model configuration<a class="headerlink" href="#model-configuration" title="Permalink to this heading">¶</a></h2>
+<p>See <a class="reference internal" href="../../../../library/embedding/json.html#genie-embedding-json-config-string"><span class="std std-ref">Genie Embedding JSON configuration string</span></a> for details on the fields and what
+they mean. An example model config can be found at
+<code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Genie/configs/bge-large-genaitransformer.json</span></code>. Note that the tokenizer path and
+model bin fields will need to be updated based on your actual preparation steps.</p>
+</div>
+<div class="section" id="model-execution">
+<h2>Model execution<a class="headerlink" href="#model-execution" title="Permalink to this heading">¶</a></h2>
+<p>The following section demonstrates running a model on the QNN GenAITransformer backend using
+<a class="reference internal" href="../../../../tools/genie-t2t-run.html#genie-t2e-run"><span class="std std-ref">genie-t2e-run</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Results will be saved in output.raw file in the working directory.</p>
+</div>
+<p><strong>Model execution on Linux</strong></p>
+<p>Open a command shell on Linux host and run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make sure environment is setup as per instructions, or can cd into bin folder on Linux host</span>
+<span class="nb">cd</span><span class="w"> </span>&lt;QNN_SDK_ROOT&gt;<span class="se">\b</span>in<span class="se">\x</span>86_64-linux-clang
+./genie-t2e-run<span class="w"> </span>-c<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>bge-large-genaitransformer.json&gt;
+<span class="w">                </span>-p<span class="w"> </span><span class="s2">&quot;Tell me about Qualcomm&quot;</span>
+</pre></div>
+</div>
+<p><strong>Model execution on Android</strong></p>
+<p>Open a command shell on Linux host and run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># make sure a test device is connected</span>
+adb<span class="w"> </span>devices
+
+<span class="c1"># push artifacts to device</span>
+adb<span class="w"> </span>push<span class="w"> </span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span>/bin/aarch64-android/genie-t2e-run<span class="w"> </span>/data/local/tmp/
+adb<span class="w"> </span>push<span class="w"> </span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span>/lib/aarch64-android/libGenie.so<span class="w"> </span>/data/local/tmp/
+adb<span class="w"> </span>push<span class="w"> </span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span>/lib/aarch64-android/libQnnGenAiTransformer.so<span class="w"> </span>/data/local/tmp/
+adb<span class="w"> </span>push<span class="w"> </span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span>/lib/aarch64-android/libQnnGenAiTransformerCpuOpPkg.so<span class="w"> </span>/data/local/tmp/
+adb<span class="w"> </span>push<span class="w"> </span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span>/lib/aarch64-android/libQnnGenAiTransformerModel.so<span class="w"> </span>/data/local/tmp/
+adb<span class="w"> </span>push<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>tokenizer.json&gt;<span class="w"> </span>/data/local/tmp/
+adb<span class="w"> </span>push<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>bge-large-genaitransformer.json&gt;<span class="w"> </span>/data/local/tmp/
+adb<span class="w"> </span>push<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>model<span class="w"> </span>bin<span class="w"> </span>file,<span class="w"> </span>e.g.<span class="w"> </span>&lt;path-to-downloaded-BGE-model-directory&gt;/model.bin&gt;<span class="w"> </span>/data/local/tmp/
+
+<span class="c1"># open adb shell</span>
+adb<span class="w"> </span>shell
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/data/local/tmp/
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:<span class="nv">$PATH</span>
+
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$LD_LIBRARY_PATH</span>
+./genie-t2e-run<span class="w"> </span>-c<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>bge-large-genaitransformer.json&gt;
+<span class="w">                </span>-p<span class="w"> </span><span class="s2">&quot;Tell me about Qualcomm&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../../../engine/engine.html" class="btn btn-neutral float-right" title="Genie Engine" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../htp/htp.html" class="btn btn-neutral float-left" title="QNN HTP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

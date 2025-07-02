@@ -148,7 +148,7 @@ poetry.toml
 /run-chat.sh
 
 HEXAGON_Tools/
-prebuilts/QNN_SDK/qairt/2.35.0.250530/
+#prebuilts/QNN_SDK/qairt/2.35.0.250530/
 prebuilts/QNN_SDK/v2.35.0.250530.zip
 prebuilts/Hexagon_SDK/minimal-hexagon-sdk-6.2.0.1.xz
 

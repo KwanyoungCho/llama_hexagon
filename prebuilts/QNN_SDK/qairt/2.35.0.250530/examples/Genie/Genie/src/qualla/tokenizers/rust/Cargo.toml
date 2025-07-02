@@ -1,0 +1,22 @@
+#==============================================================================
+#
+#  Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+#  All rights reserved.
+#  Confidential and Proprietary - Qualcomm Technologies, Inc.
+#
+#==============================================================================
+
+[package]
+name = "tokenizers_capi"
+version = "0.1.0"
+edition = "2018"
+description = "Rust implementation for C-wrappers in tokenizers-capi.h"
+
+[lib]
+crate-type = ["staticlib"]
+
+[dependencies]
+tokenizers = { version = "0.20.0", default-features = false, features = ["onig"] }
+
+[profile.release]
+lto = true

@@ -1,0 +1,42 @@
+version
+pipeline config create pipelineConfig
+pipeline create GeniePipeline pipelineConfig
+
+#Image Encoder
+node config create imageEncoderConfig siglip-htp.json
+node create imageEncoder imageEncoderConfig
+node applyLora imageEncoder primary siglip_amazon.bin
+#node applyLora imageEncoder primary siglip_default_adapter.bin
+node setLoraStrength imageEncoder primary  lora_alpha 1.2
+
+#LUT Encoder
+node config create lutEncoderConfig text-encoder.json
+node create lutEncoder lutEncoderConfig
+
+#Text Generator
+node config create textGeneratorConfig glm-4v-htp.json
+node create textGenerator textGeneratorConfig
+node applyLora textGenerator primary ar1_cl4096_1_of_2-ar128_cl4096_1_of_2_amazon.bin
+#node applyLora textGenerator primary ar1_cl4096_1_of_2-ar128_cl4096_1_of_2_default_adapter.bin
+node setLoraStrength textGenerator primary  lora_alpha 1.2
+node set textCallback textGenerator GENIE_NODE_TEXT_GENERATOR_TEXT_OUTPUT
+
+#Pipeline add and connect calls
+pipeline add GeniePipeline imageEncoder
+pipeline add GeniePipeline lutEncoder
+pipeline add GeniePipeline textGenerator
+
+pipeline connect GeniePipeline imageEncoder GENIE_NODE_IMAGE_ENCODER_EMBEDDING_OUTPUT textGenerator GENIE_NODE_TEXT_GENERATOR_EMBEDDING_INPUT
+pipeline connect GeniePipeline lutEncoder GENIE_NODE_TEXT_ENCODER_EMBEDDING_OUTPUT textGenerator GENIE_NODE_TEXT_GENERATOR_EMBEDDING_INPUT
+
+node set text lutEncoder GENIE_NODE_TEXT_ENCODER_TEXT_INPUT "You are a knowledgeable and friendly assistant who provides helpful and accurate information\\n<|user|>"
+#node set text lutEncoder GENIE_NODE_TEXT_ENCODER_TEXT_INPUT "<|system|>You are an expert product description writer for Amazon.\\n<|user|>"
+node set image imageEncoder GENIE_NODE_IMAGE_ENCODER_IMAGE_INPUT preprocessed_image_dog.raw
+node set text lutEncoder GENIE_NODE_TEXT_ENCODER_TEXT_INPUT "Write text describing the image.\\n<|assistant|>\\n"
+
+pipeline execute GeniePipeline
+
+node free imageEncoder
+node free lutEncoder
+node free textGenerator
+pipeline free GeniePipeline

@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Function GenieSamplerConfig_setParam &mdash; Qualcomm® Gen AI Inference Extensions</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Function GenieTokenizer_decode" href="function_GenieTokenizer_8h_1a78df4f45c5196dd88ec7d42e9fef80a5.html" />
+    <link rel="prev" title="Function GenieSamplerConfig_free" href="function_GenieSampler_8h_1af22e7696884a30247a226ccbfabe3a16.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Gen AI Inference Extensions
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.35.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/support/support.html">Support</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../general/library/library.html">Library</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../general/library/library.html#genie-c-api">Genie C API</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="api_root.html">Genie C API</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="api_root.html#class-hierarchy">Class Hierarchy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api_root.html#file-hierarchy">File Hierarchy</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="api_root.html#full-api">Full API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../general/library/library.html#thread-safety">Thread safety</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/library/library.html#components">Components</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools/tools.html">Tools</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Gen AI Inference Extensions</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../general/library/library.html">Library</a> &raquo;</li>
+        
+          <li><a href="api_root.html">Genie C API</a> &raquo;</li>
+        
+      <li>Function GenieSamplerConfig_setParam</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="function-geniesamplerconfig-setparam">
+<span id="exhale-function-geniesampler-8h-1aaff7bb2ad2731bed8d52b57961156b52"></span><h1>Function GenieSamplerConfig_setParam<a class="headerlink" href="#function-geniesamplerconfig-setparam" title="Permalink to this heading">¶</a></h1>
+<ul class="simple">
+<li><p>Defined in <a class="reference internal" href="file_include_Genie_GenieSampler.h.html#file-include-genie-geniesampler-h"><span class="std std-ref">File GenieSampler.h</span></a></p></li>
+</ul>
+<div class="section" id="function-documentation">
+<h2>Function Documentation<a class="headerlink" href="#function-documentation" title="Permalink to this heading">¶</a></h2>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv427GenieSamplerConfig_setParamK27GenieSamplerConfig_Handle_tPKcPKc">
+<span id="_CPPv327GenieSamplerConfig_setParamK27GenieSamplerConfig_Handle_tPKcPKc"></span><span id="_CPPv227GenieSamplerConfig_setParamK27GenieSamplerConfig_Handle_tPKcPKc"></span><span id="GenieSamplerConfig_setParam__GenieSamplerConfig_Handle_tC.cCP.cCP"></span><span class="target" id="GenieSampler_8h_1aaff7bb2ad2731bed8d52b57961156b52"></span><a class="reference internal" href="typedef_GenieCommon_8h_1a3c72aa3470859cd811d86c07d70d672b.html#_CPPv414Genie_Status_t" title="Genie_Status_t"><span class="n"><span class="pre">Genie_Status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GenieSamplerConfig_setParam</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_GenieSampler_8h_1a70f5aa843e182ae70f5163df5af0609f.html#_CPPv427GenieSamplerConfig_Handle_t" title="GenieSamplerConfig_Handle_t"><span class="n"><span class="pre">GenieSamplerConfig_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">configHandle</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">keyStr</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">valueStr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427GenieSamplerConfig_setParamK27GenieSamplerConfig_Handle_tPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A function to set sampler params(s) associated with configHandle. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>configHandle</strong> – <strong>[in]</strong> A sampler config handle.</p></li>
+<li><p><strong>keyStr</strong> – <strong>[in]</strong> A string indicating the sampler parameter to update. If NULL, valueStr must have the entire sampler configuration string. See SDK documentation for valid keys.</p></li>
+<li><p><strong>valueStr</strong> – <strong>[in]</strong> A string that holds the corresponding value of keyStr parameter</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Status code:<ul class="simple">
+<li><p>GENIE_STATUS_SUCCESS: API call was successful.</p></li>
+<li><p>GENIE_STATUS_ERROR_INVALID_HANDLE: Sampler config handle is invalid.</p></li>
+<li><p>GENIE_STATUS_ERROR_INVALID_ARGUMENT: At least one argument is invalid.</p></li>
+<li><p>GENIE_STATUS_ERROR_SET_PARAM_FAILED: Set Param failure. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="function_GenieTokenizer_8h_1a78df4f45c5196dd88ec7d42e9fef80a5.html" class="btn btn-neutral float-right" title="Function GenieTokenizer_decode" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="function_GenieSampler_8h_1af22e7696884a30247a226ccbfabe3a16.html" class="btn btn-neutral float-left" title="Function GenieSamplerConfig_free" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

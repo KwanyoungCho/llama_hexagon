@@ -1,0 +1,54 @@
+{
+  "dialog" : {
+    "version" : 1,
+    "type" : "basic",
+    "max-num-tokens" : 200,
+    "embedding" : {
+      "version" : 1,
+      "size" : 4096,
+      "datatype" : "float32"
+    },
+    "context" : {
+      "version" : 1,
+      "size" : 4096,
+      "n-vocab" : 32064,
+      "bos-token" : 1,
+      "eos-token" : 2
+    },
+    "sampler" : {
+      "version" : 1,
+      "seed" : 42,
+      "temp" : 0.8,
+      "top-k" : 40,
+      "top-p" : 0.95,
+      "greedy" : false
+    },
+    "tokenizer" : {
+      "version" : 1,
+      "path" : "your/path/to/tokenizer_file.json"
+    },
+    "engine" : {
+      "version" : 1,
+      "n-threads" : 6,
+      "backend" : {
+        "version" : 1,
+        "type" : "QnnGenAiTransformer",
+        "QnnGenAiTransformer" : {
+          "version" : 1,
+          "n-layer": 32,
+          "n-embd": 4096,
+          "n-heads": 32,
+          "model-input" : "embeddings"
+        }
+      },
+      "model" : {
+        "version" : 1,
+        "type" : "library",
+        "library" : {
+          "version" : 1,
+          "model-bin" : "your/path/to/model/file.bin"
+        }
+      }
+    }
+  }
+}

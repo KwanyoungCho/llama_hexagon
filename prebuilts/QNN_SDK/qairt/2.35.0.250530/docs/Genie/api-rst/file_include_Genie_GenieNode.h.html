@@ -1,0 +1,289 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>File GenieNode.h &mdash; Qualcomm® Gen AI Inference Extensions</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Gen AI Inference Extensions
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.35.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/support/support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/library/library.html">Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools/tools.html">Tools</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Gen AI Inference Extensions</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>File GenieNode.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="file-genienode-h">
+<span id="file-include-genie-genienode-h"></span><h1>File GenieNode.h<a class="headerlink" href="#file-genienode-h" title="Permalink to this heading">¶</a></h1>
+<p>↰ <a class="reference internal" href="dir_include_Genie.html#dir-include-genie"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">include/Genie</span></code>)</p>
+<div class="contents local topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definition-include-genie-genienode-h" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">include/Genie/GenieNode.h</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#includes" id="id2">Includes</a></p></li>
+<li><p><a class="reference internal" href="#included-by" id="id3">Included By</a></p></li>
+<li><p><a class="reference internal" href="#enums" id="id4">Enums</a></p></li>
+<li><p><a class="reference internal" href="#functions" id="id5">Functions</a></p></li>
+<li><p><a class="reference internal" href="#typedefs" id="id6">Typedefs</a></p></li>
+</ul>
+</div>
+<div class="section" id="definition-include-genie-genienode-h">
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">include/Genie/GenieNode.h</span></code>)<a class="headerlink" href="#definition-include-genie-genienode-h" title="Permalink to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="program_listing_file_include_Genie_GenieNode.h.html">Program Listing for File GenieNode.h</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="includes">
+<h2>Includes<a class="headerlink" href="#includes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GenieCommon.h</span></code> (<a class="reference internal" href="file_include_Genie_GenieCommon.h.html#file-include-genie-geniecommon-h"><span class="std std-ref">File GenieCommon.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GenieEngine.h</span></code> (<a class="reference internal" href="file_include_Genie_GenieEngine.h.html#file-include-genie-genieengine-h"><span class="std std-ref">File GenieEngine.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GenieLog.h</span></code> (<a class="reference internal" href="file_include_Genie_GenieLog.h.html#file-include-genie-genielog-h"><span class="std std-ref">File GenieLog.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GenieProfile.h</span></code> (<a class="reference internal" href="file_include_Genie_GenieProfile.h.html#file-include-genie-genieprofile-h"><span class="std std-ref">File GenieProfile.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GenieSampler.h</span></code> (<a class="reference internal" href="file_include_Genie_GenieSampler.h.html#file-include-genie-geniesampler-h"><span class="std std-ref">File GenieSampler.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GenieTokenizer.h</span></code> (<a class="reference internal" href="file_include_Genie_GenieTokenizer.h.html#file-include-genie-genietokenizer-h"><span class="std std-ref">File GenieTokenizer.h</span></a>)</p></li>
+</ul>
+</div>
+<div class="section" id="included-by">
+<h2>Included By<a class="headerlink" href="#included-by" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="file_include_Genie_GeniePipeline.h.html#file-include-genie-geniepipeline-h"><span class="std std-ref">File GeniePipeline.h</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="enums">
+<h2>Enums<a class="headerlink" href="#enums" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="enum_GenieNode_8h_1a8c31e6344f35d3b77d6169f68e9c544f.html#exhale-enum-genienode-8h-1a8c31e6344f35d3b77d6169f68e9c544f"><span class="std std-ref">Enum GenieNode_IOName_t</span></a></p></li>
+<li><p><a class="reference internal" href="enum_GenieNode_8h_1a83cb72a74ba29d73dae6b7a91b952584.html#exhale-enum-genienode-8h-1a83cb72a74ba29d73dae6b7a91b952584"><span class="std std-ref">Enum GenieNode_TextOutput_SentenceCode_t</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="function_GenieNode_8h_1a7816a2b9da5d947efd895e958a815924.html#exhale-function-genienode-8h-1a7816a2b9da5d947efd895e958a815924"><span class="std std-ref">Function GenieNode_applyLora</span></a></p></li>
+<li><p><a class="reference internal" href="function_GenieNode_8h_1a6587226e60aaf6e6d711d4fdc7e8e22d.html#exhale-function-genienode-8h-1a6587226e60aaf6e6d711d4fdc7e8e22d"><span class="std std-ref">Function GenieNode_bindEngine</span></a></p></li>
+<li><p><a class="reference internal" href="function_GenieNode_8h_1a67b4122c281f82cc01a814d5dc075c14.html#exhale-function-genienode-8h-1a67b4122c281f82cc01a814d5dc075c14"><span class="std std-ref">Function GenieNode_create</span></a></p></li>
+<li><p><a class="reference internal" href="function_GenieNode_8h_1a2d497783a5360b22dcf3dee7f978b06d.html#exhale-function-genienode-8h-1a2d497783a5360b22dcf3dee7f978b06d"><span class="std std-ref">Function GenieNode_free</span></a></p></li>
+<li><p><a class="reference internal" href="function_GenieNode_8h_1ad0cc5704b2539b1728f6b488c3440fa5.html#exhale-function-genienode-8h-1ad0cc5704b2539b1728f6b488c3440fa5"><span class="std std-ref">Function GenieNode_getEngine</span></a></p></li>
+<li><p><a class="reference internal" href="function_GenieNode_8h_1a4964027b18520f0981b54442ab72cc39.html#exhale-function-genienode-8h-1a4964027b18520f0981b54442ab72cc39"><span class="std std-ref">Function GenieNode_getSampler</span></a></p></li>
+<li><p><a class="reference internal" href="function_GenieNode_8h_1a639445c2fd7c57d768faf960d947021f.html#exhale-function-genienode-8h-1a639445c2fd7c57d768faf960d947021f"><span class="std std-ref">Function GenieNode_getTokenizer</span></a></p></li>
+<li><p><a class="reference internal" href="function_GenieNode_8h_1a7a0a965290ea5a8208b67d9e5c35a3d4.html#exhale-function-genienode-8h-1a7a0a965290ea5a8208b67d9e5c35a3d4"><span class="std std-ref">Function GenieNode_setData</span></a></p></li>
+<li><p><a class="reference internal" href="function_GenieNode_8h_1a134378aa01d6c5fdfc30632841f531af.html#exhale-function-genienode-8h-1a134378aa01d6c5fdfc30632841f531af"><span class="std std-ref">Function GenieNode_setEmbeddingCallback</span></a></p></li>
+<li><p><a class="reference internal" href="function_GenieNode_8h_1a56de1f9fc21d9c0f0beea26cce541628.html#exhale-function-genienode-8h-1a56de1f9fc21d9c0f0beea26cce541628"><span class="std std-ref">Function GenieNode_setLoraStrength</span></a></p></li>
+<li><p><a class="reference internal" href="function_GenieNode_8h_1af8f0d565296cbad72a4f896f6e2c16f8.html#exhale-function-genienode-8h-1af8f0d565296cbad72a4f896f6e2c16f8"><span class="std std-ref">Function GenieNode_setTextCallback</span></a></p></li>
+<li><p><a class="reference internal" href="function_GenieNode_8h_1ad744d5c3dbb87c33edf452bc5b8672f8.html#exhale-function-genienode-8h-1ad744d5c3dbb87c33edf452bc5b8672f8"><span class="std std-ref">Function GenieNodeConfig_bindLogger</span></a></p></li>
+<li><p><a class="reference internal" href="function_GenieNode_8h_1a2cc127e8199cecc6c1e4d6bba2df4895.html#exhale-function-genienode-8h-1a2cc127e8199cecc6c1e4d6bba2df4895"><span class="std std-ref">Function GenieNodeConfig_bindProfiler</span></a></p></li>
+<li><p><a class="reference internal" href="function_GenieNode_8h_1a16fbd1acc54ebfaf18dbef41bc56483c.html#exhale-function-genienode-8h-1a16fbd1acc54ebfaf18dbef41bc56483c"><span class="std std-ref">Function GenieNodeConfig_createFromJson</span></a></p></li>
+<li><p><a class="reference internal" href="function_GenieNode_8h_1a2c64ec143da2dbbd2241854833e86c41.html#exhale-function-genienode-8h-1a2c64ec143da2dbbd2241854833e86c41"><span class="std std-ref">Function GenieNodeConfig_free</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="typedefs">
+<h2>Typedefs<a class="headerlink" href="#typedefs" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="typedef_GenieNode_8h_1a66492d38bb5c81ea8098ce6260d74b39.html#exhale-typedef-genienode-8h-1a66492d38bb5c81ea8098ce6260d74b39"><span class="std std-ref">Typedef GenieNode_EmbeddingOutputCallback_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_GenieNode_8h_1a8a4a050a672cb2e9b5e640cceac79052.html#exhale-typedef-genienode-8h-1a8a4a050a672cb2e9b5e640cceac79052"><span class="std std-ref">Typedef GenieNode_Handle_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_GenieNode_8h_1a54430c23b9611b3771aa4eaba7b8805c.html#exhale-typedef-genienode-8h-1a54430c23b9611b3771aa4eaba7b8805c"><span class="std std-ref">Typedef GenieNode_TextOutput_Callback_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_GenieNode_8h_1ab77f586d59718362531e4d23d589406b.html#exhale-typedef-genienode-8h-1ab77f586d59718362531e4d23d589406b"><span class="std std-ref">Typedef GenieNodeConfig_Handle_t</span></a></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

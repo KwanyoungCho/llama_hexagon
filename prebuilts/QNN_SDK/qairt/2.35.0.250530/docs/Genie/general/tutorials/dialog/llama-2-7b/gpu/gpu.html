@@ -1,0 +1,286 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>QNN GPU - Llama 2 7B - Android &mdash; Qualcomm® Gen AI Inference Extensions</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../../../../../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="KV Share Dialog" href="../kvshare/kvshare.html" />
+    <link rel="prev" title="Windows" href="../genai/windows/windows.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> Qualcomm® Gen AI Inference Extensions
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.35.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../introduction/introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../setup.html">Setup</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../dialog.html">Genie Dialog</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../llama-2-7b.html">Llama 2 7B</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../llama-2-7b.html#tutorials">Tutorials</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../llama-3-3b/llama-3-3b.html">Llama 3 3B</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../signal/signal.html">Query Cancellation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../rewind/rewind.html">KV$ Rewind</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../stopseq/stopseq.html">Updating the Stop Sequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../token_query/token_query.html">Token Query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../update_sampler/update_sampler.html">Updating the Sampler Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../embedding/embedding.html">Genie Embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../engine/engine.html">Genie Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../logger/logger.html">Genie Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../profile/profile.html">Genie Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pipeline/pipeline.html">Genie Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../source_code_examples/source_code_examples.html">Source Code Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../support/support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../library/library.html">Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/tools.html">Tools</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">Qualcomm® Gen AI Inference Extensions</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../tutorials.html">Tutorials</a> &raquo;</li>
+        
+          <li><a href="../../dialog.html">Dialog Tutorials</a> &raquo;</li>
+        
+          <li><a href="../llama-2-7b.html">Llama 2 7B</a> &raquo;</li>
+        
+      <li>QNN GPU - Llama 2 7B - Android</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qnn-gpu-llama-2-7b-android">
+<span id="genie-tutorial-llama-2-7b-gpu"></span><h1>QNN GPU - Llama 2 7B - Android<a class="headerlink" href="#qnn-gpu-llama-2-7b-android" title="Permalink to this heading">¶</a></h1>
+<p>The following tutorial demonstrates running a Llama 2 7B basic dialog on Android with the the QNN GPU backend using
+<a class="reference internal" href="../../../../tools/genie-t2t-run.html#genie-t2t-run"><span class="std std-ref">genie-t2t-run</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section assumes that the QNN GPU context binaries have been obtained via the QAIRT SDK workflow.</p>
+</div>
+<div class="section" id="dialog-json-configuration">
+<h2>Dialog JSON configuration<a class="headerlink" href="#dialog-json-configuration" title="Permalink to this heading">¶</a></h2>
+<p>See <a class="reference internal" href="../../../../library/dialog/json.html#genie-dialog-json-config-string"><span class="std std-ref">Genie Dialog JSON configuration string</span></a> for details on the fields and what
+they mean. An example JSON config for this tutorial can be found at
+<code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Genie/configs/llama2-7b/llama2-7b-gpu.json</span></code>. Note that the tokenizer path and
+context binary fields will need to be updated based on your actual preparation steps.</p>
+</div>
+<div class="section" id="inference">
+<h2>Inference<a class="headerlink" href="#inference" title="Permalink to this heading">¶</a></h2>
+<p>To run on QNN GPU backend, open a command shell on android and run the following.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>adb<span class="w"> </span>shell<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/data/local/tmp/
+adb<span class="w"> </span>push<span class="w"> </span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span>/bin/aarch64-android/genie-t2t-run<span class="w"> </span>/data/local/tmp/
+adb<span class="w"> </span>push<span class="w"> </span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span>/lib/aarch64-android/libGenie.so<span class="w"> </span>/data/local/tmp/
+adb<span class="w"> </span>push<span class="w"> </span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span>/lib/aarch64-android/libQnnGpu.so<span class="w"> </span>/data/local/tmp/
+adb<span class="w"> </span>push<span class="w"> </span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span>/lib/aarch64-android/libQnnSystem.so<span class="w"> </span>/data/local/tmp/
+adb<span class="w"> </span>push<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>llama2-7b-gpu.json&gt;<span class="w"> </span>/data/local/tmp/
+adb<span class="w"> </span>push<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>tokenizer.json&gt;<span class="w"> </span>/data/local/tmp/
+adb<span class="w"> </span>push<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>model<span class="w"> </span>bin<span class="w"> </span>file&gt;<span class="w"> </span>/data/local/tmp/
+
+<span class="c1"># open adb shell</span>
+adb<span class="w"> </span>shell
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/data/local/tmp/
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/data/local/tmp/:<span class="nv">$PATH</span>
+
+<span class="nb">cd</span><span class="w"> </span>/data/local/tmp/
+./genie-t2t-run<span class="w"> </span>-c<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>llama2-7b-gpu.json&gt;<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Tell me about Qualcomm&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../kvshare/kvshare.html" class="btn btn-neutral float-right" title="KV Share Dialog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../genai/windows/windows.html" class="btn btn-neutral float-left" title="Windows" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

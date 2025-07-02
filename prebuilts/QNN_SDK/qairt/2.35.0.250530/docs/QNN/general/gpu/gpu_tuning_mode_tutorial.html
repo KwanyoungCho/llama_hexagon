@@ -1,0 +1,380 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>QNN GPU Tuning Mode Tutorial &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Saver" href="../saver/saver_backend.html" />
+    <link rel="prev" title="QNN GPU QnnMem API Tutorial" href="gpu_qnnmem_api_tutorial.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.35.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../backend.html">Backend</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../backend.html#backend-specific-pages">Backend Specific Pages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../dsp/dsp_backend.html">DSP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../htp/htp_backend.html">HTP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hta/hta_backend.html">HTA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lpai/lpai_backend.html">LPAI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cpu/cpu_backend.html">CPU</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="gpu_backend.html">GPU</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="gpu_backend.html#api-specializations">API Specializations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gpu_backend.html#operation-limitations">Operation Limitations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gpu_backend.html#kernel-persistence">Kernel Persistence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gpu_backend.html#precision-mode">Precision Mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gpu_backend.html#performance-hints">Performance Hints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gpu_backend.html#context-configs">Context Configs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gpu_backend.html#backend-configs">Backend Configs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gpu_backend.html#disabling-optimizations">Disabling Optimizations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gpu_backend.html#qnn-gpu-backend-extensions">QNN GPU Backend Extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gpu_backend.html#custom-profile-reader">Custom Profile Reader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gpu_backend.html#op-package-writing-guidelines">Op Package Writing Guidelines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gpu_backend.html#qnn-mem-api-tutorial-for-gpu">QNN Mem API Tutorial for GPU</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="gpu_backend.html#tuning-mode-beta">Tuning Mode (Beta)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gpu_backend.html#other-notes">Other Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../saver/saver_backend.html">Saver</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tflite_delegate.html">QNN TFLite Delegate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../revision_history.html">Revision History</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../backend.html">Backend</a> &raquo;</li>
+        
+          <li><a href="gpu_backend.html">GPU</a> &raquo;</li>
+        
+      <li>QNN GPU Tuning Mode Tutorial</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qnn-gpu-tuning-mode-tutorial">
+<span id="qnngputuningmode-tutorial"></span><h1>QNN GPU Tuning Mode Tutorial<a class="headerlink" href="#qnn-gpu-tuning-mode-tutorial" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<p>This tutorial demonstrates the usage of the QNN GPU Tuning Mode. The following steps introduce different
+components used for tuning and their respective configurations to tune various models.</p>
+<p>Below is a representation of high level call-flow of the tuning mode:</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../_static/resources/qnn_gpu_tuning_mode.png"><img alt="../../_static/resources/qnn_gpu_tuning_mode.png" src="../../_static/resources/qnn_gpu_tuning_mode.png" style="width: 1000px;" /></a>
+</div>
+<p><strong>Performance Cache</strong></p>
+<p>The performance cache file contains the mapping of each kernel to its performance numbers and currenty supported tunable parameters.
+Tunable parameters include:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="../../api-rst/structQnnGpu__KernelTuningConfig__t.html#exhale-struct-structqnngpu-kerneltuningconfig-t"><span class="std std-ref">LocalWorkSize</span></a></p></li>
+</ul>
+<dl class="simple">
+<dt><strong>Initialization and Usage:</strong></dt><dd><ul class="simple">
+<li><p>When a backend is initialized with custom config <a class="reference internal" href="../../api-rst/structQnnGpuBackend__CustomConfig__t.html#exhale-struct-structqnngpubackend-customconfig-t"><span class="std std-ref">PerformanceCacheDir</span></a>, the cache file will be created and stored in the given directory,
+unique to each device tier. Refer the file management below for more details on the cache file.</p></li>
+<li><p>During kernel profiling, the model references these cached entries to avoid profiling the performance numbers, thereby minimizing the tuning time.</p></li>
+</ul>
+</dd>
+<dt><strong>File Management:</strong></dt><dd><ul class="simple">
+<li><p>If the cache file does not exist in the specified directory, it will be created automatically based on the device the model is tuned.</p></li>
+<li><p>If an existing cache file is found and <a class="reference internal" href="../../api-rst/structQnnGpuBackend__CustomConfig__t.html#exhale-struct-structqnngpubackend-customconfig-t"><span class="std std-ref">InvalidatePerformanceCache</span></a> is set to true, the file is deleted and a new one is created.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+<dl>
+<dt>Steps to set Custom Config for different modes (enable tuning, set performanceCache directory, invalidate performanceCache):</dt><dd><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">QnnGpuBackend_CustomConfig_t</span><span class="w"> </span><span class="n">gpuTuningEnableConfig</span><span class="p">;</span>
+<span class="n">QnnGpuBackend_CustomConfig_t</span><span class="w"> </span><span class="n">gpuTuningPerformanceCacheConfig</span><span class="p">;</span>
+<span class="n">QnnGpuBackend_CustomConfig_t</span><span class="w"> </span><span class="n">gpuTuningInvalidatePerformanceCacheConfig</span><span class="p">;</span>
+
+<span class="c1">// enable tuning mode</span>
+<span class="n">gpuTuningEnableConfig</span><span class="p">.</span><span class="n">option</span><span class="w">                                </span><span class="o">=</span><span class="w"> </span><span class="n">QNN_GPU_BACKEND_CONFIG_OPTION_ENABLE_TUNING_MODE</span><span class="p">;</span>
+<span class="n">gpuTuningEnableConfig</span><span class="p">.</span><span class="n">enableTuningMode</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+
+<span class="c1">// set performanceCache directory</span>
+<span class="n">gpuTuningPerformanceCacheConfig</span><span class="p">.</span><span class="n">option</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="n">QNN_GPU_BACKEND_CONFIG_OPTION_PERFORMANCE_CACHE_DIR</span><span class="p">;</span>
+<span class="n">gpuTuningPerformanceCacheConfig</span><span class="p">.</span><span class="n">performanceCacheDir</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;path_to_user_supplied_directory&quot;</span><span class="p">;</span>
+
+<span class="c1">// invalidate performanceCache</span>
+<span class="n">gpuTuningPerformanceCacheConfig</span><span class="p">.</span><span class="n">option</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="n">QNN_GPU_BACKEND_CONFIG_OPTION_INVALIDATE_PERFORMANCE_CACHE</span><span class="p">;</span>
+<span class="n">gpuTuningPerformanceCacheConfig</span><span class="p">.</span><span class="n">invalidatePerformanceCache</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Ensure that the cache file directory has the necessary permissions.</p></li>
+<li><p>Set the invalidate flag only when you need to discard the outdated cache for a fresh cache build.</p></li>
+<li><p>Ensure the tuning mode is enabled when performanceCacheDir or invalidatePerformanceCache are to be set.</p></li>
+</ul>
+</div>
+<p><strong>Target Server</strong></p>
+<p>The target server facilitates the client-server relationship. The main operations are: compiling, profiling, and
+executing kernels. This client-server communication is done via tcp connection along with MsgPack to offload tasks.</p>
+<dl>
+<dt>The server performs the following tasks:</dt><dd><ul class="simple">
+<li><p>Compile Kernel: compile an OpenCL kernel and return the compiled bin for on-host context serialization.</p></li>
+<li><p>Profile Kernel: profile kernel variants for different tunable parameters and returns the most performant kernel.</p></li>
+<li><p>Execute Kernel: executes finalize kernels on device (weights rearrangement, static kernels, etc.).</p></li>
+</ul>
+</dd>
+<dt>The client performs the following tasks:</dt><dd><ul class="simple">
+<li><p>Connects to the target server</p></li>
+<li><p>Processes the received data from the server.</p></li>
+</ul>
+</dd>
+<dt>Steps to run Target Server:</dt><dd><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">forward</span><span class="w"> </span><span class="n">tcp</span><span class="o">:</span><span class="mi">22598</span><span class="w"> </span><span class="n">tcp</span><span class="o">:</span><span class="mi">22598</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$SDK_ROOT</span><span class="o">/</span><span class="n">$DEVICE_TARGET</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">gpu</span><span class="o">-</span><span class="n">target</span><span class="o">-</span><span class="n">server</span><span class="w"> </span><span class="n">$USER_SELECTED_LOCATION</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">shell</span><span class="w"> </span><span class="s">&quot;$USER_SELECTED_LOCATION/qnn-gpu-target-server</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>If the device is attached to a remote host, set the environment variable <code class="docutils literal notranslate"><span class="pre">TARGET_SERVER_SOCKET=&lt;hostname&gt;:&lt;port&gt;</span></code></p></li>
+</ul>
+</div>
+<p><strong>Context Binary Generator</strong></p>
+<p>With the target server running, the user can now tune a specific model by generating a context binary cache on a
+different terminal.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">qnn</span><span class="o">-</span><span class="n">context</span><span class="o">-</span><span class="n">binary</span><span class="o">-</span><span class="n">generator</span><span class="w"> </span><span class="o">--</span><span class="n">model</span><span class="w"> </span><span class="o">&lt;</span><span class="n">qnn_model</span><span class="p">.</span><span class="n">so</span><span class="o">&gt;</span>
+<span class="w">                  </span><span class="o">--</span><span class="n">backend</span><span class="w"> </span><span class="o">&lt;</span><span class="n">path_to_backend_library</span><span class="o">&gt;/</span><span class="n">libQnnGpu</span><span class="p">.</span><span class="n">so</span><span class="w"> </span>\
+<span class="w">                  </span><span class="o">--</span><span class="n">binary_file</span><span class="w"> </span><span class="n">context_cache</span><span class="w"> </span>\
+<span class="w">                  </span><span class="o">--</span><span class="n">config_file</span><span class="w"> </span><span class="o">&lt;</span><span class="n">path_to_JSON_of_backend_extensions</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>This generates a context binary cache with the best performing kernels, resulting in an optimized model.</p>
+<p>A sample json used in the context binary generation for tuning mode is provided below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="s">&quot;tuning_mode&quot;</span><span class="o">:</span><span class="w"> </span><span class="nb">true</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;performance_cache_dir&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;path_to_user_supplied_directory&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;invalidate_performance_cache&quot;</span><span class="o">:</span><span class="w"> </span><span class="nb">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Known limitations</dt><dd><ul>
+<li><p>Current support only for QAIRT internal GPU OpPackage.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../saver/saver_backend.html" class="btn btn-neutral float-right" title="Saver" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="gpu_qnnmem_api_tutorial.html" class="btn btn-neutral float-left" title="QNN GPU QnnMem API Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2025, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

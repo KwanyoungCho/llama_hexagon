@@ -1,0 +1,89 @@
+#=============================================================================
+#
+#  Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+#  All Rights Reserved.
+#  Confidential and Proprietary - Qualcomm Technologies, Inc.
+#
+#=============================================================================
+{
+  global:
+    Genie_getApiMajorVersion*;
+    Genie_getApiMinorVersion*;
+    Genie_getApiPatchVersion*;
+    GenieDialogConfig_createFromJson*;
+    GenieDialogConfig_bindLogger*;
+    GenieDialogConfig_bindProfiler*;
+    GenieDialogConfig_free*;
+    GenieDialog_create*;
+    GenieDialog_query*;
+    GenieDialog_embeddingQuery*;
+    GenieDialog_tokenQuery*;
+    GenieDialog_save*;
+    GenieDialog_restore*;
+    GenieDialog_reset*;
+    GenieDialog_applyLora*;
+    GenieDialog_setLoraStrength*;
+    GenieDialog_getSampler*;
+    GenieDialog_getTokenizer*;
+    GenieDialog_setStopSequence*;
+    GenieDialog_signal*;
+    GenieDialog_setPriority*;
+    GenieDialog_setOemKey*;
+    GenieDialog_getEngine*;
+    GenieDialog_bindEngine*;
+    GenieDialog_free*;
+    GenieEmbeddingConfig_createFromJson*;
+    GenieEmbeddingConfig_bindLogger*;
+    GenieEmbeddingConfig_bindProfiler*;
+    GenieEmbeddingConfig_free*;
+    GenieEmbedding_create*;
+    GenieEmbedding_generate*;
+    GenieEmbedding_free*;
+    GenieLog_create*;
+    GenieLog_free*;
+    GenieNodeConfig_createFromJson*;
+    GenieNodeConfig_bindProfiler*;
+    GenieNodeConfig_bindLogger*;
+    GenieNodeConfig_free*;
+    GenieNode_create*;
+    GenieNode_free*;
+    GenieNode_setTextCallback*;
+    GenieNode_setEmbeddingCallback*;
+    GenieNode_setData*;
+    GenieNode_applyLora*;
+    GenieNode_setLoraStrength*;
+    GenieNode_getSampler*;
+    GenieNode_getTokenizer*;
+    GenieNode_getEngine*;
+    GenieNode_bindEngine*;
+    GeniePipelineConfig_createFromJson*;
+    GeniePipelineConfig_bindProfiler*;
+    GeniePipelineConfig_bindLogger*;
+    GeniePipelineConfig_free*;
+    GeniePipeline_create*;
+    GeniePipeline_save*;
+    GeniePipeline_restore*;
+    GeniePipeline_reset*;
+    GeniePipeline_setPriority*;
+    GeniePipeline_setOemKey*;
+    GeniePipeline_addNode*;
+    GeniePipeline_connect*;
+    GeniePipeline_execute*;
+    GeniePipeline_free*;
+    GenieProfile_create*;
+    GenieProfile_getJsonData*;
+    GenieProfile_free*;
+    GenieSamplerConfig_createFromJson*;
+    GenieSamplerConfig_setParam*;
+    GenieSamplerConfig_free*;
+    GenieSampler_applyConfig*;
+    GenieSampler_registerCallback*;
+    GenieSampler_registerUserDataCallback*;
+    GenieEngineConfig_createFromJson*;
+    GenieEngineConfig_free*;
+    GenieEngine_create*;
+    GenieEngine_free*;
+    GenieTokenizer_encode*;
+    GenieTokenizer_decode*;
+  local: *;
+};

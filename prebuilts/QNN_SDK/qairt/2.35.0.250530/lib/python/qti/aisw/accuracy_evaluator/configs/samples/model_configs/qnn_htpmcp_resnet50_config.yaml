@@ -1,0 +1,129 @@
+model:
+    info:
+        desc: Resnet50 mlcommons reference model used.
+        batchsize: 1
+    globals:
+        count: 50
+        calib: 5 # -1 implies use all calibration images for PGQ.
+
+    dataset:
+        name: ILSVRC2012
+        path: '/home/ml-datasets/imageNet/'
+        inputlist_file: inputlist.txt
+        annotation_file: ground_truth.txt
+        calibration:
+            type: dataset
+            file: calibration.txt
+        transformations:
+            - plugin:
+                  name: filter_dataset
+                  params:
+                      random: False
+                      max_inputs: $count
+                      max_calib: $calib
+
+    preprocessing:
+        transformations:
+            - plugin:
+                    name: resize
+                    params:
+                        dims: 256,256
+                        interp: area
+                        type: imagenet
+
+            - plugin:
+                    name: crop
+                    params:
+                        dims: 224,224
+
+            - plugin:
+                    name: normalize
+                    params:
+                        norm: 1
+                        channel_order: RGB
+                        means:
+                            R: 123.68
+                            G: 116.78
+                            B: 103.94
+
+            - plugin:
+                    name: convert_nchw
+
+            - plugin:
+                    name: create_batch
+
+    inference-engine:
+        model_path: benchmark_mlperf/onnx-custom_uc.mlperf.2104.1.0_resnet50_v1/Source_model/resnet50_v1.onnx
+        simplify_model: True # default
+
+        inference_schemas:
+
+            - inference_schema:
+                name: onnxrt
+                precision: fp32
+                backend: cpu
+                tag: onnxrt_fp32
+
+            - inference_schema:
+                  name: qnn
+                  precision: fp32
+                  target_arch: x86_64-linux-clang
+                  backend: cpu
+                  tag: qnn_fp32
+
+            - inference_schema:
+                name: qnn
+                precision: fp16
+                target_arch: x86_64-linux-clang
+                backend: htp_mcp
+                tag: qnn_fp16
+                backend_extensions:
+                    num_cores: 1
+                    elf_path: lib/hexagon-v68/unsigned/libQnnHtpMcpV68.elf
+                    fp16_relaxed_precision: 1
+                    timeout: 5000
+
+            - inference_schema:
+                name: qnn
+                precision: quant
+                target_arch: x86_64-linux-clang
+                backend: htp_mcp
+                tag: qnn_int8,test_int8
+                backend_extensions:
+                  num_cores: 1
+                  heap_size: 256
+                  elf_path: lib/hexagon-v68/unsigned/libQnnHtpMcpV68.elf
+                  timeout: 5000
+                quantizer_params:
+                  param_quantizer_schema: symmetric
+                  param_quantizer_calibration: min-max # | sqnr | entropy
+                  act_quantizer_calibration: min-max
+                  use_per_channel_quantization: True
+
+        inputs_info:
+            - input_tensor:0:
+                  type: float32
+                  shape: ["*", 3, 224, 224]
+
+        outputs_info:
+            - ArgMax_0:
+                  type: int64
+                  shape: ["*"]
+            - softmax_tensor_0:
+                  type: float32
+                  shape: ["*", 1001]
+
+    verifier:
+        enabled: True #default
+        type: average # default comparator for all outputs
+        tol: 0.001 # default tolerance for all outputs
+
+    metrics:
+        transformations:
+            - plugin:
+                    name: topk
+                    params:
+                        kval: 1,5
+                        softmax_index: 1
+                        round: 7
+                        label_offset: 1

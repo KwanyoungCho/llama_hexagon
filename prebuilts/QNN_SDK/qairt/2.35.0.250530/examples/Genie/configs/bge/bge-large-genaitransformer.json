@@ -1,0 +1,43 @@
+{
+  "embedding" : {
+    "version" : 1,
+    "context": {
+      "version": 1,
+      "n-vocab": 30522,
+      "ctx-size": 512,
+      "embed-size" : 1024,
+      "pad-token" : 0
+    },
+    "prompt": {
+      "version" : 1,
+      "prompt-template": ["[CLS]","[SEP]"]
+    },
+    "tokenizer" : {
+      "version" : 1,
+      "path" : "your/path/to/tokenizer_file.json"
+    },
+    "truncate-input" : true,
+    "engine": {
+      "version": 1,
+      "n-threads" : 10,
+      "backend" : {
+        "version" : 1,
+        "type" : "QnnGenAiTransformer",
+        "QnnGenAiTransformer" : {
+          "version" : 1,
+          "n-layer": 24,
+          "n-embd": 1024,
+          "n-heads": 16
+        }
+      },
+      "model" : {
+        "version" : 1,
+        "type" : "library",
+        "library" : {
+          "version" : 1,
+          "model-bin" : "your/path/to/model/file.bin"
+        }
+      }
+    }
+  }
+}

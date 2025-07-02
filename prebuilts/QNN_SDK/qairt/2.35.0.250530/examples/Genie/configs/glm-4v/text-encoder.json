@@ -1,0 +1,21 @@
+{
+  "text-encoder" : {
+    "version" : 1,
+    "type" : "lut",
+    "lut": {
+      "version": 1,
+      "lut-path": "embedding_int8_lut.bin",
+      "size": 2048,
+      "datatype": "ufixed8",
+      "quant-param": {
+        "scale": 0.001585477963089943,
+        "offset": -129
+      }
+    },
+    "tokenizer": {
+      "version": 1,
+      "path": "tokenizer.json"
+    }
+  }
+}
+

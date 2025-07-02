@@ -1,0 +1,10 @@
+{
+  "sampler" : {
+    "version" : 1,
+    "seed" : 100,
+    "temp" : 1.2,
+    "top-k" : 25,
+    "top-p" : 0.8,
+    "greedy" : false
+  }
+}

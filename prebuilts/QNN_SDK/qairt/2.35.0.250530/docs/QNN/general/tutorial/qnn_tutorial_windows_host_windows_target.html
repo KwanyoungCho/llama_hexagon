@@ -1,0 +1,1067 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>CNN to QNN for Windows Host on Windows Target &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Benchmarking" href="../benchmarking.html" />
+    <link rel="prev" title="CNN to QNN for Windows Host on Linux Target" href="qnn_tutorial_windows_host_linux_target.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.35.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quantization.html">Quantization</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../tutorials.html#getting-started">Getting Started</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="tutorial_convert_execute_cnn_model.html">Tutorial: Converting and executing a CNN model with QNN</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="qnn_tutorial_linux_host.html">CNN to QNN for Linux Host</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="qnn_tutorial_windows_host.html">CNN to QNN for Windows Host</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials.html#advanced">Advanced</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials.html#custom-operators">Custom Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials.html#windows">Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials.html#migrating">Migrating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials.html#lora-low-rank-adaptation">LoRA (Low Rank Adaptation)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tflite_delegate.html">QNN TFLite Delegate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../revision_history.html">Revision History</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../tutorials.html">Tutorials</a> &raquo;</li>
+        
+          <li><a href="tutorial_convert_execute_cnn_model.html">Tutorial: Converting and executing a CNN model with QNN</a> &raquo;</li>
+        
+          <li><a href="qnn_tutorial_windows_host.html">CNN to QNN for Windows Host</a> &raquo;</li>
+        
+      <li>CNN to QNN for Windows Host on Windows Target</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="cnn-to-qnn-for-windows-host-on-windows-target">
+<h1>CNN to QNN for Windows Host on Windows Target<a class="headerlink" href="#cnn-to-qnn-for-windows-host-on-windows-target" title="Permalink to this heading">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is <strong>Part 2</strong> of the CNN to QNN tutorial for Windows host machines. If you have not completed Part 1, please do so <a class="reference internal" href="qnn_tutorial_windows_host.html"><span class="doc">here</span></a>.</p>
+</div>
+<div class="section" id="step-3-build-your-qnn-model-for-target-device-architecture">
+<h2>Step 3: Build your QNN model for target device architecture<a class="headerlink" href="#step-3-build-your-qnn-model-for-target-device-architecture" title="Permalink to this heading">¶</a></h2>
+<p>Once the CNN model has been converted into QNN format, the next step is to build it so it can run on the target device’s operating system with <code class="docutils literal notranslate"><span class="pre">qnn-model-lib-generator</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>For cases where the “host machine” and “target device” are the same (e.g., you want to build and run model inferences on your Snapdragon for Windows device), you will need to adapt the steps to handle files locally instead of transferring them to a remote device.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please continue to use the same terminal you were using on your host machine from part 1.</p>
+</div>
+<ol class="arabic">
+<li><p>Ensure you have <code class="docutils literal notranslate"><span class="pre">cmake</span></code> installed on your machine by running <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">--version</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">cmake</span></code> is not installed, run <code class="docutils literal notranslate"><span class="pre">&amp;</span> <span class="pre">&quot;${QNN_SDK_ROOT}/bin/check-windows-dependency.ps1&quot;</span></code> to download the proper dependencies.</p>
+</div>
+</li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">C:\tmp\qnn_tmp</span></code> to make the folder where your newly built files will live.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">C:\tmp\qnn_tmp</span></code> to navigate to the new folder.</p></li>
+<li><p>Run the following command to copy over the QNN model files:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Copy-Item</span> <span class="n">-Path</span> <span class="s2">&quot;${env:QNN_SDK_ROOT}\examples\Models\InceptionV3\model\Inception_v3.cpp&quot;</span><span class="p">,</span><span class="s2">&quot;${env:QNN_SDK_ROOT}\examples\Models\InceptionV3\model\Inception_v3.bin&quot;</span> <span class="n">-Destination</span> <span class="s2">&quot;c:\tmp\qnn_tmp&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Choose the most relevant supported target architecture from the following list:
+- For x86_64 Windows target: <code class="docutils literal notranslate"><span class="pre">windows-x86_64</span></code>
+- For Arm 64 Windows target: <code class="docutils literal notranslate"><span class="pre">windows-aarch64</span></code>
+- For Snapdragon devices, choose <code class="docutils literal notranslate"><span class="pre">windows-aarch64</span></code></p></li>
+<li><p>On your host machine, set the target architecture of your target device by setting <code class="docutils literal notranslate"><span class="pre">QNN_TARGET_ARCH</span></code> to your device’s target architecture:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">$QNN_TARGET_ARCH</span><span class="o">=</span><span class="s2">&quot;your-target-architecture-from-above&quot;</span>
+</pre></div>
+</div>
+<p>For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">$QNN_TARGET_ARCH</span><span class="o">=</span><span class="s2">&quot;windows-x86_64&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Run the following command on your host machine to generate the model library:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="s2">&quot;${QNN_SDK_ROOT}\bin\x86_64-windows-msvc\qnn-model-lib-generator&quot;</span> <span class="p">`</span>
+    <span class="n">-c</span> <span class="s2">&quot;.\Inception_v3.cpp&quot;</span> <span class="p">`</span>
+    <span class="n">-b</span> <span class="s2">&quot;.\Inception_v3.bin&quot;</span> <span class="p">`</span>
+    <span class="n">-o</span> <span class="s2">&quot;model_libs&quot;</span> <span class="p">`</span>
+    <span class="n">-t</span> <span class="s2">&quot;$QNN_TARGET_ARCH&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-c</span></code> - This indicates the path to the <code class="docutils literal notranslate"><span class="pre">.cpp</span></code> QNN model file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-b</span></code> - This indicates the path to the <code class="docutils literal notranslate"><span class="pre">.bin</span></code> QNN model file. (<code class="docutils literal notranslate"><span class="pre">-b</span></code> is optional, but at runtime, the <code class="docutils literal notranslate"><span class="pre">.cpp</span></code> file could fail if it needs the <code class="docutils literal notranslate"><span class="pre">.bin</span></code> file, so it is recommended).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-o</span></code> - The path to the output folder.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-t</span></code> - Indicate which architecture to build for (between <code class="docutils literal notranslate"><span class="pre">windows-x86_64</span></code> and <code class="docutils literal notranslate"><span class="pre">windows-aarch64</span></code>)</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If the build fails due to a missing build dependency such as cmake or clang-cl being missing, run <code class="docutils literal notranslate"><span class="pre">&amp;</span> <span class="pre">&quot;${QNN_SDK_ROOT}/bin/check-windows-dependency.ps1&quot;</span></code> to install all build dependencies.</p>
+<p>You can also use <code class="docutils literal notranslate"><span class="pre">&amp;</span> <span class="pre">&quot;${QNN_SDK_ROOT}/bin/envcheck.ps1&quot;</span> <span class="pre">-a</span></code> to help debug which dependencies are missing.</p>
+</div>
+</li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">/tmp/qnn_tmp/model_libs/${QNN_TARGET_ARCH}</span></code> and verify that the output file <code class="docutils literal notranslate"><span class="pre">Inception_v3.dll</span></code> is inside.
+- You will use the <code class="docutils literal notranslate"><span class="pre">Inception_v3.dll</span></code> file on the target device to execute inferences.
+- The output <code class="docutils literal notranslate"><span class="pre">.dll</span></code> file will be located in the <code class="docutils literal notranslate"><span class="pre">model_libs</span></code> directory, named according to the target architecture.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>For example: <code class="docutils literal notranslate"><span class="pre">model_libs/x64/Inception_v3.dll</span></code> or <code class="docutils literal notranslate"><span class="pre">model_libs/aarch64/Inception_v3.dll</span></code>.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="step-4-use-the-built-model-on-specific-processors">
+<h2>Step 4: Use the built model on specific processors<a class="headerlink" href="#step-4-use-the-built-model-on-specific-processors" title="Permalink to this heading">¶</a></h2>
+<p>Now that you have an executable version of your model, the next step is to transfer the built model and all necessary files to the target processor, then to run inferences on it.</p>
+<ol class="arabic simple">
+<li><p>Install all necessary dependencies from Setup.</p></li>
+<li><p>Follow the below SSH setup instructions.</p></li>
+<li><p>Follow the instructions for each specific processor you want to run your model on.</p></li>
+</ol>
+<p><strong>Sub-Step 1:</strong> If you haven’t already, ensure that you follow the processor-specific Setup instructions for your host machine <span class="xref std std-doc">here</span>.</p>
+<p><strong>Sub-Step 2:</strong> Set up SSH on the Target Device</p>
+<blockquote>
+<div><div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Here we use <code class="docutils literal notranslate"><span class="pre">OpenSSH</span></code> to copy files with <code class="docutils literal notranslate"><span class="pre">scp</span></code> later on and run scripts on the target device via <code class="docutils literal notranslate"><span class="pre">ssh</span></code>. If that does not work for your target device, feel free to use any other method of transferring the files over (e.g., USB or <code class="docutils literal notranslate"><span class="pre">mstsc</span></code> for a visual connection).</p>
+</div>
+<ol class="arabic">
+<li><dl class="simple">
+<dt>Ensure that both the host device and the target device are on the same network for this setup.</dt><dd><ol class="arabic simple">
+<li><p>Otherwise, <code class="docutils literal notranslate"><span class="pre">OpenSSH</span></code> requires port-forwarding to connect.</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>On the target device, install OpenSSH on Windows.</dt><dd><ol class="arabic simple">
+<li><p>Open an Admin PowerShell terminal.</p></li>
+<li><p>Run the following command to install <code class="docutils literal notranslate"><span class="pre">OpenSSH</span> <span class="pre">Server</span></code>:</p></li>
+</ol>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Add-WindowsCapability<span class="w"> </span>-Online<span class="w"> </span>-Name<span class="w"> </span>OpenSSH.Server~~~~0.0.1.0
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p>Once installed, start the <code class="docutils literal notranslate"><span class="pre">ssh</span></code> server on your target device by running:</p>
+<blockquote>
+<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Start-Service<span class="w"> </span>sshd
+<span class="c1"># Optional: The command below causes the OpenSSH server to start on device startup.</span>
+Set-Service<span class="w"> </span>-Name<span class="w"> </span>sshd<span class="w"> </span>-StartupType<span class="w"> </span><span class="s1">&#39;Automatic&#39;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>You can verify that the <code class="docutils literal notranslate"><span class="pre">ssh</span></code> server is live by running:</p>
+<blockquote>
+<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Get-Service<span class="w"> </span>-Name<span class="w"> </span>sshd
+</pre></div>
+</div>
+<p>You can turn off the OpenSSH Server service by running <code class="docutils literal notranslate"><span class="pre">Stop-Service</span> <span class="pre">sshd</span></code> on your target device.</p>
+</div></blockquote>
+</li>
+<li><p>On your target device, run <code class="docutils literal notranslate"><span class="pre">ipconfig</span></code> to get the IP address of your target Windows device.</p></li>
+<li><p>From your host machine, set a console variable for your target device’s <code class="docutils literal notranslate"><span class="pre">ipv4</span></code> address from above (replacing <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code> below):</p>
+<blockquote>
+<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">$TARGET_IP</span><span class="o">=</span><span class="s2">&quot;127.0.0.1&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Also set the username you would like to sign into on your Windows target device (you can find it by looking at the path to a user folder like <code class="docutils literal notranslate"><span class="pre">Documents</span></code>):</p>
+<blockquote>
+<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">$TARGET_USER</span><span class="o">=</span><span class="s2">&quot;yourusername&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><dl>
+<dt>On your host machine, install <code class="docutils literal notranslate"><span class="pre">OpenSSH</span> <span class="pre">Client</span></code> by:</dt><dd><ol class="arabic simple">
+<li><p>Opening a Powershell as an administrator.</p></li>
+<li><p>Installing by running <code class="docutils literal notranslate"><span class="pre">Add-WindowsCapability</span> <span class="pre">-Online</span> <span class="pre">-Name</span> <span class="pre">OpenSSH.Client~~~~0.0.1.0</span></code></p></li>
+<li><p>Verifying the installation by running <code class="docutils literal notranslate"><span class="pre">Get-WindowsCapability</span> <span class="pre">-Online</span> <span class="pre">|</span> <span class="pre">Where-Object</span> <span class="pre">Name</span> <span class="pre">-like</span> <span class="pre">'OpenSSH.Client*'</span></code></p></li>
+</ol>
+<p>From this point on, you should be able to <code class="docutils literal notranslate"><span class="pre">ssh</span></code> from Powershell. You may need to open another PowerShell to do so.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</div></blockquote>
+<p><strong>Sub-Step 3:</strong> Follow the steps below for whichever processor you would like to run your model on.</p>
+<div class="section" id="cpu">
+<h3>CPU<a class="headerlink" href="#cpu" title="Permalink to this heading">¶</a></h3>
+<div class="section" id="transferring-over-all-relevant-files">
+<h4>Transferring over all relevant files<a class="headerlink" href="#transferring-over-all-relevant-files" title="Permalink to this heading">¶</a></h4>
+<ol class="arabic">
+<li><p>On the target device, open a terminal and run <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">C:\qnn_test_package</span></code> to make a destination repo for transferred files.</p></li>
+<li><p>On the host device, use <code class="docutils literal notranslate"><span class="pre">scp</span></code> to transfer <code class="docutils literal notranslate"><span class="pre">QnnCpu.dll</span></code> from your host machine to <code class="docutils literal notranslate"><span class="pre">C:\qnn_test_package</span></code> on the target Windows device.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/lib/</span><span class="si">${</span><span class="nv">QNN_TARGET_ARCH</span><span class="si">}</span><span class="s2">/QnnCpu.dll&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">scp</span></code> to transfer the example built model.
+- Update the <code class="docutils literal notranslate"><span class="pre">x64</span></code> folder below to the proper folder for your built model. The folder name depends on your host machine’s architecture.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span><span class="s2">&quot;/tmp/qnn_tmp/model_libs/x64/Inception_v3.dll&quot;</span><span class="w">  </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Transfer the input data, input list, and script from the QNN SDK examples folder into <code class="docutils literal notranslate"><span class="pre">C:\qnn_test_package</span></code> on the target device using <code class="docutils literal notranslate"><span class="pre">scp</span></code> in a similar way:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/examples/Models/InceptionV3/data/cropped&quot;</span><span class="w">  </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+scp<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/examples/Models/InceptionV3/data/target_raw_list.txt&quot;</span><span class="w">  </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+scp<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/examples/Models/InceptionV3/data/imagenet_slim_labels&quot;</span><span class="w">  </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+scp<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/examples/Models/InceptionV3/scripts/show_inceptionv3_classifications.py&quot;</span><span class="w">  </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Transfer <code class="docutils literal notranslate"><span class="pre">qnn-net-run.exe</span></code> from <code class="docutils literal notranslate"><span class="pre">$QNN_SDK_ROOT/bin/$QNN_TARGET_ARCH/qnn-net-run.exe</span></code> to <code class="docutils literal notranslate"><span class="pre">C:\qnn_test_package</span></code> on the target device:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$QNN_SDK_ROOT</span><span class="s2">/bin/</span><span class="nv">$QNN_TARGET_ARCH</span><span class="s2">/qnn-net-run.exe&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="doing-inferences-on-the-target-device-processor">
+<h4>Doing inferences on the target device processor<a class="headerlink" href="#doing-inferences-on-the-target-device-processor" title="Permalink to this heading">¶</a></h4>
+<ol class="arabic">
+<li><p>Open a PowerShell instance on the target Windows device.
+- Alternatively, you can <code class="docutils literal notranslate"><span class="pre">ssh</span></code> from your host machine, run the following command to <code class="docutils literal notranslate"><span class="pre">ssh</span></code> into your target device.
+- These console variables were set in the above instructions for “Transferring all relevant files”.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You will have to log in with your target device’s login for that username.</p>
+</div>
+</li>
+<li><p>Navigate to the directory containing the test files:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd </span><span class="n">C</span><span class="p">:\</span><span class="n">qnn_test_package</span>
+</pre></div>
+</div>
+</li>
+<li><p>Run the following command on the target device to execute an inference:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">.\</span><span class="n">qnn-net-run</span><span class="p">.</span><span class="n">exe</span> <span class="p">`</span>
+   <span class="p">-</span><span class="n">-model</span> <span class="s2">&quot;.\Inception_v3.dll&quot;</span> <span class="p">`</span>
+   <span class="p">-</span><span class="n">-input_list</span> <span class="s2">&quot;.\target_raw_list.txt&quot;</span> <span class="p">`</span>
+   <span class="p">-</span><span class="n">-backend</span> <span class="s2">&quot;.\QnnCpu.dll&quot;</span> <span class="p">`</span>
+   <span class="p">-</span><span class="n">-output</span> <span class="s2">&quot;.\output&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Run the following script on the target device to view the classification results:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can alternatively copy the output folder back to your host machine with <code class="docutils literal notranslate"><span class="pre">scp</span></code> and run the following script there to avoid having to install python on your target device.</p>
+</div>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="s2">&quot;.\show_inceptionv3_classifications.py&quot;</span> <span class="p">`</span>
+       <span class="n">-i</span> <span class="s2">&quot;.\cropped\raw_list.txt&quot;</span> <span class="p">`</span>
+       <span class="n">-o</span> <span class="s2">&quot;output&quot;</span> <span class="p">`</span>
+       <span class="n">-l</span> <span class="s2">&quot;.\imagenet_slim_labels.txt&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Verify that the classification results in <code class="docutils literal notranslate"><span class="pre">output</span></code> match the following:
+1. <code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/data/cropped/trash_bin.raw</span> <span class="pre">0.777344</span> <span class="pre">413</span> <span class="pre">ashcan</span></code>
+2. <code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/data/cropped/chairs.raw</span> <span class="pre">0.253906</span> <span class="pre">832</span> <span class="pre">studio</span> <span class="pre">couch</span></code>
+3. <code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/data/cropped/plastic_cup.raw</span> <span class="pre">0.980469</span> <span class="pre">648</span> <span class="pre">measuring</span> <span class="pre">cup</span></code>
+4. <code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/data/cropped/notice_sign.raw</span> <span class="pre">0.167969</span> <span class="pre">459</span> <span class="pre">brass</span></code></p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="gpu">
+<h3>GPU<a class="headerlink" href="#gpu" title="Permalink to this heading">¶</a></h3>
+<div class="section" id="id1">
+<h4>Transferring over all relevant files<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h4>
+<ol class="arabic">
+<li><p>On the target device, open a terminal and run <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">C:\qnn_test_package</span></code> to make a destination repo for transferred files.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">scp</span></code> to transfer <code class="docutils literal notranslate"><span class="pre">QnnGpu.dll</span></code> from your host machine to <code class="docutils literal notranslate"><span class="pre">C:\qnn_test_package</span></code> on the target Windows device.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/lib/</span><span class="si">${</span><span class="nv">QNN_TARGET_ARCH</span><span class="si">}</span><span class="s2">/QnnGpu.dll&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">scp</span></code> to transfer the example built model.
+1. Update the <code class="docutils literal notranslate"><span class="pre">x64</span></code> folder below to the proper folder for your built model. The folder name depends on your host machine’s architecture.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span><span class="s2">&quot;/tmp/qnn_tmp/model_libs/x64/Inception_v3.dll&quot;</span><span class="w">  </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Transfer the input data, input list, and script from the QNN SDK examples folder into <code class="docutils literal notranslate"><span class="pre">C:\qnn_test_package</span></code> on the target device using <code class="docutils literal notranslate"><span class="pre">scp</span></code> in a similar way:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/examples/Models/InceptionV3/data/cropped&quot;</span><span class="w">  </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+scp<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/examples/Models/InceptionV3/data/target_raw_list.txt&quot;</span><span class="w">  </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+scp<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/examples/Models/InceptionV3/data/imagenet_slim_labels&quot;</span><span class="w">  </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+scp<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/examples/Models/InceptionV3/scripts/show_inceptionv3_classifications.py&quot;</span><span class="w">  </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Transfer <code class="docutils literal notranslate"><span class="pre">qnn-net-run.exe</span></code> from <code class="docutils literal notranslate"><span class="pre">$QNN_SDK_ROOT/bin/$QNN_TARGET_ARCH/qnn-net-run.exe</span></code> to <code class="docutils literal notranslate"><span class="pre">C:\qnn_test_package</span></code> on the target device:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$QNN_SDK_ROOT</span><span class="s2">/bin/</span><span class="nv">$QNN_TARGET_ARCH</span><span class="s2">/qnn-net-run.exe&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="id2">
+<h4>Doing inferences on the target device processor<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h4>
+<ol class="arabic">
+<li><p>Open a PowerShell instance on the target Windows device.
+1. Alternatively, you can <code class="docutils literal notranslate"><span class="pre">ssh</span></code> from your host machine, run the following command to <code class="docutils literal notranslate"><span class="pre">ssh</span></code> into your target device.
+2. These console variables were set in the above instructions for “Transferring all relevant files”.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You will have to login with your target device’s login for that username.</p>
+</div>
+</li>
+<li><p>Navigate to the directory containing the test files:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>C:<span class="se">\q</span>nn_test_package
+</pre></div>
+</div>
+</li>
+<li><p>Run the following command on the target device to execute an inference:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>.<span class="se">\q</span>nn-net-run.exe<span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>--model<span class="w"> </span><span class="s2">&quot;.\Inception_v3.dll&quot;</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>--input_list<span class="w"> </span><span class="s2">&quot;.\target_raw_list.txt&quot;</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>--backend<span class="w"> </span><span class="s2">&quot;.\QnnGpu.dll&quot;</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>--output<span class="w"> </span><span class="s2">&quot;.\output&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Run the following script on the target device to view the classification results:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can alternatively copy the output folder back to your host machine with <code class="docutils literal notranslate"><span class="pre">scp</span></code> and run the following script there to avoid having to install python on your target device.</p>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span><span class="s2">&quot;.\show_inceptionv3_classifications.py&quot;</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-i<span class="w"> </span><span class="s2">&quot;.\cropped\raw_list.txt&quot;</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-o<span class="w"> </span><span class="s2">&quot;output&quot;</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-l<span class="w"> </span><span class="s2">&quot;.\imagenet_slim_labels.txt&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Verify that the classification results in <code class="docutils literal notranslate"><span class="pre">output</span></code> match the following:
+1. <code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/data/cropped/trash_bin.raw</span> <span class="pre">0.777344</span> <span class="pre">413</span> <span class="pre">ashcan</span></code>
+2. <code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/data/cropped/chairs.raw</span> <span class="pre">0.253906</span> <span class="pre">832</span> <span class="pre">studio</span> <span class="pre">couch</span></code>
+3. <code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/data/cropped/plastic_cup.raw</span> <span class="pre">0.980469</span> <span class="pre">648</span> <span class="pre">measuring</span> <span class="pre">cup</span></code>
+4. <code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/data/cropped/notice_sign.raw</span> <span class="pre">0.167969</span> <span class="pre">459</span> <span class="pre">brass</span></code></p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="dsp">
+<h3>DSP<a class="headerlink" href="#dsp" title="Permalink to this heading">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>DSP processors require quantized models instead of floating point models. If you do not have a quantized model, please follow <a class="reference internal" href="qnn_tutorial_windows_host.html"><span class="doc">Step 2</span></a> of the CNN to QNN tutorial to build one.</p>
+</div>
+<div class="section" id="id3">
+<h4>Transferring over all relevant files<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h4>
+<ol class="arabic">
+<li><p>On the target device, open a terminal and run <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">C:\qnn_test_package</span></code> to make a destination repo for transferred files.</p></li>
+<li><p>Determine your target device’s SnapDragon architecture by looking your chipset up in the <a class="reference external" href="https://docs.qualcomm.com/bundle/publicresource/topics/80-63442-50/overview.html#supported-snapdragon-devices">Supported Snapdragon Devices</a>.</p></li>
+<li><p>Update the “X” values below and run the commands to set <code class="docutils literal notranslate"><span class="pre">DSP_ARCH</span></code> to match the version number found in the above table.
+1. Only the 2 digits at the end should update, and they should have the same version. Ex. For “V68”, the proper value would be <code class="docutils literal notranslate"><span class="pre">hexagon-v68</span></code>.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">$DSP_VERSION</span><span class="o">=</span><span class="s2">&quot;XX&quot;</span>
+<span class="nv">$DSP_ARCH</span><span class="o">=</span><span class="s2">&quot;hexagon-v</span><span class="si">${</span><span class="nv">DSP_VERSION</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">scp</span></code> to transfer <code class="docutils literal notranslate"><span class="pre">QnnDsp.dll</span></code> as well as other necessary executables from your host machine to <code class="docutils literal notranslate"><span class="pre">C:\qnn_test_package</span></code> on the target Windows device.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$QNN_SDK_ROOT</span><span class="s2">/lib/</span><span class="si">${</span><span class="nv">QNN_TARGET_ARCH</span><span class="si">}</span><span class="s2">/QnnDsp.dll&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+scp<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$QNN_SDK_ROOT</span><span class="s2">/lib/</span><span class="si">${</span><span class="nv">QNN_TARGET_ARCH</span><span class="si">}</span><span class="s2">/QnnDspV</span><span class="si">${</span><span class="nv">DSP_VERSION</span><span class="si">}</span><span class="s2">Stub.dll&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Check the <a class="reference external" href="https://docs.qualcomm.com/bundle/publicresource/topics/80-63442-50/backend.html">Backend table</a> to see if there are any other processor-specific executables needed for your target processor (<code class="docutils literal notranslate"><span class="pre">DSP</span></code>) and your target device’s architecture (<code class="docutils literal notranslate"><span class="pre">$QNN_TARGET_ARCH</span></code>).
+1. Use similar syntax above for <code class="docutils literal notranslate"><span class="pre">scp</span></code> to transfer any additional <code class="docutils literal notranslate"><span class="pre">.dll</span></code> files listed <strong>below</strong> your selected target architecture in <a class="reference external" href="https://docs.qualcomm.com/bundle/publicresource/topics/80-63442-50/backend.html">this table</a>. <strong>(There may be none!)</strong></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Ensure you <code class="docutils literal notranslate"><span class="pre">scp</span></code> the <code class="docutils literal notranslate"><span class="pre">hexagon-v##</span></code> values (in addition to the other architecture files!)</p>
+</div>
+</li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">scp</span></code> to transfer the example built model.
+1. Update the <code class="docutils literal notranslate"><span class="pre">x64</span></code> folder below to the proper folder for your built model. The folder name depends on your host machine’s architecture.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span><span class="s2">&quot;/tmp/qnn_tmp/model_libs/x64/Inception_v3.dll&quot;</span><span class="w">  </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Transfer the input data, input list, and script from the QNN SDK examples folder into <code class="docutils literal notranslate"><span class="pre">C:\qnn_test_package</span></code> on the target device using <code class="docutils literal notranslate"><span class="pre">scp</span></code> in a similar way:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/examples/Models/InceptionV3/data/cropped&quot;</span><span class="w">  </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+scp<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/examples/Models/InceptionV3/data/target_raw_list.txt&quot;</span><span class="w">  </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+scp<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/examples/Models/InceptionV3/data/imagenet_slim_labels&quot;</span><span class="w">  </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+scp<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/examples/Models/InceptionV3/scripts/show_inceptionv3_classifications.py&quot;</span><span class="w">  </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Transfer <code class="docutils literal notranslate"><span class="pre">qnn-net-run.exe</span></code> from <code class="docutils literal notranslate"><span class="pre">$QNN_SDK_ROOT/bin/$QNN_TARGET_ARCH/qnn-net-run.exe</span></code> to <code class="docutils literal notranslate"><span class="pre">C:\qnn_test_package</span></code> on the target device:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$QNN_SDK_ROOT</span><span class="s2">/bin/</span><span class="nv">$QNN_TARGET_ARCH</span><span class="s2">/qnn-net-run.exe&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="id4">
+<h4>Doing inferences on the target device processor<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h4>
+<ol class="arabic">
+<li><p>Open a PowerShell instance on the target Windows device.
+1. Alternatively, you can <code class="docutils literal notranslate"><span class="pre">ssh</span></code> from your host machine, run the following command to <code class="docutils literal notranslate"><span class="pre">ssh</span></code> into your target device.
+2. These console variables were set in the above instructions for “Transferring all relevant files”.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You will have to login with your target device’s login for that username.</p>
+</div>
+</li>
+<li><p>Navigate to the directory containing the test files:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>C:<span class="se">\q</span>nn_test_package
+</pre></div>
+</div>
+</li>
+<li><p>Run the following command on the target device to execute an inference:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>.<span class="se">\q</span>nn-net-run.exe<span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>--model<span class="w"> </span><span class="s2">&quot;.\Inception_v3.dll&quot;</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>--input_list<span class="w"> </span><span class="s2">&quot;.\target_raw_list.txt&quot;</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>--backend<span class="w"> </span><span class="s2">&quot;.\QnnDsp.dll&quot;</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>--output<span class="w"> </span><span class="s2">&quot;.\output&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Run the following script on the target device to view the classification results:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can alternatively copy the output folder back to your host machine with <code class="docutils literal notranslate"><span class="pre">scp</span></code> and run the following script there to avoid having to install python on your target device.</p>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span><span class="s2">&quot;.\show_inceptionv3_classifications.py&quot;</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-i<span class="w"> </span><span class="s2">&quot;.\cropped\raw_list.txt&quot;</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-o<span class="w"> </span><span class="s2">&quot;output&quot;</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-l<span class="w"> </span><span class="s2">&quot;.\imagenet_slim_labels.txt&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Verify that the classification results in <code class="docutils literal notranslate"><span class="pre">output</span></code> match the following:
+1. <code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/data/cropped/trash_bin.raw</span> <span class="pre">0.777344</span> <span class="pre">413</span> <span class="pre">ashcan</span></code>
+2. <code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/data/cropped/chairs.raw</span> <span class="pre">0.253906</span> <span class="pre">832</span> <span class="pre">studio</span> <span class="pre">couch</span></code>
+3. <code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/data/cropped/plastic_cup.raw</span> <span class="pre">0.980469</span> <span class="pre">648</span> <span class="pre">measuring</span> <span class="pre">cup</span></code>
+4. <code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/data/cropped/notice_sign.raw</span> <span class="pre">0.167969</span> <span class="pre">459</span> <span class="pre">brass</span></code></p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="htp">
+<h3>HTP<a class="headerlink" href="#htp" title="Permalink to this heading">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>HTP processors require quantized models instead of floating point models. If you do not have a quantized model, please follow <cite>Step 2 &lt;qnn_tutorial_windows_host&gt;</cite> of the CNN to QNN tutorial to build one.</p>
+</div>
+<div class="section" id="additional-htp-required-setup">
+<h4>Additional HTP Required Setup<a class="headerlink" href="#additional-htp-required-setup" title="Permalink to this heading">¶</a></h4>
+<p>Running the model on a target device’s HTP requires the generation of a <strong>serialized context</strong>.</p>
+<p><strong>On the host:</strong></p>
+<ol class="arabic">
+<li><p>Navigate to the directory where you built the model in the previous steps:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/tmp/qnn_tmp
+</pre></div>
+</div>
+</li>
+<li><p>Users can set the custom options and different performance modes to HTP Backend through the backend config. Please refer to <a class="reference external" href="https://docs.qualcomm.com/bundle/publicresource/topics/80-63442-50/htp_backend.html">QNN HTP Backend Extensions</a> for various options available in the config.</p></li>
+<li><p>Refer to the example below for creating a backend config file for the QCS6490/QCM6490 target with mandatory options passed in:</p>
+<ol class="arabic simple">
+<li><p>Update the following information based on your device’s <code class="docutils literal notranslate"><span class="pre">htp_arch</span></code>.</p></li>
+</ol>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;graphs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;graph_names&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;Inception_v3&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;vtcm_mb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;devices&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;htp_arch&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v68&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>The above config file with minimum parameters such as backend extensions config specified through JSON is given below:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;backend_extensions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;shared_library_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;path_to_shared_library&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1">// give path to shared extensions library (.dll)</span>
+<span class="w">        </span><span class="nt">&quot;config_file_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;path_to_config_file&quot;</span><span class="w">         </span><span class="c1">// give path to backend config</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>To generate the context, update <code class="docutils literal notranslate"><span class="pre">&lt;path</span> <span class="pre">to</span> <span class="pre">JSON</span> <span class="pre">of</span> <span class="pre">backend</span> <span class="pre">extensions&gt;</span></code> below with the config you wrote above, then run the command in Windows PowerShell:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="p">&amp;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/bin/</span><span class="si">${</span><span class="nv">QNN_TARGET_ARCH</span><span class="si">}</span><span class="s2">/qnn-context-binary-generator.exe&quot;</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">    </span>--backend<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/lib/</span><span class="si">${</span><span class="nv">QNN_TARGET_ARCH</span><span class="si">}</span><span class="s2">/QnnHtp.dll&quot;</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">    </span>--model<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/examples/Models/InceptionV3/model_libs/</span><span class="si">${</span><span class="nv">QNN_TARGET_ARCH</span><span class="si">}</span><span class="s2">/libInception_v3.dll&quot;</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">    </span>--binary_file<span class="w"> </span><span class="s2">&quot;Inception_v3.serialized&quot;</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">    </span>--config_file<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>JSON<span class="w"> </span>of<span class="w"> </span>backend<span class="w"> </span>extensions&gt;
+</pre></div>
+</div>
+</li>
+<li><p>This creates the serialized context at:
+- <code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/output/Inception_v3.serialized.bin</span></code></p></li>
+</ol>
+</div>
+<div class="section" id="id5">
+<h4>Transferring over all relevant files<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h4>
+<ol class="arabic">
+<li><p>On the target device, open a terminal and run <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">C:\qnn_test_package</span></code> to make a destination repo for transferred files.</p></li>
+<li><p>Determine your target device’s SnapDragon architecture by looking your chipset up in the <a class="reference external" href="https://docs.qualcomm.com/bundle/publicresource/topics/80-63442-50/overview.html#supported-snapdragon-devices">Supported Snapdragon Devices</a> table.</p></li>
+<li><p>Update the “X” values below and run the commands to set <code class="docutils literal notranslate"><span class="pre">HTP_VERSION</span></code> to match the version number found in the above table.</p>
+<ol class="arabic simple">
+<li><p>Only the 2 digits at the end should update, and they should have the same version. Ex. For “V68” in the table, the proper value for <code class="docutils literal notranslate"><span class="pre">HTP_VERSION</span></code> would be <code class="docutils literal notranslate"><span class="pre">68</span></code> and <code class="docutils literal notranslate"><span class="pre">HTP_ARCH</span></code> would be <code class="docutils literal notranslate"><span class="pre">hexagon-v68</span></code>. (You can use <code class="docutils literal notranslate"><span class="pre">68</span></code> as the default here to try it out).</p></li>
+</ol>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">$HTP_VERSION</span><span class="o">=</span><span class="s2">&quot;XX&quot;</span>
+<span class="nv">$HTP_ARCH</span><span class="o">=</span><span class="s2">&quot;hexagon-v</span><span class="si">${</span><span class="nv">HTP_VERSION</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">scp</span></code> to transfer <code class="docutils literal notranslate"><span class="pre">QnnHtp.dll</span></code>, from your host machine to <code class="docutils literal notranslate"><span class="pre">C:\qnn_test_package</span></code> on the target Windows device.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$QNN_SDK_ROOT</span><span class="s2">/lib/</span><span class="si">${</span><span class="nv">QNN_TARGET_ARCH</span><span class="si">}</span><span class="s2">/QnnHtp.dll&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+scp<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$QNN_SDK_ROOT</span><span class="s2">/lib/</span><span class="si">${</span><span class="nv">QNN_TARGET_ARCH</span><span class="si">}</span><span class="s2">/QnnHtpPrepare.dll&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+scp<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$QNN_SDK_ROOT</span><span class="s2">/lib/</span><span class="si">${</span><span class="nv">QNN_TARGET_ARCH</span><span class="si">}</span><span class="s2">/QnnHtpV</span><span class="si">${</span><span class="nv">HTP_VERSION</span><span class="si">}</span><span class="s2">Stub.dll&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+scp<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$QNN_SDK_ROOT</span><span class="s2">/lib/</span><span class="si">${</span><span class="nv">HTP_ARCH</span><span class="si">}</span><span class="s2">/unsigned/*&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Check the <a class="reference external" href="https://docs.qualcomm.com/bundle/publicresource/topics/80-63442-50/backend.html">Backend</a> table to see if there are any other processor-specific executables needed for your target processor (<code class="docutils literal notranslate"><span class="pre">DSP</span></code>) and your target device’s architecture (<code class="docutils literal notranslate"><span class="pre">$QNN_TARGET_ARCH</span></code>).</p>
+<ol class="arabic simple">
+<li><p>Use similar syntax above for <code class="docutils literal notranslate"><span class="pre">scp</span></code> to transfer any additional <code class="docutils literal notranslate"><span class="pre">.dll</span></code> files listed <strong>below</strong> your selected target architecture in <a class="reference external" href="https://docs.qualcomm.com/bundle/publicresource/topics/80-63442-50/backend.html">this table</a>. <strong>(Usually the above install covers them all!)</strong></p></li>
+</ol>
+</li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">scp</span></code> to transfer the example built model.</p>
+<ol class="arabic simple">
+<li><p>Update the <code class="docutils literal notranslate"><span class="pre">x64</span></code> folder below to the proper folder for your built model. The folder name depends on your host machine’s architecture.</p></li>
+</ol>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span><span class="s2">&quot;/tmp/qnn_tmp/model_libs/x64/Inception_v3.dll&quot;</span><span class="w">  </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Transfer the input data, input list, and script from the QNN SDK examples folder into <code class="docutils literal notranslate"><span class="pre">C:\qnn_test_package</span></code> on the target device using <code class="docutils literal notranslate"><span class="pre">scp</span></code> in a similar way:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/examples/Models/InceptionV3/data/cropped&quot;</span><span class="w">  </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+scp<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/examples/Models/InceptionV3/data/target_raw_list.txt&quot;</span><span class="w">  </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+scp<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/examples/Models/InceptionV3/data/imagenet_slim_labels&quot;</span><span class="w">  </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+scp<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/examples/Models/InceptionV3/scripts/show_inceptionv3_classifications.py&quot;</span><span class="w">  </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Transfer <code class="docutils literal notranslate"><span class="pre">qnn-net-run.exe</span></code> from <code class="docutils literal notranslate"><span class="pre">$QNN_SDK_ROOT/bin/$QNN_TARGET_ARCH/qnn-net-run.exe</span></code> to <code class="docutils literal notranslate"><span class="pre">C:\qnn_test_package</span></code> on the target device:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$QNN_SDK_ROOT</span><span class="s2">/bin/</span><span class="nv">$QNN_TARGET_ARCH</span><span class="s2">/qnn-net-run.exe&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">:C:/qnn_test_package&quot;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="id8">
+<h4>Doing inferences on the target device processor<a class="headerlink" href="#id8" title="Permalink to this heading">¶</a></h4>
+<ol class="arabic">
+<li><p>Open a PowerShell instance on the target Windows device.</p>
+<ol class="arabic simple">
+<li><p>Alternatively, you can <code class="docutils literal notranslate"><span class="pre">ssh</span></code> from your host machine, run the following command to <code class="docutils literal notranslate"><span class="pre">ssh</span></code> into your target device.</p></li>
+<li><p>These console variables were set in the above instructions for “Transferring all relevant files”.</p></li>
+</ol>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TARGET_USER</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">TARGET_IP</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You will have to login with your target device’s login for that username.</p>
+</div>
+</li>
+<li><p>Navigate to the directory containing the test files:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>C:<span class="se">\q</span>nn_test_package
+</pre></div>
+</div>
+</li>
+<li><p>Update the environment on the device by running:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">$env</span>:LD_LIBRARY_PATH<span class="o">=</span><span class="s2">&quot;C:/qnn_test_package&quot;</span>
+<span class="nv">$env</span>:ADSP_LIBRARY_PATH<span class="o">=</span><span class="s2">&quot;C:/qnn_test_package&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Run the following command on the target device to execute an inference:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>.<span class="se">\q</span>nn-net-run.exe<span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>--retrieve_context<span class="w"> </span><span class="s2">&quot;.\Inception_v3_quantized.serialized.bin&quot;</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>--input_list<span class="w"> </span><span class="s2">&quot;.\target_raw_list.txt&quot;</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>--backend<span class="w"> </span><span class="s2">&quot;.\QnnHtp.dll&quot;</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>--output<span class="w"> </span><span class="s2">&quot;.\output&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Run the following script on the target device to view the classification results:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can alternatively copy the output folder back to your host machine with <code class="docutils literal notranslate"><span class="pre">scp</span></code> and run the following script there to avoid having to install python on your target device.</p>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span><span class="s2">&quot;.\show_inceptionv3_classifications.py&quot;</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">     </span>-i<span class="w"> </span><span class="s2">&quot;.\cropped\raw_list.txt&quot;</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">     </span>-o<span class="w"> </span><span class="s2">&quot;output&quot;</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">     </span>-l<span class="w"> </span><span class="s2">&quot;.\imagenet_slim_labels.txt&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Verify that the classification results in <code class="docutils literal notranslate"><span class="pre">output</span></code> match the following:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/data/cropped/trash_bin.raw</span> <span class="pre">0.777344</span> <span class="pre">413</span> <span class="pre">ashcan</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/data/cropped/chairs.raw</span> <span class="pre">0.253906</span> <span class="pre">832</span> <span class="pre">studio</span> <span class="pre">couch</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/data/cropped/plastic_cup.raw</span> <span class="pre">0.980469</span> <span class="pre">648</span> <span class="pre">measuring</span> <span class="pre">cup</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/data/cropped/notice_sign.raw</span> <span class="pre">0.167969</span> <span class="pre">459</span> <span class="pre">brass</span></code></p></li>
+</ol>
+</li>
+</ol>
+</div>
+<div class="section" id="running-the-built-model">
+<h4>Running the built model<a class="headerlink" href="#running-the-built-model" title="Permalink to this heading">¶</a></h4>
+<ol class="arabic">
+<li><p>Connect to the Windows target device and create a folder for the model files and input data (target specific):</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mstsc<span class="w"> </span>-v<span class="w"> </span>&lt;your<span class="w"> </span>device<span class="w"> </span>IP&gt;
+New-Item<span class="w"> </span>-Path<span class="w"> </span><span class="s2">&quot;C:/qnn_test_package&quot;</span><span class="w"> </span>-ItemType<span class="w"> </span>Directory
+</pre></div>
+</div>
+</li>
+<li><p>Look up your target device’s Snapdragon architecture in this <a class="reference external" href="https://docs.qualcomm.com/bundle/publicresource/topics/80-63442-50/overview.html#supported-snapdragon-devices">Supported Snapdragon Devices</a> table and set <code class="docutils literal notranslate"><span class="pre">$HTP_ARCH</span></code> to <code class="docutils literal notranslate"><span class="pre">hexagon-vXX</span></code> where XX is the version of your Hexagon Architecture. For example:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">$HTP_ARCH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;hexagon-v68&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Copy <code class="docutils literal notranslate"><span class="pre">QnnHtp.dll</span></code> and your built model (<code class="docutils literal notranslate"><span class="pre">Inception_v3.serialized.bin</span></code>) to your target device:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Copy-Item<span class="w"> </span>-Path<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/lib/</span><span class="si">${</span><span class="nv">HTP_ARCH</span><span class="si">}</span><span class="s2">/unsigned/*&quot;</span><span class="w"> </span>-Destination<span class="w"> </span><span class="s2">&quot;C:/qnn_test_package&quot;</span>
+Copy-Item<span class="w"> </span>-Path<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/lib/</span><span class="si">${</span><span class="nv">QNN_TARGET_ARCH</span><span class="si">}</span><span class="s2">/QnnHtp.dll&quot;</span><span class="w"> </span>-Destination<span class="w"> </span><span class="s2">&quot;C:/qnn_test_package&quot;</span>
+Copy-Item<span class="w"> </span>-Path<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/examples/Models/InceptionV3/output/Inception_v3.serialized.bin&quot;</span><span class="w"> </span>-Destination<span class="w"> </span><span class="s2">&quot;C:/qnn_test_package&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Copy the specific version of your <code class="docutils literal notranslate"><span class="pre">$HTP_ARCH</span></code> file by replacing <code class="docutils literal notranslate"><span class="pre">QnnHtpV68Stub.dll</span></code> with your version (ex. <code class="docutils literal notranslate"><span class="pre">QnnHtpV69Stub.dll</span></code> for v69):</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Copy-Item<span class="w"> </span>-Path<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/lib/</span><span class="si">${</span><span class="nv">QNN_TARGET_ARCH</span><span class="si">}</span><span class="s2">/QnnHtpV68Stub.dll&quot;</span><span class="w"> </span>-Destination<span class="w"> </span><span class="s2">&quot;C:/qnn_test_package&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Copy the input data and input lists to your target device:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Copy-Item<span class="w"> </span>-Path<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/examples/Models/InceptionV3/data/cropped&quot;</span><span class="w"> </span>-Destination<span class="w"> </span><span class="s2">&quot;C:/qnn_test_package&quot;</span>
+Copy-Item<span class="w"> </span>-Path<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/examples/Models/InceptionV3/data/target_raw_list.txt&quot;</span><span class="w"> </span>-Destination<span class="w"> </span><span class="s2">&quot;C:/qnn_test_package&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Copy the <code class="docutils literal notranslate"><span class="pre">qnn-net-run.exe</span></code> tool which will actually execute the inferences:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Copy-Item<span class="w"> </span>-Path<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/bin/</span><span class="si">${</span><span class="nv">QNN_TARGET_ARCH</span><span class="si">}</span><span class="s2">/qnn-net-run.exe&quot;</span><span class="w"> </span>-Destination<span class="w"> </span><span class="s2">&quot;C:/qnn_test_package&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Set up the environment on your target device by running:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">$env</span>:LD_LIBRARY_PATH<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:/qnn_test_package&quot;</span>
+<span class="nv">$env</span>:ADSP_LIBRARY_PATH<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:/qnn_test_package&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> in the target device shell to execute the inference on the example inputs:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>./qnn-net-run.exe<span class="w"> </span>--backend<span class="w"> </span>QnnHtp.dll<span class="w"> </span>--input_list<span class="w"> </span>target_raw_list.txt<span class="w"> </span>--retrieve_context<span class="w"> </span>Inception_v3.serialized.bin<span class="w"> </span>--output<span class="w"> </span>./output
+</pre></div>
+</div>
+</li>
+<li><p>Copy the results back to the Windows host machine:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Copy-Item<span class="w"> </span>-Path<span class="w"> </span><span class="s2">&quot;C:/qnn_test_package/output&quot;</span><span class="w"> </span>-Destination<span class="w"> </span><span class="s2">&quot;C:/tmp/qnn_tmp&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Open “Developer PowerShell for VS 2022”</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">C:/tmp/qnn_tmp</span></code></p></li>
+<li><p>Run the following command to output a readable view of the inference data:</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>py<span class="w"> </span>-3<span class="w"> </span>./show_inceptionv3_classifications.py<span class="w"> </span>-i<span class="w"> </span>./cropped/raw_list.txt<span class="w"> </span>-o<span class="w"> </span>output<span class="w"> </span>-l<span class="w"> </span>./imagenet_slim_labels.txt
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="13">
+<li><p>Verify that the classification results in <code class="docutils literal notranslate"><span class="pre">output</span></code> match the following:</p></li>
+</ol>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Path</p></th>
+<th class="head"><p>Score</p></th>
+<th class="head"><p>Label</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>${QNN_SDK_ROOT}/examples/Models/InceptionV3/data/cropped/trash_bin.raw</p></td>
+<td><p>0.777344</p></td>
+<td><p>413 ashcan</p></td>
+</tr>
+<tr class="row-odd"><td><p>${QNN_SDK_ROOT}/examples/Models/InceptionV3/data/cropped/chairs.raw</p></td>
+<td><p>0.253906</p></td>
+<td><p>832 studio couch</p></td>
+</tr>
+<tr class="row-even"><td><p>${QNN_SDK_ROOT}/examples/Models/InceptionV3/data/cropped/plastic_cup.raw</p></td>
+<td><p>0.980469</p></td>
+<td><p>648 measuring cup</p></td>
+</tr>
+<tr class="row-odd"><td><p>${QNN_SDK_ROOT}/examples/Models/InceptionV3/data/cropped/notice_sign.raw</p></td>
+<td><p>0.167969</p></td>
+<td><p>459 brass</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="lpai">
+<h3>LPAI<a class="headerlink" href="#lpai" title="Permalink to this heading">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>LPAI Backend on the x86 Windows platform can be used for offline model preparation and hardware simulation.
+The execution of serialized model is supported by QNN SDK directly upon Linux Target platform only.</p>
+</div>
+<div class="section" id="preparing-lpai-configuration-files-for-model-preparation">
+<h4>Preparing LPAI Configuration Files for Model Preparation<a class="headerlink" href="#preparing-lpai-configuration-files-for-model-preparation" title="Permalink to this heading">¶</a></h4>
+<p>EXAMPLE of <code class="docutils literal notranslate"><span class="pre">config.json</span></code> file:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+<span class="w">   </span><span class="s2">&quot;backend_extensions&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">      </span><span class="s2">&quot;shared_library_path&quot;</span>:<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/lib/x86_64-windows-msvc/QnnLpaiNetRunExtensions.dll&quot;</span>,
+<span class="w">      </span><span class="s2">&quot;config_file_path&quot;</span>:<span class="w"> </span><span class="s2">&quot;./lpaiParams.conf&quot;</span>
+<span class="w">   </span><span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>EXAMPLE of <code class="docutils literal notranslate"><span class="pre">lpaiParams.conf</span></code> file that includes only preparation parameters:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+<span class="w">   </span><span class="s2">&quot;lpai_backend&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">      </span><span class="s2">&quot;target_env&quot;</span>:<span class="w"> </span><span class="s2">&quot;adsp&quot;</span>,
+<span class="w">      </span><span class="s2">&quot;enable_hw_ver&quot;</span>:<span class="w"> </span><span class="s2">&quot;v5&quot;</span>
+<span class="w">   </span><span class="o">}</span>,
+<span class="w">   </span><span class="s2">&quot;lpai_graph&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">      </span><span class="s2">&quot;prepare&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">         </span><span class="s2">&quot;enable_batchnorm_fold&quot;</span>:<span class="w"> </span>true,
+<span class="w">         </span><span class="s2">&quot;exclude_io&quot;</span>:<span class="w"> </span><span class="nb">false</span>
+<span class="w">      </span><span class="o">}</span>
+<span class="w">   </span><span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>To configure <code class="docutils literal notranslate"><span class="pre">lpaiParams.conf</span></code>, consider using the following optional settings:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>lpai_backend
+<span class="w">   </span><span class="s2">&quot;target_env&quot;</span><span class="w">              </span><span class="s2">&quot;arm/adsp/x86/tensilica, default adsp&quot;</span>
+<span class="w">   </span><span class="s2">&quot;enable_hw_ver&quot;</span><span class="w">           </span><span class="s2">&quot;v4,v5 default v5&quot;</span>
+lpai_graph
+<span class="w">   </span>prepare
+<span class="w">      </span><span class="s2">&quot;enable_batchnorm_fold&quot;</span><span class="w">   </span><span class="s2">&quot;true/false,     default false&quot;</span>
+<span class="w">      </span><span class="s2">&quot;exclude_io&quot;</span><span class="w">              </span><span class="s2">&quot;true/false,     default false&quot;</span>
+</pre></div>
+</div>
+<p>Using the above <code class="docutils literal notranslate"><span class="pre">config.json</span></code> and <code class="docutils literal notranslate"><span class="pre">lpaiParams.conf</span></code> you can use <code class="docutils literal notranslate"><span class="pre">qnn-context-binary-generator</span></code> to build the LPAI offline model.</p>
+<p>When files are mentioned, ensure that they have the relative or absolute path to that value.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span>/examples/QNN/converter/models
+<span class="nv">$LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:<span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span>/lib/x86_64-linux-clang<span class="w"> </span><span class="se">\</span>
+<span class="p">&amp;</span><span class="w"> </span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span>/bin/x86_64-windows-msvc/qnn-context-binary-generator.exe<span class="w"> </span><span class="se">\</span>
+<span class="w">              </span>--backend<span class="w"> </span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span>/lib/x86_64-windows-msvc/QnnLpai.dll<span class="w"> </span><span class="se">\</span>
+<span class="w">              </span>--model<span class="w"> </span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span>/examples/Models/InceptionV3/model_libs/x86_64-windows-msvc/&lt;QnnModel.dll&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">              </span>--config_file<span class="w"> </span>&lt;config.json&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">              </span>--log_level<span class="w"> </span>verbose<span class="w"> </span><span class="se">\</span>
+<span class="w">              </span>--binary_file<span class="w"> </span>&lt;lpai_graph_serialized&gt;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Use generated <strong>lpai_graph_serialized.bin</strong> file in QNN format to be executed directly by QNN SDK on Linux target.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="running-lpai-emulation-backend-on-windows-x86">
+<h4>Running LPAI Emulation Backend on Windows x86<a class="headerlink" href="#running-lpai-emulation-backend-on-windows-x86" title="Permalink to this heading">¶</a></h4>
+<p>While LPAI Backend on x86_64 Windows CPU is designed for offline model generation as described above,
+it still can run in HW simulation mode where internally it executes prepare and execution steps together.</p>
+<p>EXAMPLE of <code class="docutils literal notranslate"><span class="pre">config.json</span></code> file for Simulator:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+<span class="w">   </span><span class="s2">&quot;backend_extensions&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">      </span><span class="s2">&quot;shared_library_path&quot;</span>:<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span><span class="s2">/lib/x86_64-windows-msvc/QnnLpaiNetRunExtensions.dll&quot;</span>,
+<span class="w">      </span><span class="s2">&quot;config_file_path&quot;</span>:<span class="w"> </span><span class="s2">&quot;./lpaiParams.conf&quot;</span>
+<span class="w">   </span><span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>EXAMPLE of <code class="docutils literal notranslate"><span class="pre">lpaiParams.conf</span></code> file that includes preparation and execution parameters:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+<span class="w">   </span><span class="s2">&quot;lpai_backend&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">      </span><span class="s2">&quot;target_env&quot;</span>:<span class="w"> </span><span class="s2">&quot;x86&quot;</span>,
+<span class="w">      </span><span class="s2">&quot;enable_hw_ver&quot;</span>:<span class="w"> </span><span class="s2">&quot;v5&quot;</span>
+<span class="w">   </span><span class="o">}</span>,
+<span class="w">   </span><span class="s2">&quot;lpai_graph&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">      </span><span class="s2">&quot;prepare&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">         </span><span class="s2">&quot;enable_batchnorm_fold&quot;</span>:<span class="w"> </span>false,
+<span class="w">         </span><span class="s2">&quot;exclude_io&quot;</span>:<span class="w"> </span><span class="nb">false</span>
+<span class="w">      </span><span class="o">}</span>,
+<span class="w">      </span><span class="s2">&quot;execute&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">         </span><span class="s2">&quot;fps&quot;</span>:<span class="w"> </span><span class="m">1</span>,
+<span class="w">         </span><span class="s2">&quot;ftrt_ratio&quot;</span>:<span class="w"> </span><span class="m">10</span>,
+<span class="w">         </span><span class="s2">&quot;client_type&quot;</span>:<span class="w"> </span><span class="s2">&quot;real_time&quot;</span>,
+<span class="w">         </span><span class="s2">&quot;affinity&quot;</span>:<span class="w"> </span><span class="s2">&quot;soft&quot;</span>,
+<span class="w">         </span><span class="s2">&quot;core_selection&quot;</span>:<span class="w"> </span><span class="m">0</span>
+<span class="w">      </span><span class="o">}</span>
+<span class="w">   </span><span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>To configure <code class="docutils literal notranslate"><span class="pre">lpaiParams.conf</span></code>, consider using the following optional settings:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>lpai_backend
+<span class="w">   </span><span class="s2">&quot;target_env&quot;</span><span class="w">              </span><span class="s2">&quot;arm/adsp/x86/tensilica, default adsp&quot;</span>
+<span class="w">   </span><span class="s2">&quot;enable_hw_ver&quot;</span><span class="w">           </span><span class="s2">&quot;v4,v5 default v5&quot;</span>
+lpai_graph
+<span class="w">   </span>prepare
+<span class="w">      </span><span class="s2">&quot;enable_batchnorm_fold&quot;</span><span class="w">   </span><span class="s2">&quot;true/false,     default false&quot;</span>
+<span class="w">      </span><span class="s2">&quot;exclude_io&quot;</span><span class="w">              </span><span class="s2">&quot;true/false,     default false&quot;</span>
+<span class="w">   </span>execute
+<span class="w">      </span><span class="s2">&quot;fps&quot;</span><span class="w">                     </span><span class="s2">&quot;Specify the fps rate number, used for clock voting, default 1&quot;</span>
+<span class="w">      </span><span class="s2">&quot;ftrt_ratio&quot;</span><span class="w">              </span><span class="s2">&quot;Specify the ftrt_ratio number, default 10&quot;</span>
+<span class="w">      </span><span class="s2">&quot;client_type&quot;</span><span class="w">             </span><span class="s2">&quot;real_time/non_real_time, defult real_time&quot;</span>
+<span class="w">      </span><span class="s2">&quot;affinity&quot;</span><span class="w">                </span><span class="s2">&quot;soft/hard, default soft&quot;</span>
+<span class="w">      </span><span class="s2">&quot;core_selection&quot;</span><span class="w">          </span><span class="s2">&quot;Specify the core number, default 0&quot;</span>
+</pre></div>
+</div>
+<p>Using the above <code class="docutils literal notranslate"><span class="pre">config.json</span></code> and <code class="docutils literal notranslate"><span class="pre">lpaiParams.conf</span></code> you can use <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> to directly execute LPAI backend in simulation mode.</p>
+<p>With the appropriate libraries compiled, <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> is used with the following:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If full paths are not given to <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code>, all libraries must be added to
+LD_LIBRARY_PATH and be discoverable by the system library loader.</p>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">converter</span><span class="o">/</span><span class="n">models</span>
+<span class="n">$</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">windows</span><span class="o">-</span><span class="n">msvc</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">net</span><span class="o">-</span><span class="n">run</span><span class="p">.</span><span class="n">exe</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">backend</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">windows</span><span class="o">-</span><span class="n">msvc</span><span class="o">/</span><span class="n">QnnLpai</span><span class="p">.</span><span class="n">dll</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">model</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">example_libs</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">windows</span><span class="o">-</span><span class="n">msvc</span><span class="o">/</span><span class="n">libqnn_model_8bit_quantized</span><span class="p">.</span><span class="n">dll</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">input_list</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">converter</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">input_list_float</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">config_file</span><span class="w"> </span><span class="o">&lt;</span><span class="n">config</span><span class="p">.</span><span class="n">json</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Outputs from the run will be located at the default ./output directory.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../benchmarking.html" class="btn btn-neutral float-right" title="Benchmarking" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="qnn_tutorial_windows_host_linux_target.html" class="btn btn-neutral float-left" title="CNN to QNN for Windows Host on Linux Target" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2025, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

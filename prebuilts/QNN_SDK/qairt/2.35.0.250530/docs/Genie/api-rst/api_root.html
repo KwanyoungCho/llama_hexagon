@@ -1,0 +1,940 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Genie C API &mdash; Qualcomm® Gen AI Inference Extensions</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Enum GenieDialog_Action_t" href="enum_GenieDialog_8h_1a30a6e2b6a6f674a1d995567de6c724b8.html" />
+    <link rel="prev" title="Library" href="../general/library/library.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Gen AI Inference Extensions
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.35.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/support/support.html">Support</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../general/library/library.html">Library</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../general/library/library.html#genie-c-api">Genie C API</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Genie C API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#class-hierarchy">Class Hierarchy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#file-hierarchy">File Hierarchy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#full-api">Full API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../general/library/library.html#thread-safety">Thread safety</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/library/library.html#components">Components</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools/tools.html">Tools</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Gen AI Inference Extensions</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../general/library/library.html">Library</a> &raquo;</li>
+        
+      <li>Genie C API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="genie-c-api">
+<h1>Genie C API<a class="headerlink" href="#genie-c-api" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="class-hierarchy">
+<h2>Class Hierarchy<a class="headerlink" href="#class-hierarchy" title="Permalink to this heading">¶</a></h2>
+<ul class="treeView" id="class-treeView">
+  <li>
+    <ul class="collapsibleList">
+      <li>Enum <a href="enum_GenieDialog_8h_1a30a6e2b6a6f674a1d995567de6c724b8.html#exhale-enum-GenieDialog-8h-1a30a6e2b6a6f674a1d995567de6c724b8">GenieDialog_Action_t</a></li><li>Enum <a href="enum_GenieDialog_8h_1a437ae7691ac7cacd38bf18f2f0840f05.html#exhale-enum-GenieDialog-8h-1a437ae7691ac7cacd38bf18f2f0840f05">GenieDialog_Priority_t</a></li><li>Enum <a href="enum_GenieDialog_8h_1a60d9c773028eddac789d15409995b539.html#exhale-enum-GenieDialog-8h-1a60d9c773028eddac789d15409995b539">GenieDialog_SentenceCode_t</a></li><li>Enum <a href="enum_GenieLog_8h_1a76fa6c13d3733ede113f78d082033912.html#exhale-enum-GenieLog-8h-1a76fa6c13d3733ede113f78d082033912">GenieLog_Level_t</a></li><li>Enum <a href="enum_GenieNode_8h_1a8c31e6344f35d3b77d6169f68e9c544f.html#exhale-enum-GenieNode-8h-1a8c31e6344f35d3b77d6169f68e9c544f">GenieNode_IOName_t</a></li><li>Enum <a href="enum_GenieNode_8h_1a83cb72a74ba29d73dae6b7a91b952584.html#exhale-enum-GenieNode-8h-1a83cb72a74ba29d73dae6b7a91b952584">GenieNode_TextOutput_SentenceCode_t</a></li><li class="lastChild">Enum <a href="enum_GeniePipeline_8h_1a71927438c90c2977f4bc074332d6a866.html#exhale-enum-GeniePipeline-8h-1a71927438c90c2977f4bc074332d6a866">GeniePipeline_Priority_t</a></li>
+    </ul>
+  </li><!-- only tree view element -->
+</ul><!-- /treeView class-treeView --></div>
+<div class="section" id="file-hierarchy">
+<h2>File Hierarchy<a class="headerlink" href="#file-hierarchy" title="Permalink to this heading">¶</a></h2>
+<ul class="treeView" id="file-treeView">
+  <li>
+    <ul class="collapsibleList">
+      <li class="lastChild">Directory <a href="dir_include.html#dir-include">include</a><ul><li class="lastChild">Directory <a href="dir_include_Genie.html#dir-include-Genie">Genie</a><ul><li>File <a href="file_include_Genie_GenieCommon.h.html#file-include-Genie-GenieCommon.h">GenieCommon.h</a></li><li>File <a href="file_include_Genie_GenieDialog.h.html#file-include-Genie-GenieDialog.h">GenieDialog.h</a></li><li>File <a href="file_include_Genie_GenieEmbedding.h.html#file-include-Genie-GenieEmbedding.h">GenieEmbedding.h</a></li><li>File <a href="file_include_Genie_GenieEngine.h.html#file-include-Genie-GenieEngine.h">GenieEngine.h</a></li><li>File <a href="file_include_Genie_GenieLog.h.html#file-include-Genie-GenieLog.h">GenieLog.h</a></li><li>File <a href="file_include_Genie_GenieNode.h.html#file-include-Genie-GenieNode.h">GenieNode.h</a></li><li>File <a href="file_include_Genie_GeniePipeline.h.html#file-include-Genie-GeniePipeline.h">GeniePipeline.h</a></li><li>File <a href="file_include_Genie_GenieProfile.h.html#file-include-Genie-GenieProfile.h">GenieProfile.h</a></li><li>File <a href="file_include_Genie_GenieSampler.h.html#file-include-Genie-GenieSampler.h">GenieSampler.h</a></li><li class="lastChild">File <a href="file_include_Genie_GenieTokenizer.h.html#file-include-Genie-GenieTokenizer.h">GenieTokenizer.h</a></li></ul></li></ul></li>
+    </ul>
+  </li><!-- only tree view element -->
+</ul><!-- /treeView file-treeView --></div>
+<div class="section" id="full-api">
+<h2>Full API<a class="headerlink" href="#full-api" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="enums">
+<h3>Enums<a class="headerlink" href="#enums" title="Permalink to this heading">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="enum_GenieDialog_8h_1a30a6e2b6a6f674a1d995567de6c724b8.html">Enum GenieDialog_Action_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="enum_GenieDialog_8h_1a437ae7691ac7cacd38bf18f2f0840f05.html">Enum GenieDialog_Priority_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="enum_GenieDialog_8h_1a60d9c773028eddac789d15409995b539.html">Enum GenieDialog_SentenceCode_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="enum_GenieLog_8h_1a76fa6c13d3733ede113f78d082033912.html">Enum GenieLog_Level_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="enum_GenieNode_8h_1a8c31e6344f35d3b77d6169f68e9c544f.html">Enum GenieNode_IOName_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="enum_GenieNode_8h_1a83cb72a74ba29d73dae6b7a91b952584.html">Enum GenieNode_TextOutput_SentenceCode_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="enum_GeniePipeline_8h_1a71927438c90c2977f4bc074332d6a866.html">Enum GeniePipeline_Priority_t</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieCommon_8h_1aa728c0da14fe36e15a85f31837357ff8.html">Function Genie_getApiMajorVersion</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieCommon_8h_1a88cb2c2e754e10c15f69e0d244c8a0eb.html">Function Genie_getApiMinorVersion</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieCommon_8h_1a3a619e02e24d1dcbd51b24d53d3b63e5.html">Function Genie_getApiPatchVersion</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieDialog_8h_1acc98f3fcd54d970ac84b17c4da3a25c6.html">Function GenieDialog_applyLora</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieDialog_8h_1a6822387aee5c2b6af6f5088e61131f27.html">Function GenieDialog_bindEngine</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieDialog_8h_1a7ed8b75b55a1d483cf9d5e5bf9027d24.html">Function GenieDialog_create</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieDialog_8h_1af3958d9748026304886d367e1726dd79.html">Function GenieDialog_embeddingQuery</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieDialog_8h_1a1493e65680af274eea84347f88d90899.html">Function GenieDialog_free</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieDialog_8h_1a5eaaa249aa573c29613d51a512fb1b15.html">Function GenieDialog_getEngine</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieDialog_8h_1a0e4b39749e037211d0c00bf5b1f71afe.html">Function GenieDialog_getSampler</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieDialog_8h_1a2c779262cd3539c815ed66a48335c53a.html">Function GenieDialog_getTokenizer</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieDialog_8h_1a7b2d4bf78e184fe81e81d089719f3733.html">Function GenieDialog_query</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieDialog_8h_1a4547984d74b50386a3d1f90d7389933c.html">Function GenieDialog_reset</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieDialog_8h_1a2bb4dbeddd258e63162b8e5a219b3e3c.html">Function GenieDialog_restore</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieDialog_8h_1af80e3d66851c0ab1ebab0771455a8590.html">Function GenieDialog_save</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieDialog_8h_1ad2604075973d7f9911df4387c7a37148.html">Function GenieDialog_setLoraStrength</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieDialog_8h_1a5e7d4807de5ea5406bd1f9a0fc6d05d8.html">Function GenieDialog_setOemKey</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieDialog_8h_1a08c1b79524f2e67a0416525a1ae2c40d.html">Function GenieDialog_setPriority</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieDialog_8h_1aa03534e4394558e02fd2ab65d59767d3.html">Function GenieDialog_setStopSequence</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieDialog_8h_1a24737fa908e20c0877f972d39f67e48c.html">Function GenieDialog_signal</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieDialog_8h_1a1a6b960cdbf972832662d87190657326.html">Function GenieDialog_tokenQuery</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieDialog_8h_1a5e98a421e7f997eba72fdd5610398587.html">Function GenieDialogConfig_bindLogger</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieDialog_8h_1acd04d699356e5bc83dd2acc6e0ea18f0.html">Function GenieDialogConfig_bindProfiler</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieDialog_8h_1a3c66d3491d44d1f93c98eb7af294b140.html">Function GenieDialogConfig_createFromJson</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieDialog_8h_1a12f0f8a9498298b77c1d251372e8d525.html">Function GenieDialogConfig_free</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieEmbedding_8h_1a48f60dcc012c75d19c950824a00ba40c.html">Function GenieEmbedding_create</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieEmbedding_8h_1a8d37516400c2b5b0f00d859170c748a7.html">Function GenieEmbedding_free</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieEmbedding_8h_1a1bdaa2c863abca12b8b6f445f56dd985.html">Function GenieEmbedding_generate</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieEmbedding_8h_1aa4485392f121c4d91a75b36e723d4cb8.html">Function GenieEmbeddingConfig_bindLogger</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieEmbedding_8h_1a9f2cb87a9c6e80039b9dafaf147c8bc3.html">Function GenieEmbeddingConfig_bindProfiler</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieEmbedding_8h_1a3d4da392995015a54825196b20318a26.html">Function GenieEmbeddingConfig_createFromJson</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieEmbedding_8h_1ae5a91c61cd91d23c0b26825cad3afc06.html">Function GenieEmbeddingConfig_free</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieEngine_8h_1aacd3447905f6a27158df64e486689b36.html">Function GenieEngine_create</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieEngine_8h_1ae9ab63152287841de8ac4fa93509e19c.html">Function GenieEngine_free</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieEngine_8h_1a14bb1c0eba84e32550d5031244ef0432.html">Function GenieEngineConfig_createFromJson</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieEngine_8h_1a9630c292063a983414ff342ad9adf480.html">Function GenieEngineConfig_free</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieLog_8h_1afcf4417c1026fd4657092cbac9d1cd01.html">Function GenieLog_create</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieLog_8h_1a6539606b0ded59dccde5204d1c85d325.html">Function GenieLog_free</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieNode_8h_1a7816a2b9da5d947efd895e958a815924.html">Function GenieNode_applyLora</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieNode_8h_1a6587226e60aaf6e6d711d4fdc7e8e22d.html">Function GenieNode_bindEngine</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieNode_8h_1a67b4122c281f82cc01a814d5dc075c14.html">Function GenieNode_create</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieNode_8h_1a2d497783a5360b22dcf3dee7f978b06d.html">Function GenieNode_free</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieNode_8h_1ad0cc5704b2539b1728f6b488c3440fa5.html">Function GenieNode_getEngine</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieNode_8h_1a4964027b18520f0981b54442ab72cc39.html">Function GenieNode_getSampler</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieNode_8h_1a639445c2fd7c57d768faf960d947021f.html">Function GenieNode_getTokenizer</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieNode_8h_1a7a0a965290ea5a8208b67d9e5c35a3d4.html">Function GenieNode_setData</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieNode_8h_1a134378aa01d6c5fdfc30632841f531af.html">Function GenieNode_setEmbeddingCallback</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieNode_8h_1a56de1f9fc21d9c0f0beea26cce541628.html">Function GenieNode_setLoraStrength</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieNode_8h_1af8f0d565296cbad72a4f896f6e2c16f8.html">Function GenieNode_setTextCallback</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieNode_8h_1ad744d5c3dbb87c33edf452bc5b8672f8.html">Function GenieNodeConfig_bindLogger</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieNode_8h_1a2cc127e8199cecc6c1e4d6bba2df4895.html">Function GenieNodeConfig_bindProfiler</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieNode_8h_1a16fbd1acc54ebfaf18dbef41bc56483c.html">Function GenieNodeConfig_createFromJson</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieNode_8h_1a2c64ec143da2dbbd2241854833e86c41.html">Function GenieNodeConfig_free</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GeniePipeline_8h_1af386f926e4b13c5989fab6fc299fc851.html">Function GeniePipeline_addNode</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GeniePipeline_8h_1a0fbe83759a3b8a89f19a6be86c1162ff.html">Function GeniePipeline_connect</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GeniePipeline_8h_1a554b5fa1d6fb5b909203948bd23c925c.html">Function GeniePipeline_create</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GeniePipeline_8h_1aee7b965e566b9821c521f15b4b360f91.html">Function GeniePipeline_execute</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GeniePipeline_8h_1abe14ba3191aafd7a22bb16dc49bc04b7.html">Function GeniePipeline_free</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GeniePipeline_8h_1a6f7cdbafba8125265975db618a01b797.html">Function GeniePipeline_reset</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GeniePipeline_8h_1ac988a3584d2ca06617fd15005bf9d9b5.html">Function GeniePipeline_restore</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GeniePipeline_8h_1ad2d26087c33b4087324c3d24423b3fbf.html">Function GeniePipeline_save</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GeniePipeline_8h_1abe06c97e76b47932bd0dfa7c7f6482dd.html">Function GeniePipeline_setOemKey</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GeniePipeline_8h_1aeba8a956b7a5037ba7a69570ead2ee14.html">Function GeniePipeline_setPriority</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GeniePipeline_8h_1a9f002fdaf20b3749a3811e9381d376ee.html">Function GeniePipelineConfig_bindLogger</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GeniePipeline_8h_1a5b7a49cd794f84c4a4826f36f8cfa9f2.html">Function GeniePipelineConfig_bindProfiler</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GeniePipeline_8h_1a04f86679b871ab65e1250168af937019.html">Function GeniePipelineConfig_createFromJson</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GeniePipeline_8h_1a3ced9bca8da96551f1c539f95aa1efb2.html">Function GeniePipelineConfig_free</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieProfile_8h_1aaf95ae962651f7fd045335886ed38a66.html">Function GenieProfile_create</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieProfile_8h_1a25c13e097323d87caa0fbeb61c973db1.html">Function GenieProfile_free</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieProfile_8h_1af16af81be1483300a7a121cfaebaab09.html">Function GenieProfile_getJsonData</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieSampler_8h_1a32113d7ff630e244c328b4c023247c51.html">Function GenieSampler_applyConfig</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieSampler_8h_1aa296b2e9369df4131fe1afa41e620098.html">Function GenieSampler_registerCallback</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieSampler_8h_1ab4aa47a685f7499bfe16cc19ee07061e.html">Function GenieSampler_registerUserDataCallback</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieSampler_8h_1a2ace87fa3f10b77e38c701b357af07fa.html">Function GenieSamplerConfig_createFromJson</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieSampler_8h_1af22e7696884a30247a226ccbfabe3a16.html">Function GenieSamplerConfig_free</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieSampler_8h_1aaff7bb2ad2731bed8d52b57961156b52.html">Function GenieSamplerConfig_setParam</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieTokenizer_8h_1a78df4f45c5196dd88ec7d42e9fef80a5.html">Function GenieTokenizer_decode</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_GenieTokenizer_8h_1a0ae23b699b098076f18b7c27011c8a65.html">Function GenieTokenizer_encode</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="defines">
+<h3>Defines<a class="headerlink" href="#defines" title="Permalink to this heading">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_GenieCommon_8h_1a5783993c82bd1fb94ebfd93797c9a081.html">Define GENIE_API</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_GenieCommon_8h_1afa1b13ba3e37f49627261458ed11a77d.html">Define GENIE_API_VERSION_MAJOR</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_GenieCommon_8h_1a07b6469728391251f2e6fd49b9bdd6fc.html">Define GENIE_API_VERSION_MINOR</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_GenieCommon_8h_1abfda5ed8dd82019de9880f3dd5661fb9.html">Define GENIE_API_VERSION_PATCH</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_GenieCommon_8h_1affdc5b87379a98f55b4d50a5ce189d17.html">Define GENIE_STATUS_ERROR_APPLY_CONFIG_FAILED</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_GenieCommon_8h_1ab7a2c58afb85c7a52cd6e09aa773952f.html">Define GENIE_STATUS_ERROR_BOUND_HANDLE</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_GenieCommon_8h_1ab6ba307bfc1b244abee97db952898ef0.html">Define GENIE_STATUS_ERROR_GENERAL</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_GenieCommon_8h_1a93cdecf806a8e46037e37e808b9fe0df.html">Define GENIE_STATUS_ERROR_GENERATE_FAILED</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_GenieCommon_8h_1a5d8334a8cabd05dc7a3b4f7581f748f3.html">Define GENIE_STATUS_ERROR_GET_HANDLE_FAILED</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_GenieCommon_8h_1adfb13627865eb16726aaab755d1d70e8.html">Define GENIE_STATUS_ERROR_INVALID_ARGUMENT</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_GenieCommon_8h_1a19c8e9ab16fa37f96e618460b8e06f47.html">Define GENIE_STATUS_ERROR_INVALID_CONFIG</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_GenieCommon_8h_1a19aaea4658b76a429b49e61c47c91ac7.html">Define GENIE_STATUS_ERROR_INVALID_HANDLE</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_GenieCommon_8h_1a3fc3ee3d34e6f152c7dc2d71500bfc19.html">Define GENIE_STATUS_ERROR_JSON_FORMAT</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_GenieCommon_8h_1ab15ad7d40d4afbae0bfa0a5d1172e576.html">Define GENIE_STATUS_ERROR_JSON_SCHEMA</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_GenieCommon_8h_1a7853c97b02bbe63eac9f70ac5fc05b3d.html">Define GENIE_STATUS_ERROR_JSON_VALUE</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_GenieCommon_8h_1ac1c28f9adb7ffc804dc2d0bf2acba005.html">Define GENIE_STATUS_ERROR_MEM_ALLOC</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_GenieCommon_8h_1ab3408abeb7416d70a6855df5b49d226b.html">Define GENIE_STATUS_ERROR_QUERY_FAILED</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_GenieCommon_8h_1a66f90eb14da4d7066f5975ffd708e64e.html">Define GENIE_STATUS_ERROR_SET_PARAMS_FAILED</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_GenieCommon_8h_1adf4d4a1642ee5ce7a570029373941fd0.html">Define GENIE_STATUS_SUCCESS</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_GenieCommon_8h_1a6d4cebd0824eebfd797357dbf7167492.html">Define GENIE_STATUS_WARNING_ABORTED</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="define_GenieCommon_8h_1ac75fb30d7ecc6ec1bba35941efdb2148.html">Define GENIE_STATUS_WARNING_BOUND_HANDLE</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="typedefs">
+<h3>Typedefs<a class="headerlink" href="#typedefs" title="Permalink to this heading">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_GenieCommon_8h_1a831058ac2742f7cb0057d9c2260d978c.html">Typedef Genie_AllocCallback_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_GenieCommon_8h_1a3c72aa3470859cd811d86c07d70d672b.html">Typedef Genie_Status_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_GenieDialog_8h_1a97c022bbadfb48b6114dda2b90aa20dc.html">Typedef GenieDialog_Handle_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_GenieDialog_8h_1ab1af80932798e035a376ba2e0782b75a.html">Typedef GenieDialog_QueryCallback_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_GenieDialog_8h_1a13e3ccd98c334b17d6c5ba94bd729f4d.html">Typedef GenieDialog_TokenQueryCallback_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_GenieDialog_8h_1a05336e9db9b50bf98f1e3f22b0354f2a.html">Typedef GenieDialog_TokenToEmbeddingCallback_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_GenieDialog_8h_1a008305c5d79c18e4acb768815607489b.html">Typedef GenieDialogConfig_Handle_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_GenieEmbedding_8h_1a688c8ad446cac72fe1cde94f1acd363a.html">Typedef GenieEmbedding_GenerateCallback_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_GenieEmbedding_8h_1a858431ae0b114430633e7fecc6266e59.html">Typedef GenieEmbedding_Handle_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_GenieEmbedding_8h_1adc58f41aa265bb8ab7ee4788c8f7148a.html">Typedef GenieEmbeddingConfig_Handle_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_GenieEngine_8h_1ab7240535a051d13d4286aae53a3cd96d.html">Typedef GenieEngine_Handle_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_GenieEngine_8h_1a722f2713bf47358b0d28b6982857d85d.html">Typedef GenieEngineConfig_Handle_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_GenieLog_8h_1a5a607ea30172b05e23afc3911082cb81.html">Typedef GenieLog_Callback_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_GenieLog_8h_1ac5a4054a1e5ff746212543305a5f4ab7.html">Typedef GenieLog_Handle_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_GenieLog_8h_1a5abc9af0bc2fced9fd41ac45110e3d5b.html">Typedef GenieLogConfig_Handle_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_GenieNode_8h_1a66492d38bb5c81ea8098ce6260d74b39.html">Typedef GenieNode_EmbeddingOutputCallback_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_GenieNode_8h_1a8a4a050a672cb2e9b5e640cceac79052.html">Typedef GenieNode_Handle_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_GenieNode_8h_1a54430c23b9611b3771aa4eaba7b8805c.html">Typedef GenieNode_TextOutput_Callback_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_GenieNode_8h_1ab77f586d59718362531e4d23d589406b.html">Typedef GenieNodeConfig_Handle_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_GeniePipeline_8h_1aaa3394b6e69a05d334ee8de3d9c876e9.html">Typedef GeniePipeline_Handle_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_GeniePipeline_8h_1acd12af4326b0acaf7134ef7bc9ac49e6.html">Typedef GeniePipelineConfig_Handle_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_GenieProfile_8h_1a80f48b55ecd7ab7b30ad28df5f20c9e6.html">Typedef GenieProfile_Handle_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_GenieProfile_8h_1af5e00af7d8bfd901001ef7b149d06e68.html">Typedef GenieProfileConfig_Handle_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_GenieSampler_8h_1ac24ac96cdfe106b35873f2eb6d9f2369.html">Typedef GenieSampler_Handle_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_GenieSampler_8h_1a0049cda66cae1918372d75316d8d2add.html">Typedef GenieSampler_ProcessCallback_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_GenieSampler_8h_1a455bcbb0d3230e18be69b69ae7a30c5f.html">Typedef GenieSampler_UserDataCallback_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_GenieSampler_8h_1a70f5aa843e182ae70f5163df5af0609f.html">Typedef GenieSamplerConfig_Handle_t</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_GenieTokenizer_8h_1acc835931dfe1cf44fdcd8b4c4b5314b6.html">Typedef GenieTokenizer_Handle_t</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="enum_GenieDialog_8h_1a30a6e2b6a6f674a1d995567de6c724b8.html" class="btn btn-neutral float-right" title="Enum GenieDialog_Action_t" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../general/library/library.html" class="btn btn-neutral float-left" title="Library" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

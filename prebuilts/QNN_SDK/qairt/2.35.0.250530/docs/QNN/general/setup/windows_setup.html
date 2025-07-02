@@ -1,0 +1,792 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Windows Setup &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Backend" href="../backend.html" />
+    <link rel="prev" title="Linux Setup" href="linux_setup.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.35.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../setup.html">Setup</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="linux_setup.html">Linux Setup</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Windows Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#instructions-for-windows-host-10-11-and-snapdragon">Instructions for Windows Host (10, 11, and Snapdragon)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-1-install-qualcomm-ai-engine-direct-aka-the-qnn-sdk">Step 1: Install Qualcomm AI Engine Direct (aka the “QNN SDK”)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#set-up-your-environment">Set up your environment</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#step-2-install-qnn-sdk-dependencies">Step 2: Install QNN SDK dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-3-install-model-frameworks">Step 3: Install Model Frameworks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-4-install-target-device-os-specific-toolchain-code">Step 4: Install Target Device OS-Specific Toolchain Code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#working-with-an-android-target-device">Working with an Android Target Device</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#working-with-a-linux-target-device">Working with a Linux Target Device</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#step-5-install-dependencies-for-target-hardware-processors">Step 5: Install Dependencies for Target Hardware Processors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cpu-central-processing-unit">CPU (Central Processing Unit)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gpu-graphical-processing-unit">GPU (Graphical Processing Unit)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#htp-and-dsp">HTP and DSP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lpai-low-power-ai">LPAI (Low Power AI)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#step-5-optional-additional-packages-for-evaluating-model-accuracy">Step 5 (Optional): Additional Packages for Evaluating Model Accuracy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tflite_delegate.html">QNN TFLite Delegate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../revision_history.html">Revision History</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../setup.html">Setup</a> &raquo;</li>
+        
+      <li>Windows Setup</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="windows-setup">
+<h1>Windows Setup<a class="headerlink" href="#windows-setup" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="instructions-for-windows-host-10-11-and-snapdragon">
+<span id="id1"></span><h2>Instructions for Windows Host (10, 11, and Snapdragon)<a class="headerlink" href="#instructions-for-windows-host-10-11-and-snapdragon" title="Permalink to this heading">¶</a></h2>
+<p>Follow these instructions to install the Qualcomm AI Engine Direct SDK <strong>(commonly referred to as the QNN SDK)</strong> and all necessary dependencies.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This guide is for a host machine running Windows 10, 11, or Windows on Snapdragon.
+If you are using a Linux machine or are using a WSL environment, follow the instructions
+<a class="reference internal" href="linux_setup.html"><span class="doc">here</span></a>.</p>
+</div>
+<p>The QNN SDK allows you to convert an AI model (ex. a <code class="docutils literal notranslate"><span class="pre">.pt</span></code> model from PyTorch) into instructions
+that can be run on a target device’s various processing units (CPU, GPU, HTP, cDSP, or LPAI).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To learn about acronyms which are new to you, see the <span class="xref std std-doc">glossary</span>.</p>
+</div>
+<p>You will need the following to use the QNN SDK:</p>
+<p>Step 1: The QNN SDK binary and its immediate dependencies.</p>
+<p>Step 2: Install QNN SDK Dependencies</p>
+<p>Step 3: Install model frameworks to interpret your AI model files. (e.g., <code class="docutils literal notranslate"><span class="pre">PyTorch</span></code>)</p>
+<p>Step 4: Install Target Device OS-Specific Tool Chain Code</p>
+<p>Step 5: Install Dependencies for Target Hardware Processors</p>
+<p>Step 6 (Optional step): Additional Packages for Evaluating Model Accuracy.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This guide contains many recommendations about specific versions of code to use that have been verified to work.
+Other versions of those dependencies may or may not work, so use them at your own risk.</p>
+</div>
+</div>
+<div class="section" id="step-1-install-qualcomm-ai-engine-direct-aka-the-qnn-sdk">
+<h2>Step 1: Install Qualcomm AI Engine Direct (aka the “QNN SDK”)<a class="headerlink" href="#step-1-install-qualcomm-ai-engine-direct-aka-the-qnn-sdk" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Go to the QNN SDK product page: <a class="reference external" href="https://www.qualcomm.com/developer/software/qualcomm-ai-engine-direct-sdk">https://www.qualcomm.com/developer/software/qualcomm-ai-engine-direct-sdk</a></p></li>
+<li><p>Click “Get Software” to download the QNN SDK</p>
+<ol class="loweralpha simple">
+<li><p>Note: The QNN SDK is ~2 Gb when unzipped.</p></li>
+</ol>
+</li>
+<li><p>Unzip the downloaded SDK.</p>
+<ol class="loweralpha simple">
+<li><p>The zipped file will have the version name, for example: <code class="docutils literal notranslate"><span class="pre">v2.22.6.240515</span></code>.</p></li>
+<li><p>When unzipped, the folder should be named <code class="docutils literal notranslate"><span class="pre">qairt</span></code> with a sub-folder that looks like <code class="docutils literal notranslate"><span class="pre">2.22.6.240515</span></code>.</p></li>
+</ol>
+</li>
+</ol>
+<div class="section" id="set-up-your-environment">
+<h3>Set up your environment<a class="headerlink" href="#set-up-your-environment" title="Permalink to this heading">¶</a></h3>
+<ol class="arabic">
+<li><p>Open an admin Powershell terminal by:</p>
+<ol class="loweralpha simple">
+<li><p>Pressing the “Windows” button to search for applications</p></li>
+<li><p>Searching for “Powershell”</p></li>
+<li><p>Right clicking “Windows Powershell” and selecting “Run as Administrator”</p></li>
+<li><p>Saying “Yes” when prompted for permission to run this application as an administrator.</p></li>
+</ol>
+</li>
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">qairt/&lt;QNN_SDK_VERSION&gt;</span></code> inside the unzipped QNN SDK.</p>
+<ol class="loweralpha simple">
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">&lt;QNN_SDK_VERSION&gt;</span></code> with the name of the file directly under <code class="docutils literal notranslate"><span class="pre">qairt</span></code> - it should look something like <code class="docutils literal notranslate"><span class="pre">2.22.6.240515</span></code>.</p></li>
+</ol>
+</li>
+<li><p>Setup the environment using the below commands:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>bin
+Unblock-File<span class="w"> </span>./envsetup.ps1
+./envsetup.ps1
+./envsetup.ps1
+</pre></div>
+</div>
+</li>
+<li><p>This will automatically set the environment variables <code class="docutils literal notranslate"><span class="pre">QNN_SDK_ROOT</span></code> and <code class="docutils literal notranslate"><span class="pre">SNPE_ROOT</span></code>.</p>
+<ol class="loweralpha simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">QNN_SDK_ROOT</span></code> - This points to the <code class="docutils literal notranslate"><span class="pre">qairt/QNN_SDK_ROOT</span></code> folder where the QNN SDK code lives.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SNPE_ROOT</span></code> - This stands for <code class="docutils literal notranslate"><span class="pre">Snapdragon</span> <span class="pre">Neural</span> <span class="pre">Processing</span> <span class="pre">Engine</span></code> (a synonym for Qualcomm® Neural Processing SDK).
+This SDK is included as part of the QNN SDK, so the variable points to the same folder as <code class="docutils literal notranslate"><span class="pre">QNN_SDK_ROOT</span></code>.</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">envsetup.ps1</span></code> script only updates environment variables for this Powershell instance.
+If you need to set <code class="docutils literal notranslate"><span class="pre">QNN_SDK_ROOT</span></code> again, just re-run this script.</p>
+</div>
+</li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">Unblock-File</span> <span class="pre">&quot;${QNN_SDK_ROOT}/bin/check-windows-dependency.ps1&quot;</span></code>.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">&amp;</span> <span class="pre">&quot;${QNN_SDK_ROOT}/bin/check-windows-dependency.ps1&quot;</span></code></p>
+<p>This will install the core Windows build tools.</p>
+<ol class="loweralpha simple">
+<li><p>Each time you run the script it will install more dependencies.
+You will likely have to re-run the command after it helps you install Visual Studio and Visual Studio Build Tools.</p></li>
+<li><p>When you have installed all the necessary dependencies, the script will say “All Done”.</p></li>
+</ol>
+</li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">Unblock-File</span> <span class="pre">&quot;${QNN_SDK_ROOT}/bin/envcheck.ps1&quot;</span></code>.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">&amp;</span> <span class="pre">&quot;${QNN_SDK_ROOT}/bin/envcheck.ps1&quot;</span> <span class="pre">-m</span></code>.</p>
+<p>This will verify that you have installed the Microsoft Visual Studio C++ (MSVC) toolchain successfully.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It’s normal to see that only one of “Visual C++(x86)” and “Visual C++(arm64)” is installed.
+The installed version should match the hardware of your host machine.</p>
+</div>
+<p>You should see an output like this:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Checking<span class="w"> </span>MSVC<span class="w"> </span>Toolchain
+--------------------------------------------------------------
+WARNING:<span class="w"> </span>The<span class="w"> </span>version<span class="w"> </span>of<span class="w"> </span>VS<span class="w"> </span>BuildTools<span class="w"> </span><span class="m">14</span>.40.33807<span class="w"> </span>found<span class="w"> </span>has<span class="w"> </span>not<span class="w"> </span>been<span class="w"> </span>validated.<span class="w"> </span>Recommended<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>known<span class="w"> </span>stable<span class="w"> </span>VS
+BuildTools<span class="w"> </span>version<span class="w"> </span><span class="m">14</span>.34
+WARNING:<span class="w"> </span>The<span class="w"> </span>version<span class="w"> </span>of<span class="w"> </span>Visual<span class="w"> </span>C++<span class="o">(</span>x64<span class="o">)</span><span class="w"> </span><span class="m">19</span>.40.33812<span class="w"> </span>found<span class="w"> </span>has<span class="w"> </span>not<span class="w"> </span>been<span class="w"> </span>validated.<span class="w"> </span>Recommended<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>known<span class="w"> </span>stable
+Visual<span class="w"> </span>C++<span class="o">(</span>x64<span class="o">)</span><span class="w"> </span>version<span class="w"> </span><span class="m">19</span>.34
+WARNING:<span class="w"> </span>The<span class="w"> </span>version<span class="w"> </span>of<span class="w"> </span>CMake<span class="w"> </span><span class="m">3</span>.28.3<span class="w"> </span>found<span class="w"> </span>has<span class="w"> </span>not<span class="w"> </span>been<span class="w"> </span>validated.<span class="w"> </span>Recommended<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>known<span class="w"> </span>stable<span class="w"> </span>CMake<span class="w"> </span>version<span class="w"> </span><span class="m">3</span>.21
+WARNING:<span class="w"> </span>The<span class="w"> </span>version<span class="w"> </span>of<span class="w"> </span>clang-cl<span class="w"> </span><span class="m">17</span>.0.3<span class="w"> </span>found<span class="w"> </span>has<span class="w"> </span>not<span class="w"> </span>been<span class="w"> </span>validated.<span class="w"> </span>Recommended<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>known<span class="w"> </span>stable<span class="w"> </span>clang-cl<span class="w"> </span>version
+<span class="m">15</span>.0.1
+Name<span class="w">              </span>Version
+----<span class="w">              </span>-------
+Visual<span class="w"> </span>Studio<span class="w">     </span><span class="m">17</span>.10.35027.167
+VS<span class="w"> </span>Build<span class="w"> </span>Tools<span class="w">    </span><span class="m">14</span>.40.33807
+Visual<span class="w"> </span>C++<span class="o">(</span>x86<span class="o">)</span><span class="w">   </span><span class="m">19</span>.40.33812
+Visual<span class="w"> </span>C++<span class="o">(</span>arm64<span class="o">)</span><span class="w"> </span>Not<span class="w"> </span>Installed
+Windows<span class="w"> </span>SDK<span class="w">       </span><span class="m">10</span>.0.22621
+CMake<span class="w">             </span><span class="m">3</span>.28.3
+clang-cl<span class="w">          </span><span class="m">17</span>.0.3
+--------------------------------------------------------------
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="step-2-install-qnn-sdk-dependencies">
+<h2>Step 2: Install QNN SDK dependencies<a class="headerlink" href="#step-2-install-qnn-sdk-dependencies" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic">
+<li><p>Install Python 3.10.4 - <a class="reference external" href="http://python.org/downloads/release/python-3104/">python.org/downloads/release/python-3104/</a></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Ensure you are downloading the proper version. New releases beyond Python 3.10.4 may not work as expected with the QNN SDK.</p>
+</div>
+</li>
+<li><p>Verify the installation worked by running:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>py<span class="w"> </span>--list
+</pre></div>
+</div>
+<p>You should see <code class="docutils literal notranslate"><span class="pre">-V:3.10</span></code> as one of the options.</p>
+</li>
+<li><p>Open the folder at <code class="docutils literal notranslate"><span class="pre">QNN_SDK_ROOT</span></code> in Visual Studio.</p></li>
+<li><p>Open a new Powershell terminal in Visual Studio by going to the top-menu “Terminal” and clicking “New Terminal”.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Ensure the new terminal is a Powershell instance.</p>
+</div>
+</li>
+<li><p>From the <code class="docutils literal notranslate"><span class="pre">QNN_SDK_ROOT</span></code> folder, run the following command to create and activate a new virtual environment:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>py<span class="w"> </span>-3.10<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span><span class="s2">&quot;venv&quot;</span>
+<span class="p">&amp;</span><span class="w"> </span><span class="s2">&quot;venv\Scripts\Activate.ps1&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Update all dependencies by running the following commands in Powershell:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+python<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$env</span><span class="s2">:QNN_SDK_ROOT\bin\check-python-dependency&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The above installs all required and optional packages. To skip optional package installation pass <code class="docutils literal notranslate"><span class="pre">--skip-optional</span></code></p>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="step-3-install-model-frameworks">
+<h2>Step 3: Install Model Frameworks<a class="headerlink" href="#step-3-install-model-frameworks" title="Permalink to this heading">¶</a></h2>
+<p>QNN supports the following model frameworks.</p>
+<p>Install the ones that are relevant for the AI model files you want to use.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You do not need to install <strong>all</strong> packages here.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can install a package by running <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">package==version</span></code>.
+e.g., <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">torch==1.13.1</span></code></p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Package</p></th>
+<th class="head"><p>Version</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://pypi.org/project/torch/">torch (SNPE/QNN)</a></p></td>
+<td><p>1.13.1</p></td>
+<td><p>PyTorch is used for building and training deep learning models with a focus on flexibility and speed. Used with .pt files.
+Install by downloading the proper binary from <a class="reference external" href="https://pytorch.org/get-started/previous-versions/#v1130">PyTorch previous versions</a> if pip install does not work.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://pypi.org/project/torch/">torch (QAIRT)</a></p></td>
+<td><p>2.4.0</p></td>
+<td><p>PyTorch is used for building and training deep learning models with a focus on flexibility and speed. Used with .pt files.
+Install by downloading the proper binary from <a class="reference external" href="https://pytorch.org/get-started/previous-versions/#v240">PyTorch previous versions</a> if pip install does not work.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://pypi.org/project/torchvision/">torchvision</a></p></td>
+<td><p>0.14.1 (SNPE/QNN) / 0.19.0 (QAIRT)</p></td>
+<td><p>Torchvision is used for computer vision tasks with PyTorch, providing datasets, model architectures, and image transforms.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://pypi.org/project/tensorflow/">tensorflow</a></p></td>
+<td><p>2.10.1</p></td>
+<td><p>Use for building and training machine learning models, particularly deep learning models. Used with .pb files.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://pypi.org/project/tflite/">tflite</a></p></td>
+<td><p>2.3.0</p></td>
+<td><p>Use for running TensorFlow models on mobile and edge devices with optimized performance. Used with .tflite files.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://pypi.org/project/onnx/">onnx</a></p></td>
+<td><p>1.12.0</p></td>
+<td><p>ONNX stands for Open Neural Network Exchange. It is used for defining and exchanging deep learning models between different frameworks. Used with .onnx files.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://pypi.org/project/onnxruntime/">onnxruntime</a></p></td>
+<td><p>1.17.1</p></td>
+<td><p>ONNX Runtime is used for running ONNX models with high performance across various hardware platforms. Used with .onnx files.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://pypi.org/project/onnxsim/">onnxsim</a></p></td>
+<td><p>0.4.36</p></td>
+<td><p>It is used for simplifying ONNX models to reduce complexity and improve inference efficiency. Used with .onnx files.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can verify your installation by calling <code class="docutils literal notranslate"><span class="pre">&amp;</span> <span class="pre">&quot;${QNN_SDK_ROOT}/bin/envcheck.ps1&quot;</span> <span class="pre">-a</span></code> which will check to see
+whether these dependencies are installed. These are optional, so just verify that the dependencies you intended
+to install are actually installed.</p>
+</div>
+</div>
+<div class="section" id="step-4-install-target-device-os-specific-toolchain-code">
+<h2>Step 4: Install Target Device OS-Specific Toolchain Code<a class="headerlink" href="#step-4-install-target-device-os-specific-toolchain-code" title="Permalink to this heading">¶</a></h2>
+<p>Depending on the target device’s operating system there may be additional installation requirements.</p>
+<div class="section" id="working-with-an-android-target-device">
+<span id="windows-setup-android-target"></span><h3>Working with an Android Target Device<a class="headerlink" href="#working-with-an-android-target-device" title="Permalink to this heading">¶</a></h3>
+<p>For working with Android devices, you will need to install a corresponding Android NDK (Native Developer Kit).
+You can install the recommended version (Android NDK version <code class="docutils literal notranslate"><span class="pre">r26c</span></code>) by following these steps:</p>
+<ol class="arabic">
+<li><p>Download the Android NDK: <a class="reference external" href="https://dl.google.com/android/repository/android-ndk-r26c-linux.zip">https://dl.google.com/android/repository/android-ndk-r26c-linux.zip</a></p></li>
+<li><p>Unzip the file.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If your environment is in WSL, the Android NDK must be unzipped under $HOME with the WSL <code class="docutils literal notranslate"><span class="pre">unzip</span></code> command.</p>
+</div>
+</li>
+<li><p>Copy the path to your unzipped Android NDK root (the folder should be named <code class="docutils literal notranslate"><span class="pre">android-ndk-r26c</span></code>).</p></li>
+<li><p>Open a Powershell terminal.</p></li>
+<li><p>Add the location of the unzipped file to your PATH by running:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Ensure you update the <code class="docutils literal notranslate"><span class="pre">&lt;path-to-your-android-ndk-root-folder&gt;</span></code> below to be the path to the
+unzipped <code class="docutils literal notranslate"><span class="pre">android-ndk-r26c</span></code> folder before running the below commands!
+(Ex. <code class="docutils literal notranslate"><span class="pre">/home/usr/Documents/android-ndk-r26c</span></code>)</p>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">$env</span>:ANDROID_NDK_ROOT<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;path-to-your-android-ndk-root-folder&gt;&quot;</span>
+<span class="o">[</span>System.Environment<span class="o">]</span>::SetEnvironmentVariable<span class="o">(</span><span class="s2">&quot;ANDROID_NDK_ROOT&quot;</span>,<span class="w"> </span><span class="s2">&quot;&lt;path-to-your-android-ndk-root-folder&gt;&quot;</span>,<span class="w"> </span><span class="s2">&quot;User&quot;</span><span class="o">)</span>
+
+<span class="nv">$env</span>:PATH<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$env</span><span class="s2">:ANDROID_NDK_ROOT;</span><span class="nv">$env</span><span class="s2">:PATH&quot;</span>
+<span class="o">[</span>System.Environment<span class="o">]</span>::SetEnvironmentVariable<span class="o">(</span><span class="s2">&quot;PATH&quot;</span>,<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$env</span><span class="s2">:ANDROID_NDK_ROOT;</span><span class="nv">$env</span><span class="s2">:PATH&quot;</span>,<span class="w"> </span><span class="s2">&quot;User&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">Unblock-File</span> <span class="pre">&quot;${QNN_SDK_ROOT}/bin/envcheck.ps1&quot;</span></code>.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">&amp;</span> <span class="pre">&quot;${QNN_SDK_ROOT}/bin/envcheck.ps1&quot;</span> <span class="pre">-n</span></code>.</p>
+<p>This will verify your environment variables are properly configured.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="working-with-a-linux-target-device">
+<h3>Working with a Linux Target Device<a class="headerlink" href="#working-with-a-linux-target-device" title="Permalink to this heading">¶</a></h3>
+<p>For Linux target devices you will likely need to use clang++14 to build models for them using the QNN SDK.
+Later versions may work but have not been verified.</p>
+<p>You can update your Visual Studio to use a specific version of clang++ by following these instructions:
+<a class="reference external" href="https://learn.microsoft.com/en-us/cpp/build/clang-support-msbuild?view=msvc-170">https://learn.microsoft.com/en-us/cpp/build/clang-support-msbuild?view=msvc-170</a>.</p>
+</div>
+</div>
+<div class="section" id="step-5-install-dependencies-for-target-hardware-processors">
+<h2>Step 5: Install Dependencies for Target Hardware Processors<a class="headerlink" href="#step-5-install-dependencies-for-target-hardware-processors" title="Permalink to this heading">¶</a></h2>
+<p>Some of the target processors (CPU, GPU, HTP, cDSP, or HTA) require additional dependencies to build models.</p>
+<div class="section" id="cpu-central-processing-unit">
+<h3>CPU (Central Processing Unit)<a class="headerlink" href="#cpu-central-processing-unit" title="Permalink to this heading">¶</a></h3>
+<p>The x86_64 targets are built using clang-14. You can update your Visual Studio to use a
+specific version of clang++ by following these instructions:
+<a class="reference external" href="https://learn.microsoft.com/en-us/cpp/build/clang-support-msbuild?view=msvc-170">https://learn.microsoft.com/en-us/cpp/build/clang-support-msbuild?view=msvc-170</a>.</p>
+<p>The ARM CPU targets are built using the Android NDK (see
+<a class="reference internal" href="#windows-setup-android-target"><span class="std std-ref">Working With an Android Target Device</span></a>).</p>
+</div>
+<div class="section" id="gpu-graphical-processing-unit">
+<h3>GPU (Graphical Processing Unit)<a class="headerlink" href="#gpu-graphical-processing-unit" title="Permalink to this heading">¶</a></h3>
+<p>The GPU backend kernels are written based on OpenCL. The GPU operations must be implemented
+based on OpenCL headers with minimum version OpenCL 1.2.</p>
+</div>
+<div class="section" id="htp-and-dsp">
+<h3>HTP and DSP<a class="headerlink" href="#htp-and-dsp" title="Permalink to this heading">¶</a></h3>
+<p>Compiling for both HTP and DSP hardware requires the use of the Qualcomm Hexagon SDK and
+Hexagon SDK Tools which you can install by following these steps.</p>
+<ol class="arabic">
+<li><p>If you do not already have Qualcomm Package Manager 3 (QPM3) installed, install it
+by following the steps below:</p>
+<ol class="loweralpha">
+<li><p>Sign into <a class="reference external" href="https://qpm.qualcomm.com/#/main/tools/details/QPM3">https://qpm.qualcomm.com/#/main/tools/details/QPM3</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>You may have to reclick the link after logging in to have the QPM3 product page load properly.</strong></p>
+</div>
+</li>
+<li><p>Download the Windows version of Qualcomm Package Manager 3 (QPM3).</p></li>
+</ol>
+</li>
+<li><p>Start QPM3 by running the QPM3 executable. It should have a similar name to <code class="docutils literal notranslate"><span class="pre">QPM.3.0.92.3.Windows-AnyCPU.exe</span></code>.</p></li>
+<li><p>Create a Qualcomm account or log in to your existing one when prompted.</p></li>
+<li><p>Look up which “Hexagon Architecture” your chip supports in the
+<a class="reference internal" href="../overview.html#tbl-supported-snapdragon-devices"><span class="std std-ref">supported Snapdragon devices table</span></a>. (It should look like “V00”)</p></li>
+<li><p>Use the below table to determine the proper Hexagon SDK version for your Hexagon architecture:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can find the “Hexagon Architecture” of your chip by looking it up in the
+<a class="reference internal" href="../overview.html#tbl-supported-snapdragon-devices"><span class="std std-ref">supported Snapdragon devices table</span></a> - it should look something like “V00”.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Backend</p></th>
+<th class="head"><p>Hexagon Architecture</p></th>
+<th class="head"><p>Hexagon SDK Version</p></th>
+<th class="head"><p>Additional Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>HTP</p></td>
+<td><p>V75</p></td>
+<td><p>5.4.0</p></td>
+<td><p>Pre-packaged.</p></td>
+</tr>
+<tr class="row-odd"><td><p>HTP</p></td>
+<td><p>V73</p></td>
+<td><p>5.4.0</p></td>
+<td><p>Pre-packaged.</p></td>
+</tr>
+<tr class="row-even"><td><p>HTP</p></td>
+<td><p>V69</p></td>
+<td><p>4.3.0</p></td>
+<td><p>Pre-packaged.</p></td>
+</tr>
+<tr class="row-odd"><td><p>HTP</p></td>
+<td><p>V68</p></td>
+<td><p>4.2.0</p></td>
+<td><p>Not pre-packaged with Hexagon SDK Tools.</p></td>
+</tr>
+<tr class="row-even"><td><p>DSP</p></td>
+<td><p>V66</p></td>
+<td><p>4.1.0</p></td>
+<td><p>Not pre-packaged with Hexagon SDK Tools.</p></td>
+</tr>
+<tr class="row-odd"><td><p>DSP</p></td>
+<td><p>V65</p></td>
+<td><p>3.5.2</p></td>
+<td><p>Must be downloaded manually <a class="reference external" href="https://developer.qualcomm.com/software/hexagon-dsp-sdk/tools">here</a>
+instead of from QPM3. Not pre-packaged with Hexagon SDK Tools.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Hexagon SDK Tools version 8.4.09/8.4.06/8.3.07 is <strong>not</strong> currently pre-packaged into
+Hexagon SDK version 4.2.0/4.1.0/3.5.2 respectively. It needs to be downloaded separately
+and placed at the location <code class="docutils literal notranslate"><span class="pre">$HEXAGON_SDK_ROOT/tools/HEXAGON_Tools/</span></code>.</p>
+</div>
+</li>
+<li><p>In the QPM3, search for “Hexagon SDK”.</p></li>
+<li><p>Download the specified version in the above table.</p></li>
+<li><p>If your version of Use the table below to determine which version of the Hexagon Tools software corresponds
+to your Hexagon Architecture from before. (You can look it up again in the
+<a class="reference internal" href="../overview.html#tbl-supported-snapdragon-devices"><span class="std std-ref">supported Snapdragon devices table</span></a>)</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Backend</p></th>
+<th class="head"><p>Hexagon Architecture</p></th>
+<th class="head"><p>Hexagon Tools Version</p></th>
+<th class="head"><p>Additional Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>HTP</p></td>
+<td><p>V75</p></td>
+<td><p>8.7.03</p></td>
+<td><p>Pre-packaged.</p></td>
+</tr>
+<tr class="row-odd"><td><p>HTP</p></td>
+<td><p>V73</p></td>
+<td><p>8.6.02</p></td>
+<td><p>Pre-packaged.</p></td>
+</tr>
+<tr class="row-even"><td><p>HTP</p></td>
+<td><p>V69</p></td>
+<td><p>8.5.03</p></td>
+<td><p>Pre-packaged.</p></td>
+</tr>
+<tr class="row-odd"><td><p>HTP</p></td>
+<td><p>V68</p></td>
+<td><p>8.4.09</p></td>
+<td><p>Not pre-packaged.</p></td>
+</tr>
+<tr class="row-even"><td><p>DSP</p></td>
+<td><p>V66</p></td>
+<td><p>8.4.06</p></td>
+<td><p>Not pre-packaged.</p></td>
+</tr>
+<tr class="row-odd"><td><p>DSP</p></td>
+<td><p>V65</p></td>
+<td><p>8.3.07</p></td>
+<td><p>Not pre-packaged.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Hexagon SDK Tools version 8.4.09/8.4.06/8.3.07 is <strong>not</strong> currently pre-packaged into
+Hexagon SDK version 4.2.0/4.1.0/3.5.2 respectively. It needs to be downloaded separately
+and placed at the location <code class="docutils literal notranslate"><span class="pre">$HEXAGON_SDK_ROOT/tools/HEXAGON_Tools/</span></code>.</p>
+</div>
+</li>
+<li><p>In QPM3, search for “Hexagon Tools”.</p></li>
+<li><p>Install the proper version from the above table for your Hexagon Architecture.</p></li>
+<li><p>Install clang++ so you can compile code for HTP / DSP hardware.</p></li>
+<li><p>Follow the instructions at <code class="docutils literal notranslate"><span class="pre">$HEXAGON_SDK_ROOT/docs/readme.html</span></code> (where $HEXAGON_SDK_ROOT is the location of the Hexagon SDK installation).</p></li>
+</ol>
+</div>
+<div class="section" id="lpai-low-power-ai">
+<h3>LPAI (Low Power AI)<a class="headerlink" href="#lpai-low-power-ai" title="Permalink to this heading">¶</a></h3>
+<p>The LPAI backend is designed for offline model preparation only. In order to use QNN with LPAI, you must download the LPAI code using Qualcomm Package Manager.</p>
+<ol class="arabic">
+<li><p>If you do not already have Qualcomm Package Manager 3 (QPM3) installed, install it by following the steps below:</p>
+<ol class="loweralpha">
+<li><p>Sign into <a class="reference external" href="https://qpm.qualcomm.com/#/main/tools/details/QPM3">https://qpm.qualcomm.com/#/main/tools/details/QPM3</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You may have to reclick the link after logging in to have it load properly.</p>
+</div>
+</li>
+<li><p>Download the Windows version of Qualcomm Package Manager 3 (QPM3).</p></li>
+</ol>
+</li>
+<li><p>Start QPM3 by running the QPM3 executable. It should have a similar name to <code class="docutils literal notranslate"><span class="pre">QPM.3.0.92.3.Windows-AnyCPU.exe</span></code>.</p></li>
+<li><p>Create a Qualcomm account or log in to your existing one when prompted.</p></li>
+<li><p>Once logged in to the Qualcomm Package Manager, search for “LPAI” and click the “Extract” button.</p>
+<ol class="loweralpha simple">
+<li><p>This will attempt to install the LPAI code, <strong>but will likely fail</strong> because it is missing the Hexagon SDK dependency.</p></li>
+<li><p>Use the error message to determine which version of the Hexagon SDK you need to install first.</p>
+<ol class="lowerroman simple">
+<li><p>Ex. For v2.4.0 of the LPAI code, it requires version 5.x of the Hexagon SDK.</p></li>
+</ol>
+</li>
+<li><p>Install the necessary version of the Hexagon SDK.</p></li>
+<li><p>Then re-install the LPAI code.</p></li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="step-5-optional-additional-packages-for-evaluating-model-accuracy">
+<h2>Step 5 (Optional): Additional Packages for Evaluating Model Accuracy<a class="headerlink" href="#step-5-optional-additional-packages-for-evaluating-model-accuracy" title="Permalink to this heading">¶</a></h2>
+<p>If you want to evaluate model accuracy in real time, you may also need to install some of the following dependencies.</p>
+<p>You can install each relevant package by running:</p>
+<p><code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">dependency==version</span></code></p>
+<p>Ex. <code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">pycocotools==2.0.6</span></code></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Package</p></th>
+<th class="head"><p>Version</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://pypi.org/project/pycocotools/">pycocotools</a></p></td>
+<td><p>2.0.6</p></td>
+<td><p>Use for working with COCO datasets for object detection, segmentation, and keypoint tasks.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://pypi.org/project/transformers/">transformers</a></p></td>
+<td><p>4.31.0</p></td>
+<td><p>Use for leveraging pre-trained models for various NLP tasks like text classification, translation, and more.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://pypi.org/project/tokenizers/">tokenizers</a></p></td>
+<td><p>0.19.1</p></td>
+<td><p>Use for efficient tokenization of text data, particularly when dealing with large datasets.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://pypi.org/project/sacrebleu/">sacrebleu</a></p></td>
+<td><p>2.3.1</p></td>
+<td><p>Use for evaluating the quality of machine translation models.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://pypi.org/project/scikit-learn/">scikit-learn</a></p></td>
+<td><p>1.3.0</p></td>
+<td><p>Use for implementing machine learning algorithms and models for various predictive tasks.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://pypi.org/project/OpenNMT-py/">OpenNMT-py</a></p></td>
+<td><p>2.3.0</p></td>
+<td><p>Use for building and training neural machine translation models.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://pypi.org/project/sentencepiece/">sentencepiece</a></p></td>
+<td><p>0.1.98</p></td>
+<td><p>Use for unsupervised text tokenization and preprocessing for language models.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this heading">¶</a></h2>
+<p>Now that you’ve finished with setting up QNN SDK and its dependencies, you can use the QNN SDK.
+Follow the <a class="reference internal" href="../tutorial/tutorial_convert_execute_cnn_model.html"><span class="doc">CNN to QNN tutorial</span></a> to
+learn how to transform your AI models, build them for your target device, and use them to generate
+inferences on the information processing cores you choose. Use the QNN SDK to allow your AI models
+to execute on your specific target device’s cores.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../backend.html" class="btn btn-neutral float-right" title="Backend" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="linux_setup.html" class="btn btn-neutral float-left" title="Linux Setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2025, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

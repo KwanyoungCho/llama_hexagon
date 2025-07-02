@@ -1,0 +1,517 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Program Listing for File GeniePipeline.h &mdash; Qualcomm® Gen AI Inference Extensions</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Gen AI Inference Extensions
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.35.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/support/support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/library/library.html">Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools/tools.html">Tools</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Gen AI Inference Extensions</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Program Listing for File GeniePipeline.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-geniepipeline-h">
+<span id="program-listing-file-include-genie-geniepipeline-h"></span><h1>Program Listing for File GeniePipeline.h<a class="headerlink" href="#program-listing-for-file-geniepipeline-h" title="Permalink to this heading">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_include_Genie_GeniePipeline.h.html#file-include-genie-geniepipeline-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/Genie/GeniePipeline.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//=============================================================================</span>
+<span class="c1">//</span>
+<span class="c1">//  Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.</span>
+<span class="c1">//  All Rights Reserved.</span>
+<span class="c1">//  Confidential and Proprietary - Qualcomm Technologies, Inc.</span>
+<span class="c1">//</span>
+<span class="c1">//=============================================================================</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief An API component for Genie composable pipeline.</span>
+<span class="cm"> */</span>
+
+<span class="cp">#ifndef GENIE_PIPELINE_H</span>
+<span class="cp">#define GENIE_PIPELINE_H</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;GenieCommon.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;GenieLog.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;GenieNode.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;GenieProfile.h&quot;</span>
+
+<span class="cp">#ifdef __cplusplus</span>
+<span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="cp">#endif</span>
+
+<span class="c1">//=============================================================================</span>
+<span class="c1">// Data Types</span>
+<span class="c1">//=============================================================================</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A handle for pipeline configuration instances.</span>
+<span class="cm"> */</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_GeniePipelineConfig_Handle_t</span><span class="o">*</span><span class="w"> </span><span class="n">GeniePipelineConfig_Handle_t</span><span class="p">;</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A handle for pipeline instances.</span>
+<span class="cm"> */</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_GeniePipeline_Handle_t</span><span class="o">*</span><span class="w"> </span><span class="n">GeniePipeline_Handle_t</span><span class="p">;</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief An enum which defines the pipeline priority.</span>
+<span class="cm"> */</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">/// GENIE_PIPELINE_PRIORITY_LOW is always available for use.</span>
+<span class="w">  </span><span class="n">GENIE_PIPELINE_PRIORITY_LOW</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">/// GENIE_PIPELINE_PRIORITY_NORMAL is always available for use. This is the default.</span>
+<span class="w">  </span><span class="n">GENIE_PIPELINE_PRIORITY_NORMAL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">/// GENIE_PIPELINE_PRIORITY_NORMAL_HIGH usage may be restricted and would silently be treated as</span>
+<span class="w">  </span><span class="c1">/// GENIE_PIPELINE_PRIORITY_NORMAL</span>
+<span class="w">  </span><span class="n">GENIE_PIPELINE_PRIORITY_NORMAL_HIGH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">/// GENIE_PIPELINE_PRIORITY_HIGH usage may be restricted and would silently be treated as</span>
+<span class="w">  </span><span class="c1">/// GENIE_PIPELINE_PRIORITY_NORMAL</span>
+<span class="w">  </span><span class="n">GENIE_PIPELINE_PRIORITY_HIGH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span>
+<span class="p">}</span><span class="w"> </span><span class="n">GeniePipeline_Priority_t</span><span class="p">;</span>
+
+<span class="c1">//=============================================================================</span>
+<span class="c1">// Functions</span>
+<span class="c1">//=============================================================================</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A function to create a pipeline configuration from a JSON string.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] str A configuration string. Must not be NULL.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[out] configHandle A handle to the created config. Must not be NULL.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Status code:</span>
+<span class="cm"> *         - GENIE_STATUS_SUCCESS: API call was successful.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_ARGUMENT: At least one argument is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_MEM_ALLOC: Memory allocation failure.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_CONFIG: At least one configuration option is invalid.</span>
+<span class="cm"> */</span>
+<span class="n">GENIE_API</span>
+<span class="n">Genie_Status_t</span><span class="w"> </span><span class="n">GeniePipelineConfig_createFromJson</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">str</span><span class="p">,</span>
+<span class="w">                                                  </span><span class="n">GeniePipelineConfig_Handle_t</span><span class="o">*</span><span class="w"> </span><span class="n">configHandle</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A function to bind a profile handle to pipeline config. The profile handle</span>
+<span class="cm"> *        will also be bound to any pipeline handle created from this pipeline config handle.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] configHandle A handle to a valid config.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] profileHandle The profile handle on which metrics are populated and can</span>
+<span class="cm"> *                          be queried. Cannot be NULL.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Status code:</span>
+<span class="cm"> *         - GENIE_STATUS_SUCCESS: API call was successful.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_HANDLE: Config handle or profile handle is invalid.</span>
+<span class="cm"> */</span>
+<span class="n">GENIE_API</span>
+<span class="n">Genie_Status_t</span><span class="w"> </span><span class="n">GeniePipelineConfig_bindProfiler</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GeniePipelineConfig_Handle_t</span><span class="w"> </span><span class="n">configHandle</span><span class="p">,</span>
+<span class="w">                                                </span><span class="k">const</span><span class="w"> </span><span class="n">GenieProfile_Handle_t</span><span class="w"> </span><span class="n">profileHandle</span><span class="p">);</span>
+<span class="cm">/**</span>
+<span class="cm"> * @brief A function to bind a log handle to pipeline config. The log handle</span>
+<span class="cm"> *        will also be bound to any pipeline handle created from this pipeline config handle.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] configHandle A handle to a valid config.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] logHandle The log handle using which logs are recorded and</span>
+<span class="cm"> *                      outputted. Cannot be NULL.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Status code:</span>
+<span class="cm"> *         - GENIE_STATUS_SUCCESS: API call was successful.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_HANDLE: Config handle or log handle is invalid.</span>
+<span class="cm"> */</span>
+<span class="n">GENIE_API</span>
+<span class="n">Genie_Status_t</span><span class="w"> </span><span class="n">GeniePipelineConfig_bindLogger</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GeniePipelineConfig_Handle_t</span><span class="w"> </span><span class="n">configHandle</span><span class="p">,</span>
+<span class="w">                                              </span><span class="k">const</span><span class="w"> </span><span class="n">GenieLog_Handle_t</span><span class="w"> </span><span class="n">logHandle</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A function to free a pipeline config.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] configHandle A config handle.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Status code:</span>
+<span class="cm"> *         - GENIE_STATUS_SUCCESS: API call was successful.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_HANDLE: Pipeline handle is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_MEM_ALLOC: Memory (de)allocation failure.</span>
+<span class="cm"> */</span>
+<span class="n">GENIE_API</span>
+<span class="n">Genie_Status_t</span><span class="w"> </span><span class="n">GeniePipelineConfig_free</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GeniePipelineConfig_Handle_t</span><span class="w"> </span><span class="n">configHandle</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A function to create a pipeline. The pipeline can be configured using a</span>
+<span class="cm"> *        builder pattern.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] configHandle A handle to a valid config. Must not be NULL.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[out] pipelineHandle A handle to the created pipeline. Must not be NULL.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Status code:</span>
+<span class="cm"> *         - GENIE_STATUS_SUCCESS: API call was successful.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_HANDLE: Config handle is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_ARGUMENT: At least one argument is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_MEM_ALLOC: Memory allocation failure.</span>
+<span class="cm"> */</span>
+<span class="n">GENIE_API</span>
+<span class="n">Genie_Status_t</span><span class="w"> </span><span class="n">GeniePipeline_create</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GeniePipelineConfig_Handle_t</span><span class="w"> </span><span class="n">configHandle</span><span class="p">,</span>
+<span class="w">                                    </span><span class="n">GeniePipeline_Handle_t</span><span class="o">*</span><span class="w"> </span><span class="n">pipelineHandle</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A function to save state of a node to a file.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] pipelineHandle A handle to the created pipeline. Must not be NULL.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] path File Path where node state will be saved.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Status code:</span>
+<span class="cm"> *         - GENIE_STATUS_SUCCESS: API call was successful.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_HANDLE: Config handle is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_ARGUMENT: At least one argument is invalid.</span>
+<span class="cm"> */</span>
+<span class="n">GENIE_API</span>
+<span class="n">Genie_Status_t</span><span class="w"> </span><span class="n">GeniePipeline_save</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GeniePipeline_Handle_t</span><span class="w"> </span><span class="n">pipelineHandle</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">path</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A function to restore state of a node from a file.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] pipelineHandle A handle to the created pipeline. Must not be NULL.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] path File Path where pipeline state will be restored from.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Status code:</span>
+<span class="cm"> *         - GENIE_STATUS_SUCCESS: API call was successful.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_HANDLE: Config handle is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_ARGUMENT: At least one argument is invalid.</span>
+<span class="cm"> */</span>
+<span class="n">GENIE_API</span>
+<span class="n">Genie_Status_t</span><span class="w"> </span><span class="n">GeniePipeline_restore</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GeniePipeline_Handle_t</span><span class="w"> </span><span class="n">pipelineHandle</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">path</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A function to reset a pipeline.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] pipelineHandle A pipeline handle.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Status code:</span>
+<span class="cm"> *         - GENIE_STATUS_SUCCESS: API call was successful.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_HANDLE: Pipeline handle is invalid.</span>
+<span class="cm"> */</span>
+<span class="n">GENIE_API</span>
+<span class="n">Genie_Status_t</span><span class="w"> </span><span class="n">GeniePipeline_reset</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GeniePipeline_Handle_t</span><span class="w"> </span><span class="n">pipelineHandle</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A function to set an engine&#39;s QNN context priority.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @note GENIE_PIPELINE_PRIORITY_NORMAL_HIGH and GENIE_PIPELINE_PRIORITY_HIGH may be reserved on</span>
+<span class="cm"> * some platforms for OEM use. See GeniePipeline_setOemKey.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] pipelineHandle A pipeline handle.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] engineRole Engine role to which the priority is being applied (e.g. &quot;primary&quot;).</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] priority The requested priority.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Status code:</span>
+<span class="cm"> *         - GENIE_STATUS_SUCCESS: API call was successful.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_HANDLE: Pipeline handle is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_ARGUMENT: At least one argument is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_GENERAL: The requested priority could not be applied.</span>
+<span class="cm"> */</span>
+<span class="n">GENIE_API</span>
+<span class="n">Genie_Status_t</span><span class="w"> </span><span class="n">GeniePipeline_setPriority</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GeniePipeline_Handle_t</span><span class="w"> </span><span class="n">pipelineHandle</span><span class="p">,</span>
+<span class="w">                                         </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">engineRole</span><span class="p">,</span>
+<span class="w">                                         </span><span class="k">const</span><span class="w"> </span><span class="n">GeniePipeline_Priority_t</span><span class="w"> </span><span class="n">priority</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A function to provide an OEM key to the QNN backend.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] pipelineHandle A pipeline handle.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] oemKey OEM key to be provided to the QNN backend.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Status code:</span>
+<span class="cm"> *         - GENIE_STATUS_SUCCESS: API call was successful.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_HANDLE: Pipeline handle is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_ARGUMENT: At least one argument is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_GENERAL: The OEM key could not be applied.</span>
+<span class="cm"> */</span>
+<span class="n">GENIE_API</span>
+<span class="n">Genie_Status_t</span><span class="w"> </span><span class="n">GeniePipeline_setOemKey</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GeniePipeline_Handle_t</span><span class="w"> </span><span class="n">pipelineHandle</span><span class="p">,</span>
+<span class="w">                                       </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">oemKey</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A function to add node to the pipeline.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] pipelineHandle A pipeline handle.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] nodeHandle A node handle.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Status code:</span>
+<span class="cm"> *         - GENIE_STATUS_SUCCESS: API call was successful.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_HANDLE: Node/ Pipeline handle is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_ARGUMENT: At least one argument is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_GENERAL: The OEM key could not be applied.</span>
+<span class="cm"> */</span>
+<span class="n">GENIE_API</span>
+<span class="n">Genie_Status_t</span><span class="w"> </span><span class="n">GeniePipeline_addNode</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GeniePipeline_Handle_t</span><span class="w"> </span><span class="n">pipelineHandle</span><span class="p">,</span>
+<span class="w">                                     </span><span class="k">const</span><span class="w"> </span><span class="n">GenieNode_Handle_t</span><span class="w"> </span><span class="n">nodeHandle</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A function to connect two nodes added in a pipeline.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] pipelineHandle A pipeline handle.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] producerHandle A node handle to be connected as a producer.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] producerName IO name of the producer node.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] consumerHandle A node handle to be connected as a consumer.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] consumerName IO name of the consumer node.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Status code:</span>
+<span class="cm"> *         - GENIE_STATUS_SUCCESS: API call was successful.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_HANDLE: Node/ Pipeline handle is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_ARGUMENT: At least one argument is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_GENERAL: The OEM key could not be applied.</span>
+<span class="cm"> */</span>
+<span class="n">GENIE_API</span>
+<span class="n">Genie_Status_t</span><span class="w"> </span><span class="n">GeniePipeline_connect</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GeniePipeline_Handle_t</span><span class="w"> </span><span class="n">pipelineHandle</span><span class="p">,</span>
+<span class="w">                                     </span><span class="k">const</span><span class="w"> </span><span class="n">GenieNode_Handle_t</span><span class="w"> </span><span class="n">producerHandle</span><span class="p">,</span>
+<span class="w">                                     </span><span class="k">const</span><span class="w"> </span><span class="n">GenieNode_IOName_t</span><span class="w"> </span><span class="n">producerName</span><span class="p">,</span>
+<span class="w">                                     </span><span class="k">const</span><span class="w"> </span><span class="n">GenieNode_Handle_t</span><span class="w"> </span><span class="n">consumerHandle</span><span class="p">,</span>
+<span class="w">                                     </span><span class="k">const</span><span class="w"> </span><span class="n">GenieNode_IOName_t</span><span class="w"> </span><span class="n">consumerName</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A function to execute all nodes connected in a pipeline.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] pipelineHandle A pipeline handle.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] userData The userData field provided to GeniePipeline_execute.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Status code:</span>
+<span class="cm"> *         - GENIE_STATUS_SUCCESS: API call was successful.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_HANDLE: Pipeline handle is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_ARGUMENT: At least one argument is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_GENERAL: The OEM key could not be applied.</span>
+<span class="cm"> */</span>
+<span class="n">GENIE_API</span>
+<span class="n">Genie_Status_t</span><span class="w"> </span><span class="n">GeniePipeline_execute</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GeniePipeline_Handle_t</span><span class="w"> </span><span class="n">pipelineHandle</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">userData</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A function to free a pipeline.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] pipelineHandle A pipeline handle.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Status code:</span>
+<span class="cm"> *         - GENIE_STATUS_SUCCESS: API call was successful.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_HANDLE: Pipeline handle is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_MEM_ALLOC: Memory (de)allocation failure.</span>
+<span class="cm"> */</span>
+<span class="n">GENIE_API</span>
+<span class="n">Genie_Status_t</span><span class="w"> </span><span class="n">GeniePipeline_free</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GeniePipeline_Handle_t</span><span class="w"> </span><span class="n">pipelineHandle</span><span class="p">);</span>
+
+<span class="cp">#ifdef __cplusplus</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// extern &quot;C&quot;</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#endif  </span><span class="c1">// GENIE_PIPELINE_H</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

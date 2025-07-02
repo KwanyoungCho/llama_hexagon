@@ -1,0 +1,66 @@
+{
+  "general.name": "llava-1.5-7b",
+  "general.architecture": "generic",
+  "general.quantization_version" : 1,
+  "general.alignment" : 128,
+  "general.hf_hub_model_id": "llava-hf/llava-1.5-7b-hf",
+  "size.vocabulary": 32064,
+  "size.context": 4096,
+  "size.embedding": 4096,
+  "size.feedforward": 11008,
+  "architecture.num_decoders": 32,
+  "architecture.num_heads": 32,
+  "architecture.num_kv_heads": 32,
+  "architecture.connector": "sequential_pre_layer_normalization",
+  "architecture.gating": "gated",
+  "operation.normalization": "RMS-norm",
+  "operation.normalization_epsilon": 1e-05,
+  "operation.activation": "SiLU",
+  "operation.positional_embedding": "RoPE",
+  "operation.rope_complex_organization": "SoA",
+  "tensor.layer_name": "language_model.model.layers.(\\d+).",
+  "tensor.embedding_token_weight": {
+    "name": "language_model.model.embed_tokens.weight"
+  },
+  "tensor.attention_normalization_weight": {
+    "name": "input_layernorm.weight"
+  },
+  "tensor.attention_q_weight": {
+    "name": "self_attn.q_proj.weight",
+    "transposed": true
+  },
+  "tensor.attention_k_weight": {
+    "name": "self_attn.k_proj.weight",
+    "transposed": true
+  },
+  "tensor.attention_v_weight": {
+    "name": "self_attn.v_proj.weight",
+    "transposed": true
+  },
+  "tensor.attention_output_weight": {
+    "name": "self_attn.o_proj.weight",
+    "transposed": true
+  },
+  "tensor.feedforward_normalization_weight": {
+    "name": "post_attention_layernorm.weight"
+  },
+  "tensor.feedforward_gate_weight": {
+    "name": "mlp.gate_proj.weight",
+    "transposed": true
+  },
+  "tensor.feedforward_up_weight": {
+    "name": "mlp.up_proj.weight",
+    "transposed": true
+  },
+  "tensor.feedforward_output_weight": {
+    "name": "mlp.down_proj.weight",
+    "transposed": true
+  },
+  "tensor.output_normalization_weight": {
+    "name": "language_model.model.norm.weight"
+  },
+  "tensor.output_weight": {
+    "name": "language_model.lm_head.weight",
+    "transposed": true
+  }
+}

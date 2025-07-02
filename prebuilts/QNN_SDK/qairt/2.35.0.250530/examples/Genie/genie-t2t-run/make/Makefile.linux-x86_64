@@ -1,0 +1,73 @@
+#=============================================================================
+#
+#  Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+#  All Rights Reserved.
+#  Confidential and Proprietary - Qualcomm Technologies, Inc.
+#
+#=============================================================================
+
+SOURCES := main.cpp
+
+GENIE_C_API_HEADERS_INCLUDE := ../../../include/Genie
+
+# Checking if clang++ is present. If not switch to clang++
+ifeq ($(shell $(CXX) -v 2>&1 | grep -c "clang version"), 0)
+CXX := clang++
+endif
+
+QNN_TARGET ?= x86_64-linux-clang
+export TARGET_DIR := ./bin/$(QNN_TARGET)
+
+genie-t2t-run := $(TARGET_DIR)/genie-t2t-run
+
+
+# define target architecture if not previously defined, default is x86
+ifndef TARGET_AARCH_VARS
+TARGET_AARCH_VARS:= -march=x86-64
+endif
+
+all: $(genie-t2t-run)
+
+
+# Include paths
+INCLUDES += -I$(GENIE_C_API_HEADERS_INCLUDE)
+
+# set compiler flags
+COMMON_CXXFLAGS = -std=c++2a -frtti -fPIC -Wall -g -pthread -stdlib=libc++ -idirafter /usr/lib/llvm-14/include/c++/v1 -idirafter /usr/lib/llvm-14/lib/clang/14.0.0/include/ -idirafter /usr/include $(INCLUDES)
+COMMON_LDFLAGS = -L../../../lib/x86_64-linux-clang -lGenie
+
+COMMON_CFLAGS = -nostdinc -idirafter /usr/lib/llvm-14/lib/clang/14.0.0/include/ -idirafter /usr/include
+
+#TODO configure for these feature flags
+CXXFLAGS += $(COMMON_CXXFLAGS) -march=x86-64 -O3 -Wno-write-strings -fvisibility=hidden 
+CFLAGS += $(COMMON_CFLAGS)
+LDFLAGS += $(COMMON_LDFLAGS) -fvisibility=hidden -flto
+
+
+OBJ_DIR_MAIN := obj/$(QNN_TARGET)
+LIBS=-ldl
+
+# Rule to make shared lib
+.PHONY: genie-t2t-run
+genie-t2t-run: $(genie-t2t-run)
+
+# Compile rules
+$(OBJ_DIR_MAIN)/%.o: main.cpp
+	$(CXX) $(CXXFLAGS) -c $^ -o $@
+
+# set up resources
+directories := $(TARGET_DIR) $(OBJ_DIR_MAIN)
+
+$(genie-t2t-run): $(OBJ_DIR_MAIN)/main.o | $(directories)
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)
+
+
+$(OBJ_DIR_MAIN)/main.o: | $(OBJ_DIR_MAIN)
+
+# rule to create directories
+$(directories):
+	mkdir -p $@
+
+.PHONY: clean
+clean:
+	rm -rf obj $(TARGET_DIR)

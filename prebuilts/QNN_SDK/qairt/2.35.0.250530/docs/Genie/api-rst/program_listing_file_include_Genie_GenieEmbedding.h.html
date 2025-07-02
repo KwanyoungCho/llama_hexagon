@@ -1,0 +1,403 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Program Listing for File GenieEmbedding.h &mdash; Qualcomm® Gen AI Inference Extensions</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Gen AI Inference Extensions
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.35.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/support/support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/library/library.html">Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools/tools.html">Tools</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Gen AI Inference Extensions</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Program Listing for File GenieEmbedding.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-genieembedding-h">
+<span id="program-listing-file-include-genie-genieembedding-h"></span><h1>Program Listing for File GenieEmbedding.h<a class="headerlink" href="#program-listing-for-file-genieembedding-h" title="Permalink to this heading">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_include_Genie_GenieEmbedding.h.html#file-include-genie-genieembedding-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/Genie/GenieEmbedding.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//=============================================================================</span>
+<span class="c1">//</span>
+<span class="c1">//  Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.</span>
+<span class="c1">//  All Rights Reserved.</span>
+<span class="c1">//  Confidential and Proprietary - Qualcomm Technologies, Inc.</span>
+<span class="c1">//</span>
+<span class="c1">//=============================================================================</span>
+
+<span class="cm">/**</span>
+<span class="cm"> *  @file</span>
+<span class="cm"> *  @brief  Embedding API providing text query to embedding functionality.</span>
+<span class="cm"> */</span>
+
+<span class="cp">#ifndef GENIE_EMBEDDING_H</span>
+<span class="cp">#define GENIE_EMBEDDING_H</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;GenieCommon.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;GenieLog.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;GenieProfile.h&quot;</span>
+
+<span class="cp">#ifdef __cplusplus</span>
+<span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="cp">#endif</span>
+
+<span class="c1">//=============================================================================</span>
+<span class="c1">// Data Types</span>
+<span class="c1">//=============================================================================</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A handle for embedding configuration instances.</span>
+<span class="cm"> */</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_GenieEmbeddingConfig_Handle_t</span><span class="o">*</span><span class="w"> </span><span class="n">GenieEmbeddingConfig_Handle_t</span><span class="p">;</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A handle for embedding instances.</span>
+<span class="cm"> */</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_GenieEmbedding_Handle_t</span><span class="o">*</span><span class="w"> </span><span class="n">GenieEmbedding_Handle_t</span><span class="p">;</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A client-defined callback function to get embedding buffer for query.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] dimensions Dimensions of the embedding buffer.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] rank Rank of the embedding buffer dimensions.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] embeddingBuffer Embedding buffer for query string.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] userData The userData field provided to GenieEmbedding_query.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return None</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">GenieEmbedding_GenerateCallback_t</span><span class="p">)(</span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">dimensions</span><span class="p">,</span>
+<span class="w">                                                  </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">rank</span><span class="p">,</span>
+<span class="w">                                                  </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">embeddingBuffer</span><span class="p">,</span>
+<span class="w">                                                  </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">userData</span><span class="p">);</span>
+
+<span class="c1">//=============================================================================</span>
+<span class="c1">// Functions</span>
+<span class="c1">//=============================================================================</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A function to create a embedding configuration from a JSON string.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] str A configuration string. Must not be NULL.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[out] configHandle A handle to the created config. Must not be NULL.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Status code:</span>
+<span class="cm"> *         - GENIE_STATUS_SUCCESS: API call was successful.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_ARGUMENT: At least one argument is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_MEM_ALLOC: Memory allocation failure.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_CONFIG: At least one configuration option is invalid.</span>
+<span class="cm"> */</span>
+<span class="n">GENIE_API</span>
+<span class="n">Genie_Status_t</span><span class="w"> </span><span class="n">GenieEmbeddingConfig_createFromJson</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">str</span><span class="p">,</span>
+<span class="w">                                                   </span><span class="n">GenieEmbeddingConfig_Handle_t</span><span class="o">*</span><span class="w"> </span><span class="n">configHandle</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A function to bind a log handle to embedding config. The log handle</span>
+<span class="cm"> *        will also be bound to any embedding handle created from this config handle.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] configHandle A handle to a valid config.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] logHandle The log handle using which logs are recorded and</span>
+<span class="cm"> *                      outputted. Cannot be NULL.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Status code:</span>
+<span class="cm"> *         - GENIE_STATUS_SUCCESS: API call was successful.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_HANDLE: Config handle or log handle is invalid.</span>
+<span class="cm"> */</span>
+<span class="n">GENIE_API</span>
+<span class="n">Genie_Status_t</span><span class="w"> </span><span class="n">GenieEmbeddingConfig_bindLogger</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GenieEmbeddingConfig_Handle_t</span><span class="w"> </span><span class="n">configHandle</span><span class="p">,</span>
+<span class="w">                                               </span><span class="k">const</span><span class="w"> </span><span class="n">GenieLog_Handle_t</span><span class="w"> </span><span class="n">logHandle</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A function to bind a profile handle to embedding config. The profile handle</span>
+<span class="cm"> *        will also be bound to any embedding handle created from this dialog config handle.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] configHandle A handle to a valid config.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] profileHandle The profile handle on which metrics are populated and can</span>
+<span class="cm"> *                          be queried. Cannot be NULL.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Status code:</span>
+<span class="cm"> *         - GENIE_STATUS_SUCCESS: API call was successful.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_HANDLE: Config handle or profile handle is invalid.</span>
+<span class="cm"> */</span>
+<span class="n">GENIE_API</span>
+<span class="n">Genie_Status_t</span><span class="w"> </span><span class="n">GenieEmbeddingConfig_bindProfiler</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GenieEmbeddingConfig_Handle_t</span><span class="w"> </span><span class="n">configHandle</span><span class="p">,</span>
+<span class="w">                                                 </span><span class="k">const</span><span class="w"> </span><span class="n">GenieProfile_Handle_t</span><span class="w"> </span><span class="n">profileHandle</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A function to free a embedding config.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] configHandle A config handle.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Status code:</span>
+<span class="cm"> *         - GENIE_STATUS_SUCCESS: API call was successful.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_HANDLE: Embedding handle is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_MEM_ALLOC: Memory (de)allocation failure.</span>
+<span class="cm"> */</span>
+<span class="n">GENIE_API</span>
+<span class="n">Genie_Status_t</span><span class="w"> </span><span class="n">GenieEmbeddingConfig_free</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GenieEmbeddingConfig_Handle_t</span><span class="w"> </span><span class="n">configHandle</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A function to create a embedding. The embedding can be configured using a</span>
+<span class="cm"> *        builder pattern.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] configHandle A handle to a valid config. Must not be NULL.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[out] embeddingHandle A handle to the created embedding. Must not be NULL.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Status code:</span>
+<span class="cm"> *         - GENIE_STATUS_SUCCESS: API call was successful.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_HANDLE: Config handle is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_ARGUMENT: At least one argument is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_MEM_ALLOC: Memory allocation failure.</span>
+<span class="cm"> */</span>
+<span class="n">GENIE_API</span>
+<span class="n">Genie_Status_t</span><span class="w"> </span><span class="n">GenieEmbedding_create</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GenieEmbeddingConfig_Handle_t</span><span class="w"> </span><span class="n">configHandle</span><span class="p">,</span>
+<span class="w">                                     </span><span class="n">GenieEmbedding_Handle_t</span><span class="o">*</span><span class="w"> </span><span class="n">embeddingHandle</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A function to generate embedding for prompted text.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] embeddingHandle A embedding handle.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] queryStr The input query.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] callback Callback function to handle generated embeddings. Cannot be NULL.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] userData User defined field provided in the query responses. Can be NULL.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Status code:</span>
+<span class="cm"> *         - GENIE_STATUS_SUCCESS: API call was successful.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_HANDLE: Embedding handle is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_ARGUMENT: At least one argument is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_GENERATE_FAILED: Embedding generate failure.</span>
+<span class="cm"> */</span>
+<span class="n">GENIE_API</span>
+<span class="n">Genie_Status_t</span><span class="w"> </span><span class="n">GenieEmbedding_generate</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GenieEmbedding_Handle_t</span><span class="w"> </span><span class="n">embeddingHandle</span><span class="p">,</span>
+<span class="w">                                       </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">queryStr</span><span class="p">,</span>
+<span class="w">                                       </span><span class="k">const</span><span class="w"> </span><span class="n">GenieEmbedding_GenerateCallback_t</span><span class="w"> </span><span class="n">callback</span><span class="p">,</span>
+<span class="w">                                       </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">userData</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief A function to free a embedding.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] embeddingHandle A embedding handle.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Status code:</span>
+<span class="cm"> *         - GENIE_STATUS_SUCCESS: API call was successful.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_INVALID_HANDLE: Embedding handle is invalid.</span>
+<span class="cm"> *         - GENIE_STATUS_ERROR_MEM_ALLOC: Memory (de)allocation failure.</span>
+<span class="cm"> */</span>
+<span class="n">GENIE_API</span>
+<span class="n">Genie_Status_t</span><span class="w"> </span><span class="n">GenieEmbedding_free</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GenieEmbedding_Handle_t</span><span class="w"> </span><span class="n">embeddingHandle</span><span class="p">);</span>
+
+<span class="cp">#ifdef __cplusplus</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// extern &quot;C&quot;</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#endif  </span><span class="c1">// GENIE_EMBEDDING_H</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

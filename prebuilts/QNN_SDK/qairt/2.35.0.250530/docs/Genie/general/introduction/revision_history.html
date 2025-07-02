@@ -1,0 +1,560 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Revision history &mdash; Qualcomm® Gen AI Inference Extensions</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tutorials" href="../tutorials/tutorials.html" />
+    <link rel="prev" title="Conventions" href="conventions.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Qualcomm® Gen AI Inference Extensions
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.35.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="introduction.html">Introduction</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="conventions.html">Conventions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Revision History</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support/support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/library.html">Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">Tools</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qualcomm® Gen AI Inference Extensions</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="introduction.html">Introduction</a> &raquo;</li>
+        
+      <li>Revision history</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="revision-history">
+<h1>Revision history<a class="headerlink" href="#revision-history" title="Permalink to this heading">¶</a></h1>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>QAIRT SDK Version</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2.35.0</p></td>
+<td><ul class="simple">
+<li><p>Genie C API 1.9.0:</p>
+<ul>
+<li><p>Introduced the (experimental quality) GeniePipeline.h and GenieNode.h
+APIs which provide multimodal support.</p></li>
+<li><p>Introduced the GenieTokenizer.h API.</p></li>
+</ul>
+</li>
+<li><p>SDK:</p>
+<ul>
+<li><p>Introduced the (experimental quality) genie-app command-line utility.</p></li>
+<li><p>Removed printing of KPIs to stdout by the Genie library.</p></li>
+</ul>
+</li>
+<li><p>Dialog JSON configuration:</p>
+<ul>
+<li><p>Added support for use-mmap on Windows platforms.</p></li>
+<li><p>Added a data-alignment-size configuration options for dialogs and
+embeddings APIs.</p></li>
+</ul>
+</li>
+<li><p>Bugfixes:</p>
+<ul>
+<li><p>Fixed issue where GenieProfiling data could report invalid init time
+data.</p></li>
+<li><p>Fixed an issue detected by BinSkim in Genie.dll.</p></li>
+<li><p>Fixed issue where stop sequence would not work with
+GenieDialog_embeddingQuery.</p></li>
+<li><p>Fixed issue where save/restore would not work for Eaglet dialogs.</p></li>
+<li><p>Fixed issue in Eaglet dialogs where incorrect sentence code was
+called back.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.34.0</p></td>
+<td><ul class="simple">
+<li><p>Genie C API 1.8.0:</p>
+<ul>
+<li><p>Added GenieEngine.h, GenieDialog_getEngine, and
+GenieDialog_bindEngine APIs.</p></li>
+<li><p>Added GenieSampler_registerUserDataCallback API which adds a userData
+argument to the sampler custom callback.</p></li>
+<li><p>Added token-acceptance-rate to the GenieProfile output for some
+dialog types.</p></li>
+<li><p>Added the Eaglet dialog type.</p></li>
+</ul>
+</li>
+<li><p>SDK:</p>
+<ul>
+<li><p>Introduced a performance optimization where logits are sampled using
+the native datatype output of the LLM.</p></li>
+</ul>
+</li>
+<li><p>Bugfixes:</p>
+<ul>
+<li><p>Fixed genie-t2t-run issue where dialog de-init data was not saved.</p></li>
+<li><p>Fixed issue where GenieEmbedding_generate would return a rank of 0.</p></li>
+<li><p>Fixed issue where quantized value may overflow or underflow.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.33.0</p></td>
+<td><ul class="simple">
+<li><p>Genie C API 1.7.0:</p>
+<ul>
+<li><p>Added the GenieLog.h API.</p></li>
+<li><p>Added LoRA adapter switch latency to GenieProfile output.</p></li>
+<li><p>Allow sampler type to be changed in GenieSampler_applyConfig.</p></li>
+</ul>
+</li>
+<li><p>Bugfixes:</p>
+<ul>
+<li><p>Fixed issue where RPC memory handles were not unregistered.</p></li>
+<li><p>Fixed issue where queries after a KV cache rewind resulted in poor
+text generation.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.32.0</p></td>
+<td><ul class="simple">
+<li><p>Genie C API 1.6.0:</p>
+<ul>
+<li><p>Added dialog priority support with GenieDialog_setOemKey and
+GenieDialog_setPriority.</p></li>
+</ul>
+</li>
+<li><p>SDK:</p>
+<ul>
+<li><p>Added Windows build support for the source code examples.</p></li>
+<li><p>Reorganized the Genie SDK documentation.</p></li>
+<li><p>Removed shift concat and pointer shift KV cache update methods in
+lieu of smart mask.</p></li>
+</ul>
+</li>
+<li><p>Bugfixes:</p>
+<ul>
+<li><p>Fixed issue where SPD token rate is incorrectly reported when the
+query is aborted.</p></li>
+<li><p>Fixed issue where multi-token stop sequences were not fully omitted
+in queryCallback and KV$.</p></li>
+<li><p>Fixed issue where tokenizer state is corrupted after a query abort.</p></li>
+<li><p>Fixed issue where a Gen AI Transformer dialog attempts to double free
+memory.</p></li>
+<li><p>Fixed a qnn-genai-transformer-composer failure when preparing LoRA
+adapters.</p></li>
+<li><p>Fixed a performance regression for kv-share dialogs using the token
+query API.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.31.0</p></td>
+<td><ul class="simple">
+<li><p>Genie C API 1.5.0:</p>
+<ul>
+<li><p>Added GenieDialog_signal API.</p></li>
+</ul>
+</li>
+<li><p>Dialog JSON configuration:</p>
+<ul>
+<li><p>Added dialog debug configuration option.</p></li>
+</ul>
+</li>
+<li><p>Bugfixes:</p>
+<ul>
+<li><p>Improved numerical stability of embedding requantization in
+genie-t2t-run.</p></li>
+<li><p>Fixed a crash in genie when running lookahead decoder dialog when
+setting up attention masks and rope position embeddings.</p></li>
+<li><p>Fixed issue with value data type in GenieProfile JSON output.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.30.0</p></td>
+<td><ul class="simple">
+<li><p>Genie C API 1.4.0:</p>
+<ul>
+<li><p>Added GenieProfile.h APIs.</p></li>
+<li><p>Added GENIE_DIALOG_SENTENCE_REWIND sentence code option.</p></li>
+<li><p>Added support for dialog custom sampler implementations.</p></li>
+<li><p>Added GenieDialog_setStopSequence API to allow updating the stop
+sequence configuration between dialog queries.</p></li>
+</ul>
+</li>
+<li><p>Bugfixes:</p>
+<ul>
+<li><p>Fix issue causing FP16 model validation failures.</p></li>
+<li><p>Fix issue where the end sentence code is not provided on a stop
+sequence match.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.29.0</p></td>
+<td><ul class="simple">
+<li><p>SDK:</p>
+<ul>
+<li><p>Improved prompt processing time for SSD dialogs.</p></li>
+<li><p>Include GenieEmbedding implementation in the SDK source code example.</p></li>
+<li><p>Reduced the size of libGenie.so built from the source example.</p></li>
+</ul>
+</li>
+<li><p>Genie C API 1.3.0:</p>
+<ul>
+<li><p>Added GenieSampler.h API.</p></li>
+</ul>
+</li>
+<li><p>Dialog JSON configuration:</p>
+<ul>
+<li><p>Added QNN GPU engine type.</p></li>
+<li><p>Added enable-graph-switching dialog JSON configuration option.</p></li>
+<li><p>Added LoRA V1 support.</p></li>
+<li><p>Added LoRA V2 support in GenAiTransformer backend.</p></li>
+<li><p>Added JSON config support for longrope.</p></li>
+<li><p>Added support for multistream SSD dialogs.</p></li>
+<li><p>Added support for multistream embedding to text dialog.</p></li>
+</ul>
+</li>
+<li><p>Bugfixes:</p>
+<ul>
+<li><p>Fix issue in genie-t2t-run that could result in a double free of a
+dialog config handle.</p></li>
+<li><p>Fix issue where KV cache restore could hang on aarch64-windows-msvc.</p></li>
+<li><p>Fixed handling of rope-theta and rope-scaling configuration.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.28.0</p></td>
+<td><ul class="simple">
+<li><p>SDK:</p>
+<ul>
+<li><p>Added genie-t2e-run application and sample config for
+GenieEmbedding.h.</p></li>
+<li><p>Added llama-3-8b JSON config example for HTP.</p></li>
+</ul>
+</li>
+<li><p>Genie C API 1.2.0:</p>
+<ul>
+<li><p>Added GenieEmbedding.h.</p></li>
+<li><p>Added GenieDialog_applyLora and GenieDialog_setLoraStrength.</p></li>
+<li><p>Added GenieDialog_tokenQuery. (Supported for basic dialog type only).</p></li>
+<li><p>Added GenieDialog_save and GenieDialog_restore.</p></li>
+</ul>
+</li>
+<li><p>Dialog JSON configuration:</p>
+<ul>
+<li><p>Added self-speculative decoding (SSD) dialog type.</p></li>
+<li><p>Added speculative decoding (SPD) dialog type.</p></li>
+<li><p>Added lookahead decoding (LADE) dialog type.</p></li>
+<li><p>Added multistream dialog type.</p></li>
+<li><p>Added rope-scaling.</p></li>
+<li><p>Added support for multiple EOS tokens.</p></li>
+<li><p>Added alibi and absolute positional encoding support.</p></li>
+<li><p>Added SSD support for GenieDialog_embeddingQuery.</p></li>
+</ul>
+</li>
+<li><p>Bugfixes:</p>
+<ul>
+<li><p>Fixed issue where mmap-budget was unused.</p></li>
+<li><p>Fixed link issue with libGenie.so on aarch64-oe-linux-gcc11.2.</p></li>
+<li><p>Fixed memory leak in model loading when setting use-mmap to false.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.27.0</p></td>
+<td><ul class="simple">
+<li><p>SDK:</p>
+<ul>
+<li><p>Added genie-t2t-run source code example.</p></li>
+<li><p>Added llama-3-8b JSON config example for HTP.</p></li>
+</ul>
+</li>
+<li><p>Genie C API 1.1.0:</p>
+<ul>
+<li><p>Added GenieDialog_embeddingQuery API with corresponding tool and
+configuration support.</p></li>
+</ul>
+</li>
+<li><p>Dialog JSON configuration:</p>
+<ul>
+<li><p>Added kv-share dialog type which provides support for KV cache
+transfer between HTP and GenAiTransformer backends.</p></li>
+<li><p>Added max-num-tokens dialog configuration option.</p></li>
+</ul>
+</li>
+<li><p>Bugfixes:</p>
+<ul>
+<li><p>Fixed issue where IO encodings were not updated when a LoRA adapter
+was applied.</p></li>
+<li><p>Workaround issue where segmentation fault occurs after
+GenieDialog_free when using the HTP backend.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.26.0</p></td>
+<td><ul class="simple">
+<li><p>Dialog JSON configuration:</p>
+<ul>
+<li><p>Added eot-token configuration option.</p></li>
+<li><p>Added rope-theta configuration option.</p></li>
+<li><p>Added support for async initialization and added allow-async-init</p></li>
+<li><p>config option.</p></li>
+<li><p>Added stop-sequence configuration option to enable dialog query
+cancellation based upon response text matching.</p></li>
+</ul>
+</li>
+<li><p>Bugfixes:</p>
+<ul>
+<li><p>Fix issue where incorrect Windows .lib files were packaged.</p></li>
+<li><p>Fix issue where unknown genie-t2t-run option does not generate an
+error.</p></li>
+<li><p>Fixed memory allocation failures during HTP initialization.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.25.0</p></td>
+<td><ul class="simple">
+<li><p>Genie C API 1.0.0:</p>
+<ul>
+<li><p>Genie C API moves into production.</p></li>
+</ul>
+</li>
+<li><p>Dialog JSON configuration:</p>
+<ul>
+<li><p>Introduced GenieDialog JSON configuration format.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.23.0</p></td>
+<td><ul class="simple">
+<li><p>Genie C API 0.1.0:</p>
+<ul>
+<li><p>Added GenieCommon.h and GenieDialog.h.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../tutorials/tutorials.html" class="btn btn-neutral float-right" title="Tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="conventions.html" class="btn btn-neutral float-left" title="Conventions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

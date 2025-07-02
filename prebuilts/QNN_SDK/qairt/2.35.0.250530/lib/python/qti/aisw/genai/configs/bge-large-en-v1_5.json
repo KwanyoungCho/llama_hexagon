@@ -1,0 +1,92 @@
+{
+    "general.name": "bge-large-en-v1.5",
+    "general.architecture": "generic",
+    "general.tokenizer": "unknown",
+    "general.quantization_version" : 1,
+    "general.alignment" : 32,
+    "general.hf_hub_model_id": "BAAI/bge-large-en-v1.5",
+    "general.output": "embeddings",
+    "size.vocabulary": 30522,
+    "size.context": 512,
+    "size.embedding": 1024,
+    "size.feedforward": 4096,
+    "architecture.num_decoders": 24,
+    "architecture.num_heads": 16,
+    "architecture.connector": "sequential_post_layer_normalization",
+    "architecture.gating": "fully-connected",
+    "operation.attention_mode": "bidirectional",
+    "operation.normalization": "layernorm",
+    "operation.normalization_epsilon": 1e-12,
+    "operation.activation": "GeLU",
+    "operation.positional_embedding": "WPE",
+    "tensor.layer_name": "encoder.layer.(\\d+).",
+    "tensor.embedding_token_weight": {
+        "name": "embeddings.word_embeddings.weight"
+    },
+    "tensor.embedding_position_weight": {
+        "name": "embeddings.position_embeddings.weight"
+    },
+    "tensor.embedding_token_type_weight": {
+        "name": "embeddings.token_type_embeddings.weight"
+    },
+    "tensor.embedding_normalization_weight": {
+        "name": "embeddings.LayerNorm.weight"
+    },
+    "tensor.embedding_normalization_bias": {
+        "name": "embeddings.LayerNorm.bias"
+    },
+    "tensor.attention_q_weight": {
+        "name": "attention.self.query.weight",
+        "transposed": true
+    },
+    "tensor.attention_q_bias": {
+        "name": "attention.self.query.bias"
+    },
+    "tensor.attention_k_weight": {
+        "name": "attention.self.key.weight",
+        "transposed": true
+    },
+    "tensor.attention_k_bias": {
+        "name": "attention.self.key.bias"
+    },
+    "tensor.attention_v_weight": {
+        "name": "attention.self.value.weight",
+        "transposed": true
+    },
+    "tensor.attention_v_bias": {
+        "name": "attention.self.value.bias"
+    },
+    "tensor.attention_output_weight": {
+        "name": "attention.output.dense.weight",
+        "transposed": true
+    },
+    "tensor.attention_output_bias": {
+        "name": "attention.output.dense.bias"
+    },
+    "tensor.feedforward_normalization_weight": {
+        "name": "attention.output.LayerNorm.weight"
+    },
+    "tensor.feedforward_normalization_bias": {
+        "name": "attention.output.LayerNorm.bias"
+    },
+    "tensor.feedforward_gate_weight": {
+        "name": "intermediate.dense.weight",
+        "transposed": true
+    },
+    "tensor.feedforward_gate_bias": {
+        "name": "intermediate.dense.bias"
+    },
+    "tensor.feedforward_output_weight": {
+        "name": "output.dense.weight",
+        "transposed": true
+    },
+    "tensor.feedforward_output_bias": {
+        "name": "output.dense.bias"
+    },
+    "tensor.feedforward_output_normalization_weight": {
+        "name": "output.LayerNorm.weight"
+    },
+    "tensor.feedforward_output_normalization_bias": {
+        "name": "output.LayerNorm.bias"
+    }
+}
