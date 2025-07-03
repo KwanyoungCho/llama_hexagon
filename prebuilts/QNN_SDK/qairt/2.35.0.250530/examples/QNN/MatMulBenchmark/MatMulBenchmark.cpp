@@ -184,14 +184,15 @@ static void randomFill(uint8_t * buf, size_t size) {
 }
 
 // Fill buffer with appropriate quantized data based on datatype
-static void fillQuantizedData(uint8_t* buf, size_t size, Qnn_DataType_t dataType) {
+static void fillQuantizedData(uint8_t* buf, size_t size, Qnn_DataType_t dataType, bool useQuantization = true) {
     std::mt19937 rng(1234);
     
     switch (dataType) {
         case QNN_DATATYPE_SFIXED_POINT_8: {
             // INT8: -128 ~ 127 범위에서 적절한 값들
-            std::uniform_int_distribution<int8_t> dist(-100, 100);
             int8_t* data = reinterpret_cast<int8_t*>(buf);
+            // Scale=1.0f이므로 적당한 범위의 정수값 사용 (overflow 방지)
+            std::uniform_int_distribution<int8_t> dist(-50, 50);
             for (size_t i = 0; i < size; ++i) {
                 data[i] = dist(rng);
             }
@@ -199,7 +200,8 @@ static void fillQuantizedData(uint8_t* buf, size_t size, Qnn_DataType_t dataType
         }
         case QNN_DATATYPE_UFIXED_POINT_8: {
             // UINT8: 0 ~ 255 범위에서 적절한 값들  
-            std::uniform_int_distribution<uint8_t> dist(0, 200);
+            // Scale=1.0f이므로 적당한 범위의 정수값 사용 (overflow 방지)
+            std::uniform_int_distribution<uint8_t> dist(0, 100);
             for (size_t i = 0; i < size; ++i) {
                 buf[i] = dist(rng);
             }
@@ -207,8 +209,9 @@ static void fillQuantizedData(uint8_t* buf, size_t size, Qnn_DataType_t dataType
         }
         case QNN_DATATYPE_SFIXED_POINT_16: {
             // INT16: -32768 ~ 32767 범위에서 적절한 값들
-            std::uniform_int_distribution<int16_t> dist(-10000, 10000);
             int16_t* data = reinterpret_cast<int16_t*>(buf);
+            // Scale=1.0f이므로 적당한 범위의 정수값 사용 (overflow 방지)
+            std::uniform_int_distribution<int16_t> dist(-100, 100);
             for (size_t i = 0; i < size / 2; ++i) {
                 data[i] = dist(rng);
             }
@@ -216,8 +219,9 @@ static void fillQuantizedData(uint8_t* buf, size_t size, Qnn_DataType_t dataType
         }
         case QNN_DATATYPE_UFIXED_POINT_16: {
             // UINT16: 0 ~ 65535 범위에서 적절한 값들
-            std::uniform_int_distribution<uint16_t> dist(0, 20000);
             uint16_t* data = reinterpret_cast<uint16_t*>(buf);
+            // Scale=1.0f이므로 적당한 범위의 정수값 사용 (overflow 방지)
+            std::uniform_int_distribution<uint16_t> dist(0, 200);
             for (size_t i = 0; i < size / 2; ++i) {
                 data[i] = dist(rng);
             }
@@ -526,105 +530,151 @@ enum class TensorRole {
     OUTPUT
 };
 
-// Check if datatype requires quantization (excludes fp16, fp32)
+// Check if datatype requires quantization
 static bool requiresQuantization(Qnn_DataType_t dataType) {
-    return dataType != QNN_DATATYPE_FLOAT_16 && dataType != QNN_DATATYPE_FLOAT_32;
+    switch (dataType) {
+        case QNN_DATATYPE_FLOAT_16:
+        case QNN_DATATYPE_FLOAT_32:
+            // Floating point types don't need quantization
+            return false;
+        case QNN_DATATYPE_SFIXED_POINT_8:
+        case QNN_DATATYPE_UFIXED_POINT_8:
+        case QNN_DATATYPE_SFIXED_POINT_16:
+        case QNN_DATATYPE_UFIXED_POINT_16:
+        case QNN_DATATYPE_SFIXED_POINT_32:
+        case QNN_DATATYPE_UFIXED_POINT_32:
+            // Fixed point types require quantization
+            return true;
+        default:
+            return false;
+    }
 }
 
-// Create quantization parameters for scale_offset encoding (symmetric)
+// Create scale-offset quantization params
 static Qnn_QuantizeParams_t createScaleOffsetQuantization(float scale = 1.0f, int32_t offset = 0) {
-    Qnn_QuantizeParams_t quantParams = {};
-    quantParams.encodingDefinition = QNN_DEFINITION_DEFINED;
-    quantParams.quantizationEncoding = QNN_QUANTIZATION_ENCODING_SCALE_OFFSET;
-    quantParams.scaleOffsetEncoding.scale = scale;
-    quantParams.scaleOffsetEncoding.offset = offset;
-    return quantParams;
+    Qnn_QuantizeParams_t quantizeParams;
+    quantizeParams.encodingDefinition = QNN_DEFINITION_DEFINED;
+    quantizeParams.quantizationEncoding = QNN_QUANTIZATION_ENCODING_SCALE_OFFSET;
+    quantizeParams.scaleOffsetEncoding.scale = scale;
+    quantizeParams.scaleOffsetEncoding.offset = offset;
+    return quantizeParams;
 }
 
-// Create quantization parameters for axis_scale_offset encoding (symmetric, per-channel)
+// Create axis scale-offset quantization params  
 static Qnn_QuantizeParams_t createAxisScaleOffsetQuantization(QuantizationMemory& quantMem, 
                                                              int32_t axis, uint32_t numChannels, 
                                                              float scale = 1.0f, int32_t offset = 0) {
-    Qnn_QuantizeParams_t quantParams = {};
-    quantParams.encodingDefinition = QNN_DEFINITION_DEFINED;
-    quantParams.quantizationEncoding = QNN_QUANTIZATION_ENCODING_AXIS_SCALE_OFFSET;
-    quantParams.axisScaleOffsetEncoding.axis = axis;
-    quantParams.axisScaleOffsetEncoding.numScaleOffsets = numChannels;
-    
-    // Use memory manager for safe allocation
-    quantParams.axisScaleOffsetEncoding.scaleOffset = 
-        quantMem.addAxisScaleOffsetStorage(numChannels, scale, offset);
-    
-    return quantParams;
+    Qnn_QuantizeParams_t quantizeParams;
+    quantizeParams.encodingDefinition = QNN_DEFINITION_DEFINED;
+    quantizeParams.quantizationEncoding = QNN_QUANTIZATION_ENCODING_AXIS_SCALE_OFFSET;
+    quantizeParams.axisScaleOffsetEncoding.axis = axis;
+    quantizeParams.axisScaleOffsetEncoding.numScaleOffsets = numChannels;
+    quantizeParams.axisScaleOffsetEncoding.scaleOffset = quantMem.addAxisScaleOffsetStorage(numChannels, scale, offset);
+    return quantizeParams;
 }
 
-// Create appropriate quantization parameters based on tensor role and datatype
+// Create appropriate quantization params based on datatype and quantization type
 static Qnn_QuantizeParams_t createQuantizationParams(QuantizationMemory& quantMem, QuantizationType quantType,
-                                                     Qnn_DataType_t dataType, uint32_t* dimensions, int32_t axis = 3) {
-    // No quantization for floating point types (unless explicitly overridden)
-    if (!requiresQuantization(dataType) && quantType != QuantizationType::UNDEFINED) {
-        Qnn_QuantizeParams_t quantParams = {};
-        quantParams.encodingDefinition = QNN_DEFINITION_UNDEFINED;
-        quantParams.quantizationEncoding = QNN_QUANTIZATION_ENCODING_UNDEFINED;
-        quantParams.scaleOffsetEncoding = {0.0f, 0};
-        return quantParams;
+                                                     Qnn_DataType_t dataType, uint32_t* dimensions, int32_t axis = 3, bool isValidationMode = false) {
+    // For floating point types, use undefined quantization regardless of request
+    if (!requiresQuantization(dataType)) {
+        Qnn_QuantizeParams_t quantizeParams;
+        quantizeParams.encodingDefinition = QNN_DEFINITION_UNDEFINED;
+        quantizeParams.quantizationEncoding = QNN_QUANTIZATION_ENCODING_UNDEFINED;
+        return quantizeParams;
     }
     
-    // Apply quantization based on user-specified type
+    // For fixed-point types, calculate appropriate scale based on datatype
+    // MatMul requires symmetric quantization (offset=0) for axis quantization
+    float scale = 1.0f;
+    int32_t offset = 0; // Always 0 for symmetric quantization
+    
+    if (isValidationMode) {
+        // Validation mode: use datatype-specific scales for accurate comparison
+        switch (dataType) {
+            case QNN_DATATYPE_SFIXED_POINT_8:
+                // INT8: range -128 to 127, scale to handle our data range [-12.7, 12.7]
+                scale = 0.1f; // 1/10 since we scaled by 10 in conversion
+                break;
+            case QNN_DATATYPE_UFIXED_POINT_8:
+                // UINT8: range 0 to 255, scale to handle our data range [0, 25.5]
+                scale = 0.1f; // 1/10 since we scaled by 10 in conversion
+                break;
+            case QNN_DATATYPE_SFIXED_POINT_16:
+                // INT16: range -32768 to 32767, scale to handle our data range [-32.767, 32.767]
+                scale = 0.001f; // 1/1000 since we scaled by 1000 in conversion
+                break;
+            case QNN_DATATYPE_UFIXED_POINT_16:
+                // UINT16: range 0 to 65535, scale to handle our data range [0, 65.535]
+                scale = 0.001f; // 1/1000 since we scaled by 1000 in conversion
+                break;
+            default:
+                scale = 1.0f;
+                break;
+        }
+    } else {
+        // Benchmark mode: use scale = 1.0f for all datatypes
+        scale = 1.0f;
+    }
+    
+    // Apply quantization type
     switch (quantType) {
         case QuantizationType::UNDEFINED:
-            // Explicitly undefined quantization (user choice)
             {
-                Qnn_QuantizeParams_t quantParams = {};
-                quantParams.encodingDefinition = QNN_DEFINITION_UNDEFINED;
-                quantParams.quantizationEncoding = QNN_QUANTIZATION_ENCODING_UNDEFINED;
-                quantParams.scaleOffsetEncoding = {0.0f, 0};
-                return quantParams;
+                Qnn_QuantizeParams_t quantizeParams;
+                quantizeParams.encodingDefinition = QNN_DEFINITION_UNDEFINED;
+                quantizeParams.quantizationEncoding = QNN_QUANTIZATION_ENCODING_UNDEFINED;
+                return quantizeParams;
             }
-            
         case QuantizationType::SCALE_OFFSET:
-            return createScaleOffsetQuantization(1.0f, 0);
-            
+            return createScaleOffsetQuantization(scale, offset); // offset is always 0
         case QuantizationType::AXIS_SCALE_OFFSET:
-            // Use specified axis and corresponding dimension
-            return createAxisScaleOffsetQuantization(quantMem, axis, dimensions[axis], 1.0f, 0);
-            
+            {
+                uint32_t numChannels = dimensions[axis];
+                return createAxisScaleOffsetQuantization(quantMem, axis, numChannels, scale, offset); // offset is always 0
+            }
         default:
-            // Fallback: undefined quantization
-            Qnn_QuantizeParams_t quantParams = {};
-            quantParams.encodingDefinition = QNN_DEFINITION_UNDEFINED;
-            quantParams.quantizationEncoding = QNN_QUANTIZATION_ENCODING_UNDEFINED;
-            quantParams.scaleOffsetEncoding = {0.0f, 0};
-            return quantParams;
+            {
+                Qnn_QuantizeParams_t quantizeParams;
+                quantizeParams.encodingDefinition = QNN_DEFINITION_UNDEFINED;
+                quantizeParams.quantizationEncoding = QNN_QUANTIZATION_ENCODING_UNDEFINED;
+                return quantizeParams;
+            }
     }
 }
 
-// Unified tensor creation function with quantization support
+// Create QNN tensor with appropriate settings
 static Qnn_Tensor_t createTensor(QuantizationMemory& quantMem, uint32_t id, const char* name, 
                                 TensorRole role, Qnn_DataType_t dataType, uint32_t* dimensions,
-                                QuantizationType quantType, int32_t axis = 3) {
-    Qnn_TensorType_t tensorType = (role == TensorRole::OUTPUT) ? 
-                                   QNN_TENSOR_TYPE_APP_READ : 
-                                   QNN_TENSOR_TYPE_APP_WRITE;
+                                QuantizationType quantType, int32_t axis = 3, bool isValidationMode = false) {
+    Qnn_Tensor_t tensor = QNN_TENSOR_INIT;
+    tensor.version = QNN_TENSOR_VERSION_1;
+    tensor.v1.id = id;
+    tensor.v1.name = name;
+    tensor.v1.type = (role == TensorRole::OUTPUT) ? QNN_TENSOR_TYPE_APP_READ : QNN_TENSOR_TYPE_APP_WRITE;
+    tensor.v1.dataFormat = QNN_TENSOR_DATA_FORMAT_FLAT_BUFFER;
+    tensor.v1.dataType = dataType;
+    tensor.v1.rank = 4;
+    tensor.v1.dimensions = dimensions;
+    tensor.v1.memType = QNN_TENSORMEMTYPE_RAW;
     
-    // Create appropriate quantization parameters
-    Qnn_QuantizeParams_t quantParams = createQuantizationParams(quantMem, quantType, dataType, dimensions, axis);
-    
-    return Qnn_Tensor_t {
-        .version = QNN_TENSOR_VERSION_1,
-        .v1 = {
-            .id = id,
-            .name = name,
-            .type = tensorType,
-            .dataFormat = QNN_TENSOR_DATA_FORMAT_FLAT_BUFFER,
-            .dataType = dataType,
-            .quantizeParams = quantParams,
-            .rank = 4,
-            .dimensions = dimensions,
-            .memType = QNN_TENSORMEMTYPE_RAW,
-            .clientBuf = {.data = nullptr, .dataSize = 0}
+    // Set quantization parameters based on datatype and quantization type
+    // NOTE: For MatMul, axis quantization should only be applied to weight tensor (input B)
+    if (requiresQuantization(dataType) && quantType != QuantizationType::UNDEFINED) {
+        // For axis quantization, only apply to weight tensor (INPUT_B)
+        if (quantType == QuantizationType::AXIS_SCALE_OFFSET && role != TensorRole::INPUT_B) {
+            // Use scale_offset quantization for non-weight tensors
+            tensor.v1.quantizeParams = createQuantizationParams(quantMem, QuantizationType::SCALE_OFFSET, dataType, dimensions, axis, isValidationMode);
+        } else {
+            tensor.v1.quantizeParams = createQuantizationParams(quantMem, quantType, dataType, dimensions, axis, isValidationMode);
         }
-    };
+    } else {
+        // No quantization for floating point or undefined quantization
+        tensor.v1.quantizeParams.encodingDefinition = QNN_DEFINITION_UNDEFINED;
+        tensor.v1.quantizeParams.quantizationEncoding = QNN_QUANTIZATION_ENCODING_UNDEFINED;
+    }
+    
+    return tensor;
 }
 
 // Create all tensors for MatMul operation with quantization support
@@ -632,23 +682,557 @@ static void createMatMulTensors(QnnContext& qnn_ctx, Qnn_GraphHandle_t graph,
                                const DTypeDesc& dt0, const DTypeDesc& dt1, const DTypeDesc& dtOut,
                                uint32_t* dimA_4d, uint32_t* dimB_4d, uint32_t* dimC_4d,
                                Qnn_Tensor_t& tenA, Qnn_Tensor_t& tenB, Qnn_Tensor_t& tenC,
-                               QuantizationType quantTypeA, QuantizationType quantTypeB, QuantizationType quantTypeC) {
+                               QuantizationType quantTypeA, QuantizationType quantTypeB, QuantizationType quantTypeC, bool isValidationMode = false) {
     // Create input tensor A with specified quantization
-    tenA = createTensor(qnn_ctx.quantMem, 0, "tensor_A", TensorRole::INPUT_A, dt0.dtype, dimA_4d, quantTypeA, 2); // axis=2 for M dimension
+    // Per HTP OpDef: axis quantization only supports 'm' or 'n' dimensions
+    // With transpose_in1=false, axis should be 'n' (last dimension)
+    tenA = createTensor(qnn_ctx.quantMem, 0, "tensor_A", TensorRole::INPUT_A, dt0.dtype, dimA_4d, quantTypeA, 3, isValidationMode); // axis=3 for K dimension (last dim)
     CHECK_QNN(qnn_ctx.iface->tensorCreateGraphTensor(graph, &tenA));
     
     // Create input tensor B with specified quantization
-    tenB = createTensor(qnn_ctx.quantMem, 1, "tensor_B", TensorRole::INPUT_B, dt1.dtype, dimB_4d, quantTypeB, 3); // axis=3 for N dimension
+    tenB = createTensor(qnn_ctx.quantMem, 1, "tensor_B", TensorRole::INPUT_B, dt1.dtype, dimB_4d, quantTypeB, 3, isValidationMode); // axis=3 for N dimension (last dim)
     CHECK_QNN(qnn_ctx.iface->tensorCreateGraphTensor(graph, &tenB));
     
     // Create output tensor C with specified quantization
-    tenC = createTensor(qnn_ctx.quantMem, 2, "tensor_C", TensorRole::OUTPUT, dtOut.dtype, dimC_4d, quantTypeC, 3); // axis=3 for N dimension
+    tenC = createTensor(qnn_ctx.quantMem, 2, "tensor_C", TensorRole::OUTPUT, dtOut.dtype, dimC_4d, quantTypeC, 3, isValidationMode); // axis=3 for N dimension (last dim)
     CHECK_QNN(qnn_ctx.iface->tensorCreateGraphTensor(graph, &tenC));
     
 }
 
 //==============================================================================
-// SECTION 8: CORE BENCHMARK EXECUTION FUNCTION
+// SECTION 8: VALIDATION FUNCTIONS
+//==============================================================================
+
+// Test case structure for validation
+struct ValidationCase {
+    std::string name;
+    Qnn_DataType_t dtype;
+    QuantizationType quantType;
+    std::vector<float> inputA;
+    std::vector<float> inputB;
+    std::vector<float> expectedOutput;
+    uint32_t M, K, N;
+    float tolerance;
+};
+
+// Create small test matrices for validation
+static void createValidationData(std::vector<float>& matA, std::vector<float>& matB, 
+                                std::vector<float>& expectedC, uint32_t M, uint32_t K, uint32_t N) {
+    // Simple test case: 2x3 × 3x2 = 2x2
+    // A = [[1, 2, 3],    B = [[1, 4],     Expected C = [[14, 32],
+    //      [4, 5, 6]]         [2, 5],                    [32, 77]]
+    //                         [3, 6]]
+    
+    if (M == 2 && K == 3 && N == 2) {
+        matA = {1.0f, 2.0f, 3.0f,
+                4.0f, 5.0f, 6.0f};
+        matB = {1.0f, 4.0f,
+                2.0f, 5.0f,
+                3.0f, 6.0f};
+        expectedC = {14.0f, 32.0f,
+                     32.0f, 77.0f};
+    } else {
+        // Fallback: simple pattern for other sizes
+        matA.resize(M * K);
+        matB.resize(K * N);
+        expectedC.resize(M * N);
+        
+        // Fill with simple incremental values
+        for (uint32_t i = 0; i < M * K; ++i) {
+            matA[i] = static_cast<float>(i + 1);
+        }
+        for (uint32_t i = 0; i < K * N; ++i) {
+            matB[i] = static_cast<float>(i + 1);
+        }
+        
+        // Calculate expected result manually for small matrices
+        for (uint32_t m = 0; m < M; ++m) {
+            for (uint32_t n = 0; n < N; ++n) {
+                float sum = 0.0f;
+                for (uint32_t k = 0; k < K; ++k) {
+                    sum += matA[m * K + k] * matB[k * N + n];
+                }
+                expectedC[m * N + n] = sum;
+            }
+        }
+    }
+}
+
+// Helper function for IEEE 754 FP16 conversion
+static uint16_t floatToHalf(float f) {
+    uint32_t bits = *reinterpret_cast<uint32_t*>(&f);
+    
+    uint32_t sign = (bits >> 31) & 0x1;
+    uint32_t exp = (bits >> 23) & 0xFF;
+    uint32_t mantissa = bits & 0x7FFFFF;
+    
+    if (exp == 0) {
+        // Zero or denormalized
+        return (sign << 15);
+    } else if (exp == 255) {
+        // Infinity or NaN
+        return (sign << 15) | 0x7C00 | (mantissa ? 0x200 : 0);
+    } else {
+        // Normal number
+        int newExp = exp - 127 + 15;
+        if (newExp >= 31) {
+            // Overflow to infinity
+            return (sign << 15) | 0x7C00;
+        } else if (newExp <= 0) {
+            // Underflow to zero
+            return (sign << 15);
+        } else {
+            return (sign << 15) | (newExp << 10) | (mantissa >> 13);
+        }
+    }
+}
+
+static float halfToFloat(uint16_t h) {
+    uint32_t sign = (h >> 15) & 0x1;
+    uint32_t exp = (h >> 10) & 0x1F;
+    uint32_t mantissa = h & 0x3FF;
+    
+    if (exp == 0) {
+        if (mantissa == 0) {
+            // Zero
+            uint32_t result = sign << 31;
+            return *reinterpret_cast<float*>(&result);
+        } else {
+            // Denormalized
+            exp = 127 - 15 + 1;
+            while ((mantissa & 0x400) == 0) {
+                mantissa <<= 1;
+                exp--;
+            }
+            mantissa &= 0x3FF;
+            uint32_t result = (sign << 31) | (exp << 23) | (mantissa << 13);
+            return *reinterpret_cast<float*>(&result);
+        }
+    } else if (exp == 31) {
+        // Infinity or NaN
+        uint32_t result = (sign << 31) | 0x7F800000 | (mantissa << 13);
+        return *reinterpret_cast<float*>(&result);
+    } else {
+        // Normal
+        exp = exp - 15 + 127;
+        uint32_t result = (sign << 31) | (exp << 23) | (mantissa << 13);
+        return *reinterpret_cast<float*>(&result);
+    }
+}
+
+// Convert float data to specific datatype for QNN tensors
+static void convertToDatatype(const std::vector<float>& floatData, uint8_t* buffer, 
+                             Qnn_DataType_t dataType, size_t count, bool useQuantization = true) {
+    switch (dataType) {
+        case QNN_DATATYPE_FLOAT_32: {
+            float* data = reinterpret_cast<float*>(buffer);
+            for (size_t i = 0; i < count; ++i) {
+                data[i] = floatData[i];
+            }
+            break;
+        }
+        case QNN_DATATYPE_FLOAT_16: {
+            // Proper IEEE 754 FP16 conversion
+            uint16_t* data = reinterpret_cast<uint16_t*>(buffer);
+            for (size_t i = 0; i < count; ++i) {
+                data[i] = floatToHalf(floatData[i]);
+            }
+            break;
+        }
+        case QNN_DATATYPE_SFIXED_POINT_16: {
+            int16_t* data = reinterpret_cast<int16_t*>(buffer);
+            for (size_t i = 0; i < count; ++i) {
+                if (useQuantization) {
+                    // Scale float values for quantized mode
+                    float scaled = floatData[i] * 1000.0f; // Scale for better precision
+                    scaled = std::max(-32767.0f, std::min(32767.0f, scaled));
+                    data[i] = static_cast<int16_t>(std::round(scaled));
+                } else {
+                    // No scaling for undefined quantization - use raw values
+                    float clamped = std::max(-32767.0f, std::min(32767.0f, floatData[i]));
+                    data[i] = static_cast<int16_t>(std::round(clamped));
+                }
+            }
+            break;
+        }
+        case QNN_DATATYPE_UFIXED_POINT_16: {
+            uint16_t* data = reinterpret_cast<uint16_t*>(buffer);
+            for (size_t i = 0; i < count; ++i) {
+                if (useQuantization) {
+                    float scaled = std::max(0.0f, floatData[i]) * 1000.0f;
+                    scaled = std::min(65535.0f, scaled);
+                    data[i] = static_cast<uint16_t>(std::round(scaled));
+                } else {
+                    float clamped = std::max(0.0f, std::min(65535.0f, floatData[i]));
+                    data[i] = static_cast<uint16_t>(std::round(clamped));
+                }
+            }
+            break;
+        }
+        case QNN_DATATYPE_SFIXED_POINT_8: {
+            int8_t* data = reinterpret_cast<int8_t*>(buffer);
+            for (size_t i = 0; i < count; ++i) {
+                if (useQuantization) {
+                    float scaled = floatData[i] * 10.0f; // Scale for INT8 range
+                    scaled = std::max(-127.0f, std::min(127.0f, scaled));
+                    data[i] = static_cast<int8_t>(std::round(scaled));
+                } else {
+                    float clamped = std::max(-127.0f, std::min(127.0f, floatData[i]));
+                    data[i] = static_cast<int8_t>(std::round(clamped));
+                }
+            }
+            break;
+        }
+        case QNN_DATATYPE_UFIXED_POINT_8: {
+            uint8_t* data = reinterpret_cast<uint8_t*>(buffer);
+            for (size_t i = 0; i < count; ++i) {
+                if (useQuantization) {
+                    float scaled = std::max(0.0f, floatData[i]) * 10.0f;
+                    scaled = std::min(255.0f, scaled);
+                    data[i] = static_cast<uint8_t>(std::round(scaled));
+                } else {
+                    float clamped = std::max(0.0f, std::min(255.0f, floatData[i]));
+                    data[i] = static_cast<uint8_t>(std::round(clamped));
+                }
+            }
+            break;
+        }
+        default:
+            // Fallback: treat as float
+            float* data = reinterpret_cast<float*>(buffer);
+            for (size_t i = 0; i < count; ++i) {
+                data[i] = floatData[i];
+            }
+            break;
+    }
+}
+
+// Convert result back to float for comparison
+static void convertFromDatatype(const uint8_t* buffer, std::vector<float>& floatData,
+                               Qnn_DataType_t dataType, size_t count, bool useQuantization = true) {
+    floatData.resize(count);
+    
+    switch (dataType) {
+        case QNN_DATATYPE_FLOAT_32: {
+            const float* data = reinterpret_cast<const float*>(buffer);
+            for (size_t i = 0; i < count; ++i) {
+                floatData[i] = data[i];
+            }
+            break;
+        }
+        case QNN_DATATYPE_FLOAT_16: {
+            // Proper IEEE 754 FP16 conversion
+            const uint16_t* data = reinterpret_cast<const uint16_t*>(buffer);
+            for (size_t i = 0; i < count; ++i) {
+                floatData[i] = halfToFloat(data[i]);
+            }
+            break;
+        }
+        case QNN_DATATYPE_SFIXED_POINT_16: {
+            const int16_t* data = reinterpret_cast<const int16_t*>(buffer);
+            for (size_t i = 0; i < count; ++i) {
+                if (useQuantization) {
+                    // Reverse the scaling applied in convertToDatatype
+                    floatData[i] = static_cast<float>(data[i]) / 1000.0f;
+                } else {
+                    floatData[i] = static_cast<float>(data[i]);
+                }
+            }
+            break;
+        }
+        case QNN_DATATYPE_UFIXED_POINT_16: {
+            const uint16_t* data = reinterpret_cast<const uint16_t*>(buffer);
+            for (size_t i = 0; i < count; ++i) {
+                if (useQuantization) {
+                    floatData[i] = static_cast<float>(data[i]) / 1000.0f;
+                } else {
+                    floatData[i] = static_cast<float>(data[i]);
+                }
+            }
+            break;
+        }
+        case QNN_DATATYPE_SFIXED_POINT_8: {
+            const int8_t* data = reinterpret_cast<const int8_t*>(buffer);
+            for (size_t i = 0; i < count; ++i) {
+                if (useQuantization) {
+                    floatData[i] = static_cast<float>(data[i]) / 10.0f;
+                } else {
+                    floatData[i] = static_cast<float>(data[i]);
+                }
+            }
+            break;
+        }
+        case QNN_DATATYPE_UFIXED_POINT_8: {
+            const uint8_t* data = reinterpret_cast<const uint8_t*>(buffer);
+            for (size_t i = 0; i < count; ++i) {
+                if (useQuantization) {
+                    floatData[i] = static_cast<float>(data[i]) / 10.0f;
+                } else {
+                    floatData[i] = static_cast<float>(data[i]);
+                }
+            }
+            break;
+        }
+        default:
+            const float* data = reinterpret_cast<const float*>(buffer);
+            for (size_t i = 0; i < count; ++i) {
+                floatData[i] = data[i];
+            }
+            break;
+    }
+}
+
+// Compare two float vectors with tolerance
+static bool compareResults(const std::vector<float>& expected, const std::vector<float>& actual,
+                          float tolerance, std::string& errorMsg) {
+    if (expected.size() != actual.size()) {
+        errorMsg = "Size mismatch: expected " + std::to_string(expected.size()) + 
+                   ", got " + std::to_string(actual.size());
+        return false;
+    }
+    
+    for (size_t i = 0; i < expected.size(); ++i) {
+        float diff = std::abs(expected[i] - actual[i]);
+        float relError = (expected[i] != 0.0f) ? diff / std::abs(expected[i]) : diff;
+        
+        if (diff > tolerance && relError > tolerance) {
+            errorMsg = "Mismatch at index " + std::to_string(i) + 
+                       ": expected " + std::to_string(expected[i]) + 
+                       ", got " + std::to_string(actual[i]) + 
+                       ", diff=" + std::to_string(diff);
+            return false;
+        }
+    }
+    
+    return true;
+}
+
+// Run single validation test
+static bool runValidationTest(const ValidationCase& testCase) {
+    QnnContext qnn_ctx;
+    
+    try {
+        // Initialize QNN
+        if (!initializeQNN(qnn_ctx)) {
+            return false;
+        }
+        
+        // Find datatype info
+        const DTypeDesc* dtype = nullptr;
+        for (size_t i = 0; i < NUM_TYPES; ++i) {
+            if (kTypes[i].dtype == testCase.dtype) {
+                dtype = &kTypes[i];
+                break;
+            }
+        }
+        if (!dtype) {
+            return false;
+        }
+        
+        // Create graph
+        Qnn_GraphHandle_t graph = nullptr;
+        std::string graph_name = "validation_" + testCase.name;
+        
+        if (qnn_ctx.backend_name == "HTP") {
+            QnnHtpGraph_CustomConfig_t vtcmConfig;
+            vtcmConfig.option = QNN_HTP_GRAPH_CONFIG_OPTION_VTCM_SIZE;
+            vtcmConfig.vtcmSizeInMB = 8;
+            
+            QnnGraph_Config_t vtcmGraphConfig;
+            vtcmGraphConfig.option = QNN_GRAPH_CONFIG_OPTION_CUSTOM;
+            vtcmGraphConfig.customConfig = &vtcmConfig;
+            
+            const QnnGraph_Config_t *pGraphConfig[] = {&vtcmGraphConfig, nullptr};
+            CHECK_QNN(qnn_ctx.iface->graphCreate(qnn_ctx.ctx, graph_name.c_str(), pGraphConfig, &graph));
+        } else {
+            CHECK_QNN(qnn_ctx.iface->graphCreate(qnn_ctx.ctx, graph_name.c_str(), nullptr, &graph));
+        }
+        
+        // Prepare buffers
+        size_t bytesA = testCase.M * testCase.K * dtype->bytes;
+        size_t bytesB = testCase.K * testCase.N * dtype->bytes;
+        size_t bytesC = testCase.M * testCase.N * dtype->bytes;
+        
+        std::vector<uint8_t> bufA(bytesA);
+        std::vector<uint8_t> bufB(bytesB);
+        std::vector<uint8_t> bufC(bytesC);
+        
+        // Convert test data to appropriate datatype
+        // Use quantization flag based on whether we expect quantization to be applied
+        bool useQuantization = (testCase.quantType != QuantizationType::UNDEFINED);
+        convertToDatatype(testCase.inputA, bufA.data(), testCase.dtype, testCase.M * testCase.K, useQuantization);
+        convertToDatatype(testCase.inputB, bufB.data(), testCase.dtype, testCase.K * testCase.N, useQuantization);
+        
+        // Create tensors
+        uint32_t dimA_4d[4] = {1, 1, testCase.M, testCase.K};
+        uint32_t dimB_4d[4] = {1, 1, testCase.K, testCase.N};
+        uint32_t dimC_4d[4] = {1, 1, testCase.M, testCase.N};
+        
+        Qnn_Tensor_t tenA, tenB, tenC;
+        createMatMulTensors(qnn_ctx, graph, *dtype, *dtype, *dtype, dimA_4d, dimB_4d, dimC_4d, 
+                           tenA, tenB, tenC, testCase.quantType, testCase.quantType, testCase.quantType, true); // isValidationMode = true
+        
+        // Create MatMul op
+        Qnn_Param_t params[2] = {};
+        params[0].paramType = QNN_PARAMTYPE_SCALAR;
+        params[0].name = QNN_OP_MAT_MUL_PARAM_TRANSPOSE_IN0;
+        params[0].scalarParam.dataType = QNN_DATATYPE_BOOL_8;
+        params[0].scalarParam.bool8Value = 0;
+        params[1].paramType = QNN_PARAMTYPE_SCALAR;
+        params[1].name = QNN_OP_MAT_MUL_PARAM_TRANSPOSE_IN1;
+        params[1].scalarParam.dataType = QNN_DATATYPE_BOOL_8;
+        params[1].scalarParam.bool8Value = 0;
+        
+        Qnn_Tensor_t inputsNode[2] = {tenA, tenB};
+        Qnn_Tensor_t outputs[1] = {tenC};
+        
+        Qnn_OpConfig_t op{};
+        op.version = QNN_OPCONFIG_VERSION_1;
+        op.v1.name = "matmul_op_validation";
+        op.v1.packageName = "qti.aisw";
+        op.v1.typeName = QNN_OP_MAT_MUL;
+        op.v1.numOfParams = 2; op.v1.params = params;
+        op.v1.numOfInputs = 2; op.v1.inputTensors = inputsNode;
+        op.v1.numOfOutputs = 1; op.v1.outputTensors = outputs;
+        
+        CHECK_QNN(qnn_ctx.iface->graphAddNode(graph, op));
+        CHECK_QNN(qnn_ctx.iface->graphFinalize(graph, nullptr, nullptr));
+        
+        // Setup execution tensors
+        Qnn_Tensor_t inputsExec[2] = {tenA, tenB};
+        Qnn_Tensor_t outputsExec[1] = {tenC};
+        
+        inputsExec[0].v1.clientBuf.data = bufA.data();
+        inputsExec[0].v1.clientBuf.dataSize = bytesA;
+        inputsExec[1].v1.clientBuf.data = bufB.data();
+        inputsExec[1].v1.clientBuf.dataSize = bytesB;
+        outputsExec[0].v1.clientBuf.data = bufC.data();
+        outputsExec[0].v1.clientBuf.dataSize = bytesC;
+        
+        // Execute
+        CHECK_QNN(qnn_ctx.iface->graphExecute(graph, inputsExec, 2, outputsExec, 1, nullptr, nullptr));
+        
+        // Convert result back to float and compare
+        std::vector<float> actualResult;
+        convertFromDatatype(bufC.data(), actualResult, testCase.dtype, testCase.M * testCase.N, useQuantization);
+        
+        std::string errorMsg;
+        bool success = compareResults(testCase.expectedOutput, actualResult, testCase.tolerance, errorMsg);
+        
+        if (!success) {
+            std::cout << "    ❌ FAILED: " << errorMsg << std::endl;
+            
+            // Print detailed comparison for debugging
+            std::cout << "       Expected: [";
+            for (size_t i = 0; i < testCase.expectedOutput.size(); ++i) {
+                std::cout << testCase.expectedOutput[i];
+                if (i < testCase.expectedOutput.size() - 1) std::cout << ", ";
+            }
+            std::cout << "]" << std::endl;
+            
+            std::cout << "       Actual:   [";
+            for (size_t i = 0; i < actualResult.size(); ++i) {
+                std::cout << actualResult[i];
+                if (i < actualResult.size() - 1) std::cout << ", ";
+            }
+            std::cout << "]" << std::endl;
+        }
+        
+        cleanupQNN(qnn_ctx);
+        return success;
+        
+    } catch (...) {
+        cleanupQNN(qnn_ctx);
+        return false;
+    }
+}
+
+// Run comprehensive validation tests
+static void runValidationMode() {
+    std::cout << "=================================================================\n";
+    std::cout << "MatMul Validation Mode - Testing Correctness\n";
+    std::cout << "=================================================================\n\n";
+    
+    // Test matrix dimensions: 2x3 × 3x2 = 2x2
+    uint32_t M = 2, K = 3, N = 2;
+    
+    std::vector<float> matA, matB, expectedC;
+    createValidationData(matA, matB, expectedC, M, K, N);
+    
+    // Test cases for different datatype and quantization combinations
+    std::vector<ValidationCase> testCases = {
+        // FP32 tests - floating point types use UNDEFINED quantization automatically
+        {"FP32_None", QNN_DATATYPE_FLOAT_32, QuantizationType::UNDEFINED, matA, matB, expectedC, M, K, N, 0.01f},
+        {"FP32_Scale", QNN_DATATYPE_FLOAT_32, QuantizationType::UNDEFINED, matA, matB, expectedC, M, K, N, 0.01f},
+        {"FP32_Axis", QNN_DATATYPE_FLOAT_32, QuantizationType::UNDEFINED, matA, matB, expectedC, M, K, N, 0.01f},
+        
+        // FP16 tests - floating point types use UNDEFINED quantization automatically
+        {"FP16_None", QNN_DATATYPE_FLOAT_16, QuantizationType::UNDEFINED, matA, matB, expectedC, M, K, N, 0.1f},
+        {"FP16_Scale", QNN_DATATYPE_FLOAT_16, QuantizationType::UNDEFINED, matA, matB, expectedC, M, K, N, 0.1f},
+        {"FP16_Axis", QNN_DATATYPE_FLOAT_16, QuantizationType::UNDEFINED, matA, matB, expectedC, M, K, N, 0.1f},
+        
+        // INT16 tests - fixed point types test all quantization options
+        {"INT16_None", QNN_DATATYPE_SFIXED_POINT_16, QuantizationType::UNDEFINED, matA, matB, expectedC, M, K, N, 1.0f},
+        {"INT16_Scale", QNN_DATATYPE_SFIXED_POINT_16, QuantizationType::SCALE_OFFSET, matA, matB, expectedC, M, K, N, 1.0f},
+        {"INT16_Axis", QNN_DATATYPE_SFIXED_POINT_16, QuantizationType::AXIS_SCALE_OFFSET, matA, matB, expectedC, M, K, N, 1.0f},
+        
+        // INT8 tests - fixed point types test all quantization options
+        {"INT8_None", QNN_DATATYPE_SFIXED_POINT_8, QuantizationType::UNDEFINED, matA, matB, expectedC, M, K, N, 1.0f},
+        {"INT8_Scale", QNN_DATATYPE_SFIXED_POINT_8, QuantizationType::SCALE_OFFSET, matA, matB, expectedC, M, K, N, 1.0f},
+        {"INT8_Axis", QNN_DATATYPE_SFIXED_POINT_8, QuantizationType::AXIS_SCALE_OFFSET, matA, matB, expectedC, M, K, N, 1.0f},
+    };
+    
+    int totalTests = testCases.size();
+    int passedTests = 0;
+    
+    std::cout << "Testing " << totalTests << " cases with matrix size " << M << "x" << K 
+              << " × " << K << "x" << N << " = " << M << "x" << N << "\n\n";
+    
+    std::cout << "Input A = [";
+    for (size_t i = 0; i < matA.size(); ++i) {
+        std::cout << matA[i];
+        if (i < matA.size() - 1) std::cout << ", ";
+    }
+    std::cout << "]\n";
+    
+    std::cout << "Input B = [";
+    for (size_t i = 0; i < matB.size(); ++i) {
+        std::cout << matB[i];
+        if (i < matB.size() - 1) std::cout << ", ";
+    }
+    std::cout << "]\n";
+    
+    std::cout << "Expected Result = [";
+    for (size_t i = 0; i < expectedC.size(); ++i) {
+        std::cout << expectedC[i];
+        if (i < expectedC.size() - 1) std::cout << ", ";
+    }
+    std::cout << "]\n\n";
+    
+    for (const auto& testCase : testCases) {
+        std::cout << "Testing " << testCase.name << "... ";
+        std::cout.flush();
+        
+        if (runValidationTest(testCase)) {
+            std::cout << "✅ PASSED" << std::endl;
+            passedTests++;
+        } else {
+            std::cout << "❌ FAILED" << std::endl;
+        }
+    }
+    
+    std::cout << "\n=================================================================\n";
+    std::cout << "Validation Summary: " << passedTests << "/" << totalTests << " tests passed";
+    if (passedTests == totalTests) {
+        std::cout << " ✅ ALL TESTS PASSED!";
+    } else {
+        std::cout << " ⚠️  " << (totalTests - passedTests) << " tests failed";
+    }
+    std::cout << "\n=================================================================\n";
+}
+
+//==============================================================================
+// SECTION 9: CORE BENCHMARK EXECUTION FUNCTION
 //==============================================================================
 
 // Unified benchmark execution function (each experiment uses independent context)
@@ -707,8 +1291,11 @@ static BenchmarkResult runMatMulBenchmark(uint32_t M, uint32_t K, uint32_t N,
         std::vector<uint8_t> bufB(bytesB);
         std::vector<uint8_t> bufC(bytesC);
         
-        fillQuantizedData(bufA.data(), bytesA, dt0.dtype);
-        fillQuantizedData(bufB.data(), bytesB, dt1.dtype);
+        // Fill data with appropriate scaling based on quantization type
+        bool useQuantizationA = (quantTypeA != QuantizationType::UNDEFINED);
+        bool useQuantizationB = (quantTypeB != QuantizationType::UNDEFINED);
+        fillQuantizedData(bufA.data(), bytesA, dt0.dtype, useQuantizationA);
+        fillQuantizedData(bufB.data(), bytesB, dt1.dtype, useQuantizationB);
         
         // Create 4D tensors using unified creation function
         uint32_t dimA_4d[4] = {1, 1, M, K};
@@ -717,7 +1304,7 @@ static BenchmarkResult runMatMulBenchmark(uint32_t M, uint32_t K, uint32_t N,
         
         Qnn_Tensor_t tenA, tenB, tenC;
         createMatMulTensors(qnn_ctx, graph, dt0, dt1, dtOut, dimA_4d, dimB_4d, dimC_4d, tenA, tenB, tenC,
-                           quantTypeA, quantTypeB, quantTypeC);
+                           quantTypeA, quantTypeB, quantTypeC, false); // isValidationMode = false
         
         // Create MatMul op
         Qnn_Param_t params[2] = {};
@@ -804,6 +1391,9 @@ int main(int argc, char ** argv) {
     int pattern = -1;  // -1 means no pattern specified
     int max_seq_len = 4096;  // Maximum sequence length for pattern mode
 
+    // Validation mode parameters (new)
+    bool validation_mode = false;  // 검증 모드
+
     // Quantization parameters (new)
     QuantizationType quantTypeA = QuantizationType::AXIS_SCALE_OFFSET;  // Default: axis_scale_offset
     QuantizationType quantTypeB = QuantizationType::AXIS_SCALE_OFFSET;  // Default: axis_scale_offset  
@@ -868,6 +1458,9 @@ int main(int argc, char ** argv) {
                 std::cerr << "Error: max_seq_len must be one of: 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096" << std::endl;
                 return 1;
             }
+        } else if (strcmp(argv[i], "-v") == 0) {
+            // Validation mode: -v
+            validation_mode = true;
         } else if (strcmp(argv[i], "-h") == 0 || strcmp(argv[i], "--help") == 0) {
             std::cout << "Enhanced MatMulBenchmark with individual input datatype support\n"
                       << "Usage: MatMulBenchmark [options]\n\n"
@@ -898,7 +1491,8 @@ int main(int argc, char ** argv) {
                       << "  -qc <type>    : Output tensor C quantization (default: axis)\n"
                       << "                  Types: 'none' (no quantization), 'scale' (per-tensor), 'axis' (per-channel)\n\n"
                       << "Execution Configuration:\n"
-                      << "  -i <iter>     : Number of iterations (default: 10)\n\n"
+                      << "  -i <iter>     : Number of iterations (default: 10)\n"
+                      << "  -v            : Validation mode - test correctness with small matrices\n\n"
                       << "Examples:\n"
                       << "  # Manual matrix size with scale quantization\n"
                       << "  ./MatMulBenchmark -m 1024 -k 2048 -n 2048 -t int16 -qa scale -qb scale -qc scale\n"
@@ -910,6 +1504,8 @@ int main(int argc, char ** argv) {
                       << "  ./MatMulBenchmark -t fp16 -qa none -qb none -qc none\n"
                       << "  # Mixed: FP16 input, INT8 weights with different quantization\n"
                       << "  ./MatMulBenchmark -t0 fp16 -t1 int8 -qa none -qb axis -qc scale\n"
+                      << "  # Validation mode: test correctness with all datatype/quantization combinations\n"
+                      << "  ./MatMulBenchmark -v\n"
                       << std::endl;
             return 0;
         }
@@ -1150,14 +1746,22 @@ int main(int argc, char ** argv) {
     }
 
     //--------------------------------------------------------------------------
-    // 9.5: Single Matrix Benchmark Mode (default mode)
+    // 9.5: Validation Mode (-v option)
+    //--------------------------------------------------------------------------
+    if (validation_mode) {
+        runValidationMode();
+        return 0;
+    }
+
+    //--------------------------------------------------------------------------
+    // 9.6: Single Matrix Benchmark Mode (default mode)
     //--------------------------------------------------------------------------
     // Original single matrix benchmark mode
     const auto & dt0 = findType(dtypeStr0);
     const auto & dt1 = findType(dtypeStr1);
     
     //--------------------------------------------------------------------------
-    // 9.6: NPU MatMul Configuration Validation
+    // 9.7: NPU MatMul Configuration Validation
     //--------------------------------------------------------------------------
     // ⭐ NPU MatMul Configuration Validation ⭐
     printf("Validating NPU MatMul configuration...\n");
@@ -1234,7 +1838,7 @@ int main(int argc, char ** argv) {
     }
 
     //--------------------------------------------------------------------------
-    // 9.7: Benchmark Execution and Results Display
+    // 9.8: Benchmark Execution and Results Display
     //--------------------------------------------------------------------------
     std::cout << "Enhanced MatMul benchmark using unified functions" << std::endl;
     
@@ -1252,7 +1856,7 @@ int main(int argc, char ** argv) {
                            static_cast<size_t>(K) * N * dt1.bytes + 
                            static_cast<size_t>(M) * N * dtOut->bytes;
         std::cout << "Memory bandwidth: " << total_bytes / (result.avg_time_ms * 1e6) << " GB/s" << std::endl;
-    } else {
+        } else {
         std::cerr << "ERROR: Benchmark failed" << std::endl;
         return 1;
     }
