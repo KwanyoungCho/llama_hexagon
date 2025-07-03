@@ -1,24 +1,35 @@
 =================================================================
 Comprehensive NPU MatMul Benchmark - All LLM Patterns
 Input A dtype: int16, Input B dtype: int16
+Input A quant: undefined, Input B quant: undefined, Output C quant: undefined
 Iterations per test: 30
 =================================================================
 
-Running 52 total test cases...
+Running 44 total test cases (up to seq=1024)...
 
 === Attention [seq x 4096] x [4096 x seq] ===
 Seq      Time(ms)     GFLOPS       Status  
 --------------------------------------------
-[  1/ 52] Testing seq=1... 1        0.74         0.01         OK      
-[  2/ 52] Testing seq=2... 2        0.72         0.05         OK      
-[  3/ 52] Testing seq=4... 4        0.74         0.18         OK      
-[  4/ 52] Testing seq=8... 8        0.75         0.70         OK      
-[  5/ 52] Testing seq=16... 16       0.87         2.41         OK      
-[  6/ 52] Testing seq=32... 32       0.98         8.53         OK      
-[  7/ 52] Testing seq=64... 64       1.29         26.08        OK      
-[  8/ 52] Testing seq=128... 128      2.21         60.66        OK      
-[  9/ 52] Testing seq=256... 256      5.69         94.41        OK      
-[ 10/ 52] Testing seq=512... 512      19.49        110.21       OK      
-[ 11/ 52] Testing seq=1024... 1024     87.30        98.40        OK      
-[ 12/ 52] Testing seq=2048... [1] initial_sequencer_dp.cc:321::ERROR:A single op, "q::SlicePad_shape_inplace" (Op ID: 21f7800000003), requires 0x810800 bytes of TCM, which is greater than the TCM size of 0x800000!
-[1] initial_sequencer_dp.cc:328::ERROR:The name of the failing op before optimization is: "q::Output" (Op ID: 3).
+[  1/ 44] Testing seq=1... 1        0.66         0.01         OK      
+[  2/ 44] Testing seq=2... 2        0.70         0.05         OK      
+[  3/ 44] Testing seq=4... 4        0.76         0.17         OK      
+[  4/ 44] Testing seq=8... 8        0.80         0.66         OK      
+[  5/ 44] Testing seq=16... 16       0.91         2.30         OK      
+[  6/ 44] Testing seq=32... 32       0.70         12.02        OK      
+[  7/ 44] Testing seq=64... 64       1.04         32.13        OK      
+[  8/ 44] Testing seq=128... 128      2.38         56.37        OK      
+[  9/ 44] Testing seq=256... 256      5.58         96.25        OK      
+[ 10/ 44] Testing seq=512... 512      19.45        110.43       OK      
+[ 11/ 44] Testing seq=1024... 1024     88.73        96.81        OK      
+
+=== Linear [seq x 4096] x [4096 x 4096] ===
+Seq      Time(ms)     GFLOPS       Status  
+--------------------------------------------
+[ 12/ 44] Testing seq=1... 1        382.93       0.09         OK      
+[ 13/ 44] Testing seq=2... 2        381.01       0.18         OK      
+[ 14/ 44] Testing seq=4... 4        380.17       0.35         OK      
+[ 15/ 44] Testing seq=8... 8        388.70       0.69         OK      
+[ 16/ 44] Testing seq=16... 16       392.96       1.37         OK      
+[ 17/ 44] Testing seq=32... 32       395.23       2.72         OK      
+[ 18/ 44] Testing seq=64... 64       399.54       5.37         OK      
+[ 19/ 44] Testing seq=128... 
