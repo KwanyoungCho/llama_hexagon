@@ -1,0 +1,24 @@
+=================================================================
+Comprehensive NPU MatMul Benchmark - All LLM Patterns
+Input A dtype: int16, Input B dtype: int16
+Iterations per test: 30
+=================================================================
+
+Running 52 total test cases...
+
+=== Attention [seq x 4096] x [4096 x seq] ===
+Seq      Time(ms)     GFLOPS       Status  
+--------------------------------------------
+[  1/ 52] Testing seq=1... 1        0.74         0.01         OK      
+[  2/ 52] Testing seq=2... 2        0.72         0.05         OK      
+[  3/ 52] Testing seq=4... 4        0.74         0.18         OK      
+[  4/ 52] Testing seq=8... 8        0.75         0.70         OK      
+[  5/ 52] Testing seq=16... 16       0.87         2.41         OK      
+[  6/ 52] Testing seq=32... 32       0.98         8.53         OK      
+[  7/ 52] Testing seq=64... 64       1.29         26.08        OK      
+[  8/ 52] Testing seq=128... 128      2.21         60.66        OK      
+[  9/ 52] Testing seq=256... 256      5.69         94.41        OK      
+[ 10/ 52] Testing seq=512... 512      19.49        110.21       OK      
+[ 11/ 52] Testing seq=1024... 1024     87.30        98.40        OK      
+[ 12/ 52] Testing seq=2048... [1] initial_sequencer_dp.cc:321::ERROR:A single op, "q::SlicePad_shape_inplace" (Op ID: 21f7800000003), requires 0x810800 bytes of TCM, which is greater than the TCM size of 0x800000!
+[1] initial_sequencer_dp.cc:328::ERROR:The name of the failing op before optimization is: "q::Output" (Op ID: 3).
