@@ -81,9 +81,13 @@ def create_csv_tables(all_data: Dict[str, Dict[str, Dict[int, Tuple[float, float
     for datatype_data in all_data.values():
         all_patterns.update(datatype_data.keys())
     
+    # 데이터타입 순서 정의
+    datatype_order = ["fp32", "fp16", "int8", "int16"]
+    ordered_datatypes = [dt for dt in datatype_order if dt in all_data.keys()]
+    
     print("🎯 MatMul Benchmark Results Summary")
     print("=" * 60)
-    print(f"Data Types: {list(all_data.keys())}")
+    print(f"Data Types: {ordered_datatypes}")
     print(f"Patterns: {sorted(all_patterns)}")
     print(f"Sequence Lengths: {seq_lens}")
     print("=" * 60)
@@ -97,7 +101,7 @@ def create_csv_tables(all_data: Dict[str, Dict[str, Dict[int, Tuple[float, float
         gflops_data = {}
         time_data = {}
         
-        for datatype in sorted(all_data.keys()):
+        for datatype in ordered_datatypes:
             if pattern in all_data[datatype]:
                 gflops_row = []
                 time_row = []
@@ -139,10 +143,10 @@ def create_csv_tables(all_data: Dict[str, Dict[str, Dict[int, Tuple[float, float
 
 def main():
     """메인 함수"""
-    # 결과 파일들 찾기
+    # 결과 파일들 찾기 (FP32, FP16, INT8, INT16 순서)
     result_files = [
-        "fp16_fp16.txt",
-        "fp32_fp32.txt", 
+        "fp32_fp32.txt",
+        "fp16_fp16.txt", 
         "int8_int8.txt",
         "int16_int16.txt"
     ]

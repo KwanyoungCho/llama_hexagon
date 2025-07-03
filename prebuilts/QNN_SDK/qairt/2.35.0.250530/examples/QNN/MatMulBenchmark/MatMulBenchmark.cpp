@@ -684,17 +684,19 @@ static void createMatMulTensors(QnnContext& qnn_ctx, Qnn_GraphHandle_t graph,
                                Qnn_Tensor_t& tenA, Qnn_Tensor_t& tenB, Qnn_Tensor_t& tenC,
                                QuantizationType quantTypeA, QuantizationType quantTypeB, QuantizationType quantTypeC, bool isValidationMode = false) {
     // Create input tensor A with specified quantization
-    // Per HTP OpDef: axis quantization only supports 'm' or 'n' dimensions
-    // With transpose_in1=false, axis should be 'n' (last dimension)
-    tenA = createTensor(qnn_ctx.quantMem, 0, "tensor_A", TensorRole::INPUT_A, dt0.dtype, dimA_4d, quantTypeA, 3, isValidationMode); // axis=3 for K dimension (last dim)
+    // For {1,1,M,K} format with transpose_in0=false:
+    // A tensor: axis=2 (M dimension) for batch-wise quantization
+    tenA = createTensor(qnn_ctx.quantMem, 0, "tensor_A", TensorRole::INPUT_A, dt0.dtype, dimA_4d, quantTypeA, 2, isValidationMode); // axis=2 for M dimension
     CHECK_QNN(qnn_ctx.iface->tensorCreateGraphTensor(graph, &tenA));
     
-    // Create input tensor B with specified quantization
-    tenB = createTensor(qnn_ctx.quantMem, 1, "tensor_B", TensorRole::INPUT_B, dt1.dtype, dimB_4d, quantTypeB, 3, isValidationMode); // axis=3 for N dimension (last dim)
+    // Create input tensor B with specified quantization  
+    // B tensor: axis=3 (N dimension) for output channel quantization
+    tenB = createTensor(qnn_ctx.quantMem, 1, "tensor_B", TensorRole::INPUT_B, dt1.dtype, dimB_4d, quantTypeB, 3, isValidationMode); // axis=3 for N dimension (output channels)
     CHECK_QNN(qnn_ctx.iface->tensorCreateGraphTensor(graph, &tenB));
     
     // Create output tensor C with specified quantization
-    tenC = createTensor(qnn_ctx.quantMem, 2, "tensor_C", TensorRole::OUTPUT, dtOut.dtype, dimC_4d, quantTypeC, 3, isValidationMode); // axis=3 for N dimension (last dim)
+    // C tensor: axis=3 (N dimension) for output channel quantization
+    tenC = createTensor(qnn_ctx.quantMem, 2, "tensor_C", TensorRole::OUTPUT, dtOut.dtype, dimC_4d, quantTypeC, 3, isValidationMode); // axis=3 for N dimension (output channels)
     CHECK_QNN(qnn_ctx.iface->tensorCreateGraphTensor(graph, &tenC));
     
 }
@@ -1072,16 +1074,18 @@ static bool runValidationTest(const ValidationCase& testCase) {
         createMatMulTensors(qnn_ctx, graph, *dtype, *dtype, *dtype, dimA_4d, dimB_4d, dimC_4d, 
                            tenA, tenB, tenC, testCase.quantType, testCase.quantType, testCase.quantType, true); // isValidationMode = true
         
-        // Create MatMul op
+        // Create MatMul op with correct parameters
+        // Based on ggml-hexagon.cpp reference: only transpose_in1 parameter is needed
+        // transpose_in0=false, transpose_in1=false for standard A[M,K] x B[K,N] = C[M,N]
         Qnn_Param_t params[2] = {};
         params[0].paramType = QNN_PARAMTYPE_SCALAR;
         params[0].name = QNN_OP_MAT_MUL_PARAM_TRANSPOSE_IN0;
         params[0].scalarParam.dataType = QNN_DATATYPE_BOOL_8;
-        params[0].scalarParam.bool8Value = 0;
+        params[0].scalarParam.bool8Value = 0;  // No transpose for input A
         params[1].paramType = QNN_PARAMTYPE_SCALAR;
         params[1].name = QNN_OP_MAT_MUL_PARAM_TRANSPOSE_IN1;
         params[1].scalarParam.dataType = QNN_DATATYPE_BOOL_8;
-        params[1].scalarParam.bool8Value = 0;
+        params[1].scalarParam.bool8Value = 0;  // No transpose for input B
         
         Qnn_Tensor_t inputsNode[2] = {tenA, tenB};
         Qnn_Tensor_t outputs[1] = {tenC};
@@ -1311,11 +1315,11 @@ static BenchmarkResult runMatMulBenchmark(uint32_t M, uint32_t K, uint32_t N,
         params[0].paramType = QNN_PARAMTYPE_SCALAR;
         params[0].name = QNN_OP_MAT_MUL_PARAM_TRANSPOSE_IN0;
         params[0].scalarParam.dataType = QNN_DATATYPE_BOOL_8;
-        params[0].scalarParam.bool8Value = 0;
+        params[0].scalarParam.bool8Value = 0;  // No transpose for input A
         params[1].paramType = QNN_PARAMTYPE_SCALAR;
         params[1].name = QNN_OP_MAT_MUL_PARAM_TRANSPOSE_IN1;
         params[1].scalarParam.dataType = QNN_DATATYPE_BOOL_8;
-        params[1].scalarParam.bool8Value = 0;
+        params[1].scalarParam.bool8Value = 0;  // No transpose for input B
         
         Qnn_Tensor_t inputsNode[2] = {tenA, tenB};
         Qnn_Tensor_t outputs[1] = {tenC};
